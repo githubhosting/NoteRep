@@ -22,22 +22,21 @@ export function CallToAction() {
       </div>
       <Container className="relative">
         <div className="mx-auto max-w-lg text-center">
-          <p className="mt-0 mb-2 text-lg tracking-tight text-white">
+          <p className="mt-0 mb-2 text-lg font-bold tracking-tight text-white">
             MSRIT Events:
           </p>
           <ButtonLink
             href="https://githubhosting.github.io/eventcalender/"
             color="white"
-            className="mt-0 mb-10"
+            className="mt-0 mb-10 shadow-md"
           >
             Events Calendar
           </ButtonLink>
           <br></br>
-
           <ButtonLink
             href="https://amith225.github.io/webHosting/gpa%20calculator/"
             color="white"
-            className="mb-5"
+            className="mb-5 shadow-md"
           >
             CGPA Calculator
           </ButtonLink>
@@ -49,12 +48,12 @@ export function CallToAction() {
             feel like you’re doing something productive.
           </p> */}
           <p className="mt-0 text-lg tracking-tight text-white">
-            <span className="font-bold">Chemistry Cycle:</span>
+            <span className="font-bold drop-shadow-lg">Chemistry Cycle:</span>
           </p>
           <ButtonLink
             href="https://drive.google.com/drive/folders/1f2gtx6cDE8Av829fkzyLWl3-AEDBZSWF?usp=sharing"
             color="white"
-            className="mt-5"
+            className="mt-5 shadow-xl"
           >
             Previous Year Papers
           </ButtonLink>
@@ -62,17 +61,17 @@ export function CallToAction() {
           <ButtonLink
             href="https://drive.google.com/drive/folders/1M-nox11_GeNdacU_4xV8q6yyrOsxqvxY?usp=sharing"
             color="white"
-            className="mt-5"
+            className="mt-5 shadow-xl"
           >
             SEE Papers Year wise
           </ButtonLink>
           <p className="mt-10 text-lg tracking-tight text-white">
-            <span className="font-bold">Physics Cycle:</span>
+            <span className="font-bold drop-shadow-lg">Physics Cycle:</span>
           </p>
           <ButtonLink
             href="https://drive.google.com/drive/folders/1cM8xMWFAUACsVdopjyrIxDuAiO6ux8Ml?usp=sharing"
             color="white"
-            className="mt-5"
+            className="mt-5 shadow-xl"
           >
             Previous Year Papers
           </ButtonLink>

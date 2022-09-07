@@ -16,13 +16,17 @@ export function Author() {
       </div>
       <div className="relative mx-auto max-w-5xl pt-16 sm:px-6">
         <div className="bg-slate-50 pt-px sm:rounded-5xl">
-          <div className="relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full bg-slate-200 md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
+          <div className="shadow-lg relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full bg-slate-200 md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
             <Image src={authorImage} alt="" />
           </div>
           <div className="md:py-17 px-4 py-8 sm:px-10 sm:py-12 lg:px-20 lg:py-28">
             {/* <SectionHeading id="author-title">Author</SectionHeading> */}
-            <p className="mt-8 font-display text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
-              <span className="block text-blue-600">Shravan –</span> Hey there,
+            <p className="mt-8 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-6xl">
+              <span className="block font-extrabold text-blue-600 shadow-blue-600/60 drop-shadow-xl">
+                Shravan –
+              </span>{' '}
+              Hey there,
+              <br></br>
               I’m the developer behind ‘NoteRep’.
             </p>
             {/* <p className="mt-4 text-lg tracking-tight text-slate-700">

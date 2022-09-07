@@ -33,7 +33,7 @@ export function FreeChapters() {
             <ButtonLink
               href="whatsapp://send?text=https://www.msrit.ml/"
               color="white"
-              className="mt-5"
+              className="mt-5 shadow-xl"
             >
               Share
             </ButtonLink>
@@ -66,7 +66,7 @@ export function FreeChapters() {
               <ButtonLink
                 href="https://drive.google.com/drive/folders/1qRi18giG_H8Zr8KtlSyVNCbjp2UruvRp?usp=sharing"
                 color="white"
-                className="mt-2 w-full sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
+                className="mt-2 w-full shadow-lg sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
               >
                 Add Here
               </ButtonLink>
@@ -78,7 +78,7 @@ export function FreeChapters() {
               <ButtonLink
                 href="https://forms.gle/ZSdDTkuDpuxvPRwX8"
                 color="white"
-                className="mt-2 w-full sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
+                className="mt-2 w-full shadow-lg sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
               >
                 Click Here
               </ButtonLink>

@@ -24,16 +24,18 @@ export function Hero() {
       </div>
       <Container className="relative">
         <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
-          <h1 className="font-display text-5xl font-bold tracking-tighter text-blue-600 sm:text-7xl">
+          <h1 className="font-display text-5xl font-bold tracking-tighter text-blue-600 drop-shadow-xl sm:text-7xl">
             <span className="sr-only">StudyConf - </span>NoteRep -
           </h1>
           <div className="mt-6 space-y-6 font-display text-2xl tracking-tight text-blue-900">
             <p>An Open-Source Notes Sharing Platform</p>
-            <p>
+            <p className="text-base">
               If you find any errors or want to update something here, do inform
               us.
             </p>
-            <p>ALL THE BEST for SEM END EXAMINATIONS !!!</p>
+            <p className="font-semibold">
+              ALL THE BEST for SEM END EXAMINATIONS !!!
+            </p>
           </div>
           <ButtonLink href="/#schedule" className="mt-10 w-full">
             Explore
