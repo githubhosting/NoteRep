@@ -51,7 +51,11 @@ export function CallToAction() {
           <p className="mt-0 text-lg tracking-tight text-white">
             <span className="font-bold">Chemistry Cycle:</span>
           </p>
-          <ButtonLink href="/register" color="white" className="mt-5">
+          <ButtonLink
+            href="https://drive.google.com/drive/folders/1f2gtx6cDE8Av829fkzyLWl3-AEDBZSWF?usp=sharing"
+            color="white"
+            className="mt-5"
+          >
             Previous Year Papers
           </ButtonLink>
           <br></br>

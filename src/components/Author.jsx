@@ -25,7 +25,7 @@ export function Author() {
               <span className="block text-blue-600">Shravan –</span> Hey there,
               I’m the developer behind ‘NoteRep’.
             </p>
-            <p className="mt-4 text-lg tracking-tight text-slate-700">
+            {/* <p className="mt-4 text-lg tracking-tight text-slate-700">
               <i>A little about myself :</i> <br></br>I am currently in
               First-Year, pursuing a Computer Science and Engineering (Spl. AI &
               ML) degree from the Ramaiah Institute of Technology, Bangalore.
@@ -35,7 +35,7 @@ export function Author() {
               Development. My Goal is to Contribute to as many open source
               projects as possible. I also have a keen interest in UX/UI Design,
               but I still wish to explore other fields as well.
-            </p>
+            </p> */}
             <p className="mt-8">
               <a
                 href="https://www.linkedin.com/in/shravanrevanna"
