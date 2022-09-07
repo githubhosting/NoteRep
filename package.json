@@ -2,7 +2,7 @@
   "name": "tailwindui-conference",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://www.msrit.ml/",
+  "homepage": "https://githubhosting.github.io",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
