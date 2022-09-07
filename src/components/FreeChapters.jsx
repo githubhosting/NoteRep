@@ -31,8 +31,7 @@ export function FreeChapters() {
               Starred list. Also Click bellow to directly share on Whatsapp.
             </p>
             <ButtonLink
-              href="whatsapp://send?text=Download Lecture Notes, eBooks, handouts,
-              seminars & presentations for all engineering branches and trades: https://www.msrit.ml/"
+              href="whatsapp://send?text=https://www.msrit.ml/"
               color="white"
               className="mt-5"
             >
