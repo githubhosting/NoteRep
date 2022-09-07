@@ -14,58 +14,66 @@ const schedule = [
     timeSlots: [
       {
         name: 'Multivariate Calculus & Differential Equations',
-        description: 'Not so one-time payments',
+        description: 'MA21 | Mathematics',
         start: '9:00AM',
         end: '10:00AM',
-        link: 'https://www.msrit.ml',
+        link: 'https://drive.google.com/drive/folders/1nDwJtyynb8V-N0afwfSuXWDCQK9MFyFt?usp=sharing',
       },
       {
         name: 'Fundamentals Of Mechanical Engineering',
-        description: 'The finer print',
+        description: 'ME22 | Mechanical Engineering',
         start: '10:00AM',
         end: '11:00AM',
+        link: 'https://drive.google.com/drive/folders/14UBANxwD6X3w7R4z_LbGxlx8bL7iizwW?usp=sharing',
       },
       {
         name: 'Basic Electronics',
-        description: 'Post-purchase blackmail',
+        description: 'EC23 | EC/ET',
         start: '11:00AM',
         end: '12:00PM',
+        link: 'https://drive.google.com/drive/folders/16hJtglzOMFIZgi1I4CmmWvNVTzfEa_lz?usp=sharing',
       },
       {
         name: 'Computing Fundamentals And C Programming',
-        description: null,
+        description: 'CS24 | CSE/ISE',
         start: '12:00PM',
         end: '1:00PM',
+        link: 'https://drive.google.com/drive/folders/1qR61EoAEOu2kaTtDUoV7NQY3dGl326AP?usp=sharing',
       },
       {
         name: 'Engineering Chemistry',
-        description: 'Buy or die',
+        description: 'CY25 | Chemistry',
         start: '1:00PM',
         end: '2:00PM',
+        link: 'https://drive.google.com/drive/folders/1PwOQv5aGNb7A-YBq9Jg3GEca_3D12IlJ?usp=sharing',
       },
       {
         name: 'A Scientific Approach To Health',
-        description: 'In-person cancellation',
+        description: 'AEC26',
         start: '2:00PM',
         end: '3:00PM',
+        link: 'https://drive.google.com/drive/folders/1hhpslVlioi_ctjRHd9yBdFfFDteq0zFP?usp=sharing',
       },
       {
         name: 'Engineering Chemistry Laboratory',
-        description: 'The pay/cancel switcheroo',
+        description: 'CYL27 | Chemistry',
         start: '3:00PM',
         end: '4:00PM',
+        link: 'https://drive.google.com/drive/folders/1PhVaeiy233wPPst8t6kBf05YdyMfn9Cf?usp=sharing',
       },
       {
         name: 'C Programming Laboratory',
-        description: 'The pay/cancel switcheroo',
+        description: 'CSL28 | CSE/ISE',
         start: '4:00PM',
         end: '5:00PM',
+        link: 'https://drive.google.com/drive/folders/11hGw83CGCKOnAg_gvmEzzpxilcXVJYeB?usp=sharing',
       },
       {
         name: 'Workshop Practice',
-        description: 'The pay/cancel switcheroo',
+        description: 'MEL29 | Mechanical Engineering',
         start: '5:00PM',
         end: '6:00PM',
+        link: 'https://drive.google.com/drive/folders/1RSYS98m7xz8JcRRuxHubaZZvYLfuRNjE?usp=sharing',
       },
     ],
   },
@@ -76,49 +84,53 @@ const schedule = [
     timeSlots: [
       {
         name: 'Multivariate Calculus & Differential Equations',
-        description: 'The invisible card reader',
+        description: 'MA21 | Mathematics',
         start: '9:00AM',
         end: '10:00AM',
+        link: 'https://drive.google.com/drive/folders/1nDwJtyynb8V-N0afwfSuXWDCQK9MFyFt?usp=sharing',
       },
       {
         name: 'Communicative English',
-        description: 'Stealing fingerprints',
+        description: 'HS12 | Humanities',
         start: '10:00AM',
         end: '11:00AM',
+        link: 'https://drive.google.com/drive/folders/1wZFskaydriaWIrOeHMSNutNtV-55fqFx?usp=sharing',
       },
       {
         name: 'Basic Electrical Engineering',
-        description: 'Voting machines',
+        description: 'EE13 | Electrical & Electronics',
         start: '11:00AM',
         end: '12:00PM',
+        link: 'https://drive.google.com/drive/folders/1oetzNGC020UfqQ8hMeyIxFRcO2fdJhVZ?usp=sharing',
       },
       {
         name: 'Basics Of Civil Engineering & Mechanics',
-        description: null,
+        description: 'CV14 | Civil Engineering',
         start: '12:00AM',
         end: '1:00PM',
+        link: 'https://drive.google.com/drive/folders/1hfv8E8kByN9KcDElYJI1ZWqPIZYZmavg',
       },
       {
         name: 'A Scientific Approach To Health',
-        description: 'Blackhat SEO that works',
+        description: 'AEC26',
         start: '1:00PM',
         end: '2:00PM',
       },
       {
         name: 'Engineering Physics',
-        description: 'Turning your audience into a botnet',
+        description: 'PY15 | Physics',
         start: '2:00PM',
         end: '3:00PM',
       },
       {
         name: 'Computer Aided Engineering Drawing',
-        description: 'Fly phishing',
+        description: 'MEL17 | Mechanical Engineering',
         start: '3:00PM',
         end: '4:00PM',
       },
       {
         name: 'Engineering Physics Laboratory',
-        description: 'The pay/cancel switcheroo',
+        description: 'PYL18 | Physics',
         start: '4:00PM',
         end: '5:00PM',
       },
@@ -197,6 +209,7 @@ function ScheduleTabbed() {
   return (
     <Tab.Group
       as="div"
+      id="Schedule"
       className="mx-auto grid max-w-2xl grid-cols-1 gap-y-6 sm:grid-cols-2 lg:hidden"
       vertical={tabOrientation === 'vertical'}
     >
@@ -257,14 +270,15 @@ function DaySummary({ day }) {
 function TimeSlots({ day, className }) {
   return (
     <div
+      // className="bg-slate-50 pt-px sm:rounded-5xl"
       className={clsx(
         className,
-        'space-y-8 bg-white/60 py-14 px-10 text-center shadow-xl shadow-blue-900/5 backdrop-blur'
+        'space-y-8 rounded-4xl bg-white/60 py-14 px-10 pt-px text-center shadow-xl shadow-blue-900/5 backdrop-blur'
       )}
     >
       {day.timeSlots.map((timeSlot, timeSlotIndex) => (
         <div key={timeSlot.start}>
-          {timeSlotIndex > 0 && (
+          {timeSlotIndex >= 0 && (
             <div className="mx-auto mb-8 h-px w-48 bg-indigo-500/10" />
           )}
           <h4 className="text-lg font-semibold tracking-tight text-blue-900">
@@ -279,7 +293,7 @@ function TimeSlots({ day, className }) {
             </>
           )}
           <p className="sr-only">at</p>
-          <p className="mt-1 font-mono text-sm text-slate-500">
+          {/* <p className="mt-1 font-mono text-sm text-slate-500">
             <time dateTime={`${day.dateTime}T${timeSlot.start}-08:00`}>
               {timeSlot.start}
             </time>{' '}
@@ -288,7 +302,7 @@ function TimeSlots({ day, className }) {
               {timeSlot.end}
             </time>{' '}
             PST
-          </p>
+          </p> */}
           <button className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-semibold tracking-tight text-white hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2">
             <a href={timeSlot.link}>View</a>
           </button>
@@ -319,9 +333,9 @@ export function Schedule() {
       className="py-20 sm:py-32"
     >
       <h2 id="schedule-title" className="sr-only">
-        Schedule
+        Drive Links
       </h2>
-      <Container className="relative z-10">
+      {/* <Container className="relative z-10">
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-4xl lg:pr-24">
           <p className="font-display text-4xl font-medium tracking-tighter text-blue-600 sm:text-5xl">
             Our three day schedule is jam-packed with brilliant, creative, evil
@@ -333,7 +347,7 @@ export function Schedule() {
             to watch the talks.
           </p>
         </div>
-      </Container>
+      </Container> */}
       <div className="relative mt-14 sm:mt-24">
         <div className="absolute -inset-x-0 -top-40 -bottom-32 overflow-hidden bg-indigo-50">
           <div className="absolute left-full top-0 translate-y-[0%] -translate-x-[50%] sm:left-1/2 sm:-translate-y-[15%] sm:-translate-x-[20%] md:translate-x-[0%] lg:translate-x-[5%] lg:translate-y-[4%] xl:-translate-y-[8%] xl:translate-x-[27%]">

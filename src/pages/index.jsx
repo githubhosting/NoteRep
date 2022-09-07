@@ -7,24 +7,29 @@ import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
 import { Speakers } from '@/components/Speakers'
 import { Sponsors } from '@/components/Sponsors'
+import { Author } from '@/components/Author'
+import { CallToAction } from '@/components/CallToAction'
+
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>StudyConf - An Open-Source Notes</title>
+        <title>StudyConf - An Open-Source Notes sharing Platform</title>
         <meta
           name="description"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla bibendum volutpat mi, ut tempor nulla cursus ut. Aliquam fermentum rutrum fringilla. Phasellus pharetra quis dolor a pulvinar. Fusce non nisl mauris vestibulum ante ipsum."
+          content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
         />
       </Head>
       <Header />
       <main>
         <Hero />
+        <CallToAction />
         {/* <Speakers /> */}
         <Schedule />
-        <Sponsors />
-        <Newsletter />
+        {/* <Sponsors /> */}
+        <Author />
+        {/* <Newsletter /> */}
       </main>
       <Footer />
     </>
