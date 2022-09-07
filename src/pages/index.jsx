@@ -9,13 +9,14 @@ import { Speakers } from '@/components/Speakers'
 import { Sponsors } from '@/components/Sponsors'
 import { Author } from '@/components/Author'
 import { CallToAction } from '@/components/CallToAction'
-
+import { Introduction } from '@/components/Introduction'
+import { FreeChapters } from '@/components/FreeChapters'
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>StudyConf - An Open-Source Notes sharing Platform</title>
+        <title>NoteRep - An Open-Source Notes sharing Platform</title>
         <meta
           name="description"
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
@@ -28,7 +29,9 @@ export default function Home() {
         {/* <Speakers /> */}
         <Schedule />
         {/* <Sponsors /> */}
+        <FreeChapters />
         <Author />
+        {/* <Introduction /> */}
         {/* <Newsletter /> */}
       </main>
       <Footer />

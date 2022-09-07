@@ -23,7 +23,7 @@ export function Author() {
             {/* <SectionHeading id="author-title">Author</SectionHeading> */}
             <p className="mt-8 font-display text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
               <span className="block text-blue-600">Shravan –</span> Hey there,
-              I’m the developer behind ‘StudyConf’.
+              I’m the developer behind ‘NoteRep’.
             </p>
             <p className="mt-4 text-lg tracking-tight text-slate-700">
               <i>A little about myself :</i> <br></br>I am currently in
