@@ -2,11 +2,14 @@
   "name": "tailwindui-conference",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://www.msrit.ml/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
@@ -23,6 +26,7 @@
   "devDependencies": {
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
+    "gh-pages": "^4.0.0",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.11"
   }
