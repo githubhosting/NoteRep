@@ -39,9 +39,9 @@ export function Hero() {
                 href="/#sponsors"
                 className="link text-blue-600 underline visited:text-blue-600 hover:text-blue-800"
               >
-                By scrolling down
+                By scrolling down 
               </a>
-              , {'  '} please take a look at our affiliated platform.
+              , {'  '}&darr; Please take a look at our affiliated platform.
             </p>
             <p className="text-lg font-semibold">
               ALL THE BEST for SEM End Exams !!!
@@ -52,8 +52,8 @@ export function Hero() {
           </ButtonLink>
           <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-start lg:text-left">
             {[
-              ['Average visitors', '560+ /day'],
-              ['Total Visits', '15,000+'],
+              ['Average visitors*', '56+ /day'],
+              ['Total Visits*', '5,000+'],
             ].map(([name, value]) => (
               <div key={name}>
                 <dt className="font-mono text-sm text-blue-600">{name}</dt>

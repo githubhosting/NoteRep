@@ -9,14 +9,14 @@ export function Introduction() {
     <section
       id="sponsors"
       aria-labelledby="introduction-title"
-      className="pt-20 pb-16 sm:pb-20 md:pt-36 lg:py-32"
+      className="pt-10 pb-0 sm:pb-0 md:pt-18 lg:pt-10"
     >
       <h2 id="introduction-title" className="sr-only">
         Introduction
       </h2>
       <Container>
         <p className="font-display text-4xl font-bold tracking-tight text-slate-900">
-          I have partnered with a Learning Platform
+          Partnered with a Learning Platform
         </p>
         <p className="mt-4 font-display text-4xl text-lg font-bold tracking-tight tracking-tight text-slate-700">
           “
@@ -85,9 +85,9 @@ export function Introduction() {
           Know More
         </a>
         <p className="mt-4 text-lg tracking-tight text-slate-700">
-          If you wish to access all the course on the app, Message me your email
-          id to get 89% off on membership.<br></br>
-          <i>I'm selecting only few students to get this offer.</i>
+          If you wish to take a membership on the app, Message me your email
+          id or fill the form below to get <b>89% off</b>.<br></br>
+          <i>Offer ony for first 15 members, be the first one!</i>
         </p>
         <p className="mt-5">
           <a
@@ -97,6 +97,24 @@ export function Introduction() {
             Message here &rarr;
           </a>
         </p>
+        {/* <ButtonLink
+          className="mt-10 text-center"
+          href="https://forms.gle/WEW5LTP5iFJMvwXH9"
+          target="_blank"
+        >
+          Submit Email
+        </ButtonLink> */}
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLScQJHgiFCnfkBkPJynToLgij409k9qoDI3w0WWE4kC4jy8_wg/viewform?embedded=true"
+          // width="425"
+          height="1024"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          className="mt-10 w-full"
+        >
+          Loading…
+        </iframe>
       </Container>
     </section>
   )

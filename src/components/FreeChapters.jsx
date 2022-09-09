@@ -22,8 +22,9 @@ export function FreeChapters() {
             <h3 className="text-base font-medium tracking-tight text-white">
               Discuss, share and download Lecture Notes, eBooks, handouts,
               seminars & presentations, major & minor projects, previous Year &
-              sample Semester papers for all engineering branches and trades
+              Sample Semester papers for all engineering branches and trades
             </h3>
+            <h3 className="mt-5 text-base font-bold tracking-tight text-white">Stay tuned!! There are so many features comming up</h3>
             <h2 className="font-display text-4xl font-extrabold tracking-tight text-white sm:w-3/4 sm:text-6xl md:w-2/3 lg:w-auto"></h2>
             <p className="mt-4 text-lg tracking-tight text-blue-200">
               I will be Uploading/Updating all the pdf's in their respective
