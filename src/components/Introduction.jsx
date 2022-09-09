@@ -78,6 +78,12 @@ export function Introduction() {
         <p className="mt-4 text-center text-xl tracking-tight text-blue-900">
           At the price <del>₹999</del> <br></br>₹99 only!
         </p>
+        <a
+          href="https://drive.google.com/uc?export=download&id=1H4wdpRwhxGjEKOhVaeSEwT6OU3CJkI_n"
+          className="text-lg tracking-tight text-slate-900 underline"
+        >
+          Know More
+        </a>
         <p className="mt-4 text-lg tracking-tight text-slate-700">
           If you wish to access all the course on the app, Message me your email
           id to get 89% off on membership.<br></br>
