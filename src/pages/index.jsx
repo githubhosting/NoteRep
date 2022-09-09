@@ -31,7 +31,7 @@ export default function Home() {
         {/* <Sponsors /> */}
         <FreeChapters />
         <Author />
-        {/* <Introduction /> */}
+        <Introduction />
         {/* <Newsletter /> */}
       </main>
       <Footer />

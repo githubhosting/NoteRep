@@ -29,6 +29,7 @@ export function CallToAction() {
             href="https://githubhosting.github.io/eventcalender/"
             color="white"
             className="mt-0 mb-10 shadow-md"
+            target="_blank"
           >
             Events Calendar
           </ButtonLink>
@@ -37,6 +38,7 @@ export function CallToAction() {
             href="https://amith225.github.io/webHosting/gpa%20calculator/"
             color="white"
             className="mb-5 shadow-md"
+            target="_blank"
           >
             CGPA Calculator
           </ButtonLink>
@@ -74,6 +76,14 @@ export function CallToAction() {
             className="mt-5 shadow-xl"
           >
             Previous Year Papers
+          </ButtonLink>
+          <br></br>
+          <ButtonLink
+            href="https://drive.google.com/drive/folders/1w6lR16CXz6fRYqc6ZxNHA3y4uYK7EKF-?usp=sharing"
+            color="white"
+            className="mt-5 shadow-xl"
+          >
+            SEE Papers Year wise
           </ButtonLink>
         </div>
       </Container>

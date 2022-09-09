@@ -33,8 +33,18 @@ export function Hero() {
               If you find any errors or want to update something here, do inform
               us.
             </p>
-            <p className="font-semibold">
-              ALL THE BEST for SEM END EXAMINATIONS !!!
+            <p className="text-xl font-bold">
+              I hope my website has helped you in your preparation.{'  '}
+              <a
+                href="/#sponsors"
+                className="link text-blue-600 underline visited:text-blue-600 hover:text-blue-800"
+              >
+                By scrolling down
+              </a>
+              , {'  '} please take a look at our affiliated platform.
+            </p>
+            <p className="text-lg font-semibold">
+              ALL THE BEST for SEM End Exams !!!
             </p>
           </div>
           <ButtonLink href="/#schedule" className="mt-10 w-full">

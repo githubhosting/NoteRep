@@ -1,9 +1,13 @@
 import { Container } from '@/components/Container'
+import logoTransistor from '@/images/logos/rysecamp.svg'
+import Image from 'next/image'
+import { Button } from '@/components/Button'
+import { ButtonLink } from './Button1'
 
 export function Introduction() {
   return (
     <section
-      id="introduction"
+      id="sponsors"
       aria-labelledby="introduction-title"
       className="pt-20 pb-16 sm:pb-20 md:pt-36 lg:py-32"
     >
@@ -12,29 +16,53 @@ export function Introduction() {
       </h2>
       <Container>
         <p className="font-display text-4xl font-bold tracking-tight text-slate-900">
-          “Everything Starts as a Square” is a book and video course that
-          teaches you a simple method to designing icons that anyone can learn.
+          I have partnered with a Learning Platform
         </p>
-        <p className="mt-4 text-lg tracking-tight text-slate-700">
-          Before I learned how to design icons myself, I always imagined that
-          they were drawn by hand using the pen tool, some sort of fancy
-          graphics tablet, and hours and hours spent manually fine-tuning bezier
-          curves.
+        <p className="mt-4 font-display text-4xl text-lg font-bold tracking-tight tracking-tight text-slate-700">
+          “
+          <a
+            href="https://rysecamp.com/"
+            className="link font-display text-4xl font-bold tracking-tight text-blue-600 underline visited:text-blue-600 hover:text-blue-800"
+          >
+            Rysecamp
+          </a>
+          ”.
         </p>
+
         <p className="mt-4 text-lg tracking-tight text-slate-700">
-          But it turns out this isn’t how great icon designers work at all.
+          "I wanted to explore various fields in Engineering, but on other
+          platforms I just end up dropping out of courses because they never
+          end! thats where Rysecamp comes into picture. Here you can get
+          familiar with any topic pretty quickly!"
         </p>
+
         <p className="mt-4 text-lg tracking-tight text-slate-700">
-          In “Everything Starts as a Square”, you’ll learn the systems experts
-          use to create pixel perfect icons, without relying on a steady hand.
+          <i>Rysecamp</i> is a platform where users can learn 15 min courses in
+          the form of easy bytes - a fun learning feed on topics like Coming up
+          with a cool business idea, Building your first app, Studying Overseas,
+          Data Science 101, Cracking top internships, Funding your startup etc.
+        </p>
+        <div className="mt-5">
+          <p className="text-lg tracking-tight text-slate-900">
+            Community for MSRIT students where they will share some of their
+            content for free.
+          </p>
+          <a
+            href="https://chat.whatsapp.com/DE8xZjQiPSXJZeMp1Ec3p5"
+            className="text-base font-medium tracking-tight text-blue-600 hover:text-blue-800"
+          >
+            Join here &rarr;
+          </a>
+        </div>
+        <p className="mx-auto mt-10 max-w-2xl text-center font-display text-4xl font-medium tracking-tighter text-blue-900 sm:text-5xl">
+          1 year access to Rysecamp:
         </p>
         <ul className="mt-8 space-y-3 text-lg tracking-tight text-slate-700">
           {[
-            'Using boolean operations to combine basic shapes into complex icons',
-            'How to adapt icons to different sizes',
-            'Translating icons from an outline style to a solid style',
-            'Identifying the characteristics that make an icon set cohesive',
-            'Figma features and keyboard shortcuts to speed up your workflow',
+            '60+ Courses & Workshops',
+            '30 mins Courses + Certificates',
+            'Quick courses for top domains and career growth',
+            'Learning, one easy byte at a time',
           ].map((feature) => (
             <li key={feature} className="flex">
               <svg
@@ -47,17 +75,20 @@ export function Introduction() {
             </li>
           ))}
         </ul>
-        <p className="mt-4 text-lg tracking-tight text-slate-700">
-          By the end of the book, you’ll have all the confidence you need to dig
-          in and start creating beautiful icons that can hold their own against
-          any of the sets you can find online.
+        <p className="mt-4 text-center text-xl tracking-tight text-blue-900">
+          At the price <del>₹999</del> <br></br>₹99 only!
         </p>
-        <p className="mt-10">
+        <p className="mt-4 text-lg tracking-tight text-slate-700">
+          If you wish to access all the course on the app, Message me your email
+          id to get 89% off on membership.<br></br>
+          <i>I'm selecting only few students to get this offer.</i>
+        </p>
+        <p className="mt-5">
           <a
-            href="#free-chapters"
-            className="text-base font-medium tracking-tight text-blue-600 hover:text-blue-800"
+            href="https://wa.me/919945332995?text=I want to know more about Rysecamp Subscription"
+            className="fill text-base font-medium tracking-tight text-blue-600 hover:text-blue-800"
           >
-            Get two free chapters straight to your inbox &rarr;
+            Message here &rarr;
           </a>
         </p>
       </Container>
