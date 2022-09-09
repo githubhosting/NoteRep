@@ -8,7 +8,7 @@ export function CallToAction() {
   return (
     <section
       id="get-started-today"
-      className="relative overflow-hidden bg-blue-600 py-32"
+      className="relative overflow-hidden bg-blue-600 pt-10 pb-20"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
         <Image
