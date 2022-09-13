@@ -28,7 +28,7 @@ export function CallToAction() {
           <ButtonLink
             href="https://githubhosting.github.io/eventcalender/"
             color="white"
-            className="mt-0 mb-10 shadow-md"
+            className="mt-0 mb-5 shadow-md"
             target="_blank"
           >
             Events Calendar
@@ -41,6 +41,23 @@ export function CallToAction() {
             target="_blank"
           >
             CGPA Calculator
+          </ButtonLink>
+          <br></br>
+          <ButtonLink
+            href="https://drive.google.com/drive/folders/1ocboxyZqKUF8PcoPQCNcN1qW6_98s8py"
+            color="white"
+            className="mb-5 mt-5 shadow-md"
+            target="_blank"
+          >
+            Maths 1 Notes
+          </ButtonLink>
+          <ButtonLink
+            href="https://drive.google.com/drive/folders/1N-CtG3yT9ZjHDFRl8Srv0iRUvhzWGPAR"
+            color="white"
+            className="mb-5 ml-5 mt-5 shadow-md"
+            target="_blank"
+          >
+            Maths 1 PYQ
           </ButtonLink>
           {/* <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
             Get started today
