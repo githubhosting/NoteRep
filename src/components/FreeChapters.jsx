@@ -20,16 +20,20 @@ export function FreeChapters() {
           {/* <Pattern className="absolute -top-32 left-0 w-full sm:left-3/4 sm:-top-5 sm:ml-8 sm:w-auto md:left-2/3 lg:left-auto lg:right-2 lg:ml-0 xl:right-auto xl:left-2/3" /> */}
           <div>
             <h3 className="text-base font-medium tracking-tight text-white">
-              Discuss, share and download Lecture Notes, eBooks, handouts,
-              seminars & presentations, major & minor projects, previous Year &
-              Sample Semester papers for all engineering branches and trades
+              Discuss, Share and Download Class Notes, eBooks, Handouts,
+              Presentations, Previous Year & Sample Semester Papers for all
+              Engineering branches (Now its only for 1st year, but later I will
+              be updating).
             </h3>
-            <h3 className="mt-5 text-base font-bold tracking-tight text-white">Stay tuned!! There are so many features comming up</h3>
+            <h3 className="mt-5 text-lg tracking-tight text-white">
+              There are so many features coming up. Stay tuned !!
+            </h3>
             <h2 className="font-display text-4xl font-extrabold tracking-tight text-white sm:w-3/4 sm:text-6xl md:w-2/3 lg:w-auto"></h2>
             <p className="mt-4 text-lg tracking-tight text-blue-200">
               I will be Uploading/Updating all the pdf's in their respective
               folders. So bookmark this page or add folders to Google Drive's
-              Starred list. Also Click bellow to directly share on Whatsapp.
+              Starred list. Click below to directly share this website on
+              Whatsapp.
             </p>
             <ButtonLink
               href="whatsapp://send?text=https://www.msrit.ml/"

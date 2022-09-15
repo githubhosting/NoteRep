@@ -1,3 +1,26 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+}
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  /* background: orange; */
+  /* background: linear-gradient(45deg, #00b5f5, #002a8f); */
+  color: white;
+  cursor: pointer;
+  border-radius: 25px;
+  border: none;
+  box-shadow: 0 5px 10px #ccc;
+  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+}
+
+.back-to-top:hover {
+  background: linear-gradient(105deg, #002a8f, #00b5f5);
+}

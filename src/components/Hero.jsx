@@ -3,7 +3,6 @@ import Image from 'next/image'
 import { ButtonLink } from '@/components/Button'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background.jpg'
-
 export function Hero() {
   return (
     <div className="relative pb-20 sm:py-12">
@@ -27,7 +26,7 @@ export function Hero() {
           <h1 className="font-display text-5xl font-bold tracking-tighter text-blue-600 drop-shadow-xl sm:text-7xl">
             <span className="sr-only">StudyConf - </span>NoteRep -
           </h1>
-          <div className="mt-6 space-y-6 font-display text-2xl tracking-tight text-blue-900">
+          <div className="mt-6 space-y-6 font-sans font-display text-2xl tracking-tight text-blue-900">
             <p>An Open-Source Notes Sharing Platform</p>
             <p className="text-base">
               If you find any errors or want to update something here, do inform
@@ -39,7 +38,7 @@ export function Hero() {
                 href="/#sponsors"
                 className="link text-blue-600 underline visited:text-blue-600 hover:text-blue-800"
               >
-                By scrolling down 
+                By scrolling down
               </a>
               , {'  '}&darr; Please take a look at our affiliated platform.
             </p>
@@ -47,7 +46,7 @@ export function Hero() {
               ALL THE BEST for SEM End Exams !!!
             </p>
           </div>
-          <ButtonLink href="/#schedule" className="mt-10 w-full">
+          <ButtonLink href="#schedule" className="mt-10 w-full">
             Explore
           </ButtonLink>
           <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-start lg:text-left">

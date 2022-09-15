@@ -13,7 +13,11 @@
   },
   "browserslist": "defaults, not ie <= 11",
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
     "@headlessui/react": "^1.6.5",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.5",
     "autoprefixer": "^10.4.7",
     "clsx": "^1.1.1",
     "focus-visible": "^5.2.0",

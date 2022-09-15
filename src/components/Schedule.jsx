@@ -334,7 +334,7 @@ export function Schedule() {
     <section
       id="schedule"
       aria-labelledby="schedule-title"
-      className="py-20 sm:py-32"
+      className="py-20 sm:py-32 scroll-pl-6"
     >
       <h2 id="schedule-title" className="sr-only">
         Drive Links
