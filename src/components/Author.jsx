@@ -15,19 +15,19 @@ export function Author() {
         <GridPattern x="50%" y="100%" />
       </div>
       <div className="relative mx-auto max-w-5xl pt-16 sm:px-6">
-        <div className="bg-slate-50 pt-px sm:rounded-5xl">
-          <div className="shadow-lg relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full bg-slate-200 md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
+        <div className="bg-slate-50 pt-px drop-shadow-2xl sm:rounded-5xl">
+          <div className="relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full bg-slate-200 shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
             <Image src={authorImage} alt="" />
           </div>
           <div className="md:py-17 px-4 py-8 sm:px-10 sm:py-12 lg:px-20 lg:py-28">
             {/* <SectionHeading id="author-title">Author</SectionHeading> */}
             <p className="mt-8 font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-6xl">
-              <span className="block font-extrabold text-blue-600 shadow-blue-600/60 drop-shadow-xl">
+              <span className="block bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text font-extrabold text-blue-600 text-transparent shadow-blue-600/60 drop-shadow-md">
                 Shravan –
               </span>{' '}
-              Hey there,
-              <br></br>
-              I’m the developer behind ‘NoteRep’.
+              <span className="mt-2 block text-slate-900">
+                I’m the developer behind ‘NoteRep’
+              </span>
             </p>
             {/* <p className="mt-4 text-lg tracking-tight text-slate-700">
               <i>A little about myself :</i> <br></br>I am currently in

@@ -13,6 +13,8 @@ import { Introduction } from '@/components/Introduction'
 import { FreeChapters } from '@/components/FreeChapters'
 import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
+import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+
 export default function Home() {
   // The back-to-top button is hidden at the beginning
   const [showButton, setShowButton] = useState(false)
@@ -51,6 +53,7 @@ export default function Home() {
         <Schedule />
         {/* <Sponsors /> */}
         <FreeChapters />
+        <SecondaryFeatures />
         <Author />
         <Introduction />
         {/* <Newsletter /> */}

@@ -352,7 +352,7 @@ export function Schedule() {
           </p>
         </div>
       </Container> */}
-      <div className="relative mt-14 sm:mt-24">
+      <div className="relative mt-7 sm:mt-12">
         <div className="absolute -inset-x-0 -top-40 -bottom-32 overflow-hidden bg-indigo-50">
           <div className="absolute left-full top-0 translate-y-[0%] -translate-x-[50%] sm:left-1/2 sm:-translate-y-[15%] sm:-translate-x-[20%] md:translate-x-[0%] lg:translate-x-[5%] lg:translate-y-[4%] xl:-translate-y-[8%] xl:translate-x-[27%]">
             <Image

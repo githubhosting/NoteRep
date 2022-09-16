@@ -85,9 +85,10 @@ export function Introduction() {
           Know More
         </a>
         <p className="mt-4 text-lg tracking-tight text-slate-700">
-          If you wish to take a membership on the app, Message me your email
-          id or fill the form below to get <b>89% off</b>.<br></br>
-          <i>Offer ony for first 15 members, be the first one!</i>
+          If you wish to take a membership on the app, Message me your Email
+          ID or fill the form below to get <b>89% off</b>.<br></br>
+          <i>Offer only for first 14 members, be the first one!</i><br></br>
+          Hope it brings you value. 
         </p>
         <p className="mt-5">
           <a

@@ -16,6 +16,7 @@ export function Hero() {
             height={1495}
             priority
             unoptimized
+            className="opacity-70"
           />
         </div>
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white" />
@@ -34,13 +35,14 @@ export function Hero() {
             </p>
             <p className="text-xl font-bold">
               I hope my website has helped you in your preparation.{'  '}
+              <br></br>Please take a look at our affiliated platform{' '}
               <a
                 href="/#sponsors"
                 className="link text-blue-600 underline visited:text-blue-600 hover:text-blue-800"
               >
                 By scrolling down
               </a>
-              , {'  '}&darr; Please take a look at our affiliated platform.
+              {'  '}&darr;, Also there is surprise if you sign up :)
             </p>
             <p className="text-lg font-semibold">
               ALL THE BEST for SEM End Exams !!!
@@ -49,7 +51,7 @@ export function Hero() {
           <ButtonLink href="#schedule" className="mt-10 w-full">
             Explore
           </ButtonLink>
-          <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-start lg:text-left">
+          <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-center lg:text-center">
             {[
               ['Average visitors*', '56+ /day'],
               ['Total Visits*', '5,000+'],
