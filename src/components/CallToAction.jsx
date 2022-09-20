@@ -35,9 +35,17 @@ export function CallToAction() {
           </ButtonLink>
           <br></br>
           <ButtonLink
-            href="https://amith225.github.io/webHosting/gpa%20calculator/"
+            href="https://idearepo.vercel.app/#/calci"
             color="white"
             className="mb-5 shadow-md"
+            target="_blank"
+          >
+            CGPA Calculator 2.0
+          </ButtonLink>
+          <ButtonLink
+            href="https://amith225.github.io/webHosting/gpa%20calculator/"
+            color="white"
+            className="mb-5 ml-5 shadow-md"
             target="_blank"
           >
             CGPA Calculator

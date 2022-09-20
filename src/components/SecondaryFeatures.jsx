@@ -236,7 +236,7 @@ export function SecondaryFeatures() {
         </div>
         <ul
           role="list"
-          className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-2"
+          className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
         >
           <li className="rounded-2xl border border-gray-200 p-5">
             {/* <feature.icon className="h-8 w-8" /> */}
@@ -258,10 +258,29 @@ export function SecondaryFeatures() {
           <li className="rounded-2xl border border-gray-200 p-5">
             {/* <feature.icon className="h-8 w-8" /> */}
             <h3 className="text-center text-base font-semibold text-gray-900">
-              Partent Portal
+              Parent Portal
             </h3>
             <p className="mt-2 text-center text-gray-700">
               Attendence and CIE Results
+            </p>
+            <div className="flex justify-center">
+              <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
+                <a
+                  href="http://parents.msrit.edu/parents_even2022/"
+                  target="_blank"
+                >
+                  Visit
+                </a>
+              </button>
+            </div>
+          </li>
+          <li className="rounded-2xl border border-gray-200 p-5">
+            {/* <feature.icon className="h-8 w-8" /> */}
+            <h3 className="text-center text-base font-semibold text-gray-900">
+              Idea Repository
+            </h3>
+            <p className="mt-2 text-center text-gray-700">
+              Portal for submition of your ideas to College
             </p>
             <div className="flex justify-center">
               <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
