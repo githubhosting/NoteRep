@@ -263,6 +263,9 @@ export function SecondaryFeatures() {
             <p className="mt-2 text-center text-gray-700">
               Attendence and CIE Results
             </p>
+            <p className="mt-1 text-center text-xs text-gray-700">
+              (Even Sem 2022)
+            </p>
             <div className="flex justify-center">
               <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
                 <a
@@ -282,12 +285,12 @@ export function SecondaryFeatures() {
             <p className="mt-2 text-center text-gray-700">
               Portal for submition of your ideas to College
             </p>
+            <p className="mt-1 text-center text-xs text-gray-700">
+              (By CSE AI & ML Dept)
+            </p>
             <div className="flex justify-center">
               <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
-                <a
-                  href="http://parents.msrit.edu/parents_even2022/"
-                  target="_blank"
-                >
+                <a href="https://idearepo.vercel.app/" target="_blank">
                   Visit
                 </a>
               </button>

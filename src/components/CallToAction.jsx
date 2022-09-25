@@ -35,17 +35,17 @@ export function CallToAction() {
           </ButtonLink>
           <br></br>
           <ButtonLink
-            href="https://idearepo.vercel.app/#/calci"
+            href="https://cgpa-estimator.vercel.app/"
             color="white"
-            className="mb-5 shadow-md"
+            className="mb-5 border-2 border-blue-600 shadow-md"
             target="_blank"
           >
-            CGPA Calculator 2.0
+            CGPA Estimator
           </ButtonLink>
           <ButtonLink
             href="https://amith225.github.io/webHosting/gpa%20calculator/"
             color="white"
-            className="mb-5 ml-5 shadow-md"
+            className="xs:ml-0 mb-5 ml-5 shadow-md lg:ml-5"
             target="_blank"
           >
             CGPA Calculator
