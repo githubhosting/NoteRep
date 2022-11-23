@@ -27,13 +27,13 @@ export function Hero() {
           <h1 className="font-display text-5xl font-bold tracking-tighter text-blue-600 drop-shadow-xl sm:text-7xl">
             <span className="sr-only">StudyConf - </span>NoteRep -
           </h1>
-          <div className="mt-6 space-y-6 font-sans font-display text-2xl tracking-tight text-blue-900">
+          <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900">
             <p>An Open-Source Notes Sharing Platform</p>
-            <p className="text-base">
-              If you find any errors or want to update something here, do inform
-              us.
+            <p className="text-base font-semibold">
+              Please let me know if there are any errors or if you want to
+              update anything
             </p>
-            <p className="text-xl font-bold">
+            {/* <p className="text-xl font-bold">
               I hope my website has helped you in your preparation.{'  '}
               <br></br>Please take a look at our affiliated platform{' '}
               <a
@@ -46,7 +46,7 @@ export function Hero() {
             </p>
             <p className="text-lg font-semibold">
               ALL THE BEST for SEM End Exams !!!
-            </p>
+            </p> */}
           </div>
           <ButtonLink href="#schedule" className="mt-10 w-full">
             Explore
