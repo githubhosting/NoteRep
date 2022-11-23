@@ -48,8 +48,11 @@ export function Hero() {
               ALL THE BEST for SEM End Exams !!!
             </p> */}
           </div>
-          <ButtonLink href="#schedule" className="mt-10 w-full">
+          {/* <ButtonLink href="#schedule" className="mt-10 w-full">
             Explore
+          </ButtonLink> */}
+          <ButtonLink href="/ci" className="mt-10 w-full">
+            CSE (AI & ML) Notes
           </ButtonLink>
           <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-center lg:text-center">
             {[
