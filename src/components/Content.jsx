@@ -19,22 +19,13 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig)
 const database = firebase.firestore()
 
-const data = [
+const cseaimlstatic = [
   {
-    id: 1,
-    title: 'Title 1',
-    description: 'description',
-    image: 'https://i.ibb.co/7bQQYkX/note-rep.png',
-    link: '',
-    tag: 'tag',
-  },
-  {
-    id: 2,
-    title: 'title 2',
-    description: 'description',
-    image: 'https://i.ibb.co/7bQQYkX/note-rep.png',
-    link: '',
-    tag: 'tag 2',
+    title: 'CSE (AI & ML)',
+    description: 'CSE (AI & ML)',
+    link: 'https://cseaiml.netlify.app/',
+    otherlink: '/links',
+    tag: 'CSE (AI & ML)',
   },
 ]
 
@@ -62,32 +53,36 @@ export function Content() {
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900">
-            Links to CSE(AI & ML) Notes
+            Other Links to CSE(AI & ML) Notes
           </h2>
           <p className="mt-2 text-sm text-gray-600">
-            With typical market returns, you have to start young to secure your
-            future. With Pocket, it’s never too late to build your nest egg.
+            Some Links
           </p>
         </div>
         <ul
           role="list"
-          className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
+          className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
         >
-          {cseaiml.map((item) => (
-            <li className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:shadow-sm">
+          {cseaimlstatic.map((item) => (
+            <li className="rounded-xl border bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:shadow-sm">
               {/* <feature.icon className="h-8 w-8" /> */}
               <div className="rounded-[10px] bg-white p-5 sm:p-6">
-                <h3 className="text-center text-base font-semibold text-gray-900">
+                <h3 className="text-center text-base font-semibold uppercase text-gray-900">
                   {item.title}
                 </h3>
-                <p className="mt-2 text-center text-gray-700">{item.content}</p>
-                <p className="mt-1 text-center text-xs text-gray-700">
+                {/* <p className="mt-2 text-center text-gray-700">{item.content}</p> */}
+                <p className="mt-1 text-center text-base text-gray-700">
                   {item.description}
                 </p>
-                <div className="flex justify-center">
+                <div className="flex justify-center gap-3">
                   <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
                     <a href={item.link} target="_blank">
                       View
+                    </a>
+                  </button>
+                  <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
+                    <a href={item.otherlink} target="_blank">
+                      Other links
                     </a>
                   </button>
                 </div>
