@@ -22,9 +22,12 @@ export function CallToAction() {
       </div>
       <Container className="relative">
         <div className="mx-auto max-w-lg text-center">
+          {/* <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
+            Get started today
+          </h2>
           <p className="mt-0 mb-2 text-lg font-bold tracking-tight text-white">
             MSRIT Events:
-          </p>
+          </p> */}
           <ButtonLink
             href="https://githubhosting.github.io/eventcalender/"
             color="white"
@@ -51,25 +54,24 @@ export function CallToAction() {
             CGPA Calculator
           </ButtonLink>
           <br></br>
-          <ButtonLink
+          {/* <ButtonLink
             href="https://drive.google.com/drive/folders/1ocboxyZqKUF8PcoPQCNcN1qW6_98s8py"
             color="white"
             className="mb-5 mt-5 shadow-md"
             target="_blank"
           >
             Maths 1 Notes
-          </ButtonLink>
-          <ButtonLink
+          </ButtonLink> */}
+
+          {/* <ButtonLink
             href="https://drive.google.com/drive/folders/1N-CtG3yT9ZjHDFRl8Srv0iRUvhzWGPAR"
             color="white"
             className="mb-5 ml-5 mt-5 shadow-md"
             target="_blank"
           >
             Maths 1 PYQ
-          </ButtonLink>
-          {/* <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-            Get started today
-          </h2> */}
+          </ButtonLink> */}
+
           {/* <p className="mt-4 text-lg tracking-tight text-white">
             It’s time to take control of your books. Buy our software so you can
             feel like you’re doing something productive.

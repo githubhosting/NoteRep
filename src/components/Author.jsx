@@ -16,8 +16,10 @@ export function Author() {
       </div>
       <div className="relative mx-auto max-w-5xl pt-16 sm:px-6">
         <div className="ownshadow bg-slate-50 pt-px drop-shadow-2xl sm:rounded-5xl">
-          <div className="relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full bg-slate-200 shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
-            <Image src={authorImage} alt="" />
+          <div className="authorbg relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
+            <div className="flex rounded-full bg-white p-0.5">
+              <Image className="rounded-full" src={authorImage} alt="Shravan" />
+            </div>
           </div>
           <div className="md:py-17 px-4 pb-6 sm:px-10 sm:py-12 lg:px-20 lg:pt-20 lg:pb-10">
             {/* <SectionHeading id="author-title">Author</SectionHeading> */}
@@ -25,7 +27,7 @@ export function Author() {
               <span className="block bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text font-extrabold text-blue-600 text-transparent shadow-blue-600/60 drop-shadow-md sm:text-6xl">
                 Shravan
               </span>
-              <span className="mt-2 block text-slate-900 text-2xl">
+              <span className="mt-2 block text-2xl text-slate-900">
                 I’m the developer behind ‘NoteRep’
               </span>
             </p>

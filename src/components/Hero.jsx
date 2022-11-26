@@ -25,14 +25,31 @@ export function Hero() {
       <Container className="relative">
         <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
           <h1 className="font-display text-5xl font-bold tracking-tighter text-blue-600 drop-shadow-xl sm:text-7xl">
-            <span className="sr-only">StudyConf - </span>NoteRep -
+            NoteRep -
           </h1>
           <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900">
             <p>An Open-Source Notes Sharing Platform</p>
             <p className="text-base font-semibold">
               Please let me know if there are any errors or if you want to
-              update anything
+              update anything in the notes.
             </p>
+            <p className="text-base font-semibold">
+              You can also contribute to this project by adding more notes.{' '}
+              <br></br>
+              <a
+                className="font-bold"
+                href="https://drive.google.com/drive/folders/1qRi18giG_H8Zr8KtlSyVNCbjp2UruvRp?usp=sharing"
+              >
+                Click here to upload
+              </a>
+            </p>
+            <p className="text-base font-semibold">
+              You can now simply search <i className="font-bold">"noterep"</i>{' '}
+              on google and find this website listing in the top results of
+              Google searches. That's pretty cool, isn't it? A big thank you to
+              Gautam Menon for suggesting this name.
+            </p>
+
             {/* <p className="text-xl font-bold">
               I hope my website has helped you in your preparation.{'  '}
               <br></br>Please take a look at our affiliated platform{' '}
@@ -54,7 +71,8 @@ export function Hero() {
           <ButtonLink href="/ci" className="mt-10 w-full">
             CSE (AI & ML) Notes
           </ButtonLink>
-          <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-center lg:text-center">
+
+          {/* <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-center lg:text-center">
             {[
               ['Average visitors*', '56+ /day'],
               ['Total Visits*', '5,000+'],
@@ -66,7 +84,7 @@ export function Hero() {
                 </dd>
               </div>
             ))}
-          </dl>
+          </dl> */}
         </div>
       </Container>
     </div>

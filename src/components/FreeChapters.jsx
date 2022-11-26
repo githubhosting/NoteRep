@@ -21,12 +21,11 @@ export function FreeChapters() {
           <div>
             <h3 className="text-base font-medium tracking-tight text-white">
               Discuss, Share and Download Class Notes, eBooks, Handouts,
-              Presentations, Previous Year & Sample Semester Papers for all
-              Engineering branches (Now its only for 1st year, but later I will
-              be updating).
+              Presentations, Faculty Notes, Previous Year & Sample Semester Papers for some of
+              Engineering branches.
             </h3>
             <h3 className="mt-5 text-lg tracking-tight text-white">
-              There are so many features coming up. Stay tuned !!
+              There are many other features coming up. Stay tuned !!
             </h3>
             <h2 className="font-display text-4xl font-extrabold tracking-tight text-white sm:w-3/4 sm:text-6xl md:w-2/3 lg:w-auto"></h2>
             <p className="mt-4 text-lg tracking-tight text-blue-200">

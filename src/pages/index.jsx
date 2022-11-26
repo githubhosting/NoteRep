@@ -55,7 +55,7 @@ export default function Home() {
         <FreeChapters />
         <SecondaryFeatures />
         <Author />
-        <Introduction />
+        {/* <Introduction /> */}
         {/* <Newsletter /> */}
       </main>
       <Footer />

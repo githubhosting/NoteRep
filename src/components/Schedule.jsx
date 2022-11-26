@@ -8,6 +8,69 @@ import backgroundImage from '@/images/background.jpg'
 
 const schedule = [
   {
+    date: 'Physics Cycle',
+    dateTime: 'I SEMESTER',
+    summary: 'I SEMESTER',
+    timeSlots: [
+      {
+        name: 'Advanced Calculus',
+        description: 'MA11 | Mathematics',
+        start: '9:00AM',
+        end: '10:00AM',
+        link: 'https://drive.google.com/drive/folders/1ocboxyZqKUF8PcoPQCNcN1qW6_98s8py',
+      },
+      {
+        name: 'Communicative English',
+        description: 'HS12 | Humanities',
+        start: '10:00AM',
+        end: '11:00AM',
+        link: 'https://drive.google.com/drive/folders/1wZFskaydriaWIrOeHMSNutNtV-55fqFx?usp=sharing',
+      },
+      {
+        name: 'Basic Electrical Engineering',
+        description: 'EE13 | Electrical & Electronics',
+        start: '11:00AM',
+        end: '12:00PM',
+        link: 'https://drive.google.com/drive/folders/1oetzNGC020UfqQ8hMeyIxFRcO2fdJhVZ?usp=sharing',
+      },
+      {
+        name: 'Basics Of Civil Engineering & Mechanics',
+        description: 'CV14 | Civil Engineering',
+        start: '12:00AM',
+        end: '1:00PM',
+        link: 'https://drive.google.com/drive/folders/1hfv8E8kByN9KcDElYJI1ZWqPIZYZmavg',
+      },
+      {
+        name: 'A Scientific Approach To Health',
+        description: 'AEC26',
+        start: '1:00PM',
+        end: '2:00PM',
+        link: 'https://drive.google.com/drive/folders/1hhpslVlioi_ctjRHd9yBdFfFDteq0zFP?usp=sharing',
+      },
+      {
+        name: 'Engineering Physics',
+        description: 'PY15 | Physics',
+        start: '2:00PM',
+        end: '3:00PM',
+        link: 'https://drive.google.com/drive/folders/1HfYqOlmGppRU_lFEqcJ1SwkDxiRfUxKN?usp=sharing',
+      },
+      {
+        name: 'Computer Aided Engineering Drawing',
+        description: 'MEL17 | Mechanical Engineering',
+        start: '3:00PM',
+        end: '4:00PM',
+        link: 'https://drive.google.com/drive/folders/1n9pDB2weAQ2qyuPfwA_69XmtO5wbN9wd?usp=sharing',
+      },
+      {
+        name: 'Engineering Physics Laboratory',
+        description: 'PYL18 | Physics',
+        start: '4:00PM',
+        end: '5:00PM',
+        link: 'https://drive.google.com/drive/folders/1Hd-LMODhxKe3Vogyl2tdBGLpj_sv79Ms?usp=sharing',
+      },
+    ],
+  },
+  {
     date: 'Chemistry Cycle',
     dateTime: 'I SEMESTER',
     summary: 'I SEMESTER',
@@ -77,69 +140,7 @@ const schedule = [
       },
     ],
   },
-  {
-    date: 'Physics Cycle',
-    dateTime: 'I SEMESTER',
-    summary: 'I SEMESTER',
-    timeSlots: [
-      {
-        name: 'Multivariate Calculus & Differential Equations',
-        description: 'MA21 | Mathematics',
-        start: '9:00AM',
-        end: '10:00AM',
-        link: 'https://drive.google.com/drive/folders/1nDwJtyynb8V-N0afwfSuXWDCQK9MFyFt?usp=sharing',
-      },
-      {
-        name: 'Communicative English',
-        description: 'HS12 | Humanities',
-        start: '10:00AM',
-        end: '11:00AM',
-        link: 'https://drive.google.com/drive/folders/1wZFskaydriaWIrOeHMSNutNtV-55fqFx?usp=sharing',
-      },
-      {
-        name: 'Basic Electrical Engineering',
-        description: 'EE13 | Electrical & Electronics',
-        start: '11:00AM',
-        end: '12:00PM',
-        link: 'https://drive.google.com/drive/folders/1oetzNGC020UfqQ8hMeyIxFRcO2fdJhVZ?usp=sharing',
-      },
-      {
-        name: 'Basics Of Civil Engineering & Mechanics',
-        description: 'CV14 | Civil Engineering',
-        start: '12:00AM',
-        end: '1:00PM',
-        link: 'https://drive.google.com/drive/folders/1hfv8E8kByN9KcDElYJI1ZWqPIZYZmavg',
-      },
-      {
-        name: 'A Scientific Approach To Health',
-        description: 'AEC26',
-        start: '1:00PM',
-        end: '2:00PM',
-        link: 'https://drive.google.com/drive/folders/1hhpslVlioi_ctjRHd9yBdFfFDteq0zFP?usp=sharing',
-      },
-      {
-        name: 'Engineering Physics',
-        description: 'PY15 | Physics',
-        start: '2:00PM',
-        end: '3:00PM',
-        link: 'https://drive.google.com/drive/folders/1HfYqOlmGppRU_lFEqcJ1SwkDxiRfUxKN?usp=sharing',
-      },
-      {
-        name: 'Computer Aided Engineering Drawing',
-        description: 'MEL17 | Mechanical Engineering',
-        start: '3:00PM',
-        end: '4:00PM',
-        link: 'https://drive.google.com/drive/folders/1n9pDB2weAQ2qyuPfwA_69XmtO5wbN9wd?usp=sharing',
-      },
-      {
-        name: 'Engineering Physics Laboratory',
-        description: 'PYL18 | Physics',
-        start: '4:00PM',
-        end: '5:00PM',
-        link: 'https://drive.google.com/drive/folders/1Hd-LMODhxKe3Vogyl2tdBGLpj_sv79Ms?usp=sharing',
-      },
-    ],
-  },
+
   // {
   //   date: 'April 6',
   //   dateTime: '2022-04-06',
@@ -334,7 +335,7 @@ export function Schedule() {
     <section
       id="schedule"
       aria-labelledby="schedule-title"
-      className="py-20 sm:py-32 scroll-pl-6"
+      className="scroll-pl-6 py-20 sm:py-32"
     >
       <h2 id="schedule-title" className="sr-only">
         Drive Links
