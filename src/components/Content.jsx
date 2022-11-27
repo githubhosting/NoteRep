@@ -1,6 +1,8 @@
 import { useId } from 'react'
 import React, { useState, useEffect, useRef } from 'react'
 import { Container } from '@/components/Container'
+import { ButtonLink } from '@/components/Button'
+
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 
@@ -122,6 +124,14 @@ export function Content() {
             and solved previous year question papers for the majority of the
             courses.
           </p>
+          <ButtonLink
+            href="/documents/Syllabus-3&4 SEMESTER AI and ML.pdf"
+            rel="noreferrer"
+            className="mt-10 w-full"
+            target="_blank"
+          >
+            CSE (AI & ML) Syllabus
+          </ButtonLink>
         </div>
         <ul
           role="list"
