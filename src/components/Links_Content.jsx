@@ -121,12 +121,18 @@ export function Content() {
                     <p className="mt-3"> {link.urltitle}:</p>
                     <a
                       href={link.url}
-                      className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                      className="mt-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
                     >
-                      {link.url.length > 20
-                        ? link.url.slice(0, 20) + '...'
-                        : link.url}
+                      {link.url}
                     </a>
+                    {/* {link.url.map((url) => (
+                      <a
+                      href={url}
+                      className="mt-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                    >
+                      {url}
+                    </a>
+                    ))} */}
                   </>
                 ))}
               </div>

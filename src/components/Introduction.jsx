@@ -9,7 +9,7 @@ export function Introduction() {
     <section
       id="sponsors"
       aria-labelledby="introduction-title"
-      className="pt-10 pb-0 sm:pb-0 md:pt-18 lg:pt-10"
+      className="md:pt-18 pt-10 pb-0 sm:pb-0 lg:pt-10"
     >
       <h2 id="introduction-title" className="sr-only">
         Introduction
@@ -18,7 +18,7 @@ export function Introduction() {
         <p className="font-display text-4xl font-bold tracking-tight text-slate-900">
           Partnered with a Learning Platform
         </p>
-        <p className="mt-4 font-display text-4xl text-lg font-bold tracking-tight tracking-tight text-slate-700">
+        <p className="mt-4 font-display text-4xl  font-bold tracking-tight text-slate-700">
           “
           <a
             href="https://rysecamp.com/"
@@ -85,10 +85,11 @@ export function Introduction() {
           Know More
         </a>
         <p className="mt-4 text-lg tracking-tight text-slate-700">
-          If you wish to take a membership on the app, Message me your Email
-          ID or fill the form below to get <b>89% off</b>.<br></br>
-          <i>Offer only for first 14 members, be the first one!</i><br></br>
-          Hope it brings you value. 
+          If you wish to take a membership on the app, Message me your Email ID
+          or fill the form below to get <b>89% off</b>.<br></br>
+          <i>Offer only for first 14 members, be the first one!</i>
+          <br></br>
+          Hope it brings you value.
         </p>
         <p className="mt-5">
           <a

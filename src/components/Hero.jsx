@@ -46,7 +46,7 @@ export function Hero() {
             <p className="text-base font-semibold">
               You can now simply search <i className="font-bold">"noterep"</i>{' '}
               on google and find this website listing in the top results of
-              Google searches. That's pretty cool, isn't it? A big thank you to
+              Google searches. That's pretty cool, isn't it? A big thanks to
               Gautam Menon for suggesting this name.
             </p>
 
@@ -70,6 +70,14 @@ export function Hero() {
           </ButtonLink> */}
           <ButtonLink href="/ci" className="mt-10 w-full">
             CSE (AI & ML) Notes
+          </ButtonLink>
+          <ButtonLink
+            href="/documents/Syllabus-3&4 SEMESTER AI and ML.pdf"
+            rel="noreferrer"
+            className="mt-10 w-full"
+            target="_blank"
+          >
+            CSE (AI & ML) Syllabus
           </ButtonLink>
 
           {/* <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-center lg:text-center">

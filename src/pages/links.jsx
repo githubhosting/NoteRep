@@ -49,7 +49,7 @@ export default function Home() {
       <Header />
       <main>
         <Content />
-        <Author />
+        {/* <Author /> */}
       </main>
       <Footer />
       {showButton && (
