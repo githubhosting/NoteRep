@@ -47,7 +47,23 @@ export function Hero() {
               You can now simply search <i className="font-bold">"noterep"</i>{' '}
               on google and find this website listing in the top results of
               Google searches. That's pretty cool, isn't it? A big thanks to
-              Gautam Menon for suggesting this name.
+              <a
+                className="font-bold underline"
+                href="https://www.linkedin.com/in/gautam-menon-9a30a3233/"
+              >
+                {' '}
+                Gautam Menon
+              </a>{' '}
+              for suggesting this name.
+            </p>
+            <p className="text-base font-normal">
+              Anyone interested in collecting notes for other branches can{' '}
+              <a
+                className="font-semibold underline"
+                href="https://wa.me/919945332995?text=Hey, This is regarding NoteRep ..."
+              >
+                approach me.
+              </a>
             </p>
 
             {/* <p className="text-xl font-bold">
@@ -71,13 +87,8 @@ export function Hero() {
           <ButtonLink href="/ci" className="mt-10 w-full">
             CSE (AI & ML) Notes
           </ButtonLink>
-          <ButtonLink
-            href="/documents/Syllabus-3&4 SEMESTER AI and ML.pdf"
-            rel="noreferrer"
-            className="mt-10 w-full"
-            target="_blank"
-          >
-            CSE (AI & ML) Syllabus
+          <ButtonLink href="/syllabus" className="mt-10 w-full">
+            Syllabus for CSE (AI & ML)
           </ButtonLink>
 
           {/* <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-center lg:text-center">

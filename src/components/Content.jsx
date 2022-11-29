@@ -125,10 +125,8 @@ export function Content() {
             courses.
           </p>
           <ButtonLink
-            href="/documents/Syllabus-3&4 SEMESTER AI and ML.pdf"
-            rel="noreferrer"
-            className="mt-10 w-full"
-            target="_blank"
+            href="/syllabus"
+            className="hover:shadowpress mt-10 bg-gradient-to-r from-cyan-500 to-blue-500 p-3"
           >
             CSE (AI & ML) Syllabus
           </ButtonLink>

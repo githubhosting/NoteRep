@@ -2,27 +2,19 @@ import { ButtonLink } from '@/components/Button'
 import { Container } from '@/components/Container'
 import { Logo } from '@/components/Logo'
 import LogoImage from '@/images/logos/msrlogo_1.svg'
+
 import Image from 'next/image'
 
-export function Header() {
+export function HeaderMod() {
   return (
     <header className="relative z-50 pb-1 lg:pt-11">
-      <Container className="flex flex-wrap items-center justify-center sm:justify-between lg:flex-nowrap">
-        <div className=" lg:mt-0 lg:grow lg:basis-0">
-          {/* <Logo src={LogoImage} alt="Keynote" width={200} height={50} /> */}
-          {/* <Logo className="h-12 w-auto text-slate-900" /> */}
-          <a href="/">
-            {/* <Image
-              className="h-10 w-auto text-slate-900"
-              src={LogoImage}
-              alt="NoteRep"
-            /> */}
-            <img
-              className="collapse h-20 flex sm:h-8 md:h-8 lg:h-24"
-              src="/msrlogo_1.svg"
-              alt="NoteRep"
-            />
-          </a>
+      <Container className="i tems-center flex  flex-wrap justify-center sm:justify-between lg:flex-nowrap">
+        <div className="sm:mt-5 lg:mt-0 lg:grow lg:basis-0">
+          <img
+            className="collapse lg:h-16 sm:h-8 md:h-8 h-8"
+            src="/msrlogo_1.svg"
+            alt="NoteRep"
+          />
         </div>
         <div className="order-first -mx-4 flex flex-auto basis-full overflow-x-auto whitespace-nowrap border-b border-blue-600/10 py-4 font-mono text-sm text-blue-600 sm:-mx-6 lg:order-none lg:mx-0 lg:basis-auto lg:border-0 lg:py-0">
           <div className="mx-auto flex items-center space-x-4 px-4">

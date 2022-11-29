@@ -1,5 +1,3 @@
-//   plugins: [require('@tailwindcss/line-clamp')]
-
 import { useId } from 'react'
 import React, { useState, useEffect, useRef } from 'react'
 import { Container } from '@/components/Container'
