@@ -58,8 +58,9 @@ const cseaimlstatic = [
   {
     title: 'Data Structures Laboratory',
     description: '(0:0:1) CIL36',
-    link: '#',
+    link: 'https://github.com/githubhosting/DS_Lab_c-programming',
     otherlink: '/links',
+    extra: 'This is github repository',
     tag: 'C Programming',
   },
   {
@@ -67,6 +68,7 @@ const cseaimlstatic = [
     description: '(0:0:1) CIL37',
     link: 'https://github.com/githubhosting/OOPS_Lab_CPP',
     otherlink: '/links',
+    extra: 'This is github repository',
     tag: 'C++',
   },
   {
@@ -145,6 +147,9 @@ export function Content() {
                 {/* <p className="mt-2 text-center text-gray-700">{item.content}</p> */}
                 <p className="mt-1 text-center text-base text-gray-700">
                   {item.description}
+                </p>
+                <p className="mt-1 text-center text-sm font-semibold text-gray-700">
+                  {item.extra}
                 </p>
                 <div className="flex justify-center gap-3">
                   <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">

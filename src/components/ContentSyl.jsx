@@ -21,7 +21,7 @@ export function ContentSyl() {
           className="mt-10 w-full"
           target="_blank"
         >
-          CSE (AI & ML) Syllabus Download
+          Click here to Download
         </ButtonLink>
         {/* <p className="mt-4 text-lg tracking-tight text-slate-700">
           "I wanted to explore various fields in Engineering, but on other
