@@ -16,10 +16,10 @@ export function ContentSyl() {
           Syllabus for CSE (AI & ML)
         </p>
         <ButtonLink
-          href="/documents/Syllabus-3&4 SEMESTER AI and ML.pdf"
+          href="/documents/Syllabus 3 & 4 Sem CSE AI & ML Final.pdf"
           rel="noreferrer"
-          className="mt-10 w-full"
           target="_blank"
+          className="bg-gradient-to-r from-cyan-500 to-blue-500 mt-10 w-full rounded-lg"
         >
           Click here to Download
         </ButtonLink>
@@ -94,7 +94,7 @@ export function ContentSyl() {
           </a>
         </p> */}
         <iframe
-          src="https://drive.google.com/file/d/1yb2Ghd19NUBFFcrQu5ZSf_8ybhQ1qghb/preview"
+          src="https://drive.google.com/file/d/1gfJHpC1Is6HOasFLDBouGXaaiKLnFZbo/preview"
           // width="640"
           height="1024"
           allow="autoplay"
