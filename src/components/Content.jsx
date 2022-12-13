@@ -126,7 +126,15 @@ export function Content() {
             and solved previous year question papers for the majority of the
             courses.
           </p>
-          <div className="mt-10 flex items-center justify-center gap-3">
+          <div className="mt-5 flex items-center justify-center gap-3">
+            <ButtonLink href="/syllabus" className="mt-5 w-full rounded-lg">
+              CI Curriculum
+            </ButtonLink>
+            <ButtonLink href="/syllabus_cy" className="mt-5 w-full rounded-lg">
+              CY Curriculum
+            </ButtonLink>
+          </div>
+          {/* <div className="mt-10 flex items-center justify-center gap-3">
             <ButtonLink
               href="/syllabus"
               className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3"
@@ -139,12 +147,12 @@ export function Content() {
             >
               CSE (Cyber Security) Curriculum
             </ButtonLink>
-          </div>
+          </div> */}
           <ButtonLink
             href="https://docs.google.com/document/d/1XdXN6nwPiUMWd0IeqWXe9RX3qiE0ADBa07EQ2cudEqM/edit?usp=sharing"
-            className="hover:shadowpress mt-6 w-full rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3"
+            className="hover:shadowpress mt-6 w-full rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3 shadow-lg"
           >
-            CIE Portions
+            CIE 1 Portions for Sem-3
           </ButtonLink>
         </div>
         <ul
@@ -152,7 +160,7 @@ export function Content() {
           className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
         >
           {cseaimlstatic.map((item) => (
-            <li className="rounded-xl border bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:shadow-sm">
+            <li className="rounded-xl border bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm">
               {/* <feature.icon className="h-8 w-8" /> */}
               <div className="rounded-[10px] bg-white p-5 sm:p-6">
                 <h3 className="text-center text-base font-semibold uppercase text-gray-900">

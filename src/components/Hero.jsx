@@ -90,7 +90,7 @@ export function Hero() {
               CSE Cyber Security Notes
             </ButtonLink>
           </div>
-          <div className="mt-10 flex items-center justify-center gap-3">
+          <div className="mt-6 flex items-center justify-center gap-3">
             <ButtonLink href="/syllabus" className="mt-5 w-full rounded-lg">
               CI Curriculum
             </ButtonLink>

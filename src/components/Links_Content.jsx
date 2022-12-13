@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Container } from '@/components/Container'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
+import { Button } from './Button'
 
 //Firebase Api Key
 const firebaseConfig = {
@@ -62,15 +63,16 @@ export function Content() {
     }
     fetchData()
   }, [])
-
   return (
     <section>
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900">
-            Other Links to CSE(AI & ML) Notes
+            Some Links
           </h2>
-          <p className="mt-2 text-sm text-gray-600">Some Links</p>
+          <p className="mt-2 text-center text-xl text-gray-500">
+            Youtube videos and other website links to study
+          </p>
         </div>
         <ul
           role="list"
@@ -107,9 +109,6 @@ export function Content() {
                   <h3 className="text-sm font-medium text-gray-900">
                     {item.title}
                   </h3>
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
-                    {item.tag}
-                  </span>
                 </div>
                 <p className="mt-2 text-sm text-gray-500 line-clamp-3">
                   {item.description}
@@ -123,14 +122,6 @@ export function Content() {
                     >
                       {link.url}
                     </a>
-                    {/* {link.url.map((url) => (
-                      <a
-                      href={url}
-                      className="mt-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                    >
-                      {url}
-                    </a>
-                    ))} */}
                   </>
                 ))}
               </div>
@@ -168,6 +159,11 @@ export function Content() {
           </li>
           ))} */}
         </ul>
+        <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
+          <a href="https://cgpa-estimator.vercel.app/#/otherlinks">
+            Contribute Links
+          </a>
+        </button>
       </Container>
     </section>
   )
