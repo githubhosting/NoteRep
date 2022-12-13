@@ -1,10 +1,10 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
+import { Header } from '@/components/Header'
 import { HeaderMod } from '@/components/HeaderMod'
 import { Hero } from '@/components/Hero'
 import { Content } from '@/components/Content'
-import { ContentSyl } from '@/components/ContentSyl'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
 import { Speakers } from '@/components/Speakers'
@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CURRICULUM for CSE (AI & ML) and Cyber Security</title>
+        <title>CSE (Cyber Security)</title>
         <meta
           name="description"
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
@@ -49,7 +49,8 @@ export default function Home() {
       </Head>
       <HeaderMod />
       <main>
-        <ContentSyl />
+        <Content />
+        <Author />
       </main>
       <Footer />
       {showButton && (

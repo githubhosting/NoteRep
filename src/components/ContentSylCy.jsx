@@ -1,10 +1,7 @@
 import { Container } from '@/components/Container'
-import logoTransistor from '@/images/logos/rysecamp.svg'
-import Image from 'next/image'
-import { Button } from '@/components/Button'
 import { ButtonLink } from './Button1'
 
-export function ContentSyl() {
+export function ContentSylCy() {
   return (
     <section
       id="Syllabus"
@@ -13,10 +10,10 @@ export function ContentSyl() {
     >
       <Container>
         <p className="font-display text-3xl font-bold tracking-tight text-slate-900">
-          Curriculum for CSE (AI & ML)
+          Curriculum for CSE (Cyber Security)
         </p>
         <ButtonLink
-          href="/documents/Syllabus 3 & 4 Sem CSE AI & ML Final.pdf"
+          href="/documents/Syllabus 3 & 4 sem Cyber Security.pdf"
           rel="noreferrer"
           target="_blank"
           className="mt-10 w-full rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500"
@@ -24,7 +21,7 @@ export function ContentSyl() {
           Click here to Download
         </ButtonLink>
         <iframe
-          src="https://drive.google.com/file/d/1gfJHpC1Is6HOasFLDBouGXaaiKLnFZbo/preview"
+          src="https://drive.google.com/file/d/1vaTtU3Fv-fxWu15H29aQaO2w8Nj_2yw-/preview"
           height="1024"
           allow="autoplay"
           marginheight="0"

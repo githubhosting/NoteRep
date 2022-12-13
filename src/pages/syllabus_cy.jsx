@@ -4,7 +4,7 @@ import { Footer } from '@/components/Footer'
 import { HeaderMod } from '@/components/HeaderMod'
 import { Hero } from '@/components/Hero'
 import { Content } from '@/components/Content'
-import { ContentSyl } from '@/components/ContentSyl'
+import { ContentSylCy } from '@/components/ContentSylCy'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
 import { Speakers } from '@/components/Speakers'
@@ -18,7 +18,6 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 
 export default function Home() {
-  // The back-to-top button is hidden at the beginning
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CURRICULUM for CSE (AI & ML) and Cyber Security</title>
+        <title>CURRICULUM for CSE Cyber Security</title>
         <meta
           name="description"
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
@@ -49,7 +48,7 @@ export default function Home() {
       </Head>
       <HeaderMod />
       <main>
-        <ContentSyl />
+        <ContentSylCy />
       </main>
       <Footer />
       {showButton && (

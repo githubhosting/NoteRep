@@ -25,7 +25,7 @@ export function Hero() {
       <Container className="relative">
         <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
           <h1 className="font-display text-5xl font-bold tracking-tighter text-blue-600 drop-shadow-xl sm:text-7xl">
-            NoteRep -
+            NoteRep
           </h1>
           <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900">
             <p>An Open-Source Notes Sharing Platform</p>
@@ -81,16 +81,23 @@ export function Hero() {
               ALL THE BEST for SEM End Exams !!!
             </p> */}
           </div>
-          {/* <ButtonLink href="#schedule" className="mt-10 w-full">
-            Explore
-          </ButtonLink> */}
-          <ButtonLink href="/ci" className="mt-10 w-full">
-            CSE (AI & ML) Notes
-          </ButtonLink>
-          <ButtonLink href="/syllabus" className="mt-10 w-full">
-            Syllabus for CSE (AI & ML)
-          </ButtonLink>
 
+          <div className="mt-10 flex-col items-center justify-center ">
+            <ButtonLink href="/ci" className="w-full ">
+              CSE (AI & ML) Notes
+            </ButtonLink>
+            <ButtonLink href="/cy" className="mt-5 w-full">
+              CSE Cyber Security Notes
+            </ButtonLink>
+          </div>
+          <div className="mt-10 flex items-center justify-center gap-3">
+            <ButtonLink href="/syllabus" className="mt-5 w-full rounded-lg">
+              CI Curriculum
+            </ButtonLink>
+            <ButtonLink href="/syllabus_cy" className="mt-5 w-full rounded-lg">
+              CY Curriculum
+            </ButtonLink>
+          </div>
           {/* <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-center lg:text-center">
             {[
               ['Average visitors*', '56+ /day'],

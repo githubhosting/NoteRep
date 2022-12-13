@@ -74,7 +74,7 @@ const cseaimlstatic = [
   {
     title: 'Universal Human Value Course ',
     description: '(2:0:0) UHV38',
-    link: '#',
+    link: 'https://drive.google.com/drive/folders/1i6_X176UpyXi_aufwXyWcLiHVgpD6yEz?usp=sharingl̥',
     otherlink: '/links',
     tag: '',
   },
@@ -118,7 +118,7 @@ export function Content() {
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900">
-            Links to CSE(AI & ML) Notes for 3rd Semester
+            Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester
           </h2>
           <p className="mt-2 text-sm text-gray-700">
             NoteRep is a collection of undergraduate semester content
@@ -126,11 +126,25 @@ export function Content() {
             and solved previous year question papers for the majority of the
             courses.
           </p>
+          <div className="mt-10 flex items-center justify-center gap-3">
+            <ButtonLink
+              href="/syllabus"
+              className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3"
+            >
+              CSE (AI & ML) Curriculum
+            </ButtonLink>
+            <ButtonLink
+              href="/syllabus_cy"
+              className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3"
+            >
+              CSE (Cyber Security) Curriculum
+            </ButtonLink>
+          </div>
           <ButtonLink
-            href="/syllabus"
-            className="hover:shadowpress mt-10 bg-gradient-to-r from-cyan-500 to-blue-500 p-3"
+            href="https://docs.google.com/document/d/1XdXN6nwPiUMWd0IeqWXe9RX3qiE0ADBa07EQ2cudEqM/edit?usp=sharing"
+            className="hover:shadowpress mt-6 w-full rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3"
           >
-            CSE (AI & ML) Syllabus
+            CIE Portions
           </ButtonLink>
         </div>
         <ul
