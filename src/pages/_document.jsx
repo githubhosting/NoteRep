@@ -4,6 +4,10 @@ export default function Document() {
   return (
     <Html className="bg-white antialiased" lang="en">
       <Head>
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="apple-touch-icon" href="#"></link>
+        <meta name="theme-color" content="#fff" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
           rel="preconnect"

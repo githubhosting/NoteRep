@@ -46,12 +46,11 @@ export function Hero() {
             <p className="text-base font-semibold">
               You can now simply search <i className="font-bold">"noterep"</i>{' '}
               on google and find this website listing in the top results of
-              Google searches. That's pretty cool, isn't it? A big thanks to
+              Google searches. That's pretty cool, isn't it? A big thanks to{' '}
               <a
                 className="font-bold underline"
                 href="https://www.linkedin.com/in/gautam-menon-9a30a3233/"
               >
-                {' '}
                 Gautam Menon
               </a>{' '}
               for suggesting this name.
