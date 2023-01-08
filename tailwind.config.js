@@ -38,6 +38,12 @@ module.exports = {
           '0 45px 65px rgba(0, 0, 0, 0.15)',
         ],
       },
+      colors: {
+        cost1: '#009FFD',
+        cost2: '#2A2A72',
+        cost3: '#09C6F9',
+        cost4: '#045DE9',
+      },
     },
   },
   plugins: [require('@tailwindcss/line-clamp')],

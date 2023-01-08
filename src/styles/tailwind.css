@@ -58,3 +58,33 @@
   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
     rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+.bebas {
+  font-family: 'Bebas Neue', cursive;
+}
+
+.hover\:glow:hover {
+  filter: drop-shadow(0px 0px 7px rgba(59, 130, 246, 0.5));
+}
+
+.group:hover .group-hover\:\-translate-y-1 {
+  transform: translateY(-0.25rem);
+}
+
+.group:focus .group-focus\:pt-20 {
+  padding-top: 5rem;
+}
+
+.animate-down {
+  transform: translateY(250%) !important;
+}
+
+.animate-up {
+  transform: translateY(-250%) !important;
+}
+
+.hidden {
+  display: none;
+}
