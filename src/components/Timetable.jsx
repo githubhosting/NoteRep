@@ -1,0 +1,193 @@
+import Head from 'next/head'
+import Link from 'next/link'
+import Image from 'next/image'
+import { useEffect, useState } from 'react'
+import React from 'react'
+
+import { Header } from '@/components/Header'
+const subjects = [
+  {
+    Day: 'Monday',
+    subject: ['DS', 'DBMS', 'Math', 'DMS', '-', 'Kan', 'DS Lab', 'DS Lab'],
+  },
+  {
+    Day: 'Tuesday',
+    subject: ['COA', 'DMS', 'DS', 'COA', '-', 'Math', 'OOPS *', 'OOPS *'],
+  },
+  {
+    Day: 'Wednesday',
+    subject: [
+      'DBMS Lab',
+      'DBMS Lab',
+      'DBMS',
+      'UHV',
+      '-',
+      'DS *',
+      'COA *',
+      'DBMS *',
+    ],
+  },
+  {
+    Day: 'Thursday',
+    subject: [
+      'DMS Tut',
+      'DMS Tut',
+      'DS',
+      'UHV',
+      '-',
+      'Math Tut',
+      'Math Tut',
+      'Yoga/NSS',
+    ],
+  },
+  {
+    Day: 'Friday',
+    subject: ['OOPS Lab', 'OOPS Lab', 'Math', 'COA', '-', 'AEC', ' * ', ' * '],
+  },
+  //   {
+  //     Day: 'Saturday',
+  //     subject: ['-', '-', '-', '-', '-', '-', '-', '-'],
+  //   },
+]
+// const time_class = [
+//   '9:00 - 9:55 AM',
+//   '9:55 - 10:50 AM',
+//   '11:05 - 12:00 PM',
+//   '12:00 - 12:55 PM',
+//   '12:55 - 1:45 PM',
+//   '1:45 - 2:40 PM',
+//   '2:40 - 3:35 PM',
+//   '3:35 - 4:30 PM',
+// ]
+const time_class = [
+  '9:00 - 9:55',
+  '9:55 - 10:50',
+  '11:05 - 12:00',
+  '12:00 - 12:55',
+  '12:55 - 1:45',
+  '1:45 - 2:40',
+  '2:40 - 3:35',
+  '3:35 - 4:30',
+]
+
+let newDate = new Date()
+let day = newDate.toLocaleString('default', { weekday: 'long' })
+
+let time = newDate.toLocaleString('en-US', {
+  hour: 'numeric',
+  minute: 'numeric',
+  hour12: true,
+})
+// let time = '9:00 PM'
+
+function get_time() {
+  if (time >= '9:00 AM' && time <= '9:55 AM') {
+    return 0
+  } else if (time >= '9:55 AM' && time <= '10:50 AM') {
+    return 1
+  } else if (time >= '11:05 AM' && time <= '12:00 AM') {
+    return 3
+  } else if (time >= '12:00 PM' && time <= '12:55 PM') {
+    return 4
+  } else if (time >= '1:45 PM' && time <= '2:40 PM') {
+    return 5
+  } else if (time >= '2:40 PM' && time <= '3:35 PM') {
+    return 6
+  } else if (time >= '3:35 PM' && time <= '4:30 PM') {
+    return 7
+  } else {
+    null
+  }
+}
+
+export function Timetable() {
+  let newDate = new Date()
+  let day_1 = newDate.getDay()
+
+  return (
+    <>
+      <section class="body-font py-10 text-gray-600">
+        <div class="mb-6 text-center">
+          <h1 class="title-font mb-2 text-center text-2xl font-semibold text-gray-900 sm:text-3xl">
+            Time Table
+          </h1>
+        </div>
+        <div class="flex flex-col lg:overflow-x-hidden ">
+          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+              <div class="overflow-hidden">
+                <table class="ml-2 min-w-full border-2">
+                  <thead class="border-b-2 border-t-2 ">
+                    <tr>
+                      <th
+                        scope="col"
+                        class="border-r px-4 py-4 text-left text-sm font-bold text-gray-900"
+                      >
+                        Time/Days
+                      </th>
+                      {time_class.map((t, i) => (
+                        <th
+                          key={i}
+                          scope="col"
+                          class="border-r px-4 py-4 text-left text-sm font-bold text-gray-900 whitespace-nowrap"
+                        >
+                          {get_time() === i ? (
+                            <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900">
+                              {time_class[i]}
+                            </span>
+                          ) : (
+                            <span>{time_class[i]}</span>
+                          )}
+                        </th>
+                      ))}
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {subjects.map((subject, j) => (
+                      <tr class="border-b-2 bg-white">
+                        <td class="whitespace-nowrap border-r px-4 py-4 text-sm font-semibold text-gray-900">
+                          {subject.Day === day ? (
+                            <span
+                              key={j}
+                              class="rounded-md bg-green-300 px-2 py-1 text-sm font-semibold text-gray-900"
+                            >
+                              {subject.Day}
+                            </span>
+                          ) : (
+                            <span className="px-2 py-1">{subject.Day}</span>
+                          )}
+                        </td>
+                        {subject.subject.map((sub, i) => (
+                          <td
+                            key={i}
+                            class="whitespace-nowrap border-r px-4 py-4 text-sm font-medium text-gray-900"
+                          >
+                            {j === day_1 - 1 ? (
+                              <span>
+                                {i === get_time() ? (
+                                  <span class="rounded-md border-2 border-red-400 bg-green-200 px-2 py-1 text-sm font-bold text-black">
+                                    {sub}
+                                  </span>
+                                ) : (
+                                  <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900">
+                                    {sub}
+                                  </span>
+                                )}
+                              </span>
+                            ) : (
+                              <span>{sub}</span>
+                            )}
+                          </td>
+                        ))}
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  )
+}

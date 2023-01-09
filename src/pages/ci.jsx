@@ -16,6 +16,7 @@ import { FreeChapters } from '@/components/FreeChapters'
 import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+import { Timetable } from '@/components/Timetable'
 
 export default function Home() {
   // The back-to-top button is hidden at the beginning
@@ -49,6 +50,7 @@ export default function Home() {
       </Head>
       <HeaderMod />
       <main>
+        <Timetable />
         <Content />
         <Author />
       </main>
