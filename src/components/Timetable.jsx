@@ -76,27 +76,30 @@ let day = newDate.toLocaleString('default', { weekday: 'long' })
 let time = newDate.toLocaleString('en-US', {
   hour: 'numeric',
   minute: 'numeric',
-  hour12: true,
+  hour12: false,
 })
-// let time = '9:00 PM'
+console.log('time: ', time)
+// let time = '13:10'
 
 function get_time() {
-  if (time >= '9:00 AM' && time <= '9:55 AM') {
+  if (time >= '09:00' && time <= '09:55') {
     return 0
-  } else if (time >= '9:55 AM' && time <= '10:50 AM') {
+  } else if (time >= '09:55' && time <= '10:50') {
     return 1
-  } else if (time >= '11:05 AM' && time <= '12:00 AM') {
+  } else if (time >= '11:05' && time <= '12:00') {
+    return 2
+  } else if (time >= '12:00' && time <= '12:55') {
     return 3
-  } else if (time >= '12:00 PM' && time <= '12:55 PM') {
+  } else if (time >= '12:55' && time <= '13:45') {
     return 4
-  } else if (time >= '1:45 PM' && time <= '2:40 PM') {
+  } else if (time >= '13:45' && time <= '14:40') {
     return 5
-  } else if (time >= '2:40 PM' && time <= '3:35 PM') {
+  } else if (time >= '14:40' && time <= '15:35') {
     return 6
-  } else if (time >= '3:35 PM' && time <= '4:30 PM') {
+  } else if (time >= '15:35' && time <= '16:30') {
     return 7
   } else {
-    null
+    return null
   }
 }
 
@@ -129,14 +132,14 @@ export function Timetable() {
                         <th
                           key={i}
                           scope="col"
-                          class="border-r px-4 py-4 text-left text-sm font-bold text-gray-900 whitespace-nowrap"
+                          class="whitespace-nowrap border-r px-4 py-4 text-left text-sm font-bold text-gray-900"
                         >
                           {get_time() === i ? (
                             <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900">
-                              {time_class[i]}
+                              {t}
                             </span>
                           ) : (
-                            <span>{time_class[i]}</span>
+                            <span>{t}</span>
                           )}
                         </th>
                       ))}
