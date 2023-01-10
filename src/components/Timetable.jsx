@@ -80,7 +80,6 @@ let time = newDate.toLocaleString('en-US', {
 
 function get_time() {
   console.log('time: ', time)
-
   if (time >= '09:00' && time <= '09:55') {
     return 0
   } else if (time >= '09:55' && time <= '10:50') {
@@ -101,6 +100,8 @@ function get_time() {
     return null
   }
 }
+
+console.log(get_time())
 
 export function Timetable() {
   let newDate = new Date()
@@ -135,7 +136,7 @@ export function Timetable() {
                         >
                           {get_time() === i ? (
                             <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900">
-                              {t}
+                              {time_class[i]}
                             </span>
                           ) : (
                             <span>{t}</span>

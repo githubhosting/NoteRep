@@ -58,8 +58,8 @@ const cseaimlstatic = [
   {
     title: 'Data Structures Laboratory',
     description: '(0:0:1) CIL36',
-    link: 'https://github.com/githubhosting/DS_Lab_c-programming',
-    otherlink: '/links',
+    link: 'https://github.com/githubhosting/DS_Lab_c-programming_Personal',
+    otherlink: 'https://github.com/githubhosting/DS_Lab_c-programming',
     extra: 'This is github repository',
     tag: 'C Programming',
   },
@@ -149,10 +149,10 @@ export function Content() {
             </ButtonLink>
           </div> */}
           <ButtonLink
-            href="https://docs.google.com/document/d/1XdXN6nwPiUMWd0IeqWXe9RX3qiE0ADBa07EQ2cudEqM/edit?usp=sharing"
+            href="https://docs.google.com/document/d/1fnkwCDB2RibjQ_MLFaT9gGOLNHnomGOkXjTeVz-6ym8/edit?usp=sharing"
             className="hover:shadowpress mt-6 w-full rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3 shadow-lg"
           >
-            CIE 1 Portions for Sem-3
+            CIE 2 Portions (Tentative)
           </ButtonLink>
         </div>
         <ul
