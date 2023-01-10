@@ -72,16 +72,15 @@ const time_class = [
 
 let newDate = new Date()
 let day = newDate.toLocaleString('default', { weekday: 'long' })
-
 let time = newDate.toLocaleString('en-US', {
   hour: 'numeric',
   minute: 'numeric',
   hour12: false,
 })
-console.log('time: ', time)
-// let time = '13:10'
 
 function get_time() {
+  console.log('time: ', time)
+
   if (time >= '09:00' && time <= '09:55') {
     return 0
   } else if (time >= '09:55' && time <= '10:50') {
