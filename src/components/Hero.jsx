@@ -94,13 +94,13 @@ export function Hero() {
 
             <div className="mt-10 flex-col items-center justify-center ">
               <ButtonLink href="/ci" className="w-full rounded-lg pt-3 pb-3 ">
-                CSE (AI & ML) Notes
+                CSE (AI & ML) Notes (Sem 3)
               </ButtonLink>
               <ButtonLink
                 href="/cy"
                 className="mt-5 w-full rounded-lg pt-3 pb-3"
               >
-                CSE Cyber Security Notes
+                CSE Cyber Security Notes (Sem 3)
               </ButtonLink>
             </div>
             <div className="mt-6 flex items-center justify-center gap-3">
@@ -115,6 +115,14 @@ export function Hero() {
                 className="mt-5 w-full rounded-lg pt-3 pb-3"
               >
                 CY Curriculum
+              </ButtonLink>
+            </div>
+            <div className="mt-6 flex items-center justify-center gap-3">
+              <ButtonLink
+                href="/ci1styear"
+                className="mt-5 w-full rounded-lg pt-3 pb-3"
+              >
+                CSE (AI & ML) 1st year Time Table
               </ButtonLink>
             </div>
             {/* <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-center lg:text-center">

@@ -8,57 +8,47 @@ import { Header } from '@/components/Header'
 const subjects = [
   {
     Day: 'Monday',
-    subject: ['DS', 'DBMS', 'Math', 'DMS', '-', 'Kan', 'DS Lab', 'DS Lab'],
+    subject: ['Math lab', 'Math lab', 'Phy', '-', '-', '-', '-', '-'],
   },
   {
     Day: 'Tuesday',
-    subject: ['COA', 'DMS', 'DS', 'COA', '-', 'Math', 'OOPS *', 'OOPS *'],
+    subject: [
+      'English',
+      'AEC (Health)',
+      'C lab',
+      'C lab',
+      '-',
+      'Math',
+      'PLC14*',
+      'ESC13*',
+    ],
   },
   {
     Day: 'Wednesday',
     subject: [
-      'DBMS Lab',
-      'DBMS Lab',
-      'DBMS',
-      'UHV',
+      'Phy (t)',
+      'Phy (t)',
+      'Math (t)',
+      'Math (t)',
+      'English',
       '-',
-      'DS *',
-      'COA *',
-      'DBMS *',
+      '-',
+      '-',
     ],
   },
   {
     Day: 'Thursday',
-    subject: [
-      'DMS Tut',
-      'DMS Tut',
-      'DS',
-      'UHV',
-      '-',
-      'Math Tut',
-      'Math Tut',
-      'Yoga/NSS',
-    ],
+    subject: ['Math', 'Phy', 'C theory', '-', 'Kannada', '-', '-', '-'],
   },
   {
     Day: 'Friday',
-    subject: ['OOPS Lab', 'OOPS Lab', 'Math', 'COA', '-', 'AEC', ' * ', ' * '],
+    subject: ['C lab', 'Phy', 'Math', '-', 'Math', 'PLC14*', 'ESC13*', '-'],
   },
   {
     Day: 'Saturday',
-    subject: ['-', '-', '-', '-', '-', '-', '-', '-'],
+    subject: ['ESC13*', 'ESC13*', 'PLC14*', 'PLC14*', '-', '-', '-', '-'],
   },
 ]
-// const time_class = [
-//   '9:00 - 9:55 AM',
-//   '9:55 - 10:50 AM',
-//   '11:05 - 12:00 PM',
-//   '12:00 - 12:55 PM',
-//   '12:55 - 1:45 PM',
-//   '1:45 - 2:40 PM',
-//   '2:40 - 3:35 PM',
-//   '3:35 - 4:30 PM',
-// ]
 const time_class = [
   '9:00 - 9:55',
   '9:55 - 10:50',
@@ -103,7 +93,7 @@ function get_time() {
 
 console.log(get_time())
 
-export function Timetable() {
+export function Timetable1styear() {
   let newDate = new Date()
   let day_1 = newDate.getDay()
 
@@ -112,7 +102,7 @@ export function Timetable() {
       <section class="body-font py-10 text-gray-600">
         <div class="mb-6 text-center">
           <h1 class="title-font mb-2 text-center text-2xl font-semibold text-gray-900 sm:text-3xl">
-            Time Table
+            Time Table for 1st Year CSE (AI & ML)
           </h1>
         </div>
         <div class="flex flex-col lg:overflow-x-hidden ">
