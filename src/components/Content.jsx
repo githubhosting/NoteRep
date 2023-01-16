@@ -117,15 +117,15 @@ export function Content() {
     <section>
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900">
+          {/* <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900">
             Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester
-          </h2>
-          <p className="mt-2 text-sm text-gray-700">
+          </h2> */}
+          {/* <p className="mt-2 text-sm text-gray-700">
             NoteRep is a collection of undergraduate semester content
             marketplaces that contain all of the student notes, faculty notes,
             and solved previous year question papers for the majority of the
             courses.
-          </p>
+          </p> */}
           <div className="mt-5 flex items-center justify-center gap-3">
             <ButtonLink href="/syllabus" className="mt-5 w-full rounded-lg">
               CI Curriculum

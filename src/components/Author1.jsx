@@ -28,7 +28,7 @@ export function Author() {
                 Gaurav
               </span>
               <span className="mt-2 block text-2xl text-slate-900">
-                Class Representative of CSE (AI & ML) 1st Year
+                I'm the Class Representative of CSE (AI & ML) 1st Year
               </span>
             </p>
             {/* <p className="mt-4 text-lg tracking-tight text-slate-700">

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import React from 'react'
+import tt from '../images/cie_2tt.png'
 
 import { Header } from '@/components/Header'
 const subjects = [
@@ -189,6 +190,9 @@ export function Timetable() {
               </div>
             </div>
           </div>
+        </div>
+        <div className="flex w-full rounded-lg bg-white p-0.5">
+          <Image src={tt} alt="CIE 2 Time Table" />
         </div>
       </section>
     </>

@@ -41,11 +41,11 @@ const schedule = [
         link: 'https://drive.google.com/drive/folders/1hfv8E8kByN9KcDElYJI1ZWqPIZYZmavg',
       },
       {
-        name: 'A Scientific Approach To Health',
+        name: 'Design Thinking',
         description: 'AEC26',
         start: '1:00PM',
         end: '2:00PM',
-        link: 'https://drive.google.com/drive/folders/1hhpslVlioi_ctjRHd9yBdFfFDteq0zFP?usp=sharing',
+        link: 'https://drive.google.com/drive/folders/1aPjpHh6apHApF2sW9U88KFEn28csTpUh?usp=sharing',
       },
       {
         name: 'Engineering Physics',

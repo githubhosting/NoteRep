@@ -14,6 +14,7 @@ import { FreeChapters } from '@/components/FreeChapters'
 import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+import { Model } from '@/components/Model'
 
 export default function Home() {
   // The back-to-top button is hidden at the beginning
@@ -48,6 +49,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        {/* <Model /> */}
         <CallToAction />
         {/* <Speakers /> */}
         <Schedule />

@@ -50,6 +50,9 @@ export default function Home() {
       </Head>
       <HeaderMod />
       <main>
+        <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900">
+          Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester
+        </h2>
         <Timetable />
         <Content />
         <Author />
