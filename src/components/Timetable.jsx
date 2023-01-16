@@ -191,9 +191,9 @@ export function Timetable() {
             </div>
           </div>
         </div>
-        <div className="flex w-full rounded-lg bg-white p-0.5">
+        {/* <div className="flex w-full rounded-lg bg-white p-0.5">
           <Image src={tt} alt="CIE 2 Time Table" />
-        </div>
+        </div> */}
       </section>
     </>
   )
