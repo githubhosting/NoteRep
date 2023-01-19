@@ -3,7 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import React from 'react'
-import tt from '../images/cie_2tt.png'
 
 import { Header } from '@/components/Header'
 const subjects = [
@@ -44,10 +43,6 @@ const subjects = [
   {
     Day: 'Friday',
     subject: ['OOPS Lab', 'OOPS Lab', 'Math', 'COA', '-', 'AEC', ' * ', ' * '],
-  },
-  {
-    Day: 'Saturday',
-    subject: ['-', '-', '-', '-', '-', '-', '-', '-'],
   },
 ]
 // const time_class = [
