@@ -15,7 +15,7 @@ export function Author() {
         <GridPattern x="50%" y="100%" />
       </div>
       <div className="relative mx-auto max-w-5xl pt-16 sm:px-6">
-        <div className="ownshadow bg-slate-50 pt-px drop-shadow-2xl sm:rounded-5xl">
+        <div className="ownshadow bg-slate-50 pt-px drop-shadow-2xl dark:bg-slate-800 sm:rounded-5xl">
           <div className="authorbg relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
             <div className="flex rounded-full bg-white p-0.5">
               <Image className="rounded-full" src={authorImage} alt="Shravan" />
@@ -27,7 +27,7 @@ export function Author() {
               <span className="block bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text font-extrabold text-blue-600 text-transparent shadow-blue-600/60 drop-shadow-md sm:text-6xl">
                 Shravan
               </span>
-              <span className="mt-2 block text-2xl text-slate-900">
+              <span className="mt-2 block text-2xl text-slate-900 dark:text-white">
                 I’m the developer behind ‘NoteRep’
               </span>
             </p>

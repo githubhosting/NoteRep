@@ -20,6 +20,10 @@
   box-shadow: 0 5px 10px #ccc;
   transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
 }
+.back-to-top-dark {
+  box-shadow: 0 5px 10px rgb(0, 0, 0);
+  transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
+}
 
 .back-to-top:hover {
   background: linear-gradient(105deg, #002a8f, #00b5f5);

@@ -3,6 +3,8 @@ const defaultTheme = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{js,jsx}'],
+  darkMode: 'class',
+  // darkMode: 'media',
   theme: {
     fontSize: {
       xs: ['0.75rem', { lineHeight: '1rem' }],
@@ -20,6 +22,12 @@ module.exports = {
       '9xl': ['8rem', { lineHeight: '1' }],
     },
     extend: {
+      backgroundImage: (theme) => ({
+        'image-one':
+          "url('https://images.unsplash.com/photo-1629651480694-edb8451b31aa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')",
+        'image-two':
+          "url('https://images.unsplash.com/photo-1629651726230-6430554a8890?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2734&q=80')",
+      }),
       borderRadius: {
         '4xl': '2rem',
         '5xl': '2.5rem',
@@ -43,6 +51,7 @@ module.exports = {
         cost2: '#2A2A72',
         cost3: '#09C6F9',
         cost4: '#045DE9',
+        cost5: '#0B1120',
       },
     },
   },

@@ -162,25 +162,25 @@ export function Content() {
           {cseaimlstatic.map((item) => (
             <li className="rounded-xl border bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm">
               {/* <feature.icon className="h-8 w-8" /> */}
-              <div className="rounded-[10px] bg-white p-5 sm:p-6">
-                <h3 className="text-center text-base font-semibold uppercase text-gray-900">
+              <div className="rounded-[10px] bg-white p-5 dark:bg-slate-800 sm:p-6">
+                <h3 className="text-center text-base font-semibold uppercase text-gray-900 dark:text-white">
                   {item.title}
                 </h3>
                 {/* <p className="mt-2 text-center text-gray-700">{item.content}</p> */}
-                <p className="mt-1 text-center text-base text-gray-700">
+                <p className="mt-1 text-center text-base text-gray-700 dark:text-slate-400">
                   {item.description}
                 </p>
-                <p className="mt-1 text-center text-sm font-semibold text-gray-700">
+                <p className="mt-1 text-center text-sm font-semibold text-gray-700 dark:text-slate-500">
                   {item.extra}
                 </p>
                 <div className="flex justify-center gap-3">
                   <a href={item.link} target="_blank">
-                    <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
+                    <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:text-blue-300">
                       View
                     </button>
                   </a>
                   <a href={item.otherlink} target="_blank">
-                    <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
+                    <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:text-blue-300">
                       Other links
                     </button>
                   </a>

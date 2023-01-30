@@ -1,15 +1,19 @@
 import Image from 'next/image'
 import { usePWAInstall } from 'react-use-pwa-install'
-
+import React from 'react'
+import { useState } from 'react'
 import { ButtonLink } from '@/components/Button'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background.jpg'
+import darkbackgroundImage from '@/images/background-dark.jpg'
+import { check } from 'prettier'
 export function Hero() {
   const install = usePWAInstall()
+
   return (
     <>
       <div className="relative pb-20 sm:py-12">
-        <div className="absolute -inset-x-0 -top-48 -bottom-14 overflow-hidden bg-indigo-50">
+        <div className="absolute -inset-x-0 -top-48 -bottom-14 overflow-hidden bg-indigo-50 dark:bg-cost5">
           <div className="absolute top-0 left-0 -translate-y-[10%] -translate-x-[55%] -scale-x-100 sm:left-1/2 sm:-translate-y-[6%] sm:-translate-x-[98%] lg:-translate-x-[106%] xl:-translate-x-[122%]">
             <Image
               src={backgroundImage}
@@ -19,18 +23,18 @@ export function Hero() {
               height={1495}
               priority
               unoptimized
-              className="opacity-70"
+              className="opacity-70 dark:opacity-0"
             />
           </div>
-          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white" />
+          <div className="dark:bg-gradient-to-w absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white dark:from-black " />
+          <div className="dark:bg-gradient-to-w absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white dark:from-black" />
         </div>
         <Container className="relative">
           <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
-            <h1 className="bg-gradient-to-br from-cost4 to-cost3 bg-clip-text font-display text-5xl font-bold tracking-tighter text-transparent drop-shadow-xl sm:text-7xl">
+            <h1 className="bg-gradient-to-br from-cost4 to-cost3 bg-clip-text font-display text-5xl font-bold tracking-tighter text-transparent drop-shadow-xl dark:text-white sm:text-7xl">
               NoteRep
             </h1>
-            <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900">
+            <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900 dark:text-slate-400">
               <p>An Open-Source Notes Sharing Platform</p>
               <p className="text-base font-semibold">
                 Please let me know if there are any errors or if you want to
@@ -70,7 +74,7 @@ export function Hero() {
 
               <button
                 id="button"
-                class="hover:glow group flex cursor-pointer items-center justify-between overflow-hidden rounded-md bg-blue-500 text-white shadow transition-all"
+                class="hover:glow dark:highlight-white/20 group flex cursor-pointer items-center justify-between overflow-hidden rounded-md bg-blue-500 text-white shadow transition-all dark:bg-sky-500 dark:hover:bg-sky-400"
                 onClick={install}
               >
                 <p class="p-2 px-5 text-xl shadow-lg ">Install App</p>
