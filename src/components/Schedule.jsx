@@ -8,7 +8,7 @@ import backgroundImage from '@/images/background.jpg'
 
 const schedule = [
   {
-    date: 'Physics Cycle',
+    cycle: 'Physics Cycle',
     dateTime: 'I SEMESTER',
     summary: 'I SEMESTER',
     timeSlots: [
@@ -71,7 +71,7 @@ const schedule = [
     ],
   },
   {
-    date: 'Chemistry Cycle',
+    cycle: 'Chemistry Cycle',
     dateTime: 'I SEMESTER',
     summary: 'I SEMESTER',
     timeSlots: [
@@ -140,57 +140,6 @@ const schedule = [
       },
     ],
   },
-
-  // {
-  //   date: 'April 6',
-  //   dateTime: '2022-04-06',
-  //   summary:
-  //     'We close out the event previewing new techniques that are still in development.',
-  //   timeSlots: [
-  //     {
-  //       name: 'Andrew Greene',
-  //       description: 'Neuralink dark patterns',
-  //       start: '9:00AM',
-  //       end: '10:00AM',
-  //     },
-  //     {
-  //       name: 'Heather Terry',
-  //       description: 'DALL-E for passports',
-  //       start: '10:00AM',
-  //       end: '11:00AM',
-  //     },
-  //     {
-  //       name: 'Piers Wilkins',
-  //       description: 'Quantum password cracking',
-  //       start: '11:00AM',
-  //       end: '12:00PM',
-  //     },
-  //     {
-  //       name: 'Lunch',
-  //       description: null,
-  //       start: '12:00PM',
-  //       end: '1:00PM',
-  //     },
-  //     {
-  //       name: 'Gordon Sanderson',
-  //       description: 'SkyNet is coming',
-  //       start: '1:00PM',
-  //       end: '2:00PM',
-  //     },
-  //     {
-  //       name: 'Kimberly Parsons',
-  //       description: 'Dark patterns for the metaverse',
-  //       start: '2:00PM',
-  //       end: '3:00PM',
-  //     },
-  //     {
-  //       name: 'Richard Astley',
-  //       description: 'Knowing the game and playing it',
-  //       start: '3:00PM',
-  //       end: '4:00PM',
-  //     },
-  //   ],
-  // },
 ]
 
 function ScheduleTabbed() {
@@ -236,7 +185,7 @@ function ScheduleTabbed() {
                   date: (
                     <Tab className="[&:not(:focus-visible)]:focus:outline-none">
                       <span className="absolute inset-0" />
-                      {day.date}
+                      {day.cycle}
                     </Tab>
                   ),
                 }}
@@ -262,10 +211,10 @@ function ScheduleTabbed() {
 function DaySummary({ day }) {
   return (
     <>
-      <h3 className="text-2xl font-semibold tracking-tight text-blue-900">
+      <h3 className="text-2xl font-semibold tracking-tight text-blue-900 dark:text-white">
         <time dateTime={day.dateTime}>{day.date}</time>
       </h3>
-      <p className="mt-1.5 text-base tracking-tight text-blue-900">
+      <p className="mt-1.5 text-base tracking-tight text-blue-900 dark:text-white">
         {day.summary}
       </p>
     </>
@@ -278,7 +227,7 @@ function TimeSlots({ day, className }) {
       // className="bg-slate-50 pt-px sm:rounded-5xl"
       className={clsx(
         className,
-        'space-y-8 rounded-4xl bg-white/60 py-14 px-10 pt-px text-center shadow-xl shadow-blue-900/5 backdrop-blur'
+        'space-y-8 rounded-4xl bg-white/60 py-14 px-10 pt-px text-center shadow-xl shadow-blue-900/5 backdrop-blur dark:bg-black/30'
       )}
     >
       {day.timeSlots.map((timeSlot, timeSlotIndex) => (
@@ -286,18 +235,16 @@ function TimeSlots({ day, className }) {
           {timeSlotIndex >= 0 && (
             <div className="mx-auto mb-8 h-px w-48 bg-indigo-500/10" />
           )}
-          <h4 className="text-lg font-semibold tracking-tight text-blue-900">
+          <h4 className="text-lg font-semibold tracking-tight text-blue-900 dark:text-indigo-50">
             {timeSlot.name}
           </h4>
           {timeSlot.description && (
             <>
-              <p className="sr-only">talking about</p>
-              <p className="mt-1 tracking-tight text-blue-900">
+              <p className="mt-1 tracking-tight text-blue-900 dark:text-blue-200">
                 {timeSlot.description}
               </p>
             </>
           )}
-          <p className="sr-only">at</p>
           {/* <p className="mt-1 font-mono text-sm text-slate-500">
             <time dateTime={`${day.dateTime}T${timeSlot.start}-08:00`}>
               {timeSlot.start}
@@ -308,7 +255,7 @@ function TimeSlots({ day, className }) {
             </time>{' '}
             PST
           </p> */}
-          <button className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-semibold tracking-tight text-white shadow-lg shadow-blue-900/50 hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2">
+          <button className="mt-4 rounded-md bg-blue-900 dark:bg-sky-500 px-4 py-2 text-sm font-semibold tracking-tight text-white shadow-lg shadow-blue-900/50 hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2">
             <a href={timeSlot.link}>View</a>
           </button>
         </div>
@@ -354,7 +301,7 @@ export function Schedule() {
         </div>
       </Container> */}
       <div className="relative mt-7 sm:mt-12">
-        <div className="absolute -inset-x-0 -top-40 -bottom-32 overflow-hidden bg-indigo-50">
+        <div className="absolute -inset-x-0 -top-40 -bottom-32 overflow-hidden bg-indigo-50 dark:bg-cost5">
           <div className="absolute left-full top-0 translate-y-[0%] -translate-x-[50%] sm:left-1/2 sm:-translate-y-[15%] sm:-translate-x-[20%] md:translate-x-[0%] lg:translate-x-[5%] lg:translate-y-[4%] xl:-translate-y-[8%] xl:translate-x-[27%]">
             <Image
               src={backgroundImage}
@@ -363,10 +310,11 @@ export function Schedule() {
               width={918}
               height={1495}
               unoptimized
+              className="opacity-70 dark:opacity-0"
             />
           </div>
-          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white" />
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white dark:from-slate-800" />
+          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white dark:from-slate-800" />
         </div>
         <Container className="relative">
           <ScheduleTabbed />

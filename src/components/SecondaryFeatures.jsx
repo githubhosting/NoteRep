@@ -2,45 +2,6 @@ import { useId } from 'react'
 
 import { Container } from '@/components/Container'
 
-const features = [
-  {
-    name: 'Invest any amount',
-    description:
-      'Whether it’s $1 or $1,000,000, we can put your money to work for you.',
-    icon: DeviceArrowIcon,
-  },
-  {
-    name: 'Build a balanced portfolio',
-    description:
-      'Invest in different industries to find the most opportunities to win huge.',
-    icon: DeviceCardsIcon,
-  },
-  {
-    name: 'Trade in real-time',
-    description:
-      'Get insider tips on big stock moves and act on them within seconds.',
-    icon: DeviceClockIcon,
-  },
-  {
-    name: 'Profit from your network',
-    description:
-      'Invite new insiders to get tips faster and beat even other Pocket users.',
-    icon: DeviceListIcon,
-  },
-  {
-    name: 'Encrypted and anonymized',
-    description:
-      'Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.',
-    icon: DeviceLockIcon,
-  },
-  {
-    name: 'Portfolio tracking',
-    description:
-      'Watch your investments grow exponentially, leaving other investors in the dust.',
-    icon: DeviceChartIcon,
-  },
-]
-
 function DeviceArrowIcon(props) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
@@ -185,117 +146,72 @@ function DeviceChartIcon(props) {
     </svg>
   )
 }
+const data = [
+  {
+    title: 'Semester End Examination Results',
+    subtitle: 'Even Semester',
+    description: '(Click on Odd Sem for Sem 1 Results)',
+    button: 'visit',
+    href: 'https://exam.msrit.edu/eresultseven/',
+  },
+  {
+    title: 'Parent Portal',
+    subtitle: ' Attendence and CIE Results',
+    description: '(Even Sem 2022)',
+    button: 'visit',
+    href: 'https://parent.msrit.edu/',
+  },
+  {
+    title: 'Idea Repository',
+    subtitle: 'Portal for submition of your ideas to College',
+    description: '(By CSE AI & ML Dept)',
+    button: 'visit',
+    href: 'https://idearepo.vercel.app/',
+  },
+]
 
 export function SecondaryFeatures() {
   return (
     <section
       id="secondary-features"
       aria-label="Features for building a portfolio"
-      className="mt-10 py-5 sm:py-8"
+      className="py-5 pt-10 dark:bg-cost5 sm:py-8"
     >
-      {/* <Container>
-        <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-3xl font-medium tracking-tight text-gray-900">
-            Now is the time to build your portfolio.
-          </h2>
-          <p className="mt-2 text-lg text-gray-600">
-            With typical market returns, you have to start young to secure your
-            future. With Pocket, it’s never too late to build your nest egg.
-          </p>
-        </div>
-        <ul
-          role="list"
-          className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-20 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
-        >
-          {features.map((feature) => (
-            <li
-              key={feature.name}
-              className="rounded-2xl border border-gray-200 p-8"
-            >
-              <feature.icon className="h-8 w-8" />
-              <h3 className="mt-6 font-semibold text-gray-900">
-                {feature.name}
-              </h3>
-              <p className="mt-2 text-gray-700">{feature.description}</p>
-              <button className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-semibold tracking-tight text-white shadow-lg shadow-blue-900/50 hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2">
-                <a href={feature.name}>View</a>
-              </button>
-            </li>
-          ))}
-        </ul>
-      </Container> */}
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-center text-3xl font-medium tracking-tight text-gray-900">
+          <h2 className="text-center text-3xl font-medium tracking-tight text-gray-900 dark:text-white">
             Some Important Links:
           </h2>
-          {/* <p className="mt-2 text-lg text-gray-600">
-            With typical market returns, you have to start young to secure your
-            future. With Pocket, it’s never too late to build your nest egg.
-          </p> */}
         </div>
         <ul
           role="list"
           className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3"
         >
-          <li className="rounded-2xl border border-gray-200 p-5">
-            {/* <feature.icon className="h-8 w-8" /> */}
-            <h3 className="text-center text-base font-semibold text-gray-900">
-              Semester End Examination Results
-            </h3>
-            <p className="mt-2 text-center text-gray-700">Even Semester</p>
-            <p className="mt-1 text-center text-xs text-gray-700">
-              (Click on Odd Sem for Sem 1 Results)
-            </p>
-            <div className="flex justify-center">
-              <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
-                <a href="http://exam.msrit.edu/eresultseven/" target="_blank">
-                  Visit
-                </a>
-              </button>
-            </div>
-          </li>
-          <li className="rounded-2xl border border-gray-200 p-5">
-            {/* <feature.icon className="h-8 w-8" /> */}
-            <h3 className="text-center text-base font-semibold text-gray-900">
-              Parent Portal
-            </h3>
-            <p className="mt-2 text-center text-gray-700">
-              Attendence and CIE Results
-            </p>
-            <p className="mt-1 text-center text-xs text-gray-700">
-              (Even Sem 2022)
-            </p>
-            <div className="flex justify-center">
-              <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
+          {data.map((item) => (
+            <li
+              key={item.title}
+              className="dark:shadow-5xl rounded-2xl border border-gray-200 p-5 shadow-md dark:border-slate-50"
+            >
+              <h3 className="text-center text-base font-semibold text-gray-900 dark:text-white">
+                {item.title}
+              </h3>
+              <p className="mt-2 text-center text-gray-700 dark:text-slate-50">
+                {item.subtitle}
+              </p>
+              <p className="mt-1 text-center text-xs text-gray-700 dark:text-slate-50">
+                {item.description}
+              </p>
+              <div className="flex justify-center">
                 <a
-                  href="http://parents.msrit.edu/parents_even2022/"
+                  className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-300 dark:text-blue-400"
+                  href={item.href}
                   target="_blank"
                 >
-                  Visit
+                  {item.button}
                 </a>
-              </button>
-            </div>
-          </li>
-          <li className="rounded-2xl border border-gray-200 p-5">
-            {/* <feature.icon className="h-8 w-8" /> */}
-            <h3 className="text-center text-base font-semibold text-gray-900">
-              Idea Repository
-            </h3>
-            <p className="mt-2 text-center text-gray-700">
-              Portal for submition of your ideas to College
-            </p>
-            <p className="mt-1 text-center text-xs text-gray-700">
-              (By CSE AI & ML Dept)
-            </p>
-            <div className="flex justify-center">
-              <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
-                <a href="https://idearepo.vercel.app/" target="_blank">
-                  Visit
-                </a>
-              </button>
-            </div>
-          </li>
+              </div>
+            </li>
+          ))}
         </ul>
       </Container>
     </section>

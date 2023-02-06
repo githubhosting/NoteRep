@@ -204,8 +204,8 @@ function ModeToggle() {
       className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={toggleMode}
     >
-      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
-      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
+      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-blue-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-600" />
+      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-blue-500" />
     </button>
   )
 }
@@ -247,6 +247,24 @@ function Avatar({ large = false, className, ...props }) {
         priority
       />
     </Link>
+  )
+}
+function Homebutton() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="h-6 w-6 dark:stroke-slate-50"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+      />
+    </svg>
   )
 }
 
@@ -316,7 +334,7 @@ export function Header() {
   }, [isHomePage])
   return (
     <header
-      className="pointer-events-none relative z-50 flex flex-col dark:bg-cost5"
+      className="pointer-events-none relative z-50 flex flex-col pb-4 dark:bg-cost5"
       style={{
         height: 'var(--header-height)',
         marginBottom: 'var(--header-mb)',
@@ -332,7 +350,13 @@ export function Header() {
           style={{ position: 'var(--header-inner-position)' }}
         >
           <div className="relative flex gap-4">
-            <div className="flex flex-1 justify-end md:justify-center">
+            <div className="flex flex-1 justify-start md:justify-start md:pl-10">
+              <a
+                href="/"
+                className="ring-zinc-900/5backdrop-blur pointer-events-auto mr-5 flex items-center justify-center rounded-full bg-white/90 p-2 align-middle shadow-lg shadow-zinc-800/5 ring-1 dark:bg-zinc-800/90 dark:shadow-5xl dark:ring-white/10 dark:hover:ring-white/20"
+              >
+                <Homebutton />
+              </a>
               <MobileNavigation className="pointer-events-auto md:hidden" />
               {/* <DesktopNavigation className="pointer-events-auto hidden md:block" /> */}
             </div>
