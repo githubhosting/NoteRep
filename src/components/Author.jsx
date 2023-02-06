@@ -9,17 +9,21 @@ export function Author() {
     <section
       id="author"
       aria-labelledby="author-title"
-      className="relative scroll-mt-14 pb-3 pt-8 sm:scroll-mt-32 sm:pb-16 sm:pt-10 lg:pt-16"
+      className="relative scroll-mt-14 pb-3 pt-8 dark:bg-cost5 sm:scroll-mt-32 sm:pb-16 sm:pt-10 lg:pt-16"
     >
       <div className="absolute inset-x-0 bottom-0 top-1/2 text-slate-900/10 [mask-image:linear-gradient(transparent,white)]">
         <GridPattern x="50%" y="100%" />
       </div>
       <div className="relative mx-auto max-w-5xl pt-16 sm:px-6">
-        <div className="ownshadow bg-slate-50 pt-px drop-shadow-2xl dark:bg-slate-800 sm:rounded-5xl">
+        <div className="ownshadow  bg-slate-50 pt-px drop-shadow-2xl dark:bg-slate-800 sm:rounded-5xl">
           <div className="authorbg relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
-            <div className="flex rounded-full bg-white p-0.5">
+            <a
+              href="https://myselfshravan.github.io"
+              target="_blank"
+              className="flex rounded-full bg-white p-0.5 dark:bg-black"
+            >
               <Image className="rounded-full" src={authorImage} alt="Shravan" />
-            </div>
+            </a>
           </div>
           <div className="md:py-17 px-4 pb-6 sm:px-10 sm:py-12 lg:px-20 lg:pt-20 lg:pb-10">
             {/* <SectionHeading id="author-title">Author</SectionHeading> */}
