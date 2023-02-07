@@ -62,6 +62,7 @@ export default function Home() {
           name="description"
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
         />
+        <meta name="theme-color" content="black-translucent" />
       </Head>
       <Header />
       <main>
