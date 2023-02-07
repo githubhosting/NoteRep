@@ -5,7 +5,6 @@ import LogoImage from '@/images/logos/msrlogo_1.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Popover, Transition } from '@headlessui/react'
-
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
 import avatarImage from '@/images/avatar.jpg'
@@ -74,8 +73,8 @@ function MoonIcon(props) {
 
 function MobileNavItem({ href, children }) {
   return (
-    <li>
-      <Popover.Button as={Link} href={href} className="block py-2">
+    <li className="block py-2">
+      <Popover.Button as={Link} href={href}>
         {children}
       </Popover.Button>
     </li>
@@ -123,12 +122,13 @@ function MobileNavigation(props) {
               </h2>
             </div>
             <nav className="mt-6">
-              <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+              <ul className="-my-2 divide-y divide-zinc-100 text-base leading-7 text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/">Home</MobileNavItem>
                 <MobileNavItem href="/ci">CI</MobileNavItem>
                 <MobileNavItem href="/cy">CY</MobileNavItem>
                 <MobileNavItem href="#schedule">Physics Cycle</MobileNavItem>
                 <MobileNavItem href="#schedule">Chemistry Cycle</MobileNavItem>
+                <MobileNavItem href="#schedule">Author</MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -142,7 +142,7 @@ function NavItem({ href, children }) {
   let isActive = useRouter().pathname === href
 
   return (
-    <li>
+    <li className="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400">
       <Link
         href={href}
         className={clsx(
@@ -153,23 +153,25 @@ function NavItem({ href, children }) {
         )}
       >
         {children}
-        {isActive && (
+        {/* {isActive && (
           <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
-        )}
+        )} */}
       </Link>
     </li>
   )
 }
 
 function DesktopNavigation(props) {
+  const href = useRouter().pathname
+  let isActive = useRouter().pathname === href
+
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Articles</NavItem>
-        <NavItem href="/projects">Projects</NavItem>
-        <NavItem href="/speaking">Speaking</NavItem>
-        <NavItem href="/uses">Uses</NavItem>
+        <NavItem href="/ci">CI</NavItem>
+        <NavItem href="/cy">CY</NavItem>
+        <NavItem href="#schedule">First Year</NavItem>
+        <NavItem href="#author">Developer</NavItem>
       </ul>
     </nav>
   )
@@ -358,7 +360,7 @@ export function Header() {
                 <Homebutton />
               </a>
               <MobileNavigation className="pointer-events-auto md:hidden" />
-              {/* <DesktopNavigation className="pointer-events-auto hidden md:block" /> */}
+              <DesktopNavigation className="pointer-events-auto hidden md:block" />
             </div>
             <div className="flex justify-end md:flex-1">
               <div className="pointer-events-auto">

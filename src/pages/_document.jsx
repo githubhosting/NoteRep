@@ -6,7 +6,7 @@ export default function Document() {
       <Head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="#"></link>
-        <meta name="theme-color" content="#fff" />
+        <meta name="theme-color" content="black-translucent" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
