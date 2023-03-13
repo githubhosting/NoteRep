@@ -336,7 +336,7 @@ export function Header() {
   }, [isHomePage])
   return (
     <header
-      className="pointer-events-none relative z-50 flex flex-col pb-4 dark:bg-cost5"
+      className="pointer-events-none relative z-50 flex flex-col pb-4"
       style={{
         height: 'var(--header-height)',
         marginBottom: 'var(--header-mb)',
@@ -355,7 +355,7 @@ export function Header() {
             <div className="flex flex-1 justify-start md:justify-start md:pl-10">
               <a
                 href="/"
-                className="ring-zinc-900/5backdrop-blur pointer-events-auto mr-5 flex items-center justify-center rounded-full bg-white/90 p-2 align-middle shadow-lg shadow-zinc-800/5 ring-1 dark:bg-zinc-800/90 dark:shadow-5xl dark:ring-white/10 dark:hover:ring-white/20"
+                className="pointer-events-auto mr-5 flex items-center justify-center rounded-full bg-white/90 p-2 align-middle shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
               >
                 <Homebutton />
               </a>
