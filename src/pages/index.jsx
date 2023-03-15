@@ -37,6 +37,23 @@ export default function Home() {
       behavior: 'smooth', // for smoothly scrolling
     })
   }
+
+  // Dark Mode
+  useEffect(() => {
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.theme = 'light'
+    localStorage.theme = 'dark'
+    localStorage.removeItem('theme')
+  }, [])
+
   return (
     <>
       <Head>
@@ -45,6 +62,7 @@ export default function Home() {
           name="description"
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
         />
+        <meta name="theme-color" content="black-translucent" />
       </Head>
       <Header />
       <main>

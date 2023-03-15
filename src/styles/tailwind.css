@@ -15,9 +15,9 @@
   /* background: linear-gradient(45deg, #00b5f5, #002a8f); */
   color: white;
   cursor: pointer;
-  border-radius: 25px;
+  border-radius: 8px;
   border: none;
-  box-shadow: 0 5px 10px #ccc;
+  box-shadow: 0 5px 5px rgb(200, 200, 200, 0.4);
   transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
 }
 .back-to-top-dark {
@@ -31,6 +31,14 @@
 
 .ownshadow {
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+}
+.whiteshadow {
+  box-shadow: rgba(255, 255, 255, 0.1) 0px 10px 50px;
+}
+.whiteshadow2 {
+  -webkit-box-shadow: 5px 5px 44px -16px rgba(255, 255, 255, 1);
+  -moz-box-shadow: 5px 5px 44px -16px rgba(255, 255, 255, 1);
+  box-shadow: 5px 5px 44px -16px rgba(255, 255, 255, 1);
 }
 
 .authorring {

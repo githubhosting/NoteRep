@@ -12,8 +12,8 @@ export function Hero() {
 
   return (
     <>
-      <div className="relative pb-20 sm:py-12">
-        <div className="absolute -inset-x-0 -top-48 -bottom-14 overflow-hidden bg-indigo-50 dark:bg-cost5">
+      <div className="relative py-2 pb-20 sm:py-12">
+        <div className="absolute -inset-x-0 -top-48 -bottom-14 overflow-hidden bg-indigo-50 dark:bg-gray-900">
           <div className="absolute top-0 left-0 -translate-y-[10%] -translate-x-[55%] -scale-x-100 sm:left-1/2 sm:-translate-y-[6%] sm:-translate-x-[98%] lg:-translate-x-[106%] xl:-translate-x-[122%]">
             <Image
               src={backgroundImage}
@@ -31,7 +31,7 @@ export function Hero() {
         </div>
         <Container className="relative">
           <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
-            <h1 className="bg-gradient-to-br from-cost4 to-cost3 bg-clip-text font-display text-5xl font-bold tracking-tighter text-transparent drop-shadow-xl dark:text-white sm:text-7xl">
+            <h1 className="dark:drop-shadow-6xl bg-gradient-to-br from-cost4 to-cost3 bg-clip-text font-display text-5xl font-bold tracking-tighter text-transparent drop-shadow-xl sm:text-7xl">
               NoteRep
             </h1>
             <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900 dark:text-slate-400">
@@ -74,10 +74,10 @@ export function Hero() {
 
               <button
                 id="button"
-                class="hover:glow dark:highlight-white/20 group flex cursor-pointer items-center justify-between overflow-hidden rounded-md bg-blue-500 text-white shadow transition-all dark:bg-sky-500 dark:hover:bg-sky-400"
+                class="hover:glow dark:highlight-white/20 group flex cursor-pointer items-center justify-between overflow-hidden rounded-md bg-blue-500 text-white shadow transition-all dark:bg-blue-700 dark:shadow-5xl dark:hover:bg-blue-400"
                 onClick={install}
               >
-                <p class="p-2 px-5 text-xl shadow-lg ">Install App</p>
+                <p class="px-4 py-1 text-xl shadow-lg">Install App</p>
               </button>
 
               {/* <p className="text-xl font-bold">
@@ -97,12 +97,12 @@ export function Hero() {
             </div>
 
             <div className="mt-10 flex-col items-center justify-center ">
-              <ButtonLink href="/ci" className="w-full rounded-lg pt-3 pb-3 ">
+              <ButtonLink href="/ci" className="w-full rounded-xl pt-3 pb-3 ">
                 CSE (AI & ML) Notes (Sem 3)
               </ButtonLink>
               <ButtonLink
                 href="/cy"
-                className="mt-5 w-full rounded-lg pt-3 pb-3"
+                className="mt-5 w-full rounded-xl pt-3 pb-3"
               >
                 CSE Cyber Security Notes (Sem 3)
               </ButtonLink>
@@ -110,13 +110,13 @@ export function Hero() {
             <div className="mt-6 flex items-center justify-center gap-3">
               <ButtonLink
                 href="/syllabus"
-                className="mt-5 w-full rounded-lg pt-3 pb-3"
+                className="mt-5 w-full rounded-xl pt-3 pb-3"
               >
                 CI Curriculum
               </ButtonLink>
               <ButtonLink
                 href="/syllabus_cy"
-                className="mt-5 w-full rounded-lg pt-3 pb-3"
+                className="mt-5 w-full rounded-xl pt-3 pb-3"
               >
                 CY Curriculum
               </ButtonLink>
@@ -124,7 +124,7 @@ export function Hero() {
             <div className="mt-6 flex items-center justify-center gap-3">
               <ButtonLink
                 href="/ci1styear"
-                className="mt-5 w-full rounded-lg pt-3 pb-3"
+                className="mt-5 w-full rounded-xl pt-3 pb-3"
               >
                 CSE (AI & ML) 1st year Time Table
               </ButtonLink>

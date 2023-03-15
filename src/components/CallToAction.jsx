@@ -40,7 +40,7 @@ export function CallToAction() {
           <ButtonLink
             href="https://cgpa-estimator.vercel.app/"
             color="white"
-            className="mb-5 border-2 border-blue-600 shadow-md"
+            className="mb-5 shadow-md"
             target="_blank"
           >
             CGPA Estimator

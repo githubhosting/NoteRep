@@ -5,7 +5,6 @@ import LogoImage from '@/images/logos/msrlogo_1.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Popover, Transition } from '@headlessui/react'
-
 import { useRouter } from 'next/router'
 import clsx from 'clsx'
 import avatarImage from '@/images/avatar.jpg'
@@ -74,8 +73,8 @@ function MoonIcon(props) {
 
 function MobileNavItem({ href, children }) {
   return (
-    <li>
-      <Popover.Button as={Link} href={href} className="block py-2">
+    <li className="block py-2">
+      <Popover.Button as={Link} href={href}>
         {children}
       </Popover.Button>
     </li>
@@ -123,12 +122,13 @@ function MobileNavigation(props) {
               </h2>
             </div>
             <nav className="mt-6">
-              <ul className="-my-2 divide-y divide-zinc-100 text-base text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
+              <ul className="-my-2 divide-y divide-zinc-100 text-base leading-7 text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/">Home</MobileNavItem>
                 <MobileNavItem href="/ci">CI</MobileNavItem>
                 <MobileNavItem href="/cy">CY</MobileNavItem>
                 <MobileNavItem href="#schedule">Physics Cycle</MobileNavItem>
                 <MobileNavItem href="#schedule">Chemistry Cycle</MobileNavItem>
+                <MobileNavItem href="#schedule">Author</MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -142,7 +142,7 @@ function NavItem({ href, children }) {
   let isActive = useRouter().pathname === href
 
   return (
-    <li>
+    <li className="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400">
       <Link
         href={href}
         className={clsx(
@@ -153,23 +153,25 @@ function NavItem({ href, children }) {
         )}
       >
         {children}
-        {isActive && (
+        {/* {isActive && (
           <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
-        )}
+        )} */}
       </Link>
     </li>
   )
 }
 
 function DesktopNavigation(props) {
+  const href = useRouter().pathname
+  let isActive = useRouter().pathname === href
+
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/about">About</NavItem>
-        <NavItem href="/articles">Articles</NavItem>
-        <NavItem href="/projects">Projects</NavItem>
-        <NavItem href="/speaking">Speaking</NavItem>
-        <NavItem href="/uses">Uses</NavItem>
+        <NavItem href="/ci">CI</NavItem>
+        <NavItem href="/cy">CY</NavItem>
+        <NavItem href="#schedule">First Year</NavItem>
+        <NavItem href="#author">Developer</NavItem>
       </ul>
     </nav>
   )
@@ -204,8 +206,8 @@ function ModeToggle() {
       className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={toggleMode}
     >
-      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
-      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
+      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-blue-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-blue-600" />
+      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-blue-500" />
     </button>
   )
 }
@@ -247,6 +249,24 @@ function Avatar({ large = false, className, ...props }) {
         priority
       />
     </Link>
+  )
+}
+function Homebutton() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="h-6 w-6 dark:stroke-slate-50"
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+      />
+    </svg>
   )
 }
 
@@ -316,7 +336,7 @@ export function Header() {
   }, [isHomePage])
   return (
     <header
-      className="pointer-events-none relative z-50 flex flex-col dark:bg-cost5"
+      className="pointer-events-none relative z-50 flex flex-col pb-4"
       style={{
         height: 'var(--header-height)',
         marginBottom: 'var(--header-mb)',
@@ -332,9 +352,15 @@ export function Header() {
           style={{ position: 'var(--header-inner-position)' }}
         >
           <div className="relative flex gap-4">
-            <div className="flex flex-1 justify-end md:justify-center">
+            <div className="flex flex-1 justify-start md:justify-start md:pl-10">
+              <a
+                href="/"
+                className="pointer-events-auto mr-5 flex items-center justify-center rounded-full bg-white/90 p-2 align-middle shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+              >
+                <Homebutton />
+              </a>
               <MobileNavigation className="pointer-events-auto md:hidden" />
-              {/* <DesktopNavigation className="pointer-events-auto hidden md:block" /> */}
+              <DesktopNavigation className="pointer-events-auto hidden md:block" />
             </div>
             <div className="flex justify-end md:flex-1">
               <div className="pointer-events-auto">
