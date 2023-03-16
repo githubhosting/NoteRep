@@ -19,7 +19,6 @@ import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Timetable } from '@/components/Timetable'
 
 export default function Home() {
-  // The back-to-top button is hidden at the beginning
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
@@ -32,7 +31,6 @@ export default function Home() {
     })
   }, [])
 
-  // This function will scroll the window to the top
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -45,18 +43,19 @@ export default function Home() {
         <title>CSE (AI & ML)</title>
         <meta
           name="description"
-          content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
+          content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester"
         />
       </Head>
-      <Header />
-      <main className="dark:bg-cost5 dark:text-white">
+      <div className="dark:bg-cost5 dark:text-white">
+        <Header />
         <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
-          Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester
+          3rd Semester Notes Links for CSE(AI & ML) and Cyber Security Branch
+          only
         </h2>
-        <Timetable />
+        {/* <Timetable /> */}
         <Content />
         <Author />
-      </main>
+      </div>
       <Footer />
       {showButton && (
         <button onClick={scrollToTop} className="back-to-top">

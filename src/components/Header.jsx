@@ -124,11 +124,13 @@ function MobileNavigation(props) {
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base leading-7 text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/">Home</MobileNavItem>
-                <MobileNavItem href="/ci">CI</MobileNavItem>
-                <MobileNavItem href="/cy">CY</MobileNavItem>
-                <MobileNavItem href="#schedule">Physics Cycle</MobileNavItem>
-                <MobileNavItem href="#schedule">Chemistry Cycle</MobileNavItem>
-                <MobileNavItem href="#schedule">Author</MobileNavItem>
+                <MobileNavItem href="/ci">CSE (AI & ML)</MobileNavItem>
+                <MobileNavItem href="/cy">CSE (CY)</MobileNavItem>
+                {/* <MobileNavItem href="#schedule">Physics Cycle</MobileNavItem>
+                <MobileNavItem href="#schedule">Chemistry Cycle</MobileNavItem> */}
+                <MobileNavItem href="https://myselfshravan.github.io/">
+                  Author
+                </MobileNavItem>
               </ul>
             </nav>
           </Popover.Panel>
@@ -160,18 +162,41 @@ function NavItem({ href, children }) {
     </li>
   )
 }
+function NavItem_({ href, children }) {
+  let isActive = useRouter().pathname === href
+
+  return (
+    <li className="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400">
+      <Link
+        target="_blank"
+        href={href}
+        className={clsx(
+          'relative block px-3 py-2 transition',
+          isActive
+            ? 'text-teal-500 dark:text-teal-400'
+            : 'hover:text-teal-500 dark:hover:text-teal-400'
+        )}
+      >
+        {children}
+        {/* {isActive && (
+          <span className="absolute inset-x-1 -bottom-px h-px bg-gradient-to-r from-teal-500/0 via-teal-500/40 to-teal-500/0 dark:from-teal-400/0 dark:via-teal-400/40 dark:to-teal-400/0" />
+        )} */}
+      </Link>
+    </li>
+  )
+}
 
 function DesktopNavigation(props) {
-  const href = useRouter().pathname
-  let isActive = useRouter().pathname === href
+  // const href = useRouter().pathname
+  // let isActive = useRouter().pathname === href
 
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/ci">CI</NavItem>
-        <NavItem href="/cy">CY</NavItem>
-        <NavItem href="#schedule">First Year</NavItem>
-        <NavItem href="#author">Developer</NavItem>
+        <NavItem href="/ci">CSE (AI & ML)</NavItem>
+        <NavItem href="/cy">CSE (CY)</NavItem>
+        {/* <NavItem href="#schedule">First Year</NavItem> */}
+        <NavItem_ href="https://myselfshravan.github.io/">Developer</NavItem_>
       </ul>
     </nav>
   )
@@ -259,7 +284,7 @@ function Homebutton() {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className="h-6 w-6 dark:stroke-slate-50"
+      className="h-6 w-6 stroke-black dark:stroke-slate-50"
     >
       <path
         strokeLinecap="round"
@@ -352,13 +377,15 @@ export function Header() {
           style={{ position: 'var(--header-inner-position)' }}
         >
           <div className="relative flex gap-4">
-            <div className="flex flex-1 justify-start md:justify-start md:pl-10">
+            <div className="flex flex-1">
               <a
                 href="/"
                 className="pointer-events-auto mr-5 flex items-center justify-center rounded-full bg-white/90 p-2 align-middle shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
               >
                 <Homebutton />
               </a>
+            </div>
+            <div className="flex justify-end md:items-center md:justify-center">
               <MobileNavigation className="pointer-events-auto md:hidden" />
               <DesktopNavigation className="pointer-events-auto hidden md:block" />
             </div>

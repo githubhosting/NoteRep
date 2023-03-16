@@ -17,7 +17,6 @@ import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Model } from '@/components/Model'
 
 export default function Home() {
-  // The back-to-top button is hidden at the beginning
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
@@ -30,7 +29,6 @@ export default function Home() {
     })
   }, [])
 
-  // This function will scroll the window to the top
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -63,6 +61,10 @@ export default function Home() {
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
         />
         <meta name="theme-color" content="black-translucent" />
+        <meta
+          name="google-site-verification"
+          content="DPpz834E16UpWaEWBrvGKyPEdkGHggpb6UwrQkBKqXs"
+        />
       </Head>
       <Header />
       <main>
@@ -80,7 +82,7 @@ export default function Home() {
       </main>
       <Footer />
       {showButton && (
-        <button onClick={scrollToTop} className="back-to-top">
+        <button onClick={scrollToTop} className="back-to-top shadow-lg">
           <ArrowCircleUpIcon
             sx={{
               fontSize: '40px',

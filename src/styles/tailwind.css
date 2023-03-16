@@ -17,7 +17,7 @@
   cursor: pointer;
   border-radius: 8px;
   border: none;
-  box-shadow: 0 5px 5px rgb(200, 200, 200, 0.4);
+  /* box-shadow: 0 5px 5px rgb(200, 200, 200, 0.4); */
   transition: background-color 0.3s, opacity 0.5s, visibility 0.5s;
 }
 .back-to-top-dark {

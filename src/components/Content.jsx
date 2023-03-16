@@ -148,12 +148,12 @@ export function Content() {
               CSE (Cyber Security) Curriculum
             </ButtonLink>
           </div> */}
-          <ButtonLink
+          {/* <ButtonLink
             href="https://docs.google.com/document/d/1fnkwCDB2RibjQ_MLFaT9gGOLNHnomGOkXjTeVz-6ym8/edit?usp=sharing"
             className="hover:shadowpress mt-6 w-full rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3 shadow-lg"
           >
             CIE 2 Portions (Tentative)
-          </ButtonLink>
+          </ButtonLink> */}
         </div>
         <ul
           role="list"
