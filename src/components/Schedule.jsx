@@ -255,7 +255,7 @@ function TimeSlots({ day, className }) {
             </time>{' '}
             PST
           </p> */}
-          <button className="mt-4 rounded-md bg-blue-900 dark:bg-sky-500 px-4 py-2 text-sm font-semibold tracking-tight text-white shadow-lg shadow-blue-900/50 hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2">
+          <button className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-semibold tracking-tight text-white shadow-lg shadow-blue-900/50 hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2 dark:bg-sky-500">
             <a href={timeSlot.link}>View</a>
           </button>
         </div>
@@ -282,24 +282,11 @@ export function Schedule() {
     <section
       id="schedule"
       aria-labelledby="schedule-title"
-      className="scroll-pl-6 py-20 sm:py-32"
+      className="scroll-pl-6 py-20 sm:py-28"
     >
       <h2 id="schedule-title" className="sr-only">
         Drive Links
       </h2>
-      {/* <Container className="relative z-10">
-        <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-4xl lg:pr-24">
-          <p className="font-display text-4xl font-medium tracking-tighter text-blue-600 sm:text-5xl">
-            Our three day schedule is jam-packed with brilliant, creative, evil
-            geniuses.
-          </p>
-          <p className="mt-4 font-display text-2xl tracking-tight text-blue-900">
-            The worst people in our industry giving the best talks you’ve ever
-            seen. Nothing will be recorded and every attendee has to sign an NDA
-            to watch the talks.
-          </p>
-        </div>
-      </Container> */}
       <div className="relative mt-7 sm:mt-12">
         <div className="absolute -inset-x-0 -top-40 -bottom-32 overflow-hidden bg-indigo-50 dark:bg-cost5">
           <div className="absolute left-full top-0 translate-y-[0%] -translate-x-[50%] sm:left-1/2 sm:-translate-y-[15%] sm:-translate-x-[20%] md:translate-x-[0%] lg:translate-x-[5%] lg:translate-y-[4%] xl:-translate-y-[8%] xl:translate-x-[27%]">

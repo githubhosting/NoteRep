@@ -10,7 +10,7 @@ export function CallToAction() {
       id="get-started-today"
       className="relative overflow-hidden bg-blue-600 pt-10 pb-20"
     >
-      <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
+      {/* <div className="absolute top-1/2 left-1/2 -translate-x-[50%] -translate-y-[50%]">
         <Image
           src={backgroundImage}
           alt=""
@@ -19,15 +19,9 @@ export function CallToAction() {
           layout="fixed"
           unoptimized
         />
-      </div>
+      </div> */}
       <Container className="relative">
         <div className="mx-auto max-w-lg text-center">
-          {/* <h2 className="font-display text-3xl tracking-tight text-white sm:text-4xl">
-            Get started today
-          </h2>
-          <p className="mt-0 mb-2 text-lg font-bold tracking-tight text-white">
-            MSRIT Events:
-          </p> */}
           <ButtonLink
             href="https://githubhosting.github.io/eventcalender/"
             color="white"

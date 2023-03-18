@@ -14,7 +14,7 @@ export function Hero() {
     <>
       <div className="relative py-2 pb-20 sm:py-12">
         <div className="absolute -inset-x-0 -top-48 -bottom-14 overflow-hidden bg-indigo-50 dark:bg-gray-900">
-          <div className="absolute top-0 left-0 -translate-y-[10%] -translate-x-[55%] -scale-x-100 sm:left-1/2 sm:-translate-y-[6%] sm:-translate-x-[98%] lg:-translate-x-[106%] xl:-translate-x-[122%]">
+          {/* <div className="absolute top-0 left-0 -translate-y-[10%] -translate-x-[55%] -scale-x-100 sm:left-1/2 sm:-translate-y-[6%] sm:-translate-x-[98%] lg:-translate-x-[106%] xl:-translate-x-[122%]">
             <Image
               src={backgroundImage}
               alt=""
@@ -25,16 +25,16 @@ export function Hero() {
               unoptimized
               className="opacity-70 dark:opacity-0"
             />
-          </div>
+          </div> */}
           <div className="dark:bg-gradient-to-w absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white dark:from-black " />
           <div className="dark:bg-gradient-to-w absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white dark:from-black" />
         </div>
         <Container className="relative">
           <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
-            <h1 className="dark:drop-shadow-6xl bg-gradient-to-br from-cost4 to-cost3 bg-clip-text font-display text-5xl font-bold tracking-tighter text-transparent drop-shadow-xl sm:text-7xl">
+            <h1 className="dark:drop-shadow-6xl noterep_text_gradient font-display text-5xl font-bold tracking-tighter text-transparent drop-shadow-xl sm:text-7xl">
               NoteRep
             </h1>
-            <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900 dark:text-slate-400">
+            <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900 dark:text-[#fefefe]">
               <p>An Open-Source Notes Sharing Platform</p>
               <p className="text-base font-semibold">
                 Please let me know if there are any errors or if you want to
@@ -50,7 +50,7 @@ export function Hero() {
                   Click here to upload
                 </a>
               </p>
-              <p className="text-base font-semibold">
+              {/* <p className="text-base font-semibold">
                 You can now simply search <i className="font-bold">"noterep"</i>{' '}
                 on google and find this website listing in the top results of
                 Google searches. That's pretty cool, isn't it? A big thanks to{' '}
@@ -61,7 +61,7 @@ export function Hero() {
                   Gautam Menon
                 </a>{' '}
                 for suggesting this name.
-              </p>
+              </p> */}
               <p className="text-base font-normal">
                 Anyone interested in collecting notes for other branches can{' '}
                 <a

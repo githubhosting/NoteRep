@@ -372,8 +372,8 @@ export function Header() {
         className="top-0 z-10 h-16 pt-6"
         style={{ position: 'var(--header-position)' }}
       >
-        <Container
-          className="top-[var(--header-top,theme(spacing.6))] w-full"
+        <div
+          className="top-[var(--header-top,theme(spacing.6))] mx-auto w-full max-w-4xl pr-6 pl-4 sm:px-16 lg:px-12"
           style={{ position: 'var(--header-inner-position)' }}
         >
           <div className="relative flex gap-4">
@@ -395,7 +395,7 @@ export function Header() {
               </div>
             </div>
           </div>
-        </Container>
+        </div>
       </div>
     </header>
   )
