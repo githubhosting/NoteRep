@@ -211,10 +211,10 @@ function ScheduleTabbed() {
 function DaySummary({ day }) {
   return (
     <>
-      <h3 className="text-2xl font-semibold tracking-tight text-blue-900 dark:text-white">
-        <time dateTime={day.dateTime}>{day.date}</time>
+      <h3 className="text-center text-2xl font-semibold tracking-tight text-blue-900 dark:text-white">
+        {day.cycle}
       </h3>
-      <p className="mt-1.5 text-base tracking-tight text-blue-900 dark:text-white">
+      <p className="mt-1.5 text-center text-base tracking-tight text-blue-900 dark:text-white">
         {day.summary}
       </p>
     </>
@@ -245,16 +245,6 @@ function TimeSlots({ day, className }) {
               </p>
             </>
           )}
-          {/* <p className="mt-1 font-mono text-sm text-slate-500">
-            <time dateTime={`${day.dateTime}T${timeSlot.start}-08:00`}>
-              {timeSlot.start}
-            </time>{' '}
-            -{' '}
-            <time dateTime={`${day.dateTime}T${timeSlot.end}-08:00`}>
-              {timeSlot.end}
-            </time>{' '}
-            PST
-          </p> */}
           <button className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-semibold tracking-tight text-white shadow-lg shadow-blue-900/50 hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2 dark:bg-sky-500">
             <a href={timeSlot.link}>View</a>
           </button>
@@ -284,9 +274,6 @@ export function Schedule() {
       aria-labelledby="schedule-title"
       className="scroll-pl-6 py-20 sm:py-28"
     >
-      <h2 id="schedule-title" className="sr-only">
-        Drive Links
-      </h2>
       <div className="relative mt-7 sm:mt-12">
         <div className="absolute -inset-x-0 -top-40 -bottom-32 overflow-hidden bg-indigo-50 dark:bg-cost5">
           <div className="absolute left-full top-0 translate-y-[0%] -translate-x-[50%] sm:left-1/2 sm:-translate-y-[15%] sm:-translate-x-[20%] md:translate-x-[0%] lg:translate-x-[5%] lg:translate-y-[4%] xl:-translate-y-[8%] xl:translate-x-[27%]">
@@ -300,8 +287,6 @@ export function Schedule() {
               className="opacity-70 dark:opacity-0"
             />
           </div>
-          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white dark:from-slate-800" />
-          <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white dark:from-slate-800" />
         </div>
         <Container className="relative">
           <ScheduleTabbed />

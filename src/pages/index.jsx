@@ -5,7 +5,6 @@ import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
-import { Speakers } from '@/components/Speakers'
 import { Sponsors } from '@/components/Sponsors'
 import { Author } from '@/components/Author'
 import { CallToAction } from '@/components/CallToAction'
@@ -55,7 +54,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>NoteRep - An Open-Source Notes sharing Platform</title>
+        <title>NoteRep - An Open-Source Notes Sharing Platform</title>
         <meta
           name="description"
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
@@ -69,9 +68,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
-        {/* <Model /> */}
         <CallToAction />
-        {/* <Speakers /> */}
         <Schedule />
         {/* <Sponsors /> */}
         <FreeChapters />

@@ -7,17 +7,13 @@ export function FreeChapters() {
     <section
       id="free-chapters"
       aria-labelledby="free-chapters-title"
-      className="scroll-mt-14 bg-blue-600 sm:scroll-mt-32"
+      className="scroll-mt-14 bg-blue-600 sm:scroll-mt-32 pt-10"
     >
-      <h2 id="free-chapters-title" className="sr-only">
-        Free preview
-      </h2>
       <div className="overflow-hidden lg:relative">
         <Container
           size="md"
-          className="relative grid grid-cols-1 items-end gap-y-12 py-20 lg:static lg:grid-cols-2 lg:py-28 xl:py-32"
+          className="relative grid grid-cols-1 items-center gap-y-12 py-10 align-middle lg:static lg:grid-cols-2 lg:py-14 xl:py-32"
         >
-          {/* <Pattern className="absolute -top-32 left-0 w-full sm:left-3/4 sm:-top-5 sm:ml-8 sm:w-auto md:left-2/3 lg:left-auto lg:right-2 lg:ml-0 xl:right-auto xl:left-2/3" /> */}
           <div>
             <h3 className="text-base font-medium tracking-tight text-white">
               Discuss, Share and Download Class Notes, eBooks, Handouts,
@@ -42,31 +38,11 @@ export function FreeChapters() {
               Share
             </ButtonLink>
           </div>
-          <form className="lg:pl-16">
+          <div className="border-t pt-10 lg:ml-16 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0">
             <h3 className="text-base font-medium tracking-tight text-white">
               Anything Missing ?
             </h3>
             <div className="mt-2 sm:relative sm:flex sm:items-center sm:py-0.5 sm:pr-2.5">
-              {/* <div className="relative sm:static sm:flex-auto">
-                <label htmlFor="email-address" className="sr-only">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  id="email-address"
-                  required
-                  placeholder="Email address"
-                  className="peer relative z-10 w-full appearance-none bg-transparent px-4 py-2 text-base text-white placeholder:text-white/70 focus:outline-none sm:py-3"
-                />
-                <div className="absolute inset-0 rounded-md border border-white/20 peer-focus:border-blue-300 peer-focus:bg-blue-500 peer-focus:ring-1 peer-focus:ring-blue-300 sm:rounded-xl" />
-              </div> */}
-              {/* <Button
-                type="submit"
-                color="white"
-                className="mt-4 w-full sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
-              >
-                Add Here
-              </Button> */}
               <ButtonLink
                 href="https://drive.google.com/drive/folders/1qRi18giG_H8Zr8KtlSyVNCbjp2UruvRp?usp=sharing"
                 color="white"
@@ -87,7 +63,7 @@ export function FreeChapters() {
                 Click Here
               </ButtonLink>
             </div>
-          </form>
+          </div>
         </Container>
       </div>
     </section>
