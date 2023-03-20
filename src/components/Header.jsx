@@ -313,6 +313,44 @@ export function Header() {
     function removeProperty(property) {
       document.documentElement.style.removeProperty(property)
     }
+    function updateHeaderStyles() {
+      let { top, height } = headerRef.current.getBoundingClientRect()
+      let scrollY = clamp(
+        window.scrollY,
+        0,
+        document.body.scrollHeight - window.innerHeight
+      )
+      let dark = document.documentElement.classList.contains('dark')
+      console.log(dark)
+
+      if (isInitial.current) {
+        setProperty('--header-position', 'sticky')
+      }
+
+      setProperty('--content-offset', `${downDelay}px`)
+
+      if (isInitial.current || scrollY < downDelay) {
+        setProperty('--header-height', `${downDelay + height}px`)
+        setProperty('--header-mb', `${-downDelay}px`)
+      } else if (top + height < -upDelay) {
+        let offset = Math.max(height, scrollY - upDelay)
+        setProperty('--header-height', `${offset}px`)
+        setProperty('--header-mb', `${height - offset}px`)
+      } else if (top === 0) {
+        setProperty('--header-height', `${scrollY + height}px`)
+        setProperty('--header-mb', `${-scrollY}px`)
+      }
+
+      if (top === 0 && scrollY > 0 && scrollY >= downDelay) {
+        setProperty('--header-inner-position', 'fixed')
+        removeProperty('--header-top')
+        removeProperty('--avatar-top')
+      } else {
+        removeProperty('--header-inner-position')
+        setProperty('--header-top', '0px')
+        setProperty('--avatar-top', '0px')
+      }
+    }
 
     function updateAvatarStyles() {
       if (!isHomePage) {
@@ -346,6 +384,7 @@ export function Header() {
     }
 
     function updateStyles() {
+      // updateHeaderStyles()
       updateAvatarStyles()
       isInitial.current = false
     }
@@ -361,7 +400,7 @@ export function Header() {
   }, [isHomePage])
   return (
     <header
-      className="pointer-events-none relative z-50 flex flex-col pb-4 bg-indigo-50 dark:bg-gray-900"
+      className="pointer-events-none relative z-50 flex flex-col bg-indigo-50 pb-4 dark:bg-gray-900"
       style={{
         height: 'var(--header-height)',
         marginBottom: 'var(--header-mb)',
@@ -369,7 +408,7 @@ export function Header() {
     >
       <div
         ref={headerRef}
-        className="top-0 z-10 h-16 pt-6"
+        className="top-0 z-10 h-16 pt-6 "
         style={{ position: 'var(--header-position)' }}
       >
         <div
@@ -378,12 +417,14 @@ export function Header() {
         >
           <div className="relative flex gap-4">
             <div className="flex flex-1">
-              <a
-                href="/"
-                className="pointer-events-auto mr-5 flex items-center justify-center rounded-full bg-white/90 p-2 align-middle shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
-              >
-                <Homebutton />
-              </a>
+              <div className="rounded-full shadow-2xl dark:shadow-num_d2">
+                <a
+                  href="/"
+                  className="pointer-events-auto flex items-center justify-center rounded-full bg-white/90 p-2 align-middle ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+                >
+                  <Homebutton />
+                </a>
+              </div>
             </div>
             <div className="flex justify-end md:items-center md:justify-center">
               <MobileNavigation className="pointer-events-auto md:hidden" />

@@ -1,5 +1,9 @@
 "use strict";
 
+var _extend;
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -58,7 +62,7 @@ module.exports = {
         lineHeight: '1'
       }]
     },
-    extend: {
+    extend: (_extend = {
       backgroundImage: function backgroundImage(theme) {
         return {
           'image-one': "url('https://images.unsplash.com/photo-1629651480694-edb8451b31aa?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=668&q=80')",
@@ -87,15 +91,16 @@ module.exports = {
         num_d2: ['20px 20px 51px #04070d', '-20px -20px 51px #121b33'],
         '5xl': ['0 10px 15px -3px rgb(255 255 255 / 0.1)', '0 4px 6px -4px rgb(255 255 255 / 0.1)'],
         '6xl': ['0 20px 25px -5px rgb(255 255 255 / 0.1)', '0 10px 10px -5px rgb(255 255 255 / 0.1)']
-      },
-      colors: {
-        cost1: '#009FFD',
-        cost2: '#2A2A72',
-        cost3: '#09C6F9',
-        cost4: '#045DE9',
-        cost5: '#0B1120'
       }
-    }
+    }, _defineProperty(_extend, "dropShadow", {
+      light: '0 0 0 3px rgba(255, 255, 255, 0.5)'
+    }), _defineProperty(_extend, "colors", {
+      cost1: '#009FFD',
+      cost2: '#2A2A72',
+      cost3: '#09C6F9',
+      cost4: '#045DE9',
+      cost5: '#0B1120'
+    }), _extend)
   },
   plugins: [require('@tailwindcss/line-clamp')]
 };

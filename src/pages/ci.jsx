@@ -65,9 +65,9 @@ export default function Home() {
         />
       </Head>
       <div className="bg-indigo-50 dark:bg-cost5 dark:text-white">
-        <Header />
+        <HeaderMod />
         <Container>
-          <h2 className="pt-10 text-center text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
+          <h2 className="mt-10 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
             3rd Semester Notes Links for CSE(AI & ML) and Cyber Security Branch
             only
           </h2>

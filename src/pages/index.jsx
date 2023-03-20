@@ -65,6 +65,12 @@ export default function Home() {
           name="google-site-verification"
           content="DPpz834E16UpWaEWBrvGKyPEdkGHggpb6UwrQkBKqXs"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="keywords"
+          content="noterep, notes, notes sharing, notes msrit, msrit.ml"
+        />
+        <meta name="author" content="Shravan Revanna" />
       </Head>
       <Header />
       <main>

@@ -48,7 +48,7 @@ export default function Home() {
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
         />
       </Head>
-      <HeaderMod />
+      <Header />
       <main>
         <Timetable1styear />
         {/* <Content /> */}

@@ -92,7 +92,7 @@ export function Content() {
             and solved previous year question papers for the majority of the
             courses.
           </p> */}
-          <div className="mt-5 flex items-center justify-center gap-3">
+          <div className="pt-5 flex items-center justify-center gap-3">
             <ButtonLink
               href="/syllabus"
               className="mt-5 w-full rounded-lg py-2"

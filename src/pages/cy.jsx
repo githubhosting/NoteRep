@@ -47,8 +47,8 @@ export default function Home() {
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
         />
       </Head>
-      <HeaderMod />
-      <main>
+      <Header />
+      <main className="bg-indigo-50 dark:bg-cost5 dark:text-white">
         <Content />
         <Author />
       </main>

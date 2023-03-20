@@ -64,6 +64,9 @@ module.exports = {
           '0 10px 10px -5px rgb(255 255 255 / 0.1)',
         ],
       },
+      dropShadow: {
+        light: '0 0 0 3px rgba(255, 255, 255, 0.5)',
+      },
       colors: {
         cost1: '#009FFD',
         cost2: '#2A2A72',

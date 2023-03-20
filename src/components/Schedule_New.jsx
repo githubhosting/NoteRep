@@ -6,159 +6,6 @@ import clsx from 'clsx'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background.jpg'
 
-const schedule = [
-  {
-    date: 'April 4',
-    dateTime: '2022-04-04',
-    summary:
-      'The first day of the conference is focused on dark patterns for ecommerce.',
-    timeSlots: [
-      {
-        name: 'Steven McHail',
-        description: 'Not so one-time payments',
-        start: '9:00AM',
-        end: '10:00AM',
-      },
-      {
-        name: 'Jaquelin Isch',
-        description: 'The finer print',
-        start: '10:00AM',
-        end: '11:00AM',
-      },
-      {
-        name: 'Dianne Guilianelli',
-        description: 'Post-purchase blackmail',
-        start: '11:00AM',
-        end: '12:00PM',
-      },
-      {
-        name: 'Lunch',
-        description: null,
-        start: '12:00PM',
-        end: '1:00PM',
-      },
-      {
-        name: 'Ronni Cantadore',
-        description: 'Buy or die',
-        start: '1:00PM',
-        end: '2:00PM',
-      },
-      {
-        name: 'Erhart Cockrin',
-        description: 'In-person cancellation',
-        start: '2:00PM',
-        end: '3:00PM',
-      },
-      {
-        name: 'Parker Johnson',
-        description: 'The pay/cancel switcheroo',
-        start: '3:00PM',
-        end: '4:00PM',
-      },
-    ],
-  },
-  {
-    date: 'April 5',
-    dateTime: '2022-04-05',
-    summary:
-      'Next we spend the day talking about deceiving people with technology.',
-    timeSlots: [
-      {
-        name: 'Damaris Kimura',
-        description: 'The invisible card reader',
-        start: '9:00AM',
-        end: '10:00AM',
-      },
-      {
-        name: 'Ibrahim Frasch',
-        description: 'Stealing fingerprints',
-        start: '10:00AM',
-        end: '11:00AM',
-      },
-      {
-        name: 'Cathlene Burrage',
-        description: 'Voting machines',
-        start: '11:00AM',
-        end: '12:00PM',
-      },
-      {
-        name: 'Lunch',
-        description: null,
-        start: '12:00PM',
-        end: '1:00PM',
-      },
-      {
-        name: 'Rinaldo Beynon',
-        description: 'Blackhat SEO that works',
-        start: '1:00PM',
-        end: '2:00PM',
-      },
-      {
-        name: 'Waylon Hyden',
-        description: 'Turning your audience into a botnet',
-        start: '2:00PM',
-        end: '3:00PM',
-      },
-      {
-        name: 'Giordano Sagucio',
-        description: 'Fly phishing',
-        start: '3:00PM',
-        end: '4:00PM',
-      },
-    ],
-  },
-  {
-    date: 'April 6',
-    dateTime: '2022-04-06',
-    summary:
-      'We close out the event previewing new techniques that are still in development.',
-    timeSlots: [
-      {
-        name: 'Andrew Greene',
-        description: 'Neuralink dark patterns',
-        start: '9:00AM',
-        end: '10:00AM',
-      },
-      {
-        name: 'Heather Terry',
-        description: 'DALL-E for passports',
-        start: '10:00AM',
-        end: '11:00AM',
-      },
-      {
-        name: 'Piers Wilkins',
-        description: 'Quantum password cracking',
-        start: '11:00AM',
-        end: '12:00PM',
-      },
-      {
-        name: 'Lunch',
-        description: null,
-        start: '12:00PM',
-        end: '1:00PM',
-      },
-      {
-        name: 'Gordon Sanderson',
-        description: 'SkyNet is coming',
-        start: '1:00PM',
-        end: '2:00PM',
-      },
-      {
-        name: 'Kimberly Parsons',
-        description: 'Dark patterns for the metaverse',
-        start: '2:00PM',
-        end: '3:00PM',
-      },
-      {
-        name: 'Richard Astley',
-        description: 'Knowing the game and playing it',
-        start: '3:00PM',
-        end: '4:00PM',
-      },
-    ],
-  },
-]
-
 const subjects = [
   {
     date: 'Physics Cycle',
@@ -374,7 +221,7 @@ function TimeSlots({ day, className }) {
       role="list"
       className={clsx(
         className,
-        'space-y-8 rounded-4xl bg-white/60 py-14 px-10 pt-px text-center shadow-num_l backdrop-blur dark:bg-[#0b1120] dark:shadow-num_d'
+        'space-y-8 rounded-4xl bg-white/60 py-14 px-5 text-center shadow-num_l backdrop-blur dark:bg-[#0b1120] dark:shadow-num_d'
       )}
     >
       {day.timeSlots.map((timeSlot) => (
@@ -382,10 +229,6 @@ function TimeSlots({ day, className }) {
           {!timeSlot.border && (
             <div className="mx-auto mb-5 h-px w-48 bg-indigo-500/10 dark:bg-slate-50" />
           )}
-          {timeSlot.border && (
-            <div className="mx-auto mb-5" />
-          )}
-
           <h4 className="text-lg font-semibold tracking-tight text-blue-900 dark:text-indigo-50">
             {timeSlot.name}
           </h4>
