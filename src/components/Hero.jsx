@@ -12,9 +12,9 @@ export function Hero() {
 
   return (
     <>
-      <div className="relative py-2 pb-20 sm:py-12">
-        <div className="absolute -inset-x-0 -top-48 -bottom-14 overflow-hidden bg-indigo-50 dark:bg-gray-900">
-          {/* <div className="absolute top-0 left-0 -translate-y-[10%] -translate-x-[55%] -scale-x-100 sm:left-1/2 sm:-translate-y-[6%] sm:-translate-x-[98%] lg:-translate-x-[106%] xl:-translate-x-[122%]">
+      <section className="relative bg-indigo-50 py-2 pb-10 dark:bg-gray-900 sm:py-12">
+        {/* <div className="absolute -inset-x-0 -top-48 -bottom-14 overflow-hidden bg-indigo-50 dark:bg-gray-900">
+          <div className="absolute top-0 left-0 -translate-y-[10%] -translate-x-[55%] -scale-x-100 sm:left-1/2 sm:-translate-y-[6%] sm:-translate-x-[98%] lg:-translate-x-[106%] xl:-translate-x-[122%]">
             <Image
               src={backgroundImage}
               alt=""
@@ -25,10 +25,8 @@ export function Hero() {
               unoptimized
               className="opacity-70 dark:opacity-0"
             />
-          </div> */}
-          <div className="dark:bg-gradient-to-w absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-white dark:from-black " />
-          <div className="dark:bg-gradient-to-w absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-white dark:from-black" />
-        </div>
+          </div>
+        </div> */}
         <Container className="relative">
           <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
             <h1 className="dark:drop-shadow-6xl noterep_text_gradient font-display text-5xl font-bold tracking-tighter text-transparent drop-shadow-xl sm:text-7xl">
@@ -72,79 +70,46 @@ export function Hero() {
                 </a>
               </p>
 
-              <button
-                id="button"
-                class="hover:glow dark:highlight-white/20 group flex cursor-pointer items-center justify-between overflow-hidden rounded-md bg-blue-500 text-white shadow transition-all dark:bg-blue-700 dark:shadow-5xl dark:hover:bg-blue-400"
-                onClick={install}
-              >
-                <p class="px-4 py-1 text-xl shadow-lg">Install App</p>
-              </button>
-
-              {/* <p className="text-xl font-bold">
-      I hope my website has helped you in your preparation.{'  '}
-      <br></br>Please take a look at our affiliated platform{' '}
-      <a
-        href="/#sponsors"
-        className="link text-blue-600 underline visited:text-blue-600 hover:text-blue-800"
-      >
-        By scrolling down
-      </a>
-      {'  '}&darr;, Also there is surprise if you sign up :)
-    </p>
-    <p className="text-lg font-semibold">
-      ALL THE BEST for SEM End Exams !!!
-    </p> */}
+              {install && (
+                <button
+                  id="button"
+                  class="hover:glow dark:highlight-white/20 group flex cursor-pointer items-center justify-between overflow-hidden rounded-md bg-blue-500 text-white shadow transition-all dark:bg-blue-700 dark:shadow-5xl dark:hover:bg-blue-400"
+                  onClick={install}
+                >
+                  <p class="px-4 py-1 text-xl shadow-lg">Install App</p>
+                </button>
+              )}
             </div>
 
-            <div className="mt-10 flex-col items-center justify-center ">
-              <ButtonLink href="/ci" className="w-full rounded-xl pt-3 pb-3 ">
-                CSE (AI & ML) Notes (Sem 3)
+            <div className="mt-10 flex flex-col items-start justify-start gap-5 lg:flex-row">
+              <ButtonLink href="/ci" className="rounded-lg py-2">
+                CSE (AI ML & CY ) Notes (Sem 3)
               </ButtonLink>
-              <ButtonLink
-                href="/cy"
-                className="mt-5 w-full rounded-xl pt-3 pb-3"
-              >
-                CSE Cyber Security Notes (Sem 3)
+              <ButtonLink href="/syllabus" className="rounded-lg py-2">
+                CI & CY Curriculum
               </ButtonLink>
             </div>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <ButtonLink
-                href="/syllabus"
-                className="mt-5 w-full rounded-xl pt-3 pb-3"
-              >
-                CI Curriculum
-              </ButtonLink>
-              <ButtonLink
-                href="/syllabus_cy"
-                className="mt-5 w-full rounded-xl pt-3 pb-3"
-              >
-                CY Curriculum
-              </ButtonLink>
-            </div>
-            <div className="mt-6 flex items-center justify-center gap-3">
-              <ButtonLink
-                href="/ci1styear"
-                className="mt-5 w-full rounded-xl pt-3 pb-3"
-              >
+            <div className="mt-6 flex items-center justify-start">
+              <ButtonLink href="/ci1styear" className="mt-5 rounded-lg py-2">
                 CSE (AI & ML) 1st year Time Table
               </ButtonLink>
             </div>
             {/* <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none lg:justify-center lg:text-center">
-      {[
-        ['Average visitors*', '56+ /day'],
-        ['Total Visits*', '5,000+'],
-      ].map(([name, value]) => (
-        <div key={name}>
-          <dt className="font-mono text-sm text-blue-600">{name}</dt>
-          <dd className="mt-0.5 text-2xl font-semibold tracking-tight text-blue-900">
-            {value}
-          </dd>
-        </div>
-      ))}
-    </dl> */}
+              {[
+                ['Average visitors*', '56+ /day'],
+                ['Total Visits*', '5,000+'],
+              ].map(([name, value]) => (
+                <div key={name}>
+                  <dt className="font-mono text-sm text-blue-600">{name}</dt>
+                  <dd className="mt-0.5 text-2xl font-semibold tracking-tight text-blue-900">
+                    {value}
+                  </dd>
+                </div>
+              ))}
+            </dl> */}
           </div>
         </Container>
-      </div>
+      </section>
     </>
   )
 }

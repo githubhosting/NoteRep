@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Image from 'next/image'
+import Image from 'next/future/image'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
 
@@ -8,11 +8,165 @@ import backgroundImage from '@/images/background.jpg'
 
 const schedule = [
   {
-    cycle: 'Physics Cycle',
+    date: 'April 4',
+    dateTime: '2022-04-04',
+    summary:
+      'The first day of the conference is focused on dark patterns for ecommerce.',
+    timeSlots: [
+      {
+        name: 'Steven McHail',
+        description: 'Not so one-time payments',
+        start: '9:00AM',
+        end: '10:00AM',
+      },
+      {
+        name: 'Jaquelin Isch',
+        description: 'The finer print',
+        start: '10:00AM',
+        end: '11:00AM',
+      },
+      {
+        name: 'Dianne Guilianelli',
+        description: 'Post-purchase blackmail',
+        start: '11:00AM',
+        end: '12:00PM',
+      },
+      {
+        name: 'Lunch',
+        description: null,
+        start: '12:00PM',
+        end: '1:00PM',
+      },
+      {
+        name: 'Ronni Cantadore',
+        description: 'Buy or die',
+        start: '1:00PM',
+        end: '2:00PM',
+      },
+      {
+        name: 'Erhart Cockrin',
+        description: 'In-person cancellation',
+        start: '2:00PM',
+        end: '3:00PM',
+      },
+      {
+        name: 'Parker Johnson',
+        description: 'The pay/cancel switcheroo',
+        start: '3:00PM',
+        end: '4:00PM',
+      },
+    ],
+  },
+  {
+    date: 'April 5',
+    dateTime: '2022-04-05',
+    summary:
+      'Next we spend the day talking about deceiving people with technology.',
+    timeSlots: [
+      {
+        name: 'Damaris Kimura',
+        description: 'The invisible card reader',
+        start: '9:00AM',
+        end: '10:00AM',
+      },
+      {
+        name: 'Ibrahim Frasch',
+        description: 'Stealing fingerprints',
+        start: '10:00AM',
+        end: '11:00AM',
+      },
+      {
+        name: 'Cathlene Burrage',
+        description: 'Voting machines',
+        start: '11:00AM',
+        end: '12:00PM',
+      },
+      {
+        name: 'Lunch',
+        description: null,
+        start: '12:00PM',
+        end: '1:00PM',
+      },
+      {
+        name: 'Rinaldo Beynon',
+        description: 'Blackhat SEO that works',
+        start: '1:00PM',
+        end: '2:00PM',
+      },
+      {
+        name: 'Waylon Hyden',
+        description: 'Turning your audience into a botnet',
+        start: '2:00PM',
+        end: '3:00PM',
+      },
+      {
+        name: 'Giordano Sagucio',
+        description: 'Fly phishing',
+        start: '3:00PM',
+        end: '4:00PM',
+      },
+    ],
+  },
+  {
+    date: 'April 6',
+    dateTime: '2022-04-06',
+    summary:
+      'We close out the event previewing new techniques that are still in development.',
+    timeSlots: [
+      {
+        name: 'Andrew Greene',
+        description: 'Neuralink dark patterns',
+        start: '9:00AM',
+        end: '10:00AM',
+      },
+      {
+        name: 'Heather Terry',
+        description: 'DALL-E for passports',
+        start: '10:00AM',
+        end: '11:00AM',
+      },
+      {
+        name: 'Piers Wilkins',
+        description: 'Quantum password cracking',
+        start: '11:00AM',
+        end: '12:00PM',
+      },
+      {
+        name: 'Lunch',
+        description: null,
+        start: '12:00PM',
+        end: '1:00PM',
+      },
+      {
+        name: 'Gordon Sanderson',
+        description: 'SkyNet is coming',
+        start: '1:00PM',
+        end: '2:00PM',
+      },
+      {
+        name: 'Kimberly Parsons',
+        description: 'Dark patterns for the metaverse',
+        start: '2:00PM',
+        end: '3:00PM',
+      },
+      {
+        name: 'Richard Astley',
+        description: 'Knowing the game and playing it',
+        start: '3:00PM',
+        end: '4:00PM',
+      },
+    ],
+  },
+]
+
+const subjects = [
+  {
+    date: 'Physics Cycle',
     dateTime: 'I SEMESTER',
     summary: 'I SEMESTER',
     timeSlots: [
       {
+        border: 1,
         name: 'Advanced Calculus',
         description: 'MA11 | Mathematics',
         start: '9:00AM',
@@ -71,11 +225,12 @@ const schedule = [
     ],
   },
   {
-    cycle: 'Chemistry Cycle',
+    date: 'Chemistry Cycle',
     dateTime: 'I SEMESTER',
     summary: 'I SEMESTER',
     timeSlots: [
       {
+        border: 1,
         name: 'Multivariate Calculus & Differential Equations',
         description: 'MA21 | Mathematics',
         start: '9:00AM',
@@ -163,20 +318,17 @@ function ScheduleTabbed() {
   return (
     <Tab.Group
       as="div"
-      id="Schedule"
       className="mx-auto grid max-w-2xl grid-cols-1 gap-y-6 sm:grid-cols-2 lg:hidden"
       vertical={tabOrientation === 'vertical'}
     >
-      <Tab.List className="-mx-4 flex space-x-4 overflow-x-auto pl-4 pb-4 sm:mx-0 sm:block sm:space-y-10 sm:space-x-0 sm:pb-0 sm:pl-0 sm:pr-8">
+      <Tab.List className="-mx-4 flex gap-x-4 gap-y-10 overflow-x-auto pl-4 pb-4 sm:mx-0 sm:flex-col sm:pb-0 sm:pl-0 sm:pr-8">
         {({ selectedIndex }) =>
-          schedule.map((day, dayIndex) => (
+          subjects.map((day, dayIndex) => (
             <div
               key={day.dateTime}
               className={clsx(
                 'relative w-3/4 flex-none pr-4 sm:w-auto sm:pr-0',
-                {
-                  'opacity-70': dayIndex !== selectedIndex,
-                }
+                dayIndex !== selectedIndex && 'opacity-70'
               )}
             >
               <DaySummary
@@ -185,7 +337,7 @@ function ScheduleTabbed() {
                   date: (
                     <Tab className="[&:not(:focus-visible)]:focus:outline-none">
                       <span className="absolute inset-0" />
-                      {day.cycle}
+                      {day.date}
                     </Tab>
                   ),
                 }}
@@ -195,7 +347,7 @@ function ScheduleTabbed() {
         }
       </Tab.List>
       <Tab.Panels>
-        {schedule.map((day) => (
+        {subjects.map((day) => (
           <Tab.Panel
             key={day.dateTime}
             className="[&:not(:focus-visible)]:focus:outline-none"
@@ -210,82 +362,76 @@ function ScheduleTabbed() {
 
 function DaySummary({ day }) {
   return (
-    <>
-      <h3 className="text-center text-2xl font-semibold tracking-tight text-blue-900 dark:text-white">
-        {day.cycle}
-      </h3>
-      <p className="mt-1.5 text-center text-base tracking-tight text-blue-900 dark:text-white">
-        {day.summary}
-      </p>
-    </>
+    <h3 className="text-center text-2xl font-semibold tracking-tight text-blue-900 dark:text-white">
+      <p>{day.date}</p>
+    </h3>
   )
 }
 
 function TimeSlots({ day, className }) {
   return (
-    <div
-      // className="bg-slate-50 pt-px sm:rounded-5xl"
+    <ol
+      role="list"
       className={clsx(
         className,
-        'space-y-8 rounded-4xl bg-white/60 py-14 px-10 pt-px text-center shadow-xl shadow-blue-900/5 backdrop-blur dark:bg-black/30'
+        'space-y-8 rounded-4xl bg-white/60 py-14 px-10 pt-px text-center shadow-num_l backdrop-blur dark:bg-[#0b1120] dark:shadow-num_d'
       )}
     >
-      {day.timeSlots.map((timeSlot, timeSlotIndex) => (
-        <div key={timeSlot.start}>
-          {timeSlotIndex >= 0 && (
-            <div className="mx-auto mb-8 h-px w-48 bg-indigo-500/10" />
+      {day.timeSlots.map((timeSlot) => (
+        <div>
+          {!timeSlot.border && (
+            <div className="mx-auto mb-5 h-px w-48 bg-indigo-500/10 dark:bg-slate-50" />
           )}
+          {timeSlot.border && (
+            <div className="mx-auto mb-5" />
+          )}
+
           <h4 className="text-lg font-semibold tracking-tight text-blue-900 dark:text-indigo-50">
             {timeSlot.name}
           </h4>
           {timeSlot.description && (
-            <>
-              <p className="mt-1 tracking-tight text-blue-900 dark:text-blue-200">
-                {timeSlot.description}
-              </p>
-            </>
+            <p className="mt-1 tracking-tight text-blue-900 dark:text-blue-200">
+              {timeSlot.description}
+            </p>
           )}
-          <button className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-semibold tracking-tight text-white shadow-lg shadow-blue-900/50 hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2 dark:bg-sky-500">
+          <button className="mt-4 rounded-md bg-blue-900 px-4 py-2 text-sm font-semibold tracking-tight text-white shadow-lg shadow-blue-900/50 hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-900 focus-visible:ring-offset-2 dark:bg-blue-700">
             <a href={timeSlot.link}>View</a>
           </button>
         </div>
+      ))}
+    </ol>
+  )
+}
+
+function ScheduleStatic() {
+  return (
+    <div className="hidden lg:grid lg:grid-cols-2 lg:gap-x-8">
+      {subjects.map((day) => (
+        <section key={day.dateTime}>
+          <DaySummary day={day} />
+          <TimeSlots day={day} className="mt-10" />
+        </section>
       ))}
     </div>
   )
 }
 
-export function Schedule() {
+export function Schedule_New() {
   return (
     <section
       id="schedule"
-      aria-labelledby="schedule-title"
-      className="scroll-pl-6 py-20 sm:py-28"
+      aria-label="Schedule"
+      className="bg-indigo-50 pt-5 pb-10 dark:bg-slate-900 sm:pt-5 lg:pb-16"
     >
-      <div className="relative mt-7 sm:mt-12">
-        <div className="absolute -inset-x-0 -top-40 -bottom-32 overflow-hidden bg-indigo-50 dark:bg-cost5">
-          <div className="absolute left-full top-0 translate-y-[0%] -translate-x-[50%] sm:left-1/2 sm:-translate-y-[15%] sm:-translate-x-[20%] md:translate-x-[0%] lg:translate-x-[5%] lg:translate-y-[4%] xl:-translate-y-[8%] xl:translate-x-[27%]">
-            <Image
-              src={backgroundImage}
-              alt=""
-              layout="fixed"
-              width={918}
-              height={1495}
-              unoptimized
-              className="opacity-70 dark:opacity-0"
-            />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-8">
+          <div className="relative mt-5 sm:mt-10">
+            <Container className="relative">
+              <ScheduleTabbed />
+              <ScheduleStatic />
+            </Container>
           </div>
         </div>
-        <Container className="relative">
-          <ScheduleTabbed />
-          <div className="hidden lg:grid lg:grid-cols-2 lg:gap-x-8">
-            {schedule.map((day) => (
-              <section key={day.dateTime}>
-                <DaySummary day={day} />
-                <TimeSlots day={day} className="mt-10" />
-              </section>
-            ))}
-          </div>
-        </Container>
       </div>
     </section>
   )

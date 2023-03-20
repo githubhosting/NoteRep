@@ -107,3 +107,77 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
+.neumorphism_btn_ {
+  box-shadow: 3px 3px 3px #1c1d26, -3px -3px 3px #343746;
+  background-color: #282a36;
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  color: rgba(248, 248, 242);
+}
+.neumorphism_btn {
+  box-shadow: 12px 12px 17px #054799, -12px -12px 17px #097bff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  color: rgba(248, 248, 242);
+}
+
+.grad_button {
+  display: inline;
+  border-radius: 10px;
+  box-shadow: 12px 12px 17px #054799, -12px -12px 17px #097bff;
+  background-image: linear-gradient(
+    to right,
+    #1fa2ff 0%,
+    #12d8fa 51%,
+    #1fa2ff 100%
+  );
+  color: #ffffff;
+  transition: all 0.5s;
+  cursor: pointer;
+  background-size: 200% auto;
+}
+
+.grad_button:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+}
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+  50% {
+    box-shadow: 0 25px 15px 0px rgba(0, 0, 0, 0.2);
+    transform: translatey(-20px);
+  }
+  100% {
+    box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+    transform: translatey(0px);
+  }
+}
+.avatar {
+  width: 150px;
+  height: 150px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+  transform: translatey(0px);
+  animation: float 6s ease-in-out infinite;
+}
+
+.instagram {
+  background: linear-gradient(
+    45deg,
+    #f09433 0%,
+    #e6683c 25%,
+    #dc2743 50%,
+    #cc2366 75%,
+    #bc1888 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

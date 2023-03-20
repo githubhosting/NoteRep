@@ -7,12 +7,12 @@ export function FreeChapters() {
     <section
       id="free-chapters"
       aria-labelledby="free-chapters-title"
-      className="scroll-mt-14 bg-blue-600 sm:scroll-mt-32 pt-10"
+      className="scroll-mt-14 bg-blue-600 sm:scroll-mt-32"
     >
       <div className="overflow-hidden lg:relative">
         <Container
           size="md"
-          className="relative grid grid-cols-1 items-center gap-y-12 py-10 align-middle lg:static lg:grid-cols-2 lg:py-14 xl:py-32"
+          className="relative grid grid-cols-1 items-center gap-y-12 py-5 align-middle lg:static lg:grid-cols-2 lg:py-8 xl:py-10"
         >
           <div>
             <h3 className="text-base font-medium tracking-tight text-white">

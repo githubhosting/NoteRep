@@ -5,6 +5,7 @@ import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
+import { Schedule_New } from '@/components/Schedule_New'
 import { Sponsors } from '@/components/Sponsors'
 import { Author } from '@/components/Author'
 import { CallToAction } from '@/components/CallToAction'
@@ -69,7 +70,7 @@ export default function Home() {
       <main>
         <Hero />
         <CallToAction />
-        <Schedule />
+        <Schedule_New />
         {/* <Sponsors /> */}
         <FreeChapters />
         <SecondaryFeatures />

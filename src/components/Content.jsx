@@ -93,12 +93,15 @@ export function Content() {
             courses.
           </p> */}
           <div className="mt-5 flex items-center justify-center gap-3">
-            <ButtonLink href="/syllabus" className="mt-5 w-full rounded-lg">
-              CI Curriculum
+            <ButtonLink
+              href="/syllabus"
+              className="mt-5 w-full rounded-lg py-2"
+            >
+              Curriculum pdf
             </ButtonLink>
-            <ButtonLink href="/syllabus_cy" className="mt-5 w-full rounded-lg">
+            {/* <ButtonLink href="/syllabus_cy" className="mt-5 w-full rounded-lg">
               CY Curriculum
-            </ButtonLink>
+            </ButtonLink> */}
           </div>
           {/* <div className="mt-10 flex items-center justify-center gap-3">
             <ButtonLink
@@ -126,7 +129,7 @@ export function Content() {
           className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
         >
           {cseaimlstatic.map((item) => (
-            <li className="rounded-xl border bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm">
+            <li className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm dark:shadow-5xl">
               <div className="rounded-[10px] bg-white p-5 dark:bg-slate-800 sm:p-6">
                 <h3 className="text-center text-base font-semibold uppercase text-gray-900 dark:text-white">
                   {item.title}
@@ -136,12 +139,12 @@ export function Content() {
                 </p>
                 <div className="flex justify-center gap-3">
                   <a href={item.link} target="_blank">
-                    <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:text-slate-100">
+                    <button className="mt-2 rounded-lg border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-300 dark:text-slate-100 hover:dark:text-white">
                       View
                     </button>
                   </a>
                   <a href={item.otherlink} target="_blank">
-                    <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:text-slate-100">
+                    <button className="mt-2 rounded-lg border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-300 dark:text-slate-100">
                       Other links
                     </button>
                   </a>

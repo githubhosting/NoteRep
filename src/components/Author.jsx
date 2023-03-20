@@ -3,6 +3,8 @@ import Image from 'next/image'
 import { GridPattern } from '@/components/GridPattern'
 import { SectionHeading } from '@/components/SectionHeading'
 import authorImage from '@/images/avatars/author.jpg'
+//author img new
+import authorImageNew from '@/images/avatars/authornew.jpg'
 
 export function Author() {
   return (
@@ -16,19 +18,18 @@ export function Author() {
       </div>
       <div className="relative mx-auto max-w-5xl pt-16 sm:px-6">
         <div className="ownshadow  bg-slate-50 pt-px drop-shadow-2xl dark:bg-slate-800 sm:rounded-5xl">
-          <div className="authorbg relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
+          <div className="authorbg avatar relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
             <a
               href="https://myselfshravan.github.io"
               target="_blank"
               className="flex rounded-full bg-white p-0.5 dark:bg-black"
             >
-              <Image className="rounded-full" src={authorImage} alt="Shravan" />
+              <Image className="rounded-full" src={authorImageNew} alt="Shravan" />
             </a>
           </div>
           <div className="md:py-17 px-4 pb-6 sm:px-10 sm:py-12 lg:px-20 lg:pt-20 lg:pb-10">
-            {/* <SectionHeading id="author-title">Author</SectionHeading> */}
             <p className="mt-8 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
-              <span className="block bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text font-extrabold text-blue-600 text-transparent shadow-blue-600/60 drop-shadow-md sm:text-6xl">
+              <span className="block bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text font-extrabold text-blue-600 text-transparent shadow-blue-600/60 drop-shadow-xl sm:text-6xl">
                 Shravan
               </span>
               <span className="mt-2 block text-2xl text-slate-900 dark:text-white">
@@ -49,7 +50,7 @@ export function Author() {
             <p className="mt-8">
               <a
                 href="https://www.linkedin.com/in/shravanrevanna"
-                className="inline-flex items-center text-base font-medium tracking-tight text-blue-600"
+                className="inline-flex items-center text-base font-medium tracking-tight text-[#0077b5] drop-shadow-lg dark:text-white"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +81,7 @@ export function Author() {
             <p className="mt-4">
               <a
                 href="https://github.com/myselfshravan"
-                className="inline-flex items-center text-base font-medium tracking-tight text-blue-600"
+                className="inline-flex items-center text-base font-medium tracking-tight text-black drop-shadow-lg dark:text-indigo-50"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +101,7 @@ export function Author() {
             <p className="mt-4">
               <a
                 href="https://www.instagram.com/shravan_revanna/"
-                className="inline-flex items-center text-base font-medium tracking-tight text-blue-600"
+                className="inline-flex items-center text-base font-medium tracking-tight text-[#ff3040] drop-shadow-lg dark:text-white"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

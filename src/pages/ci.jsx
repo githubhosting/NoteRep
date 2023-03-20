@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { Container } from '@/components/Container'
+
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
@@ -37,6 +39,22 @@ export default function Home() {
       behavior: 'smooth', // for smoothly scrolling
     })
   }
+
+  // Dark Mode
+  useEffect(() => {
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.theme = 'light'
+    localStorage.theme = 'dark'
+    localStorage.removeItem('theme')
+  }, [])
   return (
     <>
       <Head>
@@ -46,12 +64,14 @@ export default function Home() {
           content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester"
         />
       </Head>
-      <div className="dark:bg-cost5 dark:text-white">
+      <div className="bg-indigo-50 dark:bg-cost5 dark:text-white">
         <Header />
-        <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
-          3rd Semester Notes Links for CSE(AI & ML) and Cyber Security Branch
-          only
-        </h2>
+        <Container>
+          <h2 className="pt-10 text-center text-2xl font-medium tracking-tight text-gray-900 dark:text-white">
+            3rd Semester Notes Links for CSE(AI & ML) and Cyber Security Branch
+            only
+          </h2>
+        </Container>
         {/* <Timetable /> */}
         <Content />
         <Author />

@@ -361,7 +361,7 @@ export function Header() {
   }, [isHomePage])
   return (
     <header
-      className="pointer-events-none relative z-50 flex flex-col pb-4"
+      className="pointer-events-none relative z-50 flex flex-col pb-4 bg-indigo-50 dark:bg-gray-900"
       style={{
         height: 'var(--header-height)',
         marginBottom: 'var(--header-mb)',
