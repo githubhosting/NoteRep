@@ -14,9 +14,10 @@ export function CallToAction() {
             <div className="mx-auto max-w-lg text-center">
               <div className="pb-10">
                 <a
-                  href="https://gpaestimator.streamlit.app/"
-                  className="grad_button border border-blue-600 py-2 px-4 font-semibold"
-                  target="_blank"
+                  // href="https://gpaestimator.streamlit.app/"
+                  // target="_blank"
+                  href="/calculla"
+                  className="grad_button border border-blue-600 py-2 px-4 font-semibold drop-shadow-lg"
                 >
                   Calculla - GPA Estimator
                 </a>

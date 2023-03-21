@@ -68,6 +68,21 @@ export function SecondaryFeatures() {
                 </li>
               ))}
             </ul>
+            <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 rounded-xl border p-4 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none">
+              {[
+                ['Total Web Clics*', '2.33K'],
+                ['Total impressions*', '3.14K'],
+              ].map(([name, value]) => (
+                <div key={name}>
+                  <dt className="font-mono text-sm text-blue-600 dark:text-zinc-100">
+                    {name}
+                  </dt>
+                  <dd className="mt-0.5 text-2xl font-semibold tracking-tight text-blue-900 dark:text-zinc-50">
+                    {value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </Container>
         </div>
       </div>
