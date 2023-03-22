@@ -13,20 +13,20 @@ export function FreeChapters() {
         <div className="overflow-hidden lg:relative">
           <Container
             size="md"
-            className="relative grid grid-cols-1 items-center gap-y-12 py-5 align-middle lg:static lg:grid-cols-2 lg:py-8 xl:py-10"
+            className="relative grid grid-cols-1 items-center gap-y-12 py-5 align-middle lg:static lg:py-8 xl:py-10"
           >
             <div>
-              <h3 className="text-base font-medium tracking-tight text-white">
-                Discuss, Share and Download Class Notes, eBooks, Handouts,
-                Presentations, Faculty Notes, Previous Year & Sample Semester
-                Papers for some of Engineering branches.
+              <h3 className="text-lg font-medium tracking-tight text-white">
+                I know you all are tired of searching through endless class
+                groups for that one PDF. And that's how NoteRep was born to
+                solve it. With NoteRep, all the materials are conveniently
+                organized for you to access and use at your fingertips.
               </h3>
-              <h2 className="font-display text-4xl font-extrabold tracking-tight text-white sm:w-3/4 sm:text-6xl md:w-2/3 lg:w-auto"></h2>
-              <p className="mt-4 text-lg tracking-tight text-white/80">
-                I will be Uploading/Updating all the pdf's in their respective
-                folders. So bookmark this page or add folders to Google Drive's
-                Starred list. Click below to directly share this website on
-                Whatsapp.
+              <p className="mt-4 text-base tracking-tight text-blue-50">
+                I encourage you to bookmark this page or add these folders to
+                your Google Drive's Starred list. You can also share our website
+                directly on Whatsapp to help other students benefit from these
+                resources.
               </p>
               <ButtonLink
                 href="whatsapp://send?text=https://www.msrit.ml/"
@@ -36,30 +36,34 @@ export function FreeChapters() {
                 Share
               </ButtonLink>
             </div>
-            <div className="border-t pt-10 lg:ml-16 lg:border-l lg:border-t-0 lg:pl-5 lg:pt-0">
-              <h3 className="text-base font-medium tracking-tight text-white">
-                Anything Missing ?
-              </h3>
-              <div className="mt-2 sm:relative sm:flex sm:items-center sm:py-0.5 sm:pr-2.5">
-                <ButtonLink
-                  href="https://drive.google.com/drive/folders/1qRi18giG_H8Zr8KtlSyVNCbjp2UruvRp?usp=sharing"
-                  color="white"
-                  className="mt-2 w-full shadow-lg sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
-                >
-                  Add Here
-                </ButtonLink>
+            <div className="grid grid-cols-1 items-center justify-center border-t p-4 align-middle lg:grid-cols-2">
+              <div className="flex flex-col md:items-center">
+                <h3 className="text-base font-medium tracking-tight text-white">
+                  Anything Missing ?
+                </h3>
+                <div className="mt-2 sm:relative sm:flex sm:items-center sm:py-0.5 sm:pr-2.5">
+                  <ButtonLink
+                    href="https://drive.google.com/drive/folders/1qRi18giG_H8Zr8KtlSyVNCbjp2UruvRp?usp=sharing"
+                    color="white"
+                    className="mt-2 w-full shadow-lg sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
+                  >
+                    Add Here
+                  </ButtonLink>
+                </div>
               </div>
-              <h3 className="mt-10 text-base font-medium tracking-tight text-white">
-                Get rewards by adding notes*
-              </h3>
-              <div className="mt-2 sm:relative sm:flex sm:items-center sm:py-0.5 sm:pr-2.5">
-                <ButtonLink
-                  href="https://forms.gle/ZSdDTkuDpuxvPRwX8"
-                  color="white"
-                  className="mt-2 w-full shadow-lg sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
-                >
-                  Click Here
-                </ButtonLink>
+              <div className="mt-5 flex flex-col md:items-center lg:mt-0">
+                <h3 className="text-base font-medium tracking-tight text-white">
+                  Get rewards by adding notes*
+                </h3>
+                <div className="mt-2 sm:relative sm:flex sm:items-center sm:py-0.5 sm:pr-2.5">
+                  <ButtonLink
+                    href="https://forms.gle/ZSdDTkuDpuxvPRwX8"
+                    color="white"
+                    className="mt-2 w-full shadow-lg sm:relative sm:z-10 sm:mt-0 sm:w-auto sm:flex-none"
+                  >
+                    Click Here
+                  </ButtonLink>
+                </div>
               </div>
             </div>
           </Container>

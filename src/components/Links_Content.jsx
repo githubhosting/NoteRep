@@ -64,106 +64,57 @@ export function Content() {
     fetchData()
   }, [])
   return (
-    <section>
+    <section className="bg-indigo-50 dark:bg-gray-900">
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
           <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900">
-            Some Links
+            Shared Links
           </h2>
-          <p className="mt-2 text-center text-xl text-gray-500">
-            Youtube videos and other website links to study
+          <p className="mt-2 text-center text-lg text-gray-500 dark:text-white">
+            Youtube videos and other website links to related to Respective
+            Subjects
           </p>
         </div>
         <ul
           role="list"
-          className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
+          className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:items-center"
         >
-          {/* {cseaiml.map((item) => (
-            //create a new grid and show links
-            <li key={item.id} className="relative">
-              <div className="flex flex-col rounded-lg bg-white p-4 shadow-sm">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium text-gray-900">
-                    {item.title}
-                  </h3>
-                  <span className="inline-flex items-center rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-800">
-                    {item.tag}
-                  </span>
-                </div>
-                <p className="mt-2 text-sm text-gray-500 line-clamp-3">
-                  {item.description}
-                </p>
-                <a
-                  href={item.link}
-                  className="mt-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
-                >
-                  Learn more
-                </a>
-              </div>
-            </li>
-          ))} */}
           {otherlinks.map((item) => (
             <li key={item.id} className="relative">
-              <div className="flex flex-col rounded-lg bg-white p-4 shadow-sm">
+              <div className="flex flex-col rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800 dark:shadow-num_d">
                 <div className="flex items-center justify-between">
-                  <h3 className="text-sm font-medium text-gray-900">
+                  <h3 className="text-md font-medium text-gray-900 dark:text-white">
                     {item.title}
                   </h3>
                 </div>
-                <p className="mt-2 text-sm text-gray-500 line-clamp-3">
+                <p className="mt-2 text-sm text-gray-500 line-clamp-3 dark:text-white/80">
                   {item.description}
                 </p>
                 {item.links?.map((link) => (
-                  <>
-                    <p className="mt-3"> {link.urltitle}:</p>
+                  <div>
+                    <p className="mt-3 dark:text-white/90">{link.urltitle}</p>
                     <a
                       href={link.url}
-                      className="mt-3 text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                      target="_blank"
+                      className="mt-3 text-sm font-medium text-blue-800 hover:text-indigo-500 dark:text-blue-600"
                     >
-                      {link.url}
+                      {String(link.url).length > 35
+                        ? String(link.url).substring(0, 35) + '...'
+                        : String(link.url)}
                     </a>
-                  </>
+                  </div>
                 ))}
               </div>
             </li>
           ))}
-
-          {/* <li className="rounded-xl border bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:shadow-sm">
-            <div className="rounded-[10px] bg-white p-5 sm:p-6">
-              <h3 className="text-center text-base font-semibold uppercase text-gray-900">
-                {item.title}
-              </h3>
-              <p className="mt-1 text-center text-base text-gray-700">
-                {item.description}
-              </p>
-              <div className="flex justify-center gap-3">
-                <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
-                  <a href={item.link} target="_blank">
-                    View
-                  </a>
-                </button>
-                <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
-                  <a href={item.otherlink} target="_blank">
-                    Other links
-                  </a>
-                </button>
-              </div>
-              <div class="mt-4 flex flex-wrap justify-center gap-1">
-                <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
-                  {item.images?.map((check, i) => (
-                    <li key={i}>{check}</li>
-                  ))}
-                </span>
-              </div>
-            </div>
-          </li>
-          ))} */}
         </ul>
-        <button className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white">
-          <a href="https://cgpa-estimator.vercel.app/#/otherlinks">
-            Contribute Links
-          </a>
-        </button>
+        <div className="py-10">
+          <button className="mt-2 rounded-md border-2 border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-100 dark:text-white">
+            <a href="https://cgpa-estimator.vercel.app/#/otherlinks">
+              Contribute Links
+            </a>
+          </button>
+        </div>
       </Container>
     </section>
   )

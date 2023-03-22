@@ -40,10 +40,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CSE (AI & ML)</title>
+        <title>Shared Links CSE (AI ML & CY)</title>
         <meta
           name="description"
-          content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
+          content="NoteRep allows you to share/access any useful links or resources that you come across while studying."
         />
       </Head>
       <Header />
