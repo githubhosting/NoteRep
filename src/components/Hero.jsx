@@ -40,9 +40,8 @@ export function Hero() {
               </p>
               <p className="text-base font-semibold">
                 You can also contribute to this project by adding more notes.{' '}
-                <br></br>
                 <a
-                  className="font-bold"
+                  className="font-semibold underline"
                   href="https://drive.google.com/drive/folders/1qRi18giG_H8Zr8KtlSyVNCbjp2UruvRp?usp=sharing"
                 >
                   Click here to upload
@@ -69,6 +68,9 @@ export function Hero() {
                   approach me.
                 </a>
               </p>
+              <p className="text-base font-semibold italic">
+                Introducing the new feature - NoteRep Forum (Beta).
+              </p>
 
               {install && (
                 <button
@@ -79,6 +81,13 @@ export function Hero() {
                   <p class="px-4 py-1 text-xl shadow-lg">Install App</p>
                 </button>
               )}
+              <ButtonLink
+                href="/noterep-forum"
+                className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"
+                // target="_blank"
+              >
+                NoteRep Forum 🚀
+              </ButtonLink>
             </div>
 
             <div className="mt-10 flex flex-col items-start justify-start gap-5 lg:flex-row">

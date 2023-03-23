@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
-import { Calculla } from '@/components/Calculla'
+import { NoteRepForum } from '@/components/NoteRepForum'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
 import { Schedule_New } from '@/components/Schedule_New'
@@ -17,7 +17,7 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Model } from '@/components/Model'
 
-export default function Calculla() {
+export default function NoteRepForum_() {
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
@@ -56,10 +56,13 @@ export default function Calculla() {
   return (
     <>
       <Head>
-        <title>Calculla - GPA Calculator</title>
+        <title>
+          NoteRep Forum - Connecting College Students Thoughts through Community
+          Forum
+        </title>
         <meta
           name="description"
-          content="GPA Calculator and Predictor for MSRIT Students"
+          content="Connecting College Students Thoughts through Community Forum"
         />
         <meta name="theme-color" content="black-translucent" />
         <meta
@@ -75,7 +78,7 @@ export default function Calculla() {
       </Head>
       <Header />
       <main>
-        <Calculla />
+        <NoteRepForum />
         <Author />
       </main>
       <Footer />
