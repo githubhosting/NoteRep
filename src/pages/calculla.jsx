@@ -17,7 +17,7 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Model } from '@/components/Model'
 
-export default function Calculla() {
+export default function Calculla_() {
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
