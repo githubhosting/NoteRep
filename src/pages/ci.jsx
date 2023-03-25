@@ -20,6 +20,7 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Timetable } from '@/components/Timetable'
 import { Calendar } from '@/components/Calendar'
+import { Button } from '@/components/Button'
 
 export default function Home() {
   const [showButton, setShowButton] = useState(false)
@@ -68,13 +69,14 @@ export default function Home() {
       <div className="bg-indigo-50 dark:bg-cost5 dark:text-white">
         <HeaderMod />
         <Container>
-          <h2 className="mt-10 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white">
+          <h2 className="mt-10 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
             3rd Semester Notes Links for CSE(AI & ML) and Cyber Security Branch
             only
           </h2>
+
+          <Calendar />
         </Container>
-        <Calendar />
-        <Timetable />
+        {/* <Timetable /> */}
         <Content />
         <Author />
       </div>

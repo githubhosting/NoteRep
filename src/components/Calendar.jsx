@@ -6,13 +6,6 @@ import React from 'react'
 
 import { Header } from '@/components/Header'
 import { Fragment } from 'react'
-import {
-  ChevronDownIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ClockIcon,
-  EllipsisHorizontalIcon,
-} from '@heroicons/react/20/solid'
 import { Menu, Transition } from '@headlessui/react'
 
 let newDate = new Date()
@@ -20,13 +13,27 @@ let todaydate = newDate.toISOString().slice(0, 10)
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []
-for (let i = 25; i <= 100; i++) {
+for (let i = 27; i <= 100; i++) {
   datesarray.push(
     new Date(newDate.getFullYear(), 2, i).toISOString().slice(0, 10)
   )
 }
 
+const weekarray = [
+  { short: 'S', long: 'un' },
+  { short: 'M', long: 'on' },
+  { short: 'T', long: 'ue' },
+  { short: 'W', long: 'ed' },
+  { short: 'T', long: 'hu' },
+  { short: 'F', long: 'ri' },
+  { short: 'S', long: 'at' },
+]
+
 const exam = [
+  {
+    date: '2023-04-10',
+    name: 'AEC',
+  },
   {
     date: '2023-04-12',
     name: 'Maths',
@@ -54,7 +61,7 @@ const exam = [
   },
   {
     date: '2023-04-26',
-    name: 'Kannada',
+    name: 'Kan',
   },
 ]
 
@@ -74,108 +81,93 @@ function classNames(...classes) {
 
 export function Calendar() {
   return (
-    <div className="p-4 lg:flex lg:h-full lg:flex-col">
-      <header className="flex items-center justify-between border-b border-gray-200 py-4 px-6 lg:flex-none">
-        <h1 className="text-lg font-semibold text-gray-900 dark:text-white">
+    <div className="p-0 lg:flex lg:h-full lg:flex-col lg:p-4">
+      <p className="flex items-center justify-center lg:flex-none">
+        Exam TimeTable
+      </p>
+      <div className="flex items-center justify-center py-3 px-6 lg:flex-none">
+        <h1 className="rounded-md bg-white py-1 px-3 text-lg font-semibold text-gray-900 dark:bg-slate-900 dark:text-white">
           <time>{newDate.toLocaleString('default', { month: 'long' })}</time>
         </h1>
-      </header>
-      <div className="shadow-lg ring-1 ring-black ring-opacity-5 dark:shadow-num_d lg:flex lg:flex-auto lg:flex-col">
-        <div className="grid grid-cols-7 gap-px border-b border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 lg:flex-none">
-          <div className="bg-white py-2">
-            M<span className="sr-only sm:not-sr-only">on</span>
-          </div>
-          <div className="bg-white py-2">
-            T<span className="sr-only sm:not-sr-only">ue</span>
-          </div>
-          <div className="bg-white py-2">
-            W<span className="sr-only sm:not-sr-only">ed</span>
-          </div>
-          <div className="bg-white py-2">
-            T<span className="sr-only sm:not-sr-only">hu</span>
-          </div>
-          <div className="bg-white py-2">
-            F<span className="sr-only sm:not-sr-only">ri</span>
-          </div>
-          <div className="bg-white py-2">
-            S<span className="sr-only sm:not-sr-only">at</span>
-          </div>
-          <div className="bg-white py-2">
-            S<span className="sr-only sm:not-sr-only">un</span>
-          </div>
+      </div>
+      <div className="shadow-lg ring-1 ring-white ring-opacity-90 dark:ring-black lg:flex lg:flex-auto lg:flex-col">
+        <div className="grid grid-cols-7 border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 dark:text-white lg:flex-none">
+          {weekarray.map((day) => (
+            <div
+              key={day.long}
+              className="border bg-white py-2 dark:bg-cost5"
+              aria-hidden="true"
+            >
+              {day.short}
+              <span key={day.long} className="sr-only sm:not-sr-only">
+                {day.long}
+              </span>
+            </div>
+          ))}
         </div>
-        <div className="flex bg-indigo-50 text-xs leading-6 text-gray-700 dark:bg-cost5 lg:flex-auto">
+        <div className="flex bg-indigo-50 text-xs leading-6 text-gray-700 dark:bg-cost5 dark:text-zinc-50 lg:flex-auto">
           {/* Desktop view */}
-          <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-5 lg:gap-px">
+          <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-5">
             {days.map((day) => (
               <div
                 key={day.date}
                 className={classNames(
                   parseInt(day.date.slice(5, 7)) == currentmonth
-                    ? 'bg-white'
-                    : 'bg-gray-50 text-gray-500',
-                  'relative py-2 px-3'
+                    ? 'bg-white dark:bg-slate-900'
+                    : 'bg-white/50 dark:bg-slate-800',
+                  'relative border py-2 px-3 dark:border-indigo-50'
                 )}
               >
                 <time
                   dateTime={day.date}
-                  className={
+                  className={classNames(
                     todaydate == day.date
-                      ? 'flex h-6 w-6 items-center justify-center rounded-full bg-indigo-600 font-semibold text-white'
-                      : undefined
-                  }
+                      ? 'flex h-6 w-6 items-center justify-center rounded-full bg-blue-700 font-semibold text-white'
+                      : undefined,
+                    'px-1 text-sm font-medium'
+                  )}
                 >
                   {day.date.split('-').pop().replace(/^0/, '')}
                 </time>
                 {day.events.length > 0 && (
                   <ol className="mt-2">
-                    {day.events.slice(0, 2).map((event) => (
-                      <li key={event.id}>
+                    {day.events.map((event) => (
+                      <li>
                         <a href={event.href} className="group flex">
-                          <p className="flex-auto truncate font-medium text-gray-900 group-hover:text-indigo-600">
+                          <p className="flex-auto truncate rounded-md bg-indigo-50 px-1 align-middle font-medium text-gray-900 group-hover:text-blue-700 dark:bg-slate-900 dark:text-white">
                             {event.name}
                           </p>
-                          <time
-                            dateTime={event.datetime}
-                            className="ml-3 hidden flex-none text-gray-500 group-hover:text-indigo-600 xl:block"
-                          >
-                            {event.time}
-                          </time>
                         </a>
                       </li>
                     ))}
-                    {day.events.length > 2 && (
-                      <li className="text-gray-500">
-                        + {day.events.length - 2} more
-                      </li>
-                    )}
                   </ol>
                 )}
               </div>
             ))}
           </div>
           {/* Mobile view */}
-          <div className="isolate grid w-full grid-cols-7 grid-rows-5 gap-px bg-indigo-50 dark:bg-cost5 lg:hidden">
+          <div className="isolate grid w-full grid-cols-7 grid-rows-5 rounded-lg lg:hidden">
             {days.map((day) => (
-              <button
+              <div
                 key={day.date}
-                type="button"
                 className={classNames(
                   parseInt(day.date.slice(5, 7)) == currentmonth
-                    ? 'bg-white'
-                    : 'bg-indigo-50',
+                    ? 'bg-white dark:bg-slate-900'
+                    : 'bg-white/50 dark:bg-slate-800',
                   (day.isSelected || todaydate == day.date) && 'font-semibold',
                   day.isSelected && 'text-white',
-                  !day.isSelected && todaydate == day.date && 'text-green-600',
+                  !day.isSelected &&
+                    todaydate == day.date &&
+                    'font-bold text-blue-500',
                   !day.isSelected &&
                     parseInt(day.date.slice(5, 7)) == currentmonth &&
                     !todaydate == day.date &&
-                    'text-gray-900',
+                    'text-gray-900 dark:text-white',
                   !day.isSelected &&
                     !parseInt(day.date.slice(5, 7)) == currentmonth &&
                     !todaydate == day.date &&
-                    'text-gray-500',
-                  'flex h-14 flex-col items-center py-2 px-3 align-middle hover:bg-gray-100 focus:z-10 border rounded-sm'
+                    'text-gray-500 dark:text-gray-400',
+                  'flex h-16 flex-col items-center border py-2 px-3 align-middle hover:bg-gray-100 focus:z-10 dark:border-indigo-50'
                 )}
               >
                 <time
@@ -190,20 +182,15 @@ export function Calendar() {
                   {day.date.split('-').pop().replace(/^0/, '')}
                 </time>
                 {day.events.length > 0 && (
-                  <span className="-mx-0.5 mt-auto">
+                  <span className="px-1 font-semibold">
                     {day.events.map((event) => (
-                      <span
-                        key={event.id}
-                        // className="mx-0.5 mb-1 h-1.5 w-1.5 rounded-full bg-gray-400"
-                      >
-                        <span className="flex justify-center align-middle">
-                          {event.name}
-                        </span>
+                      <span className="flex justify-center rounded-md bg-indigo-50 px-1 align-middle dark:bg-slate-900 dark:text-white">
+                        {event.name}
                       </span>
                     ))}
                   </span>
                 )}
-              </button>
+              </div>
             ))}
           </div>
         </div>
@@ -222,10 +209,6 @@ export function Calendar() {
                     dateTime={event.datetime}
                     className="mt-2 flex items-center text-gray-700"
                   >
-                    <ClockIcon
-                      className="mr-2 h-5 w-5 text-gray-400"
-                      aria-hidden="true"
-                    />
                     {event.time}
                   </time>
                 </div>

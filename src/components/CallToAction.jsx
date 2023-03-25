@@ -17,7 +17,7 @@ export function CallToAction() {
                   // href="https://gpaestimator.streamlit.app/"
                   // target="_blank"
                   href="/calculla"
-                  className="grad_button border border-blue-600 py-2 px-4 font-semibold drop-shadow-lg"
+                  className="grad_button py-2 px-4 font-semibold"
                 >
                   Calculla - GPA Estimator
                 </a>

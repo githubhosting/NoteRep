@@ -68,10 +68,6 @@ export function Hero() {
                   approach me.
                 </a>
               </p>
-              <p className="text-base font-semibold italic">
-                Introducing the new feature - NoteRep Forum (Beta).
-              </p>
-
               {install && (
                 <button
                   id="button"
@@ -81,6 +77,9 @@ export function Hero() {
                   <p class="px-4 py-1 text-xl shadow-lg">Install App</p>
                 </button>
               )}
+              <p className="text-base font-semibold italic">
+                Introducing the new feature - NoteRep Forum (Beta).
+              </p>
               <ButtonLink
                 href="/noterep-forum"
                 className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"

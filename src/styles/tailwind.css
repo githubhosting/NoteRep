@@ -141,6 +141,13 @@ iframe {
   transition: all 0.5s;
   cursor: pointer;
   background-size: 200% auto;
+  text-shadow: 2px 1.5px 5px #054799;
+}
+.grad_button:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
+  box-shadow: none;
 }
 
 .grad_button2 {
@@ -166,12 +173,6 @@ iframe {
   box-shadow: none;
 }
 
-.grad_button:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
-  box-shadow: none;
-}
 @keyframes float {
   0% {
     box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
@@ -195,6 +196,9 @@ iframe {
   box-shadow: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
   transform: translatey(0px);
   animation: float 6s ease-in-out infinite;
+}
+.avatar:hover {
+  animation-play-state: paused;
 }
 
 .box {
@@ -269,9 +273,6 @@ iframe {
   letter-spacing: 1px;
   text-decoration: none;
   transition: 0.5s;
-}
-.box .content a:hover {
-  letter-spacing: 3px;
 }
 .box:hover::before {
   inset: -20px 0px;

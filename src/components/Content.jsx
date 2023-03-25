@@ -151,7 +151,7 @@ export function Content() {
                 </div>
                 {item.tag && (
                   <div class="mt-4 flex flex-wrap justify-center gap-1">
-                    <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
+                    <span class="whitespace-nowrap rounded-full bg-purple-100 dark:bg-purple-900 px-2.5 py-0.5 text-xs text-purple-600 dark:text-indigo-50">
                       {item.tag}
                     </span>
                   </div>
