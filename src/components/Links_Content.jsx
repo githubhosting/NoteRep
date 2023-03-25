@@ -4,6 +4,7 @@ import { Container } from '@/components/Container'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 import { Button } from './Button'
+import { query, orderBy, limit, documentId } from 'firebase/firestore'
 
 //Firebase Api Key
 const firebaseConfig = {
@@ -17,16 +18,6 @@ const firebaseConfig = {
 }
 firebase.initializeApp(firebaseConfig)
 const database = firebase.firestore()
-
-const cseaimlstatic = [
-  {
-    title: 'CSE (AI & ML)',
-    description: 'CSE (AI & ML)',
-    link: 'https://cseaiml.netlify.app/',
-    otherlink: '/links',
-    tag: 'CSE (AI & ML)',
-  },
-]
 
 export function Content() {
   const [cseaiml, setCseaiml] = useState([])
@@ -52,7 +43,11 @@ export function Content() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await database.collection('otherlinks').get()
+        const response = await database
+          .collection('otherlinks')
+          .orderBy('createdate', 'desc')
+          .get()
+        console.log(response)
         const data = response.docs.map((doc) => doc.data())
         setOtherlinks(data)
         setLoading(false)
