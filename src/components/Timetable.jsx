@@ -111,12 +111,12 @@ export function Timetable() {
             Time Table
           </h1>
         </div>
-        <div class="flex flex-col lg:overflow-x-hidden ">
+        <div class="flex flex-col px-5 md:px-10 lg:overflow-x-hidden">
           <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
             <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-              <div class="overflow-hidden">
-                <table class="ml-2 min-w-full border-2">
-                  <thead class="border-b-2 border-t-2 ">
+              <div class="overflow-hidden border-2">
+                <table class="min-w-full">
+                  <thead class="border-b">
                     <tr>
                       <th
                         scope="col"
@@ -131,7 +131,7 @@ export function Timetable() {
                           class="whitespace-nowrap border-r px-4 py-4 text-left text-sm font-bold text-gray-900 dark:text-white"
                         >
                           {get_time() === i ? (
-                            <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-white">
+                            <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-800">
                               {time_class[i]}
                             </span>
                           ) : (
@@ -186,9 +186,6 @@ export function Timetable() {
             </div>
           </div>
         </div>
-        {/* <div className="flex w-full rounded-lg bg-white p-0.5">
-          <Image src={tt} alt="CIE 2 Time Table" />
-        </div> */}
       </section>
     </>
   )

@@ -9,12 +9,12 @@ export function ContentSyl() {
     <section
       id="Syllabus"
       aria-labelledby="introduction-title"
-      className="pt-5 pb-0 sm:pb-0 md:pt-8 lg:pt-5"
+      className="bg-indigo-50 pt-5 pb-0 dark:bg-cost5 sm:pb-0 md:pt-8 lg:pt-5"
     >
       <Container>
-        <p className="font-display text-3xl font-bold tracking-tight text-slate-900">
+        <h1 className="font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           Curriculum for CSE (AI & ML)
-        </p>
+        </h1>
         <ButtonLink
           href="/documents/Syllabus 3 & 4 Sem CSE AI & ML Final.pdf"
           rel="noreferrer"

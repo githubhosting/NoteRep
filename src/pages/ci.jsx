@@ -19,6 +19,7 @@ import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Timetable } from '@/components/Timetable'
+import { Calendar } from '@/components/Calendar'
 
 export default function Home() {
   const [showButton, setShowButton] = useState(false)
@@ -72,7 +73,8 @@ export default function Home() {
             only
           </h2>
         </Container>
-        {/* <Timetable /> */}
+        <Calendar />
+        <Timetable />
         <Content />
         <Author />
       </div>
