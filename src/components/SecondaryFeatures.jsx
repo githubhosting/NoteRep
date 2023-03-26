@@ -1,5 +1,5 @@
 import { useId } from 'react'
-
+import { usePWAInstall } from 'react-use-pwa-install'
 import { Container } from '@/components/Container'
 
 const data = [
@@ -24,6 +24,7 @@ const data = [
 ]
 
 export function SecondaryFeatures() {
+  const install = usePWAInstall()
   return (
     <section
       id="secondary-features"
