@@ -145,9 +145,11 @@ iframe {
 }
 .grad_button:hover {
   background-position: right center; /* change the direction of the change here */
-  color: #fff;
+  color: #fefefe;
+  letter-spacing: 1px;
   text-decoration: none;
   box-shadow: none;
+  text-shadow: none;
 }
 
 .grad_button2 {
@@ -163,6 +165,7 @@ iframe {
   color: #ffffff;
   transition: all 0.5s;
   cursor: pointer;
+  text-shadow: 2px 1.5px 5px #054799;
   background-size: 200% auto;
 }
 
@@ -311,7 +314,6 @@ iframe {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
 }
 
 .button-85:before {

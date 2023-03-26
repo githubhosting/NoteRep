@@ -25,20 +25,20 @@ export function NoteRepForum() {
               <h2 className="mb-5 text-3xl font-bold text-gray-900 dark:text-white">
                 NoteRep Forum
               </h2>
+              <p className="mb-5 text-lg text-gray-500 dark:text-gray-400">
+                Checkout the demo version
+              </p>
               <Image src={noterepforumPreview} alt="NoteRep Forum Preview" />
             </div>
-            <p className="mt-3 text-base text-black dark:text-white ">
-              Will be launching very soon!
-            </p>
-            {/* <div className="mb-5 rounded-lg bg-blue-700 px-6 py-6 text-center">
+            <div className="mb-5 rounded-lg bg-blue-700 px-6 py-6 text-center">
               <a
-                href="https://gpaestimator.streamlit.app/"
-                className="grad_button2 border border-blue-600 py-2 px-4 font-semibold drop-shadow-lg"
+                href="http://noterep-forum.vercel.app/"
+                className="grad_button2 border border-blue-600 py-2 px-4 font-semibold"
                 target="_blank"
               >
-                Visit the App
+                NoteRep Forum
               </a>
-            </div> */}
+            </div>
           </div>
         </Container>
       </section>

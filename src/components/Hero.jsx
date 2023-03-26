@@ -34,11 +34,11 @@ export function Hero() {
             </h1>
             <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900 dark:text-[#fefefe]">
               <p>An Open-Source Notes Sharing Platform</p>
-              <p className="text-base font-semibold">
+              <p className="text-base font-medium">
                 Please let me know if there are any errors or if you want to
                 update anything in the notes.
               </p>
-              <p className="text-base font-semibold">
+              <p className="text-base font-medium">
                 You can also contribute to this project by adding more notes.{' '}
                 <a
                   className="font-semibold underline"
@@ -74,7 +74,9 @@ export function Hero() {
                   class="hover:glow dark:highlight-white/20 group flex cursor-pointer items-center justify-between overflow-hidden rounded-md bg-blue-500 text-white shadow transition-all dark:bg-blue-700 dark:shadow-5xl dark:hover:bg-blue-400"
                   onClick={install}
                 >
-                  <p class="px-4 py-1 text-xl shadow-lg">Install App</p>
+                  <p class="px-3 text-lg shadow-lg dark:shadow-num_d">
+                    Install App
+                  </p>
                 </button>
               )}
               <p className="text-base font-semibold italic">
@@ -82,7 +84,7 @@ export function Hero() {
               </p>
               <ButtonLink
                 href="/noterep-forum"
-                className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"
+                className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                 // target="_blank"
               >
                 NoteRep Forum 🚀

@@ -126,6 +126,7 @@ function MobileNavigation(props) {
                 <MobileNavItem href="/">Home</MobileNavItem>
                 <MobileNavItem href="/ci">CSE (AI & ML)</MobileNavItem>
                 <MobileNavItem href="/cy">CSE (CY)</MobileNavItem>
+                <MobileNavItem href="/noterep-forum">Forum</MobileNavItem>
                 {/* <MobileNavItem href="#schedule">Physics Cycle</MobileNavItem>
                 <MobileNavItem href="#schedule">Chemistry Cycle</MobileNavItem> */}
                 <MobileNavItem href="https://myselfshravan.github.io/">
@@ -195,6 +196,7 @@ function DesktopNavigation(props) {
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
         <NavItem href="/ci">CSE (AI & ML)</NavItem>
         <NavItem href="/cy">CSE (CY)</NavItem>
+        <NavItem href="/noterep-forum">Forum</NavItem>
         {/* <NavItem href="#schedule">First Year</NavItem> */}
         <NavItem_ href="https://myselfshravan.github.io/">Developer</NavItem_>
       </ul>
