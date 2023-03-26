@@ -150,8 +150,8 @@ export function Content() {
                   </a>
                 </div>
                 {item.tag && (
-                  <div class="mt-4 flex flex-wrap justify-center gap-1">
-                    <span class="whitespace-nowrap rounded-full bg-purple-100 dark:bg-purple-900 px-2.5 py-0.5 text-xs text-purple-600 dark:text-indigo-50">
+                  <div className="mt-4 flex flex-wrap justify-center gap-1">
+                    <span className="whitespace-nowrap rounded-full bg-purple-100 dark:bg-purple-900 px-2.5 py-0.5 text-xs text-purple-600 dark:text-indigo-50">
                       {item.tag}
                     </span>
                   </div>
