@@ -52,7 +52,7 @@ export default function Home() {
       <main>
         <Timetable1styear />
         {/* <Content /> */}
-        <Author />
+        {/* <Author /> */}
       </main>
       <Footer />
       {showButton && (

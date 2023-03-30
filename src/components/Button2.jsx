@@ -51,6 +51,7 @@ export function ButtonLink({
   return (
     <Link href={href}>
       <a
+        target="_blank"
         className={clsx(
           baseStyles[variant],
           variantStyles[variant][color],

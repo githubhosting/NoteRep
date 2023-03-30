@@ -76,7 +76,7 @@ export default function Calculla_() {
       <Header />
       <main>
         <Calculla />
-        <Author />
+        {/* <Author /> */}
       </main>
       <Footer />
       {showButton && (

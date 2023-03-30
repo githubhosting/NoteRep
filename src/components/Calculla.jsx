@@ -11,7 +11,7 @@ export function Calculla() {
   return (
     <>
       <section className="relative bg-indigo-50 py-7 pb-10 dark:bg-gray-900 sm:py-10">
-        <Container className="relative">
+        <div className="relative mx-auto max-w-7xl px-1 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
             <div className="mb-5 rounded-lg bg-blue-700 px-6 py-6 text-center">
               <a
@@ -29,8 +29,18 @@ export function Calculla() {
               width="100%"
               height="2000"
             ></iframe>
+            <p className="border-t py-5 text-center text-slate-900 dark:text-zinc-50">
+              Fill The form to become a beta Tester
+            </p>
+            <iframe
+              className="h-screen w-full"
+              src="https://docs.google.com/forms/d/e/1FAIpQLSdxrUxh3jr3XVfxv7y2_fDKdsathdKOySCzessIypgUaUgW5Q/viewform?embedded=true"
+              height="1024"
+            >
+              Loading…
+            </iframe>
           </div>
-        </Container>
+        </div>
       </section>
     </>
   )
