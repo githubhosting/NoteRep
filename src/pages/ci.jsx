@@ -60,7 +60,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CSE (AI & ML)</title>
+        <title>CSE (AI ML & CY) Notes</title>
         <meta
           name="description"
           content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester"
@@ -69,11 +69,9 @@ export default function Home() {
       <div className="bg-indigo-50 dark:bg-cost5 dark:text-white">
         <HeaderMod />
         <Container>
-          <h2 className="mt-10 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
-            3rd Semester Notes Links for CSE(AI & ML) and Cyber Security Branch
-            only
+          <h2 className="mt-10 pb-5 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
+            3rd Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
           </h2>
-
           <Calendar />
         </Container>
         {/* <Timetable /> */}

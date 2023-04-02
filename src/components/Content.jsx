@@ -82,22 +82,19 @@ export function Content() {
   return (
     <section>
       <Container>
-        <div className="mx-auto max-w-2xl sm:text-center">
-          {/* <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900">
-            Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester
-          </h2> */}
-          {/* <p className="mt-2 text-sm text-gray-700">
-            NoteRep is a collection of undergraduate semester content
-            marketplaces that contain all of the student notes, faculty notes,
-            and solved previous year question papers for the majority of the
-            courses.
-          </p> */}
-          <div className="pt-5 flex items-center justify-center gap-3">
+        <div className="mx-auto max-w-5xl sm:text-center">
+          <div className="flex flex-col items-center justify-center gap-3 pt-5 md:flex-row">
             <ButtonLink
               href="/syllabus"
+              className="mt-5 w-full rounded-lg py-2 hover:bg-blue-900"
+            >
+              Curriculum Book
+            </ButtonLink>
+            <ButtonLink
+              href="https://drive.google.com/drive/folders/10KCeAYroDNMJ4rLRbJWVaWdgiz84M2vh?usp=sharing"
               className="mt-5 w-full rounded-lg py-2"
             >
-              Curriculum pdf
+              Previous Year Papers
             </ButtonLink>
             {/* <ButtonLink href="/syllabus_cy" className="mt-5 w-full rounded-lg">
               CY Curriculum
@@ -151,7 +148,7 @@ export function Content() {
                 </div>
                 {item.tag && (
                   <div className="mt-4 flex flex-wrap justify-center gap-1">
-                    <span className="whitespace-nowrap rounded-full bg-purple-100 dark:bg-purple-900 px-2.5 py-0.5 text-xs text-purple-600 dark:text-indigo-50">
+                    <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600 dark:bg-purple-900 dark:text-indigo-50">
                       {item.tag}
                     </span>
                   </div>

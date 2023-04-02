@@ -82,119 +82,123 @@ function classNames(...classes) {
 export function Calendar() {
   return (
     <div className="p-0 lg:flex lg:h-full lg:flex-col lg:p-4">
-      <p className="flex items-center justify-center lg:flex-none">
-        Exam TimeTable
+      <p className="flex items-center justify-center lg:flex-none border-t pt-5">
+        SEE Exam TimeTable
       </p>
       <div className="flex items-center justify-center py-3 px-6 lg:flex-none">
-        <h1 className="rounded-md bg-white py-1 px-3 text-lg font-semibold text-gray-900 dark:bg-slate-900 dark:text-white">
+        <h1 className="rounded-md bg-white py-1 px-3 text-lg font-semibold text-gray-900 dark:bg-white/30 dark:text-white">
           <time>{newDate.toLocaleString('default', { month: 'long' })}</time>
         </h1>
       </div>
-      <div className="shadow-lg ring-1 ring-white ring-opacity-90 dark:ring-black lg:flex lg:flex-auto lg:flex-col">
-        <div className="grid grid-cols-7 border-gray-300 bg-gray-200 text-center text-xs font-semibold leading-6 text-gray-700 dark:text-white lg:flex-none">
-          {weekarray.map((day) => (
-            <div
-              key={day.long}
-              className="border bg-white py-2 dark:bg-cost5"
-              aria-hidden="true"
-            >
-              {day.short}
-              <span key={day.long} className="sr-only sm:not-sr-only">
-                {day.long}
-              </span>
-            </div>
-          ))}
-        </div>
-        <div className="flex bg-indigo-50 text-xs leading-6 text-gray-700 dark:bg-cost5 dark:text-zinc-50 lg:flex-auto">
-          {/* Desktop view */}
-          <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-5">
-            {days.map((day) => (
+      <div className="rounded-xl bg-white p-2.5 dark:bg-white/20">
+        <div className="rounded-xl lg:flex lg:flex-auto lg:flex-col">
+          <div className="grid grid-cols-7 text-center text-xs font-semibold leading-6 text-gray-700 dark:bg-cost5 dark:text-white lg:flex-none">
+            {weekarray.map((day) => (
               <div
-                key={day.date}
-                className={classNames(
-                  parseInt(day.date.slice(5, 7)) == currentmonth
-                    ? 'bg-white dark:bg-slate-900'
-                    : 'bg-white/50 dark:bg-slate-800',
-                  'relative border py-2 px-3 dark:border-indigo-50'
-                )}
+                key={day.long}
+                className="border py-2 dark:border-indigo-50"
+                aria-hidden="true"
               >
-                <time
-                  dateTime={day.date}
-                  className={classNames(
-                    todaydate == day.date
-                      ? 'flex h-6 w-6 items-center justify-center rounded-full bg-blue-700 font-semibold text-white'
-                      : undefined,
-                    'px-1 text-sm font-medium'
-                  )}
-                >
-                  {day.date.split('-').pop().replace(/^0/, '')}
-                </time>
-                {day.events.length > 0 && (
-                  <ol className="mt-2">
-                    {day.events.map((event) => (
-                      <li>
-                        <a href={event.href} className="group flex">
-                          <p className="flex-auto truncate rounded-md bg-indigo-50 px-1 align-middle font-medium text-gray-900 group-hover:text-blue-700 dark:bg-slate-900 dark:text-white">
-                            {event.name}
-                          </p>
-                        </a>
-                      </li>
-                    ))}
-                  </ol>
-                )}
+                {day.short}
+                <span key={day.long} className="sr-only sm:not-sr-only">
+                  {day.long}
+                </span>
               </div>
             ))}
           </div>
-          {/* Mobile view */}
-          <div className="isolate grid w-full grid-cols-7 grid-rows-5 rounded-lg lg:hidden">
-            {days.map((day) => (
-              <div
-                key={day.date}
-                className={classNames(
-                  parseInt(day.date.slice(5, 7)) == currentmonth
-                    ? 'bg-white dark:bg-slate-900'
-                    : 'bg-white/50 dark:bg-slate-800',
-                  (day.isSelected || todaydate == day.date) && 'font-semibold',
-                  day.isSelected && 'text-white',
-                  !day.isSelected &&
-                    todaydate == day.date &&
-                    'font-bold text-blue-500',
-                  !day.isSelected &&
-                    parseInt(day.date.slice(5, 7)) == currentmonth &&
-                    !todaydate == day.date &&
-                    'text-gray-900 dark:text-white',
-                  !day.isSelected &&
-                    !parseInt(day.date.slice(5, 7)) == currentmonth &&
-                    !todaydate == day.date &&
-                    'text-gray-500 dark:text-gray-400',
-                  'flex h-16 flex-col items-center border py-2 px-3 align-middle hover:bg-gray-100 focus:z-10 dark:border-indigo-50'
-                )}
-              >
-                <time
-                  dateTime={day.date}
+          <div className="flex bg-indigo-50 text-xs leading-6 text-gray-700 dark:bg-cost5 dark:text-zinc-50 lg:flex-auto">
+            {/* Desktop view */}
+            <div className="hidden w-full lg:grid lg:grid-cols-7 lg:grid-rows-5">
+              {days.map((day) => (
+                <div
+                  key={day.date}
                   className={classNames(
-                    day.isSelected &&
-                      'flex h-6 w-6 items-center justify-center rounded-full',
-                    day.isSelected && todaydate == day.date && 'bg-green-600',
-                    day.isSelected && !todaydate == day.date && 'bg-gray-900'
+                    parseInt(day.date.slice(5, 7)) == currentmonth
+                      ? 'bg-white dark:bg-slate-900'
+                      : 'bg-white/50 dark:bg-slate-800',
+                    'relative border py-2 px-3 dark:border-indigo-50'
                   )}
                 >
-                  {day.date.split('-').pop().replace(/^0/, '')}
-                </time>
-                {day.events.length > 0 && (
-                  <span className="px-1 font-semibold">
-                    {day.events.map((event) => (
-                      <span className="flex justify-center rounded-md bg-indigo-50 px-1 align-middle dark:bg-slate-900 dark:text-white">
-                        {event.name}
-                      </span>
-                    ))}
-                  </span>
-                )}
-              </div>
-            ))}
+                  <time
+                    dateTime={day.date}
+                    className={classNames(
+                      todaydate == day.date
+                        ? 'flex h-6 w-6 items-center justify-center rounded-full bg-blue-700 font-semibold text-white'
+                        : undefined,
+                      'px-1 text-sm font-medium'
+                    )}
+                  >
+                    {day.date.split('-').pop().replace(/^0/, '')}
+                  </time>
+                  {day.events.length > 0 && (
+                    <ol className="mt-2">
+                      {day.events.map((event) => (
+                        <li>
+                          <a href={event.href} className="group flex">
+                            <div className="truncate rounded-md bg-indigo-50 px-2 align-middle font-medium text-gray-900 group-hover:text-blue-700 dark:bg-white/30 dark:text-white">
+                              <p className="text-sh">{event.name}</p>
+                            </div>
+                          </a>
+                        </li>
+                      ))}
+                    </ol>
+                  )}
+                </div>
+              ))}
+            </div>
+            {/* Mobile view */}
+            <div className="isolate grid w-full grid-cols-7 grid-rows-5 rounded-lg lg:hidden">
+              {days.map((day) => (
+                <div
+                  key={day.date}
+                  className={classNames(
+                    parseInt(day.date.slice(5, 7)) == currentmonth
+                      ? 'bg-white dark:bg-slate-900'
+                      : 'bg-white/50 dark:bg-slate-800',
+                    (day.isSelected || todaydate == day.date) &&
+                      'font-semibold',
+                    day.isSelected && 'text-white',
+                    !day.isSelected &&
+                      todaydate == day.date &&
+                      'font-bold text-blue-500',
+                    !day.isSelected &&
+                      parseInt(day.date.slice(5, 7)) == currentmonth &&
+                      !todaydate == day.date &&
+                      'text-gray-900 dark:text-white',
+                    !day.isSelected &&
+                      !parseInt(day.date.slice(5, 7)) == currentmonth &&
+                      !todaydate == day.date &&
+                      'text-gray-500 dark:text-gray-400',
+                    'flex h-16 flex-col items-center border py-2 px-3 align-middle hover:bg-gray-100 focus:z-10 dark:border-indigo-50'
+                  )}
+                >
+                  <time
+                    dateTime={day.date}
+                    className={classNames(
+                      day.isSelected &&
+                        'flex h-6 w-6 items-center justify-center rounded-full',
+                      day.isSelected && todaydate == day.date && 'bg-green-600',
+                      day.isSelected && !todaydate == day.date && 'bg-gray-900'
+                    )}
+                  >
+                    {day.date.split('-').pop().replace(/^0/, '')}
+                  </time>
+                  {day.events.length > 0 && (
+                    <span className="px-1 font-semibold">
+                      {day.events.map((event) => (
+                        <span className="flex justify-center rounded-md bg-indigo-50 px-1 align-middle dark:bg-white/30 dark:text-white">
+                          {event.name}
+                        </span>
+                      ))}
+                    </span>
+                  )}
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
+
       {selectedDay?.events.length > 0 && (
         <div className="py-10 px-4 sm:px-6 lg:hidden">
           <ol className="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow ring-1 ring-black ring-opacity-5">
