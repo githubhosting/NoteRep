@@ -18,7 +18,7 @@ export function Author() {
       <div className="relative mx-auto max-w-5xl pt-16 sm:px-6">
         <div className="ownshadow bg-slate-50 pt-px drop-shadow-2xl dark:bg-slate-800 sm:rounded-5xl">
           <div className="authorbg box avatar relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
-            <div className="content inset-[3px] border-4 border-indigo-50 dark:border-cost5 lg:inset-1">
+            <div className="content inset-[2.5px] border-[2.5px] border-indigo-50 dark:border-cost5 lg:inset-1 lg:border-4">
               <img
                 className="rounded-full"
                 src="https://user-images.githubusercontent.com/94772842/226668387-d274bcb5-cfaa-4e19-a2bc-2c083a59d8e0.jpg"

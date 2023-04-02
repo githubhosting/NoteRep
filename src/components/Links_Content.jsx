@@ -62,7 +62,7 @@ export function Content() {
     <section className="bg-indigo-50 dark:bg-gray-900">
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900">
+          <h2 className="text-center text-2xl font-medium tracking-tight dark:text-indigo-50 text-gray-900">
             Shared Links
           </h2>
           <p className="mt-2 text-center text-lg text-gray-500 dark:text-white">

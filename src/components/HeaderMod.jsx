@@ -130,7 +130,7 @@ function MobileNavigation(props) {
                 {/* <MobileNavItem href="#schedule">Physics Cycle</MobileNavItem>
                 <MobileNavItem href="#schedule">Chemistry Cycle</MobileNavItem> */}
                 <MobileNavItem href="https://myselfshravan.github.io/">
-                  Author
+                  Developer
                 </MobileNavItem>
               </ul>
             </nav>
@@ -414,7 +414,7 @@ export function HeaderMod() {
         style={{ position: 'var(--header-position)' }}
       >
         <div
-          className="top-[var(--header-top,theme(spacing.6))] mx-auto w-full max-w-4xl pr-6 pl-4 sm:px-16 lg:px-12"
+          className="top-[var(--header-top,theme(spacing.6))] mx-auto w-full max-w-4xl pl-4 pr-6 sm:px-16 lg:px-12"
           style={{ position: 'var(--header-inner-position)' }}
         >
           <div className="relative flex gap-4">

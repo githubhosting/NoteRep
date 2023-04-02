@@ -127,10 +127,11 @@ function MobileNavigation(props) {
                 <MobileNavItem href="/ci">CSE (AI & ML)</MobileNavItem>
                 <MobileNavItem href="/cy">CSE (CY)</MobileNavItem>
                 <MobileNavItem href="/noterep-forum">Forum</MobileNavItem>
+                <MobileNavItem href="/links">Other Links</MobileNavItem>
                 {/* <MobileNavItem href="#schedule">Physics Cycle</MobileNavItem>
                 <MobileNavItem href="#schedule">Chemistry Cycle</MobileNavItem> */}
                 <MobileNavItem href="https://myselfshravan.github.io/">
-                  Author
+                  Developer
                 </MobileNavItem>
               </ul>
             </nav>
@@ -197,6 +198,7 @@ function DesktopNavigation(props) {
         <NavItem href="/ci">CSE (AI & ML)</NavItem>
         <NavItem href="/cy">CSE (CY)</NavItem>
         <NavItem href="/noterep-forum">Forum</NavItem>
+        <NavItem href="/links">Other Links</NavItem>
         {/* <NavItem href="#schedule">First Year</NavItem> */}
         <NavItem_ href="https://myselfshravan.github.io/">Developer</NavItem_>
       </ul>
@@ -414,7 +416,7 @@ export function Header() {
         style={{ position: 'var(--header-position)' }}
       >
         <div
-          className="top-[var(--header-top,theme(spacing.6))] mx-auto w-full max-w-4xl pr-6 pl-4 sm:px-16 lg:px-12"
+          className="top-[var(--header-top,theme(spacing.6))] mx-auto w-full max-w-4xl pl-4 pr-6 sm:px-16 lg:px-12"
           style={{ position: 'var(--header-inner-position)' }}
         >
           <div className="relative flex gap-4">
