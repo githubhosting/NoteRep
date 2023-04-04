@@ -86,12 +86,12 @@ export function Calendar() {
         SEE Exam TimeTable
       </p>
       <div className="flex items-center justify-center py-3 px-6 lg:flex-none">
-        <h1 className="rounded-md bg-white py-1 px-3 text-lg font-semibold text-gray-900 dark:bg-white/30 dark:text-white">
+        <h1 className="bg-white py-1 px-3 text-lg font-semibold text-gray-900 dark:bg-white/30 dark:text-white rounded-md">
           <time>{newDate.toLocaleString('default', { month: 'long' })}</time>
         </h1>
       </div>
-      <div className="rounded-xl bg-white p-2.5 dark:bg-white/20">
-        <div className="rounded-xl lg:flex lg:flex-auto lg:flex-col">
+      <div className="bg-white dark:bg-slate-800 p-2 rounded-xl">
+        <div className="lg:flex lg:flex-auto lg:flex-col">
           <div className="grid grid-cols-7 text-center text-xs font-semibold leading-6 text-gray-700 dark:bg-cost5 dark:text-white lg:flex-none">
             {weekarray.map((day) => (
               <div

@@ -41,11 +41,13 @@ export function Hero() {
               <p className="text-base font-medium">
                 You can also contribute to this project by adding more notes.{' '}
                 <a
-                  className="font-semibold underline"
+                  className="text-base underline"
                   href="https://drive.google.com/drive/folders/1qRi18giG_H8Zr8KtlSyVNCbjp2UruvRp?usp=sharing"
                 >
-                  Click here to upload
-                </a>
+                  Click here
+                </a>{' '}
+                Or you can upload to a folder called "Upload Here" in respected
+                subjects folder.
               </p>
               {/* <p className="text-base font-semibold">
                 You can now simply search <i className="font-bold">"noterep"</i>{' '}
@@ -112,7 +114,7 @@ export function Hero() {
               <a
                 href="https://discord.gg/YqqfGsatw4"
                 target="_blank"
-                className="inline-flex items-center rounded-lg border py-1 px-3 text-base font-medium tracking-tight text-gray-900 shadow-xl hover:shadow-none dark:border-zinc-600 dark:text-white dark:shadow-num_d1 dark:hover:shadow-none"
+                className="inline-flex items-center rounded-lg border px-3 py-1 text-base font-medium tracking-tight text-gray-900 shadow-xl hover:shadow-none dark:border-zinc-600 dark:text-white dark:shadow-num_d1 dark:hover:shadow-none"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
