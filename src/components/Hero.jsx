@@ -33,21 +33,22 @@ export function Hero() {
               NoteRep
             </h1>
             <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900 dark:text-[#fefefe]">
-              <p>An Open-Source Notes Sharing Platform</p>
-              <p className="text-base font-medium">
+              <p className="text-lg">An Open-Source Notes Sharing Platform</p>
+              {/* <p className="text-base font-medium">
                 Please let me know if there are any errors or if you want to
                 update anything in the notes.
-              </p>
+              </p> */}
               <p className="text-base font-medium">
-                You can also contribute to this project by adding more notes.{' '}
+                Contribute to this project: Add Notes{' '}
                 <a
                   className="text-base underline"
                   href="https://drive.google.com/drive/folders/1qRi18giG_H8Zr8KtlSyVNCbjp2UruvRp?usp=sharing"
                 >
-                  Click here
-                </a>{' '}
-                Or you can upload to a folder called "Upload Here" in respected
-                subjects folder.
+                  Here
+                </a>
+                <br></br>
+                You can also upload to the "Upload Here" Folder in Respective
+                Subject Folders.
               </p>
               {/* <p className="text-base font-semibold">
                 You can now simply search <i className="font-bold">"noterep"</i>{' '}
@@ -62,7 +63,7 @@ export function Hero() {
                 for suggesting this name.
               </p> */}
               <p className="text-base font-normal">
-                Anyone interested in collecting notes for other branches can{' '}
+                Anyone interested in sharing notes for other branches can{' '}
                 <a
                   className="font-semibold underline"
                   href="https://wa.me/919945332995?text=Hey, This is regarding NoteRep ..."
@@ -82,7 +83,7 @@ export function Hero() {
                 </button>
               )} */}
               <p className="text-base font-semibold italic">
-                Introducing the new feature - NoteRep Forum (Beta).
+                Introducing the new beta feature!
               </p>
               <ButtonLink
                 href="/noterep-forum"

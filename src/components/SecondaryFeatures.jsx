@@ -59,7 +59,7 @@ export function SecondaryFeatures() {
                   </p> */}
                   <div className="flex justify-center">
                     <a
-                      className="mt-2 rounded border border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-300 dark:text-blue-400 hover:dark:text-white"
+                      className="mt-2 rounded border border-blue-500 bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-300 dark:text-blue-400 hover:dark:text-white"
                       href={item.href}
                       target="_blank"
                     >
@@ -69,10 +69,10 @@ export function SecondaryFeatures() {
                 </li>
               ))}
             </ul>
-            <dl className="mt-10 grid grid-cols-2 gap-y-6 gap-x-10 rounded-xl border p-4 sm:mt-16 sm:gap-y-10 sm:gap-x-16 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none">
+            <dl className="mt-10 grid grid-cols-2 gap-x-10 gap-y-6 rounded-xl border p-4 sm:mt-16 sm:gap-x-16 sm:gap-y-10 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none">
               {[
-                ['Total Web Clics*', '3.51K'],
-                ['Total impressions*', '4.89K'],
+                ['Total Web Clics*', '3.97K'],
+                ['Total impressions*', '5.33K'],
               ].map(([name, value]) => (
                 <div key={name}>
                   <dt className="font-mono text-sm text-blue-600 dark:text-zinc-100">

@@ -29,7 +29,7 @@ export function FreeChapters() {
                 resources.
               </p>
               <ButtonLink
-                href="whatsapp://send?text=https://www.msrit.ml/"
+                href="whatsapp://send?text=https://www.noterep.live/"
                 color="white"
                 className="mt-5 shadow-xl"
               >

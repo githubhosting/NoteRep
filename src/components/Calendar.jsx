@@ -82,15 +82,15 @@ function classNames(...classes) {
 export function Calendar() {
   return (
     <div className="p-0 lg:flex lg:h-full lg:flex-col lg:p-4">
-      <p className="flex items-center justify-center lg:flex-none border-t pt-5">
+      <p className="flex items-center justify-center border-t pt-5 lg:flex-none">
         SEE Exam TimeTable
       </p>
-      <div className="flex items-center justify-center py-3 px-6 lg:flex-none">
-        <h1 className="bg-white py-1 px-3 text-lg font-semibold text-gray-900 dark:bg-white/30 dark:text-white rounded-md">
+      <div className="flex items-center justify-center px-6 py-3 lg:flex-none">
+        <h1 className="rounded-md bg-white px-3 py-1 text-lg font-semibold text-gray-900 dark:bg-white/30 dark:text-white">
           <time>{newDate.toLocaleString('default', { month: 'long' })}</time>
         </h1>
       </div>
-      <div className="bg-white dark:bg-slate-800 p-2 rounded-xl">
+      <div className="rounded-xl bg-white p-2 dark:bg-slate-800">
         <div className="lg:flex lg:flex-auto lg:flex-col">
           <div className="grid grid-cols-7 text-center text-xs font-semibold leading-6 text-gray-700 dark:bg-cost5 dark:text-white lg:flex-none">
             {weekarray.map((day) => (
@@ -116,7 +116,7 @@ export function Calendar() {
                     parseInt(day.date.slice(5, 7)) == currentmonth
                       ? 'bg-white dark:bg-slate-900'
                       : 'bg-white/50 dark:bg-slate-800',
-                    'relative border py-2 px-3 dark:border-indigo-50'
+                    'relative border px-3 py-2 dark:border-indigo-50'
                   )}
                 >
                   <time
@@ -169,16 +169,14 @@ export function Calendar() {
                       !parseInt(day.date.slice(5, 7)) == currentmonth &&
                       !todaydate == day.date &&
                       'text-gray-500 dark:text-gray-400',
-                    'flex h-16 flex-col items-center border py-2 px-3 align-middle hover:bg-gray-100 focus:z-10 dark:border-indigo-50'
+                    'flex h-16 flex-col items-center border px-3 py-2 align-middle hover:bg-gray-100 focus:z-10 dark:border-indigo-50'
                   )}
                 >
                   <time
                     dateTime={day.date}
                     className={classNames(
-                      day.isSelected &&
-                        'flex h-6 w-6 items-center justify-center rounded-full',
-                      day.isSelected && todaydate == day.date && 'bg-green-600',
-                      day.isSelected && !todaydate == day.date && 'bg-gray-900'
+                      todaydate == day.date &&
+                        'flex h-6 w-6 items-center justify-center rounded-full bg-blue-700 font-semibold text-white'
                     )}
                   >
                     {day.date.split('-').pop().replace(/^0/, '')}
@@ -186,7 +184,7 @@ export function Calendar() {
                   {day.events.length > 0 && (
                     <span className="px-1 font-semibold">
                       {day.events.map((event) => (
-                        <span className="flex justify-center rounded-md bg-indigo-50 px-1 align-middle dark:bg-white/30 dark:text-white">
+                        <span className="flex justify-center rounded-md bg-indigo-50 px-1 align-middle dark:bg-[#0071f0] dark:text-white">
                           {event.name}
                         </span>
                       ))}
@@ -200,7 +198,7 @@ export function Calendar() {
       </div>
 
       {selectedDay?.events.length > 0 && (
-        <div className="py-10 px-4 sm:px-6 lg:hidden">
+        <div className="px-4 py-10 sm:px-6 lg:hidden">
           <ol className="divide-y divide-gray-100 overflow-hidden rounded-lg bg-white text-sm shadow ring-1 ring-black ring-opacity-5">
             {selectedDay.events.map((event) => (
               <li
@@ -218,7 +216,7 @@ export function Calendar() {
                 </div>
                 <a
                   href={event.href}
-                  className="ml-6 flex-none self-center rounded-md border border-gray-300 bg-white py-2 px-3 font-semibold text-gray-700 opacity-0 shadow-sm hover:bg-gray-50 focus:opacity-100 group-hover:opacity-100"
+                  className="ml-6 flex-none self-center rounded-md border border-gray-300 bg-white px-3 py-2 font-semibold text-gray-700 opacity-0 shadow-sm hover:bg-gray-50 focus:opacity-100 group-hover:opacity-100"
                 >
                   Edit<span className="sr-only">, {event.name}</span>
                 </a>

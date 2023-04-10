@@ -4,7 +4,7 @@ NoteRep is a [Tailwind UI](https://tailwindui.com) Study Material site built usi
 
 Here is the link of the website hosted on Vercel [noterep.vercel.app](https://noterep.vercel.app)
 
-[msrit.ml](https://msrit.ml)
+[noterep.live](https://noterep.live)
 
 This Website is developed by Shravan : [My Portfolio](https://myselfshravan.github.io/) 🚀
 
