@@ -31,37 +31,8 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-04-10',
-    name: 'AEC',
-  },
-  {
-    date: '2023-04-12',
-    name: 'Maths',
-    href: '#',
-  },
-  {
-    date: '2023-04-15',
-    name: 'UHV',
-  },
-  {
-    date: '2023-04-17',
-    name: 'DBMS',
-  },
-  {
-    date: '2023-04-19',
-    name: 'DS',
-  },
-  {
-    date: '2023-04-21',
-    name: 'COA',
-  },
-  {
-    date: '2023-04-24',
-    name: 'DMS',
-  },
-  {
-    date: '2023-04-26',
-    name: 'Kan',
+    date: '',
+    name: '',
   },
 ]
 
