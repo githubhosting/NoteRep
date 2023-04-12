@@ -1,5 +1,7 @@
 import Head from 'next/head'
 import { Container } from '@/components/Container'
+import { Transition } from '@headlessui/react'
+import { Switch } from '@headlessui/react'
 
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
@@ -20,6 +22,7 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Timetable } from '@/components/Timetable'
 import { Calendar } from '@/components/Calendar'
+import { Counter } from '@/components/Calendar'
 import { Button } from '@/components/Button'
 
 export default function Home() {
@@ -42,7 +45,6 @@ export default function Home() {
     })
   }
 
-  // Dark Mode
   useEffect(() => {
     if (
       localStorage.theme === 'dark' ||
@@ -57,6 +59,22 @@ export default function Home() {
     localStorage.theme = 'dark'
     localStorage.removeItem('theme')
   }, [])
+
+  const [isShowing, setIsShowing] = useState(false)
+  const [enabled, setEnabled] = useState(false)
+
+  const examDate = new Date('2021-12-17T00:00:00')
+  const today = new Date()
+  const diff = examDate.getTime() - today.getTime()
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+  const [counter, setCounter] = useState(seconds)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCounter((counter) => counter - 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
+
   return (
     <>
       <Head>
@@ -65,13 +83,53 @@ export default function Home() {
           name="description"
           content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester"
         />
+        <meta name="theme-color" content="black-translucent" />
+        <meta
+          name="google-site-verification"
+          content="DPpz834E16UpWaEWBrvGKyPEdkGHggpb6UwrQkBKqXs"
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+          name="keywords"
+          content="noterep, notes, notes sharing, notes msrit, noterep.live, cse aiml notes, cse cy notes, cse notes, msrit notes, msrit cse notes, msrit cse aiml notes, msrit"
+        />
+        <meta name="author" content="Shravan Revanna" />
       </Head>
       <div className="bg-indigo-50 dark:bg-cost5 dark:text-white">
         <HeaderMod />
         <Container>
-          <h2 className="mt-10 pb-5 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
+          <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
             3rd Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
           </h2>
+          <div className="flex flex-row items-center gap-2 py-3 lg:p-5">
+            <Switch
+              checked={enabled}
+              onChange={setEnabled}
+              className={`${
+                enabled ? 'bg-blue-600' : 'bg-white dark:bg-gray-500'
+              } relative inline-flex h-6 w-11 items-center rounded-full`}
+            >
+              <span
+                className={`${
+                  enabled ? 'translate-x-6' : 'translate-x-1'
+                } inline-block h-4 w-4 transform rounded-full bg-gray-200 transition dark:bg-white`}
+              />
+            </Switch>
+            <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
+              {enabled ? 'Hide Countdown' : 'Show Countdown'}
+            </p>
+          </div>
+          <Transition
+            show={enabled}
+            enter="transition-opacity duration-150"
+            enterFrom="opacity-0"
+            enterTo="opacity-100"
+            leave="transition-opacity duration-150"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Counter />
+          </Transition>
           <Calendar />
         </Container>
         {/* <Timetable /> */}

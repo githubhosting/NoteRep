@@ -15,6 +15,8 @@ import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Model } from '@/components/Model'
+import { Calendar } from '@/components/Calendar'
+import { Container } from '@/components/Container'
 
 export default function Home() {
   const [showButton, setShowButton] = useState(false)

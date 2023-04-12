@@ -56,6 +56,7 @@ module.exports = {
         num_d: '3px 3px 3px #1c1d26, -3px -3px 3px #343746',
         num_d2: ['20px 20px 51px #04070d', '-20px -20px 51px #121b33'],
         num_d1: ['10px 10px 20px #04070d', '-10px -10px 20px #121b33'],
+        num_d3: ['30px 30px 51px #04070d', '-30px -30px 51px #121b33'],
         '5xl': [
           '0 10px 15px -3px rgb(255 255 255 / 0.1)',
           '0 4px 6px -4px rgb(255 255 255 / 0.1)',
@@ -78,4 +79,5 @@ module.exports = {
     },
   },
   plugins: [require('@tailwindcss/line-clamp')],
+  plugins: [require('daisyui')],
 }

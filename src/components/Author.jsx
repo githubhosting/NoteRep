@@ -19,21 +19,15 @@ export function Author() {
         <div className="ownshadow bg-slate-50 pt-px drop-shadow-2xl dark:bg-slate-800 sm:rounded-5xl">
           <div className="authorbg box avatar relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
             <div className="content inset-[2.5px] border-[2.5px] border-indigo-50 dark:border-cost5 lg:inset-1 lg:border-4">
-              <img
-                className="rounded-full"
-                src="https://user-images.githubusercontent.com/94772842/226668387-d274bcb5-cfaa-4e19-a2bc-2c083a59d8e0.jpg"
+              <Image
+                className="box_img rounded-full"
+                src={authorImageNew}
                 alt="Shravan"
+                priority={true}
               />
-              <a
-                href="https://myselfshravan.github.io"
-                target="_blank"
-                className="flex rounded-full bg-white p-0.5 dark:bg-black"
-              >
-                Portfolio
-              </a>
             </div>
           </div>
-          <div className="md:py-17 px-4 pb-6 sm:px-10 sm:py-12 lg:px-20 lg:pt-20 lg:pb-10">
+          <div className="md:py-17 px-4 pb-6 sm:px-10 sm:py-12 lg:px-20 lg:pb-10 lg:pt-20">
             <p className="mt-8 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               <span className="block bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text font-extrabold text-blue-600 text-transparent shadow-blue-600/60 drop-shadow-xl sm:text-6xl">
                 Shravan

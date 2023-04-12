@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import { Transition } from '@headlessui/react'
 import { usePWAInstall } from 'react-use-pwa-install'
 import React from 'react'
 import { useState } from 'react'
@@ -50,6 +51,7 @@ export function Hero() {
                 You can also upload to the "Upload Here" Folder in Respective
                 Subject Folders.
               </p>
+
               {/* <p className="text-base font-semibold">
                 You can now simply search <i className="font-bold">"noterep"</i>{' '}
                 on google and find this website listing in the top results of

@@ -9,7 +9,8 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
 let newDate = new Date()
-let todaydate = newDate.toISOString().slice(0, 10)
+// let todaydate = newDate.toISOString().slice(0, 10)
+let todaydate = '2023-04-16'
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []
@@ -73,19 +74,77 @@ const selectedDay = days.find((day) => day.isSelected)
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
+export function Counter() {
+  const next_exam = exam.filter((event) => event.date > todaydate)
+  const next_exam_date = next_exam[0].date
+  const next_exam_name = next_exam[0].name
+  const next_exam_date_time = next_exam_date + 'T09:30:00'
+  const examdate = new Date(next_exam_date_time)
+  const today = new Date()
+  const diffTime = examdate - today
+  const diff = examdate.getTime() - today.getTime()
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+  const diffSeconds = Math.ceil(diffTime / 1000)
+  const days_ = Math.floor(diffSeconds / 86400)
+  const hours_ = Math.floor((diffSeconds % 86400) / 3600)
+  const minutes_ = Math.floor(((diffSeconds % 86400) % 3600) / 60)
+  const seconds_ = Math.floor(((diffSeconds % 86400) % 3600) % 60)
+
+  const [counter, setCounter] = useState(seconds)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCounter((counter) => counter - 1)
+    }, 1000 * 60 * 60 * 24)
+    return () => clearInterval(interval)
+  }, [])
+  console.log(counter)
+  return (
+    <div>
+      <p className="flex items-center justify-center pt-5 text-slate-900 dark:text-zinc-50 lg:flex-none">
+        Next Exam: {next_exam_name}
+      </p>
+      <div className="grid auto-cols-max grid-flow-col justify-center gap-3 py-5 text-center lg:gap-6">
+        <div className="rounded-box flex flex-col bg-white p-3 text-slate-900 dark:bg-neutral dark:text-zinc-50">
+          <span className="countdown font-mono text-4xl lg:text-5xl">
+            <span style={{ '--value': days_ }}></span>
+          </span>
+          days
+        </div>
+        <div className="rounded-box flex flex-col bg-white p-3 text-slate-900 dark:bg-neutral dark:text-zinc-50">
+          <span className="countdown font-mono text-4xl lg:text-5xl">
+            <span style={{ '--value': hours_ }}></span>
+          </span>
+          hours
+        </div>
+        <div className="rounded-box flex flex-col bg-white p-3 text-slate-900 dark:bg-neutral dark:text-zinc-50">
+          <span className="countdown font-mono text-4xl lg:text-5xl">
+            <span style={{ '--value': minutes_ }}></span>
+          </span>
+          min
+        </div>
+        <div className="rounded-box flex flex-col bg-white p-3 text-slate-900 dark:bg-neutral dark:text-zinc-50">
+          <span className="countdown font-mono text-4xl lg:text-5xl">
+            <span style={{ '--value': seconds_ }}></span>
+          </span>
+          sec
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export function Calendar() {
   return (
-    <div className="p-0 lg:flex lg:h-full lg:flex-col lg:p-4">
-      <p className="flex items-center justify-center border-t pt-5 lg:flex-none">
+    <div className="border-t p-0 lg:flex lg:h-full lg:flex-col lg:p-4 ">
+      <p className="flex items-center justify-center pt-5 text-slate-900 dark:text-zinc-50 lg:flex-none">
         SEE Exam TimeTable
       </p>
-      <div className="flex items-center justify-center px-6 py-3 lg:flex-none">
-        <h1 className="rounded-md bg-white px-3 py-1 text-lg font-semibold text-gray-900 dark:bg-[#0071f0] dark:text-white">
+      <div className="flex items-center justify-center px-6 py-4 lg:flex-none">
+        <h1 className="rounded-md bg-white px-3 text-lg font-semibold text-gray-900 dark:bg-[#0071f0] dark:text-white">
           <time>{newDate.toLocaleString('default', { month: 'long' })}</time>
         </h1>
       </div>
-      <div className="rounded-xl bg-white p-2 dark:bg-gray-900 lg:p-3 border dark:border-gray-300">
+      <div className="rounded-xl border bg-white p-2 shadow-xl dark:border-gray-500 dark:bg-gray-900 dark:shadow-num_d1 lg:p-3">
         <div className="lg:flex lg:flex-auto lg:flex-col">
           <div className="grid grid-cols-7 text-center text-xs font-semibold leading-6 text-gray-700 dark:text-white lg:flex-none lg:rounded-t-lg">
             {weekarray.map((day) => (
@@ -99,7 +158,7 @@ export function Calendar() {
           </div>
           <div className="flex text-xs leading-6 text-gray-700 dark:text-zinc-50 lg:flex-auto">
             {/* Desktop view */}
-            <div className="isolate hidden w-full gap-px rounded-lg bg-gray-200 shadow ring-1 ring-gray-200 dark:bg-slate-600 dark:bg-white/40 dark:ring-gray-100 lg:grid lg:grid-cols-7 lg:grid-rows-5">
+            <div className="isolate hidden w-full gap-px rounded-lg bg-gray-200 shadow ring-1 ring-gray-200 dark:bg-slate-600 dark:bg-white/40 dark:ring-gray-500 lg:grid lg:grid-cols-7 lg:grid-rows-5">
               {days.map((day, dayIdx) => (
                 <div
                   key={day.date}
@@ -142,7 +201,7 @@ export function Calendar() {
               ))}
             </div>
             {/* Mobile view */}
-            <div className="ring-grey-200 isolate grid w-full grid-cols-7 grid-rows-5 gap-px rounded-lg bg-slate-100 ring-1 dark:ring-white lg:hidden">
+            <div className="ring-grey-200 isolate grid w-full grid-cols-7 grid-rows-5 gap-px rounded-lg bg-slate-300 ring-1 dark:ring-gray-500 lg:hidden">
               {days.map((day, dayIdx) => (
                 <div
                   key={day.date}

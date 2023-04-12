@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { ButtonLink } from '@/components/Button2'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-call-to-action.jpg'
+import { Calendar } from '@/components/Calendar'
 
 export function CallToAction() {
   return (
@@ -17,7 +18,7 @@ export function CallToAction() {
                   // href="https://gpaestimator.streamlit.app/"
                   // target="_blank"
                   href="/calculla"
-                  className="grad_button py-2 px-4 font-semibold"
+                  className="grad_button px-4 py-2 font-semibold"
                 >
                   Calculla - GPA Estimator
                 </a>
@@ -75,6 +76,9 @@ export function CallToAction() {
           <p className="border-b border-blue-900 pb-10 text-center text-3xl font-bold dark:border-white/70"></p>
         </div>
       </div>
+      {/* <Container>
+        <Calendar />
+      </Container> */}
     </section>
   )
 }

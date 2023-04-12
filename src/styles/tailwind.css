@@ -229,7 +229,7 @@ iframe {
   overflow: hidden;
   flex-direction: column;
 }
-.box .content img {
+.box_img {
   position: absolute;
   top: 0;
   left: 0;
@@ -256,7 +256,7 @@ iframe {
   font-size: 13px;
   padding: 5px 0;
 }
-.box .content a {
+.box_a {
   position: relative;
   background-color: #fff;
   color: #000;
@@ -272,8 +272,8 @@ iframe {
 .box:hover::before {
   inset: -20px 0px;
 }
-.box:hover img {
-  opacity: 0;
+.box:hover .box_img {
+  transform: scale(1.2);
 }
 
 @-webkit-keyframes animate {

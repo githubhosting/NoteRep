@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { Container } from '@/components/Container'
+
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
@@ -14,6 +16,8 @@ import { CallToAction } from '@/components/CallToAction'
 import { Introduction } from '@/components/Introduction'
 import { FreeChapters } from '@/components/FreeChapters'
 import chevronup from '@/images/chevronup.svg'
+import { Calendar } from '@/components/Calendar'
+
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 
@@ -49,6 +53,12 @@ export default function Home() {
       </Head>
       <Header />
       <main className="bg-indigo-50 dark:bg-cost5 dark:text-white">
+        <Container>
+          <h2 className="pb-5 pt-10 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
+            3rd Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
+          </h2>
+          <Calendar />
+        </Container>
         <Content />
         <Author />
       </main>

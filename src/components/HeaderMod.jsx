@@ -323,7 +323,6 @@ export function HeaderMod() {
         document.body.scrollHeight - window.innerHeight
       )
       let dark = document.documentElement.classList.contains('dark')
-      console.log(dark)
 
       if (isInitial.current) {
         setProperty('--header-position', 'sticky')
