@@ -193,13 +193,25 @@ iframe {
   /* transform: translatey(0px);
   animation: float 6s ease-in-out infinite; */
 }
-/* .avatar:hover {
-  animation-play-state: paused;
-} */
+@-webkit-keyframes animate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes animate {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .box {
   position: relative;
-  width: 150px;
-  height: 150px;
   border-radius: 50%;
   overflow: hidden;
 }
@@ -228,17 +240,6 @@ iframe {
   align-items: center;
   overflow: hidden;
   flex-direction: column;
-}
-.box_img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  transition: 0.5s;
-  text-align: center;
-  pointer-events: none;
-  z-index: 3;
 }
 .box .content h2 {
   position: relative;
@@ -272,26 +273,7 @@ iframe {
 .box:hover::before {
   inset: -20px 0px;
 }
-.box:hover .box_img {
-  transform: scale(1.2);
-}
 
-@-webkit-keyframes animate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-@keyframes animate {
-  0% {
-    transform: rotate(0);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
 .button-85 {
   padding: 0.6em 2em;
   border: none;

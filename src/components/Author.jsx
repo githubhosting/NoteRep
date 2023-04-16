@@ -17,23 +17,24 @@ export function Author() {
       </div>
       <div className="relative mx-auto max-w-5xl pt-16 sm:px-6">
         <div className="ownshadow bg-slate-50 pt-px drop-shadow-2xl dark:bg-slate-800 sm:rounded-5xl">
-          <div className="authorbg box avatar relative mx-auto -mt-16 h-44 w-44 overflow-hidden rounded-full shadow-lg md:float-right md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
+          <div className="authorbg box avatar relative float-right mx-auto -mt-16 mr-5 h-44 w-44 overflow-hidden rounded-full shadow-lg md:h-64 md:w-64 md:[shape-outside:circle(40%)] lg:mr-20 lg:h-72 lg:w-72">
             <div className="content inset-[2.5px] border-[2.5px] border-indigo-50 dark:border-cost5 lg:inset-1 lg:border-4">
               <Image
-                className="box_img rounded-full"
+                className="rounded-full duration-500 ease-in-out hover:scale-125"
                 src={authorImageNew}
                 alt="Shravan"
                 priority={true}
+                onClick={() => { window.open('https://myselfshravan.github.io') }}
               />
             </div>
           </div>
-          <div className="md:py-17 px-4 pb-6 sm:px-10 sm:py-12 lg:px-20 lg:pb-10 lg:pt-20">
+          <div className="md:py-17 px-4 py-6 sm:px-10 sm:py-12 lg:px-20 lg:pb-10 lg:pt-20">
             <p className="mt-8 font-display text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               <span className="block bg-gradient-to-r from-blue-500 to-cyan-500 bg-clip-text font-extrabold text-blue-600 text-transparent shadow-blue-600/60 drop-shadow-xl sm:text-6xl">
                 Shravan
               </span>
               <span className="mt-2 block text-2xl text-slate-900 dark:text-white">
-                I’m the developer behind ‘NoteRep’
+                I’m the developer behind 'NoteRep'
               </span>
             </p>
             {/* <p className="mt-4 text-lg tracking-tight text-slate-700">
@@ -67,17 +68,6 @@ export function Author() {
                 <span className="ml-4">Connect on Linkedin</span>
               </a>
             </p>
-            {/* <p className="mt-8">
-              <a
-                href="#"
-                className="inline-flex items-center text-base font-medium tracking-tight text-blue-600"
-              >
-                <svg aria-hidden="true" className="h-10 w-10 fill-current">
-                  <path d="M13.817 33.753c12.579 0 19.459-10.422 19.459-19.458 0-.297 0-.592-.02-.884a13.913 13.913 0 0 0 3.411-3.543 13.65 13.65 0 0 1-3.928 1.077 6.864 6.864 0 0 0 3.007-3.784 13.707 13.707 0 0 1-4.342 1.66 6.845 6.845 0 0 0-11.655 6.239A19.417 19.417 0 0 1 5.654 7.915a6.843 6.843 0 0 0 2.117 9.128 6.786 6.786 0 0 1-3.104-.853v.086a6.842 6.842 0 0 0 5.487 6.704 6.825 6.825 0 0 1-3.088.116 6.847 6.847 0 0 0 6.39 4.75A13.721 13.721 0 0 1 3.334 30.68a19.36 19.36 0 0 0 10.483 3.066" />
-                </svg>
-                <span className="ml-4">Follow on Twitter</span>
-              </a>
-            </p> */}
             <p className="mt-4">
               <a
                 href="https://github.com/myselfshravan"
@@ -101,7 +91,7 @@ export function Author() {
             <p className="mt-4">
               <a
                 href="https://www.instagram.com/shravan_revanna/"
-                className="inline-flex items-center text-base font-medium tracking-tight text-[#FD1D1D] drop-shadow-lg dark:text-white"
+                className="inline-flex items-center text-base font-medium tracking-tight text-gray-800 drop-shadow-lg dark:text-white"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
