@@ -9,8 +9,8 @@ import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 
 let newDate = new Date()
-// let todaydate = newDate.toISOString().slice(0, 10)
-let todaydate = '2023-04-16'
+let todaydate = newDate.toISOString().slice(0, 10)
+// let todaydate = '2023-04-16'
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []

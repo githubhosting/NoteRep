@@ -73,7 +73,7 @@ export function Hero() {
                   approach me.
                 </a>
               </p>
-              {/* {install && (
+              {install && (
                 <button
                   id="button"
                   class="hover:glow dark:highlight-white/20 group flex cursor-pointer items-center justify-between overflow-hidden rounded-md bg-blue-500 text-white shadow transition-all dark:bg-blue-700 dark:shadow-5xl dark:hover:bg-blue-400"
@@ -83,7 +83,7 @@ export function Hero() {
                     Install App
                   </p>
                 </button>
-              )} */}
+              )}
               <p className="text-base font-semibold italic">
                 Introducing the new beta feature!
               </p>
