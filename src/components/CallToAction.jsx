@@ -3,9 +3,29 @@ import Image from 'next/image'
 import { ButtonLink } from '@/components/Button2'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-call-to-action.jpg'
-import { Calendar } from '@/components/Calendar'
+import { Calendar } from '@/components/Calendarjr'
+import { Counter } from '@/components/Calendarjr'
+import { Transition } from '@headlessui/react'
+import { Switch } from '@headlessui/react'
+import { useEffect, useState } from 'react'
 
 export function CallToAction() {
+  const [showButton, setShowButton] = useState(false)
+
+  const [isShowing, setIsShowing] = useState(false)
+  const [enabled, setEnabled] = useState(false)
+
+  const examDate = new Date('2021-12-17T00:00:00')
+  const today = new Date()
+  const diff = examDate.getTime() - today.getTime()
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+  const [counter, setCounter] = useState(seconds)
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCounter((counter) => counter - 1)
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
   return (
     <section className="relative bg-indigo-50 dark:bg-gray-900">
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -76,9 +96,38 @@ export function CallToAction() {
           <p className="border-b border-blue-900 pb-10 text-center text-3xl font-bold dark:border-white/70"></p>
         </div>
       </div>
-      {/* <Container>
-        <Calendar />
-      </Container> */}
+      <Container>
+        <div className="flex flex-row items-center gap-2 py-3 lg:p-5 justify-center">
+          <Switch
+            checked={enabled}
+            onChange={setEnabled}
+            className={`${
+              enabled ? 'bg-blue-600' : 'bg-white dark:bg-gray-500'
+            } relative inline-flex h-6 w-11 items-center rounded-full`}
+          >
+            <span
+              className={`${
+                enabled ? 'translate-x-6' : 'translate-x-1'
+              } inline-block h-4 w-4 transform rounded-full bg-gray-200 transition dark:bg-white`}
+            />
+          </Switch>
+          <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
+            {enabled ? 'Hide' : 'Show Timetable'}
+          </p>
+        </div>
+        <Transition
+          show={enabled}
+          enter="transition-opacity duration-150"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="transition-opacity duration-150"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          <Counter />
+          <Calendar />
+        </Transition>
+      </Container>
     </section>
   )
 }
