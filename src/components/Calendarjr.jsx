@@ -32,37 +32,41 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-04-26',
-    name: 'Maths',
-  },
-  {
-    date: '2023-04-28',
-    name: 'Kan',
-  },
-  {
-    date: '2023-05-02',
-    name: 'ECS',
+    date: '2023-05-03',
+    name: 'Starts',
   },
   {
     date: '2023-05-04',
-    name: 'PLC',
+    name: 'Never Ends',
   },
-  {
-    date: '2023-05-08',
-    name: 'AEC',
-  },
-  {
-    date: '2023-05-11',
-    name: 'C-Prog',
-  },
-  {
-    date: '2023-05-13',
-    name: 'Eng',
-  },
-  {
-    date: '2023-05-16',
-    name: 'Phy',
-  },
+  // {
+  //   date: '2023-04-28',
+  //   name: 'Kan',
+  // },
+  // {
+  //   date: '2023-05-02',
+  //   name: 'ECS',
+  // },
+  // {
+  //   date: '2023-05-04',
+  //   name: 'PLC',
+  // },
+  // {
+  //   date: '2023-05-08',
+  //   name: 'AEC',
+  // },
+  // {
+  //   date: '2023-05-11',
+  //   name: 'C-Prog',
+  // },
+  // {
+  //   date: '2023-05-13',
+  //   name: 'Eng',
+  // },
+  // {
+  //   date: '2023-05-16',
+  //   name: 'Phy',
+  // },
 ]
 
 const days = []
@@ -193,7 +197,7 @@ export function Calendar() {
                       {day.events.map((event) => (
                         <li>
                           <a href={event.href} className="group flex">
-                            <div className="truncate rounded-md bg-indigo-50 px-2 align-middle font-medium text-gray-900 group-hover:text-blue-700 dark:bg-[#0071f0] dark:text-white">
+                            <div className="truncate rounded-md bg-indigo-50 px-2 align-middle font-medium text-gray-900 dark:bg-[#0071f0] dark:text-white">
                               <p className="text-sh">{event.name}</p>
                             </div>
                           </a>

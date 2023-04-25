@@ -32,18 +32,6 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-04-19',
-    name: 'Maths',
-  },
-  {
-    date: '2023-04-21',
-    name: 'UHV',
-  },
-  {
-    date: '2023-04-24',
-    name: 'DBMS',
-  },
-  {
     date: '2023-04-26',
     name: 'DS',
   },
@@ -189,7 +177,7 @@ export function Calendar() {
                       {day.events.map((event) => (
                         <li>
                           <a href={event.href} className="group flex">
-                            <div className="truncate rounded-md bg-indigo-50 px-2 align-middle font-medium text-gray-900 group-hover:text-blue-700 dark:bg-[#0071f0] dark:text-white">
+                            <div className="truncate rounded-md bg-indigo-50 px-2 align-middle font-medium text-gray-900 dark:bg-[#0071f0] dark:text-white">
                               <p className="text-sh">{event.name}</p>
                             </div>
                           </a>
