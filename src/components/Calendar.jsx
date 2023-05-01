@@ -14,9 +14,9 @@ let todaydate = newDate.toISOString().slice(0, 10)
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []
-for (let i = 34; i <= 100; i++) {
+for (let i = 31; i <= 100; i++) {
   datesarray.push(
-    new Date(newDate.getFullYear(), 2, i).toISOString().slice(0, 10)
+    new Date(newDate.getFullYear(), 3, i).toISOString().slice(0, 10)
   )
 }
 
@@ -31,14 +31,6 @@ const weekarray = [
 ]
 
 const exam = [
-  {
-    date: '2023-04-26',
-    name: 'DS',
-  },
-  {
-    date: '2023-04-28',
-    name: 'COA',
-  },
   {
     date: '2023-05-02',
     name: 'DMS',

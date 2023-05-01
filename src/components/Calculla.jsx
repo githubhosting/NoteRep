@@ -22,23 +22,12 @@ export function Calculla() {
                 Visit the App
               </a>
             </div>
-
             <iframe
               className="aspect-auto rounded-xl shadow-lg"
               src="https://gpaestimator.streamlit.app/?embed=true"
               width="100%"
               height="2000"
-            ></iframe>
-            <p className="border-t py-5 text-center text-slate-900 dark:text-zinc-50">
-              Fill The form to become a beta Tester
-            </p>
-            <iframe
-              className="h-screen w-full"
-              src="https://docs.google.com/forms/d/e/1FAIpQLSdxrUxh3jr3XVfxv7y2_fDKdsathdKOySCzessIypgUaUgW5Q/viewform?embedded=true"
-              height="1024"
-            >
-              Loading…
-            </iframe>
+            ></iframe>  
           </div>
         </div>
       </section>

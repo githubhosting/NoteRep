@@ -71,8 +71,8 @@ export function SecondaryFeatures() {
             </ul>
             <dl className="mt-10 grid grid-cols-2 gap-x-10 gap-y-6 rounded-xl border p-4 sm:mt-16 sm:gap-x-16 sm:gap-y-10 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none">
               {[
-                ['Total Web Clics*', '3.97K'],
-                ['Total impressions*', '5.33K'],
+                ['Total Web Clics*', '5.97K'],
+                ['Total impressions*', '12.33K'],
               ].map(([name, value]) => (
                 <div key={name}>
                   <dt className="font-mono text-sm text-blue-600 dark:text-zinc-100">
