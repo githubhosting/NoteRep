@@ -33,36 +33,44 @@ const weekarray = [
 const exam = [
   {
     date: '2023-05-03',
-    name: 'Starts',
+    name: 'Math',
+    long_name: 'Maths',
   },
-  // {
-  //   date: '2023-04-28',
-  //   name: 'Kan',
-  // },
-  // {
-  //   date: '2023-05-02',
-  //   name: 'ECS',
-  // },
-  // {
-  //   date: '2023-05-04',
-  //   name: 'PLC',
-  // },
-  // {
-  //   date: '2023-05-08',
-  //   name: 'AEC',
-  // },
-  // {
-  //   date: '2023-05-11',
-  //   name: 'C-Prog',
-  // },
-  // {
-  //   date: '2023-05-13',
-  //   name: 'Eng',
-  // },
-  // {
-  //   date: '2023-05-16',
-  //   name: 'Phy',
-  // },
+  {
+    date: '2023-04-05',
+    name: 'Kan',
+    long_name: 'Kannada',
+  },
+  {
+    date: '2023-05-08',
+    name: 'ECS',
+    long_name: 'ECS',
+  },
+  {
+    date: '2023-05-11',
+    name: 'PLC',
+    long_name: 'PLC',
+  },
+  {
+    date: '2023-05-13',
+    name: 'AEC',
+    long_name: 'AECP',
+  },
+  {
+    date: '2023-05-16',
+    name: 'C',
+    long_name: 'C-Programming',
+  },
+  {
+    date: '2023-05-19',
+    name: 'Eng',
+    long_name: 'English',
+  },
+  {
+    date: '2023-05-23',
+    name: 'Phy',
+    long_name: 'Physics',
+  },
 ]
 
 const days = []
@@ -194,7 +202,7 @@ export function Calendar() {
                         <li>
                           <a href={event.href} className="group flex">
                             <div className="truncate rounded-md bg-indigo-50 px-2 align-middle font-medium text-gray-900 dark:bg-[#0071f0] dark:text-white">
-                              <p className="text-sh">{event.name}</p>
+                              <p className="text-sh">{event.long_name}</p>
                             </div>
                           </a>
                         </li>
@@ -238,7 +246,7 @@ export function Calendar() {
                     dateTime={day.date}
                     className={classNames(
                       todaydate == day.date &&
-                        'flex h-6 w-6 items-center justify-center rounded-full bg-blue-700 font-semibold text-white'
+                        'flex h-6 w-6 items-center justify-center rounded-md bg-green-400 font-semibold text-white dark:bg-green-700'
                     )}
                   >
                     {day.date.split('-').pop().replace(/^0/, '')}

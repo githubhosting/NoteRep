@@ -32,10 +32,6 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-05-02',
-    name: 'DMS',
-  },
-  {
     date: '2023-05-04',
     name: 'Kan',
   },
@@ -214,7 +210,7 @@ export function Calendar() {
                     dateTime={day.date}
                     className={classNames(
                       todaydate == day.date &&
-                        'flex h-6 w-6 items-center justify-center rounded-full bg-blue-700 font-semibold text-white'
+                        'flex h-6 w-6 items-center justify-center rounded-md bg-green-400 font-semibold text-white dark:bg-green-700'
                     )}
                   >
                     {day.date.split('-').pop().replace(/^0/, '')}
