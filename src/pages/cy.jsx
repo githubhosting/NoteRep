@@ -6,7 +6,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { HeaderMod } from '@/components/HeaderMod'
 import { Hero } from '@/components/Hero'
-import { Content } from '@/components/Content'
+import { Content } from '@/components/Content4sem'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
 import { Speakers } from '@/components/Speakers'
@@ -17,6 +17,7 @@ import { Introduction } from '@/components/Introduction'
 import { FreeChapters } from '@/components/FreeChapters'
 import chevronup from '@/images/chevronup.svg'
 import { Calendar } from '@/components/Calendar'
+import { Timetable } from '@/components/Timetable'
 
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
@@ -55,10 +56,11 @@ export default function Home() {
       <main className="bg-indigo-50 dark:bg-cost5 dark:text-white">
         <Container>
           <h2 className="pb-5 pt-10 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
-            3rd Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
+            4th Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
           </h2>
-          <Calendar />
+          {/* <Calendar /> */}
         </Container>
+        <Timetable />
         <Content />
         <Author />
       </main>

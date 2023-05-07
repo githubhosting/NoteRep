@@ -8,7 +8,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { HeaderMod } from '@/components/HeaderMod'
 import { Hero } from '@/components/Hero'
-import { Content } from '@/components/Content'
+import { Content } from '@/components/Content4sem'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
 import { Speakers } from '@/components/Speakers'
@@ -99,9 +99,9 @@ export default function Home() {
         <HeaderMod />
         <Container>
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
-            3rd Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
+            4th Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
           </h2>
-          <div className="flex flex-row items-center gap-2 py-3 lg:p-5">
+          {/* <div className="flex flex-row items-center gap-2 py-3 lg:p-5">
             <Switch
               checked={enabled}
               onChange={setEnabled}
@@ -130,9 +130,9 @@ export default function Home() {
           >
             <Counter />
           </Transition>
-          <Calendar />
+          <Calendar /> */}
         </Container>
-        {/* <Timetable /> */}
+        <Timetable />
         <Content />
         <Author />
       </div>

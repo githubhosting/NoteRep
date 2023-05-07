@@ -105,7 +105,7 @@ export function Timetable() {
 
   return (
     <>
-      <section class="body-font py-10 text-gray-600">
+      <section class="body-font py-5 text-gray-600">
         <div class="mb-6 text-center">
           <h1 class="title-font mb-2 text-center text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
             Time Table

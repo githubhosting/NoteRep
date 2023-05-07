@@ -32,8 +32,8 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-05-04',
-    name: 'Kan',
+    date: '',
+    name: '',
   },
 ]
 
