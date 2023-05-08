@@ -34,33 +34,28 @@ const subjects = [
   },
   {
     Day: 'Wednesday',
-    subject: [
-      'DBMS Lab',
-      'DBMS Lab',
-      'DBMS',
-      'UHV',
-      '-',
-      'DS *',
-      'COA *',
-      'DBMS *',
-    ],
+    subject: ['AI', 'AI', 'DCN', 'Math', '-', 'Algo Lab', 'Algo Lab', 'Yoga'],
   },
   {
     Day: 'Thursday',
     subject: [
-      'DMS Tut',
-      'DMS Tut',
-      'DS',
-      'UHV',
+      'OS',
+      'DAA',
+      'ES/Web Lab',
+      'ES/Web Lab',
       '-',
-      'Math Tut',
-      'Math Tut',
-      'Yoga/NSS',
+      'Math',
+      'OS *',
+      ' * ',
     ],
   },
   {
     Day: 'Friday',
-    subject: ['OOPS Lab', 'OOPS Lab', 'Math', 'COA', '-', 'AEC', ' * ', ' * '],
+    subject: ['DCN', 'OS', 'Math', 'DCN Lab', '-', 'AEC', ' * ', 'Yoga'],
+  },
+  {
+    Day: 'Saturday',
+    subject: ['Web Lab *', 'ES Lab *'],
   },
 ]
 // const time_class = [
@@ -91,6 +86,15 @@ let time = newDate.toLocaleString('en-US', {
   minute: 'numeric',
   hour12: false,
 })
+setInterval(() => {
+  newDate = new Date()
+  day = newDate.toLocaleString('default', { weekday: 'long' })
+  time = newDate.toLocaleString('en-US', {
+    hour: 'numeric',
+    minute: 'numeric',
+    hour12: false,
+  })
+}, 60000)
 
 function get_time() {
   console.log('time: ', time)
@@ -115,96 +119,91 @@ function get_time() {
   }
 }
 
-console.log(get_time())
-
 export function Timetable() {
   let newDate = new Date()
   let day_1 = newDate.getDay()
-
   return (
-    <>
-      <section class="body-font py-5 text-gray-600">
-        <div class="mb-6 text-center">
-          <h1 class="title-font mb-2 text-center text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
-            Time Table
-          </h1>
-        </div>
-        <div class="flex flex-col px-5 md:px-10 lg:overflow-x-hidden">
-          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-              <div class="overflow-hidden border-2">
-                <table class="min-w-full">
-                  <thead class="border-b">
-                    <tr>
+    <section class="body-font py-5 text-gray-600">
+      <div class="mb-6 text-center">
+        <h1 class="title-font mb-2 text-center text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
+          Time Table
+        </h1>
+      </div>
+      <div class="flex flex-col px-5 dark:shadow-num_d1 md:px-10 lg:overflow-x-hidden">
+        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+            <div class="overflow-hidden rounded-lg border-2">
+              <table class="min-w-full">
+                <thead class="border-b">
+                  <tr>
+                    <th
+                      scope="col"
+                      class="border-r px-4 py-4 text-left text-sm font-bold text-gray-900 dark:text-white"
+                    >
+                      Days/Time
+                    </th>
+                    {time_class.map((t, i) => (
                       <th
+                        key={i}
                         scope="col"
-                        class="border-r px-4 py-4 text-left text-sm font-bold text-gray-900 dark:text-white"
+                        class="whitespace-nowrap border-r px-4 py-4 text-left text-sm font-bold text-gray-900 dark:text-white"
                       >
-                        Time/Days
+                        {get_time() === i ? (
+                          <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-800">
+                            {time_class[i]}
+                          </span>
+                        ) : (
+                          <span>{t}</span>
+                        )}
                       </th>
-                      {time_class.map((t, i) => (
-                        <th
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {subjects.map((subject, j) => (
+                    <tr class="border bg-white dark:border-gray-200 dark:bg-slate-900 dark:text-white">
+                      <td class="whitespace-nowrap border-r px-4 py-4 text-sm font-semibold text-gray-900 dark:text-white">
+                        {subject.Day === day ? (
+                          <span
+                            key={j}
+                            class="rounded-md bg-green-300 px-2 py-1 text-sm font-semibold text-gray-900"
+                          >
+                            {subject.Day}
+                          </span>
+                        ) : (
+                          <span className="px-2 py-1">{subject.Day}</span>
+                        )}
+                      </td>
+                      {subject.subject.map((sub, i) => (
+                        <td
                           key={i}
-                          scope="col"
-                          class="whitespace-nowrap border-r px-4 py-4 text-left text-sm font-bold text-gray-900 dark:text-white"
+                          class="whitespace-nowrap border-r px-4 py-4 text-center text-sm font-medium text-gray-900 dark:text-white"
                         >
-                          {get_time() === i ? (
-                            <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-800">
-                              {time_class[i]}
+                          {j === day_1 - 1 ? (
+                            <span>
+                              {i === get_time() ? (
+                                <span class="rounded-md border-2 border-green-500 bg-green-200 px-2 py-1 text-sm font-bold text-black dark:text-gray-900">
+                                  {sub}
+                                </span>
+                              ) : (
+                                <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 ">
+                                  {sub}
+                                </span>
+                              )}
                             </span>
                           ) : (
-                            <span>{t}</span>
-                          )}
-                        </th>
-                      ))}
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {subjects.map((subject, j) => (
-                      <tr class="border-b-2 bg-white dark:bg-slate-900 dark:text-white">
-                        <td class="whitespace-nowrap border-r px-4 py-4 text-sm font-semibold text-gray-900 dark:text-white">
-                          {subject.Day === day ? (
-                            <span
-                              key={j}
-                              class="rounded-md bg-green-300 px-2 py-1 text-sm font-semibold text-gray-900"
-                            >
-                              {subject.Day}
-                            </span>
-                          ) : (
-                            <span className="px-2 py-1">{subject.Day}</span>
+                            <span>{sub}</span>
                           )}
                         </td>
-                        {subject.subject.map((sub, i) => (
-                          <td
-                            key={i}
-                            class="whitespace-nowrap border-r px-4 py-4 text-sm font-medium text-gray-900 dark:text-white"
-                          >
-                            {j === day_1 - 1 ? (
-                              <span>
-                                {i === get_time() ? (
-                                  <span class="rounded-md border-2 border-red-400 bg-green-200 px-2 py-1 text-sm font-bold text-black dark:text-white">
-                                    {sub}
-                                  </span>
-                                ) : (
-                                  <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 ">
-                                    {sub}
-                                  </span>
-                                )}
-                              </span>
-                            ) : (
-                              <span>{sub}</span>
-                            )}
-                          </td>
-                        ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
             </div>
           </div>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   )
 }

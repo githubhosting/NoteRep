@@ -10,7 +10,6 @@ import darkbackgroundImage from '@/images/background-dark.jpg'
 import { check } from 'prettier'
 export function Hero() {
   const install = usePWAInstall()
-
   return (
     <>
       <section className="relative bg-indigo-50 py-7 pb-10 dark:bg-gray-900 sm:py-10">

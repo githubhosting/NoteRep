@@ -2,7 +2,6 @@ import Head from 'next/head'
 import { Container } from '@/components/Container'
 import { Transition } from '@headlessui/react'
 import { Switch } from '@headlessui/react'
-
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
