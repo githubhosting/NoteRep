@@ -7,50 +7,50 @@ const cseaimlstatic = [
   {
     title: 'Numerical Techniques and Probability',
     description: '(2:1:0) CI41',
-    link: 'https://drive.google.com/drive/folders/1d126yrfEwfL1QqEL9cJcl3SHP6skil0G?usp=share_link',
+    link: 'https://drive.google.com/drive/folders/1YofEy5hEa78PZ0fa6x9kgVEzK1KyGodR?usp=share_link',
     otherlink: '/links',
     tag: '',
   },
   {
     title: 'Data Communication and Networking',
     description: '(2:0:1) CI42',
-    link: 'https://drive.google.com/drive/folders/1Jp1yODvx1-EO5SywKVLxsVdsqLYAf_d7?usp=share_link',
+    link: 'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
     otherlink: '/links',
     tag: '',
   },
   {
     title: 'Design and Analysis of Algorithms',
     description: '(2:1:0) CI43',
-    link: 'https://drive.google.com/drive/folders/1xKwDfh47KlX5yOFw_zPK7gHJwnd64gIC?usp=share_link',
+    link: 'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
     otherlink: '/links',
     tag: '',
   },
   {
     title: 'Intro to AI',
     description: '(3:0:0) CI44',
-    link: 'https://drive.google.com/drive/folders/1sGeLN9AV2mPm3CxNCz8Ws9u0nwHNY33k?usp=share_link',
+    link: 'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
     otherlink: '/links',
     tag: '',
   },
   {
     title: 'Operating System',
     description: '(3:0:0) CI45',
-    link: 'https://drive.google.com/drive/folders/1UjfYJyCRSz8KtQeWxnypGEz9q1uIBbSs?usp=share_link',
+    link: 'https://drive.google.com/drive/folders/1dvSqj7c3uQNdhq2qLu7yFYak5wMVBV3b?usp=share_link',
     otherlink: '/links',
     // tag: 'Maths',
   },
   {
     title: 'Embedded Systems Lab',
     description: '(0:0:1) CIL46',
-    link: 'https://github.com/githubhosting/DS_Lab_c-programming_Personal',
-    otherlink: 'https://github.com/githubhosting/DS_Lab_c-programming',
+    link: 'https://drive.google.com/drive/folders/197mT9sqkxg0BwZU7aZewMeN2aQp32Ppq?usp=share_link',
+    otherlink: 'https://github.com/githubhosting',
     extra: 'This is github repository',
     tag: '',
   },
   {
     title: 'Algorithms Lab',
     description: '(0:0:1) CIL47',
-    link: 'https://github.com/githubhosting/OOPS_Lab_CPP',
+    link: 'https://github.com/githubhosting',
     otherlink: '/links',
     extra: 'This is github repository',
     tag: '',
@@ -58,14 +58,14 @@ const cseaimlstatic = [
   {
     title: 'Constitution and Ethics',
     description: '(1:0:0) HS492',
-    link: 'https://drive.google.com/drive/folders/1i6_X176UpyXi_aufwXyWcLiHVgpD6yEz?usp=sharingl̥',
+    link: 'https://drive.google.com/drive/folders/197mT9sqkxg0BwZU7aZewMeN2aQp32Ppq?usp=share_link',
     otherlink: '/links',
     tag: '',
   },
   {
     title: 'Web Technologies Lab',
-    description: '(0:0:1) HS492',
-    link: 'https://drive.google.com/drive/folders/1MIXAORMZ0GYUFJqYDjsYZbKYEnv8Rgch?usp=share_link',
+    description: '(0:0:1) CIL48',
+    link: 'https://github.com/githubhosting',
     otherlink: '/links',
     extra: 'This is github repository',
     tag: '',
@@ -92,7 +92,7 @@ export function Content() {
               Curriculum Book
             </ButtonLink>
             <ButtonLink
-              href="https://drive.google.com/drive/folders/10KCeAYroDNMJ4rLRbJWVaWdgiz84M2vh?usp=sharing"
+              href="#"
               className="mt-5 w-full rounded-lg py-2"
             >
               Previous Year Papers

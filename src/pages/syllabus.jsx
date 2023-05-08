@@ -7,7 +7,7 @@ import { Content } from '@/components/Content'
 import { ContentSyl } from '@/components/ContentSyl'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
-import { Speakers } from '@/components/Speakers'
+
 import { Sponsors } from '@/components/Sponsors'
 import { Author } from '@/components/Author'
 import { CallToAction } from '@/components/CallToAction'

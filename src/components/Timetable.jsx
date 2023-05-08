@@ -123,22 +123,22 @@ export function Timetable() {
   let newDate = new Date()
   let day_1 = newDate.getDay()
   return (
-    <section class="body-font py-5 text-gray-600">
+    <section class="body-font py-2 text-gray-600">
       <div class="mb-6 text-center">
         <h1 class="title-font mb-2 text-center text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
           Time Table
         </h1>
       </div>
-      <div class="flex flex-col px-5 dark:shadow-num_d1 md:px-10 lg:overflow-x-hidden">
+      <div class="flex flex-col px-5 md:px-10 lg:overflow-x-hidden py-1">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-            <div class="overflow-hidden rounded-lg border-2">
+          <div class="inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="overflow-hidden rounded-lg border-2 dark:shadow-num_d1">
               <table class="min-w-full">
                 <thead class="border-b">
                   <tr>
                     <th
                       scope="col"
-                      class="border-r px-4 py-4 text-left text-sm font-bold text-gray-900 dark:text-white"
+                      class="border-r px-4 py-4 text-centre text-sm font-bold text-gray-900 dark:text-white"
                     >
                       Days/Time
                     </th>
@@ -146,7 +146,7 @@ export function Timetable() {
                       <th
                         key={i}
                         scope="col"
-                        class="whitespace-nowrap border-r px-4 py-4 text-left text-sm font-bold text-gray-900 dark:text-white"
+                        class="whitespace-nowrap border-r px-4 py-4 text-centre text-sm font-bold text-gray-900 dark:text-white"
                       >
                         {get_time() === i ? (
                           <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-800">
@@ -162,7 +162,7 @@ export function Timetable() {
                 <tbody>
                   {subjects.map((subject, j) => (
                     <tr class="border bg-white dark:border-gray-200 dark:bg-slate-900 dark:text-white">
-                      <td class="whitespace-nowrap border-r px-4 py-4 text-sm font-semibold text-gray-900 dark:text-white">
+                      <td class="whitespace-nowrap border-r px-4 py-4 text-sm font-semibold text-gray-900 dark:text-white text-center">
                         {subject.Day === day ? (
                           <span
                             key={j}

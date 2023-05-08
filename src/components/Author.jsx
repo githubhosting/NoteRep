@@ -3,7 +3,9 @@ import Image from 'next/image'
 import { GridPattern } from '@/components/GridPattern'
 import { SectionHeading } from '@/components/SectionHeading'
 import authorImage from '@/images/avatars/author.jpg'
-import authorImageNew from '@/images/avatars/authornew.jpg'
+import authorImageNew from '@/images/avatars/author.png'
+import profile3 from '@/images/avatars/profile3.jpg'
+import authorImageNew1 from '@/images/avatars/authornew.jpg'
 
 export function Author() {
   return (
@@ -21,10 +23,12 @@ export function Author() {
             <div className="content inset-[2.5px] border-[2.5px] border-indigo-50 dark:border-cost5 lg:inset-1 lg:border-4">
               <Image
                 className="rounded-full duration-500 ease-in-out hover:scale-125"
-                src={authorImageNew}
+                src={profile3}
                 alt="Shravan"
                 priority={true}
-                onClick={() => { window.open('https://myselfshravan.github.io') }}
+                onClick={() => {
+                  window.open('https://myselfshravan.github.io')
+                }}
               />
             </div>
           </div>
