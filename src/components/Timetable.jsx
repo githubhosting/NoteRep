@@ -8,11 +8,29 @@ import { Header } from '@/components/Header'
 const subjects = [
   {
     Day: 'Monday',
-    subject: ['DS', 'DBMS', 'Math', 'DMS', '-', 'Kan', 'DS Lab', 'DS Lab'],
+    subject: [
+      'ES/Web Lab',
+      'ES/Web Lab',
+      'Math',
+      'OS',
+      '-',
+      'Const',
+      'DAA Tut',
+      'DAA Tut',
+    ],
   },
   {
     Day: 'Tuesday',
-    subject: ['COA', 'DMS', 'DS', 'COA', '-', 'Math', 'OOPS *', 'OOPS *'],
+    subject: [
+      'Math Tut',
+      'Math Tut',
+      'AI',
+      'DAA',
+      '-',
+      'DCN *',
+      'DAA *',
+      'AI *',
+    ],
   },
   {
     Day: 'Wednesday',
