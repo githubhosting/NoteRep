@@ -65,7 +65,7 @@ const cseaimlstatic = [
   {
     title: 'Web Technologies Lab',
     description: '(0:0:1) CIL48',
-    link: 'https://github.com/githubhosting',
+    link: 'https://github.com/githubhosting/web-technologies-lab',
     otherlink: '/links',
     extra: 'This is github repository',
     tag: '',
