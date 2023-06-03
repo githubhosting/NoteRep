@@ -9,7 +9,7 @@ export function Introduction() {
     <section
       id="sponsors"
       aria-labelledby="introduction-title"
-      className="md:pt-18 pt-10 pb-0 sm:pb-0 lg:pt-10"
+      className="md:pt-18 pb-0 pt-10 sm:pb-0 lg:pt-10"
     >
       <h2 id="introduction-title" className="sr-only">
         Introduction

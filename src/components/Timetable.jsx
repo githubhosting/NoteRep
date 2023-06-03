@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import React from 'react'
 
-import { Header } from '@/components/Header'
 const subjects = [
   {
     Day: 'Monday',
@@ -55,7 +54,7 @@ const subjects = [
   },
   {
     Day: 'Saturday',
-    subject: ['Web Lab *', 'ES Lab *'],
+    subject: ['Web Lab *', 'ES Lab *', '-', '-', '-', '-', '-', '-'],
   },
 ]
 // const time_class = [
@@ -97,7 +96,7 @@ setInterval(() => {
 }, 60000)
 
 function get_time() {
-  console.log('time: ', time)
+  // console.log('time: ', time)
   if (time >= '09:00' && time <= '09:55') {
     return 0
   } else if (time >= '09:55' && time <= '10:50') {
@@ -118,18 +117,21 @@ function get_time() {
     return null
   }
 }
+function classNames(...classes) {
+  return classes.filter(Boolean).join(' ')
+}
 
 export function Timetable() {
   let newDate = new Date()
   let day_1 = newDate.getDay()
   return (
-    <section class="body-font py-2 text-gray-600">
+    <section class="body-font mx-auto max-w-7xl px-4 py-2 text-gray-600 sm:px-6 lg:px-8">
       <div class="mb-6 text-center">
         <h1 class="title-font mb-2 text-center text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
           Time Table
         </h1>
       </div>
-      <div class="flex flex-col px-5 py-1 md:px-10 lg:overflow-x-hidden">
+      <div class="flex flex-col py-1 md:px-10 lg:overflow-x-hidden">
         <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="inline-block min-w-full sm:px-6 lg:px-8">
             <div class="overflow-hidden rounded-lg border-2 dark:shadow-num_d1">
@@ -161,7 +163,7 @@ export function Timetable() {
                 </thead>
                 <tbody>
                   {subjects.map((subject, j) => (
-                    <tr class="border bg-white dark:border-gray-200 dark:bg-slate-900 dark:text-white">
+                    <tr class="border-t bg-white dark:border-gray-200 dark:bg-slate-900 dark:text-white">
                       <td class="whitespace-nowrap border-r px-4 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                         {subject.Day === day ? (
                           <span
@@ -177,7 +179,10 @@ export function Timetable() {
                       {subject.subject.map((sub, i) => (
                         <td
                           key={i}
-                          class="whitespace-nowrap border-r px-4 py-4 text-center text-sm font-medium text-gray-900 dark:text-white"
+                          className={classNames(
+                            i <= 6 && 'border-r',
+                            'whitespace-nowrap border-0 px-4 py-4 text-center text-sm font-medium text-gray-900 dark:text-white'
+                          )}
                         >
                           {j === day_1 - 1 ? (
                             <span>

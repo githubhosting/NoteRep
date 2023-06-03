@@ -87,14 +87,11 @@ export function Content() {
           <div className="flex flex-col items-center justify-center gap-3 pt-5 md:flex-row">
             <ButtonLink
               href="/syllabus"
-              className="mt-5 w-full rounded-lg py-2 hover:bg-blue-900"
+              className="mt-5 w-auto rounded-lg py-2 hover:bg-blue-900"
             >
               Curriculum Book
             </ButtonLink>
-            <ButtonLink
-              href="#"
-              className="mt-5 w-full rounded-lg py-2"
-            >
+            <ButtonLink href="#" className="mt-5 w-auto rounded-lg py-2">
               Previous Year Papers
             </ButtonLink>
             {/* <ButtonLink href="/syllabus_cy" className="mt-5 w-full rounded-lg">
@@ -115,20 +112,30 @@ export function Content() {
               CSE (Cyber Security) Curriculum
             </ButtonLink>
           </div> */}
-          {/* <ButtonLink
-            href="https://docs.google.com/document/d/1fnkwCDB2RibjQ_MLFaT9gGOLNHnomGOkXjTeVz-6ym8/edit?usp=sharing"
-            className="hover:shadowpress mt-6 w-full rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3 shadow-lg"
-          >
-            CIE 2 Portions (Tentative)
-          </ButtonLink> */}
+          <div className="flex justify-center">
+            <ButtonLink
+              target="_blank"
+              href="https://docs.google.com/document/d/e/2PACX-1vR8wk2gz-Cnjhn8bQo5afLgVTQO9ZT-uptfjdhASSmwn74kmCm6ETrQrYCpC-jCFUwhf2EKNsW8v2vA/pub"
+              className="hover:shadowpress mt-6 w-auto rounded-lg py-2 shadow-lg dark:bg-blue-50 dark:text-blue-500 dark:hover:bg-blue-100 dark:hover:text-blue-600"
+            >
+              CIE 1 Portions (Tentative)
+            </ButtonLink>
+          </div>
+          {/* <div className="mt-10">
+            <iframe
+              className="w-full rounded-lg"
+              height="1024"
+              src="https://docs.google.com/document/d/e/2PACX-1vR8wk2gz-Cnjhn8bQo5afLgVTQO9ZT-uptfjdhASSmwn74kmCm6ETrQrYCpC-jCFUwhf2EKNsW8v2vA/pub?embedded=true"
+            ></iframe>
+          </div> */}
         </div>
         <ul
           role="list"
           className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
         >
           {cseaimlstatic.map((item) => (
-            <li className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm dark:shadow-5xl">
-              <div className="rounded-[10px] bg-white p-5 dark:bg-slate-800 sm:p-6">
+            <li className="rounded-xl bg-gradient-to-r from-green-300 via-blue-300 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm dark:shadow-5xl">
+              <div className="rounded-[10px] bg-white p-5 dark:bg-slate-900 sm:p-6">
                 <h3 className="text-center text-base font-semibold uppercase text-gray-900 dark:text-white">
                   {item.title}
                 </h3>
@@ -137,12 +144,12 @@ export function Content() {
                 </p>
                 <div className="flex justify-center gap-3">
                   <a href={item.link} target="_blank">
-                    <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0 hover:dark:text-white">
+                    <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0 hover:dark:text-white">
                       View
                     </button>
                   </a>
                   <a href={item.otherlink} target="_blank">
-                    <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
+                    <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
                       Other links
                     </button>
                   </a>
