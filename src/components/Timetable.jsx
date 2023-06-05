@@ -24,7 +24,7 @@ const subjects = [
       'Math Tut',
       'Math Tut',
       'AI',
-      'DCC',
+      'DCN',
       '-',
       'DCN *',
       'DAA *',
