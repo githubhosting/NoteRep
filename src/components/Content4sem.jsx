@@ -28,7 +28,7 @@ const cseaimlstatic = [
   {
     title: 'Intro to AI',
     description: '(3:0:0) CI44',
-    link: 'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
+    link: 'https://drive.google.com/drive/folders/1W6rODQ0QdaD08dxEn4HfEXFSmMWwxouK?usp=sharing',
     otherlink: '/links',
     tag: '',
   },
