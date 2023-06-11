@@ -21,7 +21,7 @@ const cseaimlstatic = [
   {
     title: 'Design and Analysis of Algorithms',
     description: '(2:1:0) CI43',
-    link: 'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
+    link: 'https://drive.google.com/drive/folders/1bVTy8hA9HHbqTQyDxXsuz8xsxK0JDM53?usp=sharing',
     otherlink: '/links',
     tag: '',
   },
@@ -37,7 +37,7 @@ const cseaimlstatic = [
     description: '(3:0:0) CI45',
     link: 'https://drive.google.com/drive/folders/1dvSqj7c3uQNdhq2qLu7yFYak5wMVBV3b?usp=share_link',
     otherlink: '/links',
-    // tag: 'Maths',
+    tag: '',
   },
   {
     title: 'Embedded Systems Lab',
@@ -58,7 +58,7 @@ const cseaimlstatic = [
   {
     title: 'Constitution and Ethics',
     description: '(1:0:0) HS492',
-    link: 'https://drive.google.com/drive/folders/197mT9sqkxg0BwZU7aZewMeN2aQp32Ppq?usp=share_link',
+    link: 'https://drive.google.com/drive/folders/136vUZFuOtF3tBh1IAE-2cWvh-l0O17-m?usp=sharing',
     otherlink: '/links',
     tag: '',
   },
@@ -73,7 +73,7 @@ const cseaimlstatic = [
   {
     title: 'Ability Enhancement Course-IV',
     description: '(1:0:0) AEC410',
-    link: '#',
+    link: 'https://drive.google.com/drive/folders/1Tk7i3tqSQWulVWmrVvEv5g-Sry_d49GD?usp=sharing',
     otherlink: '/links',
     tag: '',
   },
