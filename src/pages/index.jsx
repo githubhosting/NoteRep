@@ -85,12 +85,6 @@ export default function Home() {
         <Author />
         {/* <Introduction /> */}
         {/* <Newsletter /> */}
-        <iframe
-          src="https://www.chatbase.co/chatbot-iframe/Of_Tl-oEwCkXx1-5gqIHc"
-          width="100%"
-          height="700"
-          frameborder="0"
-        ></iframe>
       </main>
       <Footer />
       {showButton && (
