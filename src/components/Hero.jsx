@@ -87,11 +87,11 @@ export function Hero() {
                 Introducing the new beta feature!
               </p>
               <ButtonLink
-                href="/noterep-forum"
+                href="/noterepbot"
                 className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                // target="_blank"
+                target="_blank"
               >
-                NoteRep Forum 🚀
+                AI Chat Bot 🚀
               </ButtonLink>
             </div>
 

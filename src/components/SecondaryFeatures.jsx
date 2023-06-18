@@ -4,10 +4,10 @@ import { Container } from '@/components/Container'
 
 const data = [
   {
-    title: 'Semester End Results',
-    subtitle: 'Even Semester',
+    title: 'NoteRep Forum',
+    subtitle: 'Beta feature!',
     button: 'Visit',
-    href: 'https://exam.msrit.edu/eresultseven/',
+    href: '/noterep-forum',
   },
   {
     title: 'SIS Parent Portal',

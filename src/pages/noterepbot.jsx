@@ -2,23 +2,10 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { Hero } from '@/components/Hero'
-import { Newsletter } from '@/components/Newsletter'
-import { Schedule } from '@/components/Schedule'
-import { Schedule_New } from '@/components/Schedule_New'
-import { Sponsors } from '@/components/Sponsors'
-import { Author } from '@/components/Author'
-import { CallToAction } from '@/components/CallToAction'
-import { Introduction } from '@/components/Introduction'
-import { FreeChapters } from '@/components/FreeChapters'
-import chevronup from '@/images/chevronup.svg'
+import { Bot } from '@/components/Bot'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
-import { SecondaryFeatures } from '@/components/SecondaryFeatures'
-import { Model } from '@/components/Model'
-import { Calendar } from '@/components/Calendar'
-import { Container } from '@/components/Container'
 
-export default function Home() {
+export default function NoterepBot_() {
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
@@ -57,10 +44,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>NoteRep - An Open-Source Notes Sharing Platform</title>
+        <title>AI Bot - Noterep Chat Bot</title>
         <meta
           name="description"
-          content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
+          content="Noterep Chat Bot - An AI Bot to help you with your notes."
         />
         <meta name="theme-color" content="black-translucent" />
         <meta
@@ -76,21 +63,7 @@ export default function Home() {
       </Head>
       <Header />
       <main>
-        <Hero />
-        <CallToAction />
-        <Schedule_New />
-        {/* <Sponsors /> */}
-        <FreeChapters />
-        <SecondaryFeatures />
-        <Author />
-        {/* <Introduction /> */}
-        {/* <Newsletter /> */}
-        <iframe
-          src="https://www.chatbase.co/chatbot-iframe/Of_Tl-oEwCkXx1-5gqIHc"
-          width="100%"
-          height="700"
-          frameborder="0"
-        ></iframe>
+        <Bot />
       </main>
       <Footer />
       {showButton && (
