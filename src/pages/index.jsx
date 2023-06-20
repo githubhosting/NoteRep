@@ -83,8 +83,6 @@ export default function Home() {
         <FreeChapters />
         <SecondaryFeatures />
         <Author />
-        {/* <Introduction /> */}
-        {/* <Newsletter /> */}
       </main>
       <Footer />
       {showButton && (

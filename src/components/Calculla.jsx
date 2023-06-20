@@ -16,10 +16,20 @@ export function Calculla() {
             <div className="mb-5 rounded-lg bg-blue-700 px-6 py-6 text-center">
               <a
                 href="https://gpaestimator.streamlit.app/"
-                className="grad_button2 border border-blue-600 py-2 px-4 font-semibold drop-shadow-lg"
+                className="grad_button2 border border-blue-600 px-4 py-2 font-semibold drop-shadow-lg"
                 target="_blank"
               >
                 Visit the App
+              </a>
+              <p className="mt-10">
+                Now this tool is featured on Streamlit Gallery!
+              </p>
+              <a
+                href="https://streamlit.io/gallery"
+                target="_blank"
+                className="text-blue-300 hover:text-blue-200"
+              >
+                Check it out!
               </a>
             </div>
             <iframe
@@ -27,7 +37,7 @@ export function Calculla() {
               src="https://gpaestimator.streamlit.app/?embed=true"
               width="100%"
               height="2000"
-            ></iframe>  
+            ></iframe>
           </div>
         </div>
       </section>

@@ -32,44 +32,9 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-05-03',
+    date: '2023-08-03',
     name: 'Math',
     long_name: 'Maths',
-  },
-  {
-    date: '2023-04-05',
-    name: 'Kan',
-    long_name: 'Kannada',
-  },
-  {
-    date: '2023-05-08',
-    name: 'ECS',
-    long_name: 'ECS',
-  },
-  {
-    date: '2023-05-11',
-    name: 'PLC',
-    long_name: 'PLC',
-  },
-  {
-    date: '2023-05-13',
-    name: 'AEC',
-    long_name: 'AECP',
-  },
-  {
-    date: '2023-05-16',
-    name: 'C',
-    long_name: 'C-Programming',
-  },
-  {
-    date: '2023-05-19',
-    name: 'Eng',
-    long_name: 'English',
-  },
-  {
-    date: '2023-05-23',
-    name: 'Phy',
-    long_name: 'Physics',
   },
 ]
 
