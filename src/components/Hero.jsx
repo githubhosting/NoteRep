@@ -86,13 +86,21 @@ export function Hero() {
               <p className="text-base font-semibold italic">
                 Introducing the new beta feature!
               </p>
-              <ButtonLink
-                href="/noterepbot"
-                className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                target="_blank"
-              >
-                AI Chat Bot 🚀
-              </ButtonLink>
+              <div className="flex flex-col gap-6 md:flex-row">
+                <ButtonLink
+                  href="/noterepbot"
+                  className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                  target="_blank"
+                >
+                  AI Chat Bot 🚀
+                </ButtonLink>
+                <ButtonLink
+                  href="/syllabusgpt"
+                  className="button-86 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                >
+                  Syllabus GPT 🚀
+                </ButtonLink>
+              </div>
             </div>
 
             <div className="mt-10 flex flex-col items-start justify-start gap-5 lg:flex-row">

@@ -7,6 +7,12 @@ export function Bot() {
           <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
             <iframe
               className="aspect-auto rounded-xl shadow-lg"
+              src="https://vtu-syllabus-gpt.streamlit.app/?embed=true"
+              width="100%"
+              height="1000"
+            ></iframe>
+            <iframe
+              className="aspect-auto rounded-xl shadow-lg"
               src="https://www.chatbase.co/chatbot-iframe/Of_Tl-oEwCkXx1-5gqIHc"
               width="100%"
               height="500"
