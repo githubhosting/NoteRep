@@ -100,7 +100,7 @@ export default function Home() {
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
             4th Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
           </h2>
-          {/* <div className="flex flex-row items-center gap-2 py-3 lg:p-5">
+          <div className="flex flex-row items-center gap-2 py-3 lg:p-5">
             <Switch
               checked={enabled}
               onChange={setEnabled}
@@ -115,7 +115,7 @@ export default function Home() {
               />
             </Switch>
             <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
-              {enabled ? 'Hide Countdown' : 'Show Countdown'}
+              {enabled ? 'Hide Calendar' : 'Show Calendar'}
             </p>
           </div>
           <Transition
@@ -128,8 +128,8 @@ export default function Home() {
             leaveTo="opacity-0"
           >
             <Counter />
+            <Calendar />
           </Transition>
-          <Calendar /> */}
         </Container>
         <Timetable />
         <Content />

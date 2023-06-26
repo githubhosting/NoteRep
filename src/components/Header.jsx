@@ -127,9 +127,8 @@ function MobileNavigation(props) {
                 <MobileNavItem href="/ci">CSE (AI & ML)</MobileNavItem>
                 <MobileNavItem href="/cy">CSE (CY)</MobileNavItem>
                 <MobileNavItem href="/noterepbot">AI Chat Bot</MobileNavItem>
+                <MobileNavItem href="/communilink">CommuniLink</MobileNavItem>
                 <MobileNavItem href="/links">Other Links</MobileNavItem>
-                {/* <MobileNavItem href="#schedule">Physics Cycle</MobileNavItem>
-                <MobileNavItem href="#schedule">Chemistry Cycle</MobileNavItem> */}
                 <MobileNavItem href="https://myselfshravan.github.io/">
                   Developer
                 </MobileNavItem>
@@ -198,8 +197,8 @@ function DesktopNavigation(props) {
         <NavItem href="/ci">CSE (AI & ML)</NavItem>
         <NavItem href="/cy">CSE (CY)</NavItem>
         <NavItem href="/noterepbot">AI Chat Bot</NavItem>
+        <NavItem href="/communilink">CommuniLink</NavItem>
         <NavItem href="/links">Other Links</NavItem>
-        {/* <NavItem href="#schedule">First Year</NavItem> */}
         <NavItem_ href="https://myselfshravan.github.io/">Developer</NavItem_>
       </ul>
     </nav>

@@ -10,13 +10,13 @@ import { Menu, Transition } from '@headlessui/react'
 
 let newDate = new Date()
 let todaydate = newDate.toISOString().slice(0, 10)
-// let todaydate = '2023-04-16'
+// let todaydate = '2023-06-30'
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []
 for (let i = 31; i <= 100; i++) {
   datesarray.push(
-    new Date(newDate.getFullYear(), 3, i).toISOString().slice(0, 10)
+    new Date(newDate.getFullYear(), 5, i).toISOString().slice(0, 10)
   )
 }
 
@@ -32,8 +32,16 @@ const weekarray = [
 
 const exam = [
   {
-    date: '',
-    name: '',
+    date: '2023-07-03',
+    name: 'Algo Lab',
+  },
+  {
+    date: '2023-07-04',
+    name: 'Math Quiz',
+  },
+  {
+    date: '2023-07-14',
+    name: 'DCN Lab',
   },
 ]
 
