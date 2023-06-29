@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
+import { Container } from '@/components/Container'
 import { Header } from '@/components/Header'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 
@@ -9,6 +10,11 @@ const communilinks = [
     name: 'Machine Learning Community',
     description: 'Telegram Group',
     href: 'https://t.me/mlforbeginnners',
+  },
+  {
+    name: 'Streamlit Community',
+    description: 'Telegram Group',
+    href: 'https://t.me/streamlitcommunity',
   },
   {
     name: 'GDSE Community',
@@ -26,14 +32,9 @@ const communilinks = [
     href: '#',
   },
   {
-    name: 'MSRIT 2024 Batch',
-    description: 'WhatsApp Group',
-    href: '#',
-  },
-  {
     name: 'Anime Club',
-    description: 'Telegram Group',
-    href: 'https://t.me/joinchat/6ZQZ6XZQYjQ1ZjY1',
+    description: 'WhatsApp Group',
+    href: 'https://chat.whatsapp.com/CJavyN3TBZ3GtkVUiIp5ya',
   },
 ]
 export default function NoterepBot_() {
@@ -98,42 +99,46 @@ export default function NoterepBot_() {
       <Header />
       <main>
         <section className="relative bg-indigo-50 py-7 pb-10 dark:bg-gray-900 sm:py-10">
-          <div className="relative mx-auto max-w-7xl px-1 sm:px-6 lg:px-8">
-            <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
-              <p className="text-center tracking-wider text-black dark:text-white">
-                Explore, Connect, Engage | Connecting All College Communities at
-                one place.
-              </p>
-              <ul
-                role="list"
-                className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:items-center"
-              >
-                {communilinks.map((item) => (
-                  <li key={item.id} className="relative">
-                    <div className="flex flex-col rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-                      <div className="flex items-center justify-between">
-                        <h3 className="text-md font-medium text-gray-900 dark:text-white">
-                          {item.name}
-                        </h3>
+          <Container>
+            <div className="relative mx-auto max-w-7xl px-1 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
+                <p className="text-center tracking-wider text-black dark:text-white">
+                  Explore, Connect, Engage | Connecting All College Communities
+                  at one place.
+                </p>
+                <ul
+                  role="list"
+                  className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:items-center"
+                >
+                  {communilinks.map((item) => (
+                    <li key={item.id} className="relative">
+                      <div className="flex flex-col rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
+                        <div className="flex items-center justify-between">
+                          <h3 className="text-md font-medium text-gray-900 dark:text-white">
+                            {item.name}
+                          </h3>
+                        </div>
+                        <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-white/80">
+                          {item.description}
+                        </p>
+                        <div>
+                          <a
+                            href={item.href}
+                            target="_blank"
+                            className="mt-3 text-sm font-medium text-blue-800 hover:text-indigo-500 dark:text-blue-600"
+                          >
+                            {String(item.href).length > 17
+                              ? String(item.href).substring(0, 35) + '...'
+                              : String(item.href)}
+                          </a>
+                        </div>
                       </div>
-                      <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-white/80">
-                        {item.description}
-                      </p>
-                      <div>
-                        <a
-                          href={item.href}
-                          target="_blank"
-                          className="mt-3 text-sm font-medium text-blue-800 hover:text-indigo-500 dark:text-blue-600"
-                        >
-                          {item.href}
-                        </a>
-                      </div>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-          </div>
+          </Container>
         </section>
       </main>
       <Footer />
