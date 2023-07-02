@@ -14,7 +14,7 @@ let todaydate = newDate.toISOString().slice(0, 10)
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []
-for (let i = 31; i <= 100; i++) {
+for (let i = 33; i <= 100; i++) {
   datesarray.push(
     new Date(newDate.getFullYear(), 5, i).toISOString().slice(0, 10)
   )
@@ -121,7 +121,7 @@ export function Calendar() {
   return (
     <div className="border-t p-0 lg:flex lg:h-full lg:flex-col lg:p-4 ">
       <p className="flex items-center justify-center pt-5 text-slate-900 dark:text-zinc-50 lg:flex-none">
-        SEE Exam TimeTable
+        Calendar
       </p>
       <div className="flex items-center justify-center px-6 py-4 lg:flex-none">
         <h1 className="rounded-md bg-white px-3 text-lg font-semibold text-gray-900 dark:bg-[#0071f0] dark:text-white">
@@ -226,6 +226,7 @@ export function Calendar() {
                   {day.events.length > 0 && (
                     <span className="px-1 font-semibold">
                       {day.events.map((event) => (
+                        //on hover show event name
                         <span className="flex justify-center rounded-md bg-indigo-50 px-1 align-middle dark:bg-[#0071f0] dark:text-white">
                           {event.name}
                         </span>
