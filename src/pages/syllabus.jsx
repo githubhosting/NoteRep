@@ -41,7 +41,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CURRICULUM for CSE (AI & ML) and Cyber Security</title>
+        <title>Syllabus for CSE (AI & ML) and Cyber Security</title>
         <meta
           name="description"
           content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"

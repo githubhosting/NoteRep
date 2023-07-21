@@ -32,16 +32,20 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-07-03',
-    name: 'Algo Lab',
+    date: '2023-07-26',
+    name: 'Math + AI',
   },
   {
-    date: '2023-07-04',
-    name: 'Math Quiz',
+    date: '2023-07-27',
+    name: 'DCN',
   },
   {
-    date: '2023-07-14',
-    name: 'DCN Lab',
+    date: '2023-07-28',
+    name: 'Const + DAA',
+  },
+  {
+    date: '2023-07-31',
+    name: 'AEC + OS',
   },
 ]
 
@@ -81,7 +85,6 @@ export function Counter() {
     }, 1000 * 60 * 60 * 24)
     return () => clearInterval(interval)
   }, [])
-  console.log(counter)
   return (
     <div>
       <p className="flex items-center justify-center pt-5 text-slate-900 dark:text-zinc-50 lg:flex-none">
@@ -117,7 +120,7 @@ export function Counter() {
   )
 }
 
-export function Calendar() {
+export function Calendar(exam) {
   return (
     <div className="border-t p-0 lg:flex lg:h-full lg:flex-col lg:p-4 ">
       <p className="flex items-center justify-center pt-5 text-slate-900 dark:text-zinc-50 lg:flex-none">
@@ -161,7 +164,7 @@ export function Calendar() {
                     dateTime={day.date}
                     className={classNames(
                       todaydate == day.date
-                        ? 'flex h-6 w-6 items-center justify-center rounded-full bg-[#0071f0] font-semibold text-white'
+                        ? 'flex h-6 w-6 items-center justify-center rounded-md bg-green-800 font-semibold text-white'
                         : undefined,
                       'px-1 text-sm font-medium'
                     )}

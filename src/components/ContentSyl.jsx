@@ -12,24 +12,27 @@ export function ContentSyl() {
       className="bg-indigo-50 pb-0 pt-5 dark:bg-cost5 sm:pb-0 md:pt-8 lg:pt-5"
     >
       <Container>
-        <h1 className="font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+        <h1 className="text-center font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
           4th Sem Curriculum for CSE (CI & CY)
         </h1>
-        <ButtonLink
-          href="/documents/Syllabus 4 Sem CSE (CI & CY).pdf"
-          rel="noreferrer"
-          target="_blank"
-          className="mt-10 w-full rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500"
-        >
-          Click here to Download
-        </ButtonLink>
+        <div className="flex justify-center pt-10">
+          <ButtonLink
+            href="/documents/Updated Syllabus 4th Sem-1.pdf"
+            rel="noreferrer"
+            target="_blank"
+            className="rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500"
+          >
+            Click here to Download
+          </ButtonLink>
+        </div>
         <iframe
-          src="https://drive.google.com/file/d/1SM_yecGubg92HlSUGkYzKigoQEJgAgXT/preview"
+          src="https://drive.google.com/file/d/1r6mf87QiGBt8XyyJp8OnJ_VMKNstHB_8/preview"
           height="1024"
           allow="autoplay"
+          frameborder="0"
           marginheight="0"
           marginwidth="0"
-          className="mt-10 w-full"
+          className="mt-10 w-full rounded-md lg:rounded-xl"
         ></iframe>
       </Container>
     </section>
