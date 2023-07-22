@@ -172,6 +172,7 @@ function ScheduleTabbed() {
         {({ selectedIndex }) =>
           subjects.map((day, dayIndex) => (
             <div
+              key={dayIndex}
               className={clsx(
                 'relative w-3/4 flex-none pr-4 sm:w-auto sm:pr-0',
                 dayIndex !== selectedIndex && 'opacity-70'

@@ -2,23 +2,11 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { HeaderMod } from '@/components/HeaderMod'
-import { Hero } from '@/components/Hero'
-import { Content } from '@/components/Content'
-import { ContentSyl } from '@/components/ContentSyl'
-import { Newsletter } from '@/components/Newsletter'
-import { Schedule } from '@/components/Schedule'
-
-import { Sponsors } from '@/components/Sponsors'
-import { Author } from '@/components/Author'
-import { CallToAction } from '@/components/CallToAction'
-import { Introduction } from '@/components/Introduction'
-import { FreeChapters } from '@/components/FreeChapters'
-import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
-import { SecondaryFeatures } from '@/components/SecondaryFeatures'
+import { Container } from '@/components/Container'
+import { ButtonLink } from '@/components/Button1'
 
 export default function Home() {
-  // The back-to-top button is hidden at the beginning
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
@@ -31,7 +19,6 @@ export default function Home() {
     })
   }, [])
 
-  // This function will scroll the window to the top
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -44,12 +31,43 @@ export default function Home() {
         <title>Syllabus for CSE (AI & ML) and Cyber Security</title>
         <meta
           name="description"
-          content="Open-Source platform for Engineering Lecture Notes and Online Study Material for Students"
+          content="NoteRep - Drive links for all the Shared Notes and Online Study Material for Students"
         />
       </Head>
       <HeaderMod />
       <main>
-        <ContentSyl />
+        <section
+          id="Syllabus"
+          aria-labelledby="introduction-title"
+          className="bg-indigo-50 pb-0 pt-5 dark:bg-cost5 sm:pb-0 md:pt-8 lg:pt-5"
+        >
+          <Container>
+            <h1 className="text-center font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Updated 4th Sem Syllabus for CSE (CI & CY)
+            </h1>
+            <div className="flex justify-center pt-10">
+              <ButtonLink
+                href="/documents/Updated 4th Sem Syllabus (CI & CY).pdf"
+                rel="noreferrer"
+                target="_blank"
+                className="rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500"
+              >
+                Click here to Download
+              </ButtonLink>
+            </div>
+            <div className='flex justify-center'>
+              <iframe
+                src="https://drive.google.com/file/d/18oRQz24ruAVxvFF9LDUUP6HWwba0z_0p/preview"
+                height="1024"
+                allow="autoplay"
+                frameborder="0"
+                marginheight="0"
+                marginwidth="0"
+                className="mt-10 w-full max-w-3xl rounded-md lg:rounded-xl"
+              ></iframe>
+            </div>
+          </Container>
+        </section>
       </main>
       <Footer />
       {showButton && (

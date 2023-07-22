@@ -79,7 +79,6 @@ export default function Home() {
         <Hero />
         <CallToAction />
         <Schedule_New />
-        {/* <Sponsors /> */}
         <FreeChapters />
         <SecondaryFeatures />
         <Author />

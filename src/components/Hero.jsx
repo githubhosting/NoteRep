@@ -13,20 +13,6 @@ export function Hero() {
   return (
     <>
       <section className="relative bg-indigo-50 py-7 pb-10 dark:bg-gray-900 sm:py-10">
-        {/* <div className="absolute -inset-x-0 -top-48 -bottom-14 overflow-hidden bg-indigo-50 dark:bg-gray-900">
-          <div className="absolute top-0 left-0 -translate-y-[10%] -translate-x-[55%] -scale-x-100 sm:left-1/2 sm:-translate-y-[6%] sm:-translate-x-[98%] lg:-translate-x-[106%] xl:-translate-x-[122%]">
-            <Image
-              src={backgroundImage}
-              alt=""
-              layout="fixed"
-              width={918}
-              height={1495}
-              priority
-              unoptimized
-              className="opacity-70 dark:opacity-0"
-            />
-          </div>
-        </div> */}
         <Container className="relative">
           <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
             <h1 className="noterep_text_gradient font-display text-5xl font-bold tracking-tighter text-transparent drop-shadow-xl dark:drop-shadow-light sm:text-7xl">
