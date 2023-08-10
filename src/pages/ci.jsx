@@ -60,7 +60,7 @@ export default function Home() {
   }, [])
 
   const [isShowing, setIsShowing] = useState(false)
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(true)
 
   const examDate = new Date('2021-12-17T00:00:00')
   const today = new Date()
@@ -131,7 +131,7 @@ export default function Home() {
             <Calendar />
           </Transition>
         </Container>
-        <Timetable />
+        {/* <Timetable /> */}
         <Content />
         <Author />
       </div>

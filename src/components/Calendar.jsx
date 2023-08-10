@@ -14,9 +14,9 @@ let todaydate = newDate.toISOString().slice(0, 10)
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []
-for (let i = 33; i <= 100; i++) {
+for (let i = 38; i <= 100; i++) {
   datesarray.push(
-    new Date(newDate.getFullYear(), 5, i).toISOString().slice(0, 10)
+    new Date(newDate.getFullYear(), 6, i).toISOString().slice(0, 10)
   )
 }
 
@@ -32,20 +32,44 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-07-26',
-    name: 'Math + AI',
+    date: '2023-08-14',
+    name: 'Algo',
   },
   {
-    date: '2023-07-27',
+    date: '2023-08-16',
+    name: 'Web',
+  },
+  {
+    date: '2023-08-17',
+    name: 'ES',
+  },
+  {
+    date: '2023-08-24',
+    name: 'AEC',
+  },
+  {
+    date: '2023-08-26',
+    name: 'Math',
+  },
+  {
+    date: '2023-08-28',
     name: 'DCN',
   },
   {
-    date: '2023-07-28',
-    name: 'Const + DAA',
+    date: '2023-08-30',
+    name: 'DAA',
   },
   {
-    date: '2023-07-31',
-    name: 'AEC + OS',
+    date: '2023-09-01',
+    name: 'AI',
+  },
+  {
+    date: '2023-09-04',
+    name: 'OS',
+  },
+  {
+    date: '2023-09-06',
+    name: 'Const',
   },
 ]
 
@@ -188,7 +212,7 @@ export function Calendar(exam) {
               ))}
             </div>
             {/* Mobile view */}
-            <div className="ring-grey-200 isolate grid w-full grid-cols-7 grid-rows-5 gap-px rounded-lg bg-slate-300 ring-1 dark:ring-gray-500 lg:hidden">
+            <div className="ring-grey-200 isolate grid w-full grid-cols-7 grid-rows-5 gap-px rounded-lg bg-slate-300 ring-1 dark:ring-gray-500">
               {days.map((day, dayIdx) => (
                 <div
                   key={day.date}
