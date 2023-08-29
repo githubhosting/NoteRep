@@ -28,21 +28,6 @@ export function Content() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await database.collection('cseaiml').get()
-        const data = response.docs.map((doc) => doc.data())
-        setCseaiml(data)
-        setLoading(false)
-      } catch (error) {
-        setError(error)
-        setLoading(false)
-      }
-    }
-    fetchData()
-  }, [])
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
         const response = await database
           .collection('otherlinks')
           .orderBy('createdate', 'desc')
@@ -87,7 +72,7 @@ export function Content() {
                 </p>
                 {item.links?.map((link) => (
                   <div>
-                    <p className="mt-3 dark:text-white/90">{link.urltitle}</p>
+                    <p className="mt-3 dark:text-white/90">{link.description}</p>
                     <a
                       href={link.url}
                       target="_blank"

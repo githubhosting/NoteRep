@@ -168,7 +168,7 @@ function ScheduleTabbed() {
       className="mx-auto grid max-w-2xl grid-cols-1 gap-y-6 sm:grid-cols-2 lg:hidden"
       vertical={tabOrientation === 'vertical'}
     >
-      <Tab.List className="-mx-4 flex gap-x-4 gap-y-10 overflow-x-auto pl-4 pb-4 sm:mx-0 sm:flex-col sm:pb-0 sm:pl-0 sm:pr-8">
+      <Tab.List className="-mx-4 flex gap-x-4 gap-y-10 overflow-x-auto pb-4 pl-4 sm:mx-0 sm:flex-col sm:pb-0 sm:pl-0 sm:pr-8">
         {({ selectedIndex }) =>
           subjects.map((day, dayIndex) => (
             <div
@@ -215,13 +215,14 @@ function DaySummary({ day }) {
   )
 }
 
-function TimeSlots({ day, className }) {
+function TimeSlots({ day, className, index }) {
   return (
     <ol
+      key={index}
       role="list"
       className={clsx(
         className,
-        'space-y-8 rounded-4xl bg-white/60 py-14 px-5 text-center shadow-num_l backdrop-blur dark:bg-[#0b1120] dark:shadow-num_d'
+        'space-y-8 rounded-4xl bg-white/60 px-5 py-14 text-center shadow-num_l backdrop-blur dark:bg-[#0b1120] dark:shadow-num_d'
       )}
     >
       {day.timeSlots.map((timeSlot) => (
@@ -264,7 +265,7 @@ export function Schedule_New() {
     <section
       id="schedule"
       aria-label="Schedule"
-      className="bg-indigo-50 pt-5 pb-10 dark:bg-slate-900 sm:pt-5 lg:pb-16"
+      className="bg-indigo-50 pb-10 pt-5 dark:bg-slate-900 sm:pt-5 lg:pb-16"
     >
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-8">

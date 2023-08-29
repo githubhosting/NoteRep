@@ -212,7 +212,7 @@ export function Calendar(exam) {
               ))}
             </div>
             {/* Mobile view */}
-            <div className="ring-grey-200 isolate grid w-full grid-cols-7 grid-rows-5 gap-px rounded-lg bg-slate-300 ring-1 dark:ring-gray-500">
+            <div className="ring-grey-200 isolate grid w-full grid-cols-7 grid-rows-5 gap-px rounded-lg bg-slate-300 ring-1 dark:ring-gray-500 lg:hidden">
               {days.map((day, dayIdx) => (
                 <div
                   key={day.date}
