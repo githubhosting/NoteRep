@@ -96,8 +96,8 @@ export function CallToAction() {
           <p className="border-b border-blue-900 pb-10 text-center text-3xl font-bold dark:border-white/70"></p>
         </div>
       </div>
-      {/* <Container>
-        <div className="flex flex-row items-center gap-2 py-3 lg:p-5 justify-center">
+      <Container>
+        <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
           <Switch
             checked={enabled}
             onChange={setEnabled}
@@ -127,7 +127,7 @@ export function CallToAction() {
           <Counter />
           <Calendar />
         </Transition>
-      </Container> */}
+      </Container>
     </section>
   )
 }

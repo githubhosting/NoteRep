@@ -8,14 +8,7 @@ import { Header } from '@/components/Header'
 import { HeaderMod } from '@/components/HeaderMod'
 import { Hero } from '@/components/Hero'
 import { Content } from '@/components/Content4sem'
-import { Newsletter } from '@/components/Newsletter'
-import { Schedule } from '@/components/Schedule'
-
-import { Sponsors } from '@/components/Sponsors'
 import { Author } from '@/components/Author'
-import { CallToAction } from '@/components/CallToAction'
-import { Introduction } from '@/components/Introduction'
-import { FreeChapters } from '@/components/FreeChapters'
 import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
@@ -60,7 +53,7 @@ export default function Home() {
   }, [])
 
   const [isShowing, setIsShowing] = useState(false)
-  const [enabled, setEnabled] = useState(true)
+  const [enabled, setEnabled] = useState(false)
 
   const examDate = new Date('2021-12-17T00:00:00')
   const today = new Date()

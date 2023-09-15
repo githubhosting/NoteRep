@@ -32,44 +32,8 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-08-14',
-    name: 'Algo',
-  },
-  {
-    date: '2023-08-16',
-    name: 'Web',
-  },
-  {
-    date: '2023-08-17',
-    name: 'ES',
-  },
-  {
-    date: '2023-08-24',
-    name: 'AEC',
-  },
-  {
-    date: '2023-08-26',
-    name: 'Math',
-  },
-  {
-    date: '2023-08-28',
-    name: 'DCN',
-  },
-  {
-    date: '2023-08-30',
-    name: 'DAA',
-  },
-  {
-    date: '2023-09-01',
-    name: 'AI',
-  },
-  {
-    date: '2023-09-04',
-    name: 'OS',
-  },
-  {
-    date: '2023-09-06',
-    name: 'Const',
+    date: '2023-12-14',
+    name: '-',
   },
 ]
 
@@ -253,7 +217,6 @@ export function Calendar(exam) {
                   {day.events.length > 0 && (
                     <span className="px-1 font-semibold">
                       {day.events.map((event) => (
-                        //on hover show event name
                         <span className="flex justify-center rounded-md bg-indigo-50 px-1 align-middle dark:bg-[#0071f0] dark:text-white">
                           {event.name}
                         </span>

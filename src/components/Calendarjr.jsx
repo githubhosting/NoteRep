@@ -14,9 +14,11 @@ let todaydate = newDate.toISOString().slice(0, 10)
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []
-for (let i = 31; i <= 100; i++) {
+for (let i = 0; i <= 40; i++) {
   datesarray.push(
-    new Date(newDate.getFullYear(), 3, i).toISOString().slice(0, 10)
+    new Date(newDate.getFullYear(), currentmonth - 1, i)
+      .toISOString()
+      .slice(0, 10)
   )
 }
 
@@ -32,14 +34,74 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-08-03',
+    date: '2023-09-15',
     name: 'Math',
     long_name: 'Maths',
+  },
+  {
+    date: '2023-09-16',
+    name: 'Chemistry',
+    long_name: 'Chemistry',
+  },
+  {
+    date: '2023-09-19',
+    name: 'English',
+    long_name: 'English',
+  },
+  {
+    date: '2023-09-21',
+    name: 'Const',
+    long_name: 'Constitution',
+  },
+  {
+    date: '2023-09-22',
+    name: 'Kannada',
+    long_name: 'Kannada',
+  },
+  {
+    date: '2023-09-23',
+    name: 'Design Thinking',
+    long_name: 'Design Thinking',
+  },
+  {
+    date: '2023-09-25',
+    name: 'ECT',
+    long_name: 'ECT',
+  },
+  {
+    date: '2023-09-27',
+    name: 'Civil/Electrical',
+    long_name: 'Civil/Electrical',
+  },
+  {
+    date: '2023-09-29',
+    name: 'Electronics/Mechanical',
+    long_name: 'Electronics/Mechanical',
+  },
+  {
+    date: '2023-09-30',
+    name: 'C-Prog',
+    long_name: 'C-Programming',
+  },
+  {
+    date: '2023-10-03',
+    name: 'Scientific Health',
+    long_name: 'Scientific Health',
+  },
+  {
+    date: '2023-10-04',
+    name: 'Physics',
+    long_name: 'Physics',
+  },
+  {
+    date: '2023-10-05',
+    name: 'PLC',
+    long_name: 'PLC',
   },
 ]
 
 const days = []
-for (let i = 0; i < 35; i++) {
+for (let i = 4; i < 39; i++) {
   days.push({
     date: datesarray[i],
     events: exam.filter((event) => event.date === datesarray[i]),
@@ -74,7 +136,6 @@ export function Counter() {
     }, 1000 * 60 * 60 * 24)
     return () => clearInterval(interval)
   }, [])
-  console.log(counter)
   return (
     <div>
       <p className="flex items-center justify-center pt-5 text-slate-900 dark:text-zinc-50 lg:flex-none">

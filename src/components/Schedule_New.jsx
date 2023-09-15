@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react'
 import Image from 'next/future/image'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
-
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background.jpg'
 
@@ -144,6 +143,98 @@ const subjects = [
   },
 ]
 
+const physicscycle = [
+  {
+    name: 'Advanced Calculus',
+    description: 'MA11 | Mathematics',
+    link: 'https://drive.google.com/drive/folders/1ocboxyZqKUF8PcoPQCNcN1qW6_98s8py',
+  },
+  {
+    name: 'Communicative English',
+    description: 'HS12 | Humanities',
+    link: 'https://drive.google.com/drive/folders/1wZFskaydriaWIrOeHMSNutNtV-55fqFx?usp=sharing',
+  },
+  {
+    name: 'Basic Electrical Engineering',
+    description: 'EE13 | Electrical & Electronics',
+    link: 'https://drive.google.com/drive/folders/1oetzNGC020UfqQ8hMeyIxFRcO2fdJhVZ?usp=sharing',
+  },
+  {
+    name: 'Basics Of Civil Engineering & Mechanics',
+    description: 'CV14 | Civil Engineering',
+    link: 'https://drive.google.com/drive/folders/1hfv8E8kByN9KcDElYJI1ZWqPIZYZmavg',
+  },
+  {
+    name: 'Design Thinking',
+    description: 'AEC26',
+    link: 'https://drive.google.com/drive/folders/1aPjpHh6apHApF2sW9U88KFEn28csTpUh?usp=sharing',
+  },
+  {
+    name: 'Engineering Physics',
+    description: 'PY15 | Physics',
+    link: 'https://drive.google.com/drive/folders/1HfYqOlmGppRU_lFEqcJ1SwkDxiRfUxKN?usp=sharing',
+  },
+  {
+    name: 'Computer Aided Engineering Drawing',
+    description: 'MEL17 | Mechanical Engineering',
+    link: 'https://drive.google.com/drive/folders/1n9pDB2weAQ2qyuPfwA_69XmtO5wbN9wd?usp=sharing',
+  },
+  {
+    name: 'Engineering Physics Laboratory',
+    description: 'PYL18 | Physics',
+    link: 'https://drive.google.com/drive/folders/1Hd-LMODhxKe3Vogyl2tdBGLpj_sv79Ms?usp=sharing',
+  },
+]
+
+const chemistrycycle = [
+  {
+    border: 1,
+    name: 'Multivariate Calculus & Differential Equations',
+    description: 'MA21 | Mathematics',
+    link: 'https://drive.google.com/drive/folders/1nDwJtyynb8V-N0afwfSuXWDCQK9MFyFt?usp=sharing',
+  },
+  {
+    name: 'Fundamentals Of Mechanical Engineering',
+    description: 'ME22 | Mechanical Engineering',
+    link: 'https://drive.google.com/drive/folders/14UBANxwD6X3w7R4z_LbGxlx8bL7iizwW?usp=sharing',
+  },
+  {
+    name: 'Basic Electronics',
+    description: 'EC23 | EC/ET',
+    link: 'https://drive.google.com/drive/folders/16hJtglzOMFIZgi1I4CmmWvNVTzfEa_lz?usp=sharing',
+  },
+  {
+    name: 'Computing Fundamentals And C Programming',
+    description: 'CS24 | CSE/ISE',
+    link: 'https://drive.google.com/drive/folders/1qR61EoAEOu2kaTtDUoV7NQY3dGl326AP?usp=sharing',
+  },
+  {
+    name: 'Engineering Chemistry',
+    description: 'CY25 | Chemistry',
+    link: 'https://drive.google.com/drive/folders/1PwOQv5aGNb7A-YBq9Jg3GEca_3D12IlJ?usp=sharing',
+  },
+  {
+    name: 'A Scientific Approach To Health',
+    description: 'AEC26',
+    link: 'https://drive.google.com/drive/folders/1hhpslVlioi_ctjRHd9yBdFfFDteq0zFP?usp=sharing',
+  },
+  {
+    name: 'Engineering Chemistry Laboratory',
+    description: 'CYL27 | Chemistry',
+    link: 'https://drive.google.com/drive/folders/1PhVaeiy233wPPst8t6kBf05YdyMfn9Cf?usp=sharing',
+  },
+  {
+    name: 'C Programming Laboratory',
+    description: 'CSL28 | CSE/ISE',
+    link: 'https://drive.google.com/drive/folders/11hGw83CGCKOnAg_gvmEzzpxilcXVJYeB?usp=sharing',
+  },
+  {
+    name: 'Workshop Practice',
+    description: 'MEL29 | Mechanical Engineering',
+    link: 'https://drive.google.com/drive/folders/1RSYS98m7xz8JcRRuxHubaZZvYLfuRNjE?usp=sharing',
+  },
+]
+
 function ScheduleTabbed() {
   let [tabOrientation, setTabOrientation] = useState('horizontal')
 
@@ -215,6 +306,43 @@ function DaySummary({ day }) {
   )
 }
 
+function SubjectCard({ item, index }) {
+  return (
+    <li
+      key={index}
+      className="rounded-xl bg-gradient-to-r from-green-300 via-blue-300 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm dark:shadow-5xl"
+    >
+      <div className="rounded-[10px] bg-white p-5 dark:bg-slate-900 sm:p-6">
+        <h3 className="text-center text-base font-semibold uppercase text-gray-900 dark:text-white">
+          {item.name}
+        </h3>
+        <p className="mt-1 text-center text-base text-gray-700 dark:text-slate-400">
+          {item.description}
+        </p>
+        <div className="flex justify-center gap-3">
+          <a href={item.link} target="_blank">
+            <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0 hover:dark:text-white">
+              View
+            </button>
+          </a>
+          {/* <a href={item.otherlink} target="_blank">
+            <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
+              Other links
+            </button>
+          </a> */}
+        </div>
+        {item.tag && (
+          <div className="mt-4 flex flex-wrap justify-center gap-1">
+            <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600 dark:bg-purple-900 dark:text-indigo-50">
+              {item.tag}
+            </span>
+          </div>
+        )}
+      </div>
+    </li>
+  )
+}
+
 function TimeSlots({ day, className, index }) {
   return (
     <ol
@@ -271,8 +399,31 @@ export function Schedule_New() {
         <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-8">
           <div className="relative mt-5 sm:mt-10">
             <Container className="relative">
-              <ScheduleTabbed />
-              <ScheduleStatic />
+              <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
+                Physics Cycle
+              </h2>
+              <ul
+                role="list"
+                className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
+              >
+                {physicscycle.map((item, index) => (
+                  <SubjectCard item={item} index={index} />
+                ))}
+              </ul>
+              <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl mt-5">
+                Chemistry Cycle
+              </h2>
+              <ul
+                role="list"
+                className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
+              >
+                {chemistrycycle.map((item, index) => (
+                  <SubjectCard item={item} index={index} />
+                ))}
+              </ul>
+
+              {/* <ScheduleTabbed /> */}
+              {/* <ScheduleStatic /> */}
             </Container>
           </div>
         </div>

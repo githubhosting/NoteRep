@@ -123,8 +123,11 @@ export function Content() {
           role="list"
           className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
         >
-          {cseaimlstatic.map((item) => (
-            <li className="rounded-xl bg-gradient-to-r from-green-300 via-blue-300 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm dark:shadow-5xl">
+          {cseaimlstatic.map((item, index) => (
+            <li
+              key={index}
+              className="rounded-xl bg-gradient-to-r from-green-300 via-blue-300 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm dark:shadow-5xl"
+            >
               <div className="rounded-[10px] bg-white p-5 dark:bg-slate-900 sm:p-6">
                 <h3 className="text-center text-base font-semibold uppercase text-gray-900 dark:text-white">
                   {item.title}
