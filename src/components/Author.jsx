@@ -63,7 +63,7 @@ export function Author() {
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
-                  class="bi bi-linkedin"
+                  className="bi bi-linkedin"
                   viewBox="0 0 16 16"
                   aria-hidden="true"
                 >
@@ -82,7 +82,7 @@ export function Author() {
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
-                  class="bi bi-github"
+                  className="bi bi-github"
                   viewBox="0 0 16 16"
                   aria-hidden="true"
                 >
@@ -101,7 +101,7 @@ export function Author() {
                   width="2rem"
                   height="2rem"
                   fill="currentColor"
-                  class="bi bi-instagram"
+                  className="bi bi-instagram"
                   viewBox="0 0 16 16"
                   aria-hidden="true"
                 >

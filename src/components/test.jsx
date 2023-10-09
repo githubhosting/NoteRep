@@ -91,8 +91,8 @@ export function Content() {
                     </a>
                   </button>
                 </div>
-                <div class="mt-4 flex flex-wrap justify-center gap-1">
-                  <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
+                <div className="mt-4 flex flex-wrap justify-center gap-1">
+                  <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
                     {item.tag}
                   </span>
                 </div>
@@ -115,9 +115,9 @@ export function Content() {
                     View
                   </button>
                 </div>
-                <div class="mt-4 flex flex-wrap justify-center gap-1">
+                <div className="mt-4 flex flex-wrap justify-center gap-1">
                   <span
-                    class="whitespace
+                    className="whitespace
                   -nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600"
                   >
                     {item.tag}
@@ -130,24 +130,24 @@ export function Content() {
       </Container>
     </section>
 
-    // <article class="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:shadow-sm">
-    //   <div class="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
-    //     <time datetime="2022-10-10" class="block text-xs text-gray-500">
+    // <article className="rounded-xl bg-gradient-to-r from-green-300 via-blue-500 to-purple-600 p-0.5 shadow-xl transition hover:shadow-sm">
+    //   <div className="rounded-[10px] bg-white p-4 !pt-20 sm:p-6">
+    //     <time datetime="2022-10-10" className="block text-xs text-gray-500">
     //       10th Oct 2022
     //     </time>
 
     //     <a href="#">
-    //       <h3 class="mt-0.5 text-lg font-medium text-gray-900">
+    //       <h3 className="mt-0.5 text-lg font-medium text-gray-900">
     //         How to center an element using JavaScript and jQuery
     //       </h3>
     //     </a>
 
-    //     <div class="mt-4 flex flex-wrap gap-1">
-    //       <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
+    //     <div className="mt-4 flex flex-wrap gap-1">
+    //       <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
     //         Snippet
     //       </span>
 
-    //       <span class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
+    //       <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600">
     //         JavaScript
     //       </span>
     //     </div>
@@ -190,19 +190,19 @@ export function Content() {
 //         recycle={false}
 //         numberOfPieces={500}
 //       />
-//       <div class="bg-white  ">
-//         <div class="z-20 mx-auto w-full py-12 px-4 text-center sm:px-6 lg:py-16 lg:px-8">
-//           <h2 class="text-3xl font-extrabold text-black  sm:text-4xl">
-//             <span class="block">Congratulations !!</span>
-//             <span class="block text-indigo-500">U found it !!!.</span>
+//       <div className="bg-white  ">
+//         <div className="z-20 mx-auto w-full py-12 px-4 text-center sm:px-6 lg:py-16 lg:px-8">
+//           <h2 className="text-3xl font-extrabold text-black  sm:text-4xl">
+//             <span className="block">Congratulations !!</span>
+//             <span className="block text-indigo-500">U found it !!!.</span>
 //           </h2>
-//           <p class="mx-auto mt-4 max-w-md text-xl text-gray-400">Yeeeee</p>
-//           <div class="lg:mt-0 lg:flex-shrink-0">
-//             <div class="mt-12 inline-flex rounded-md shadow">
+//           <p className="mx-auto mt-4 max-w-md text-xl text-gray-400">Yeeeee</p>
+//           <div className="lg:mt-0 lg:flex-shrink-0">
+//             <div className="mt-12 inline-flex rounded-md shadow">
 //               <a
 //                 href="https://www.youtube.com/watch?v=QH2-TGUlwu4"
 //                 type="button"
-//                 class="w-full rounded-lg  bg-indigo-600 py-4 px-6 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2  focus:ring-offset-indigo-200 "
+//                 className="w-full rounded-lg  bg-indigo-600 py-4 px-6 text-center text-base font-semibold text-white shadow-md transition duration-200 ease-in hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2  focus:ring-offset-indigo-200 "
 //               >
 //                 Claim here
 //               </a>

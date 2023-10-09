@@ -93,7 +93,7 @@ export default function Home() {
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
             4th Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
           </h2>
-          <div className="flex flex-row items-center gap-2 py-3 lg:p-5">
+          {/* <div className="flex flex-row items-center gap-2 py-3 lg:p-5">
             <Switch
               checked={enabled}
               onChange={setEnabled}
@@ -122,9 +122,9 @@ export default function Home() {
           >
             <Counter />
             <Calendar />
-          </Transition>
+          </Transition> */}
         </Container>
-        {/* <Timetable /> */}
+        <Timetable />
         <Content />
         <Author />
       </div>

@@ -17,7 +17,7 @@ export function FreeChapters() {
           >
             <div>
               <h3 className="text-lg font-medium tracking-tight text-white">
-                I know you all are tired of searching through endless class
+                I know you all are tired of searching through endless className
                 groups for that one PDF. And that's how NoteRep was born to
                 solve it. With NoteRep, all the materials are conveniently
                 organized for you to access and use at your fingertips.

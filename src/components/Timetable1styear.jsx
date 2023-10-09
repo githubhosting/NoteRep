@@ -99,22 +99,22 @@ export function Timetable1styear() {
 
   return (
     <>
-      <section class="body-font py-10 text-gray-600">
-        <div class="mb-6 text-center">
-          <h1 class="title-font mb-2 text-center text-2xl font-semibold text-gray-900 sm:text-3xl">
+      <section className="body-font py-10 text-gray-600">
+        <div className="mb-6 text-center">
+          <h1 className="title-font mb-2 text-center text-2xl font-semibold text-gray-900 sm:text-3xl">
             Time Table for 1st Year CSE (AI & ML)
           </h1>
         </div>
-        <div class="flex flex-col lg:overflow-x-hidden ">
-          <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
-              <div class="overflow-hidden">
-                <table class="ml-2 min-w-full border-2">
-                  <thead class="border-b-2 border-t-2 ">
+        <div className="flex flex-col lg:overflow-x-hidden ">
+          <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div className="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+              <div className="overflow-hidden">
+                <table className="ml-2 min-w-full border-2">
+                  <thead className="border-b-2 border-t-2 ">
                     <tr>
                       <th
                         scope="col"
-                        class="border-r px-4 py-4 text-left text-sm font-bold text-gray-900"
+                        className="border-r px-4 py-4 text-left text-sm font-bold text-gray-900"
                       >
                         Time/Days
                       </th>
@@ -122,10 +122,10 @@ export function Timetable1styear() {
                         <th
                           key={i}
                           scope="col"
-                          class="whitespace-nowrap border-r px-4 py-4 text-left text-sm font-bold text-gray-900"
+                          className="whitespace-nowrap border-r px-4 py-4 text-left text-sm font-bold text-gray-900"
                         >
                           {get_time() === i ? (
-                            <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900">
+                            <span className="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900">
                               {time_class[i]}
                             </span>
                           ) : (
@@ -137,12 +137,12 @@ export function Timetable1styear() {
                   </thead>
                   <tbody>
                     {subjects.map((subject, j) => (
-                      <tr class="border-b-2 bg-white">
-                        <td class="whitespace-nowrap border-r px-4 py-4 text-sm font-semibold text-gray-900">
+                      <tr className="border-b-2 bg-white">
+                        <td className="whitespace-nowrap border-r px-4 py-4 text-sm font-semibold text-gray-900">
                           {subject.Day === day ? (
                             <span
                               key={j}
-                              class="rounded-md bg-green-300 px-2 py-1 text-sm font-semibold text-gray-900"
+                              className="rounded-md bg-green-300 px-2 py-1 text-sm font-semibold text-gray-900"
                             >
                               {subject.Day}
                             </span>
@@ -153,16 +153,16 @@ export function Timetable1styear() {
                         {subject.subject.map((sub, i) => (
                           <td
                             key={i}
-                            class="whitespace-nowrap border-r px-4 py-4 text-sm font-medium text-gray-900"
+                            className="whitespace-nowrap border-r px-4 py-4 text-sm font-medium text-gray-900"
                           >
                             {j === day_1 - 1 ? (
                               <span>
                                 {i === get_time() ? (
-                                  <span class="rounded-md border-2 border-red-400 bg-green-200 px-2 py-1 text-sm font-bold text-black">
+                                  <span className="rounded-md border-2 border-red-400 bg-green-200 px-2 py-1 text-sm font-bold text-black">
                                     {sub}
                                   </span>
                                 ) : (
-                                  <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900">
+                                  <span className="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900">
                                     {sub}
                                   </span>
                                 )}

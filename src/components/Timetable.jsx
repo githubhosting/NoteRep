@@ -8,14 +8,14 @@ const subjects = [
   {
     Day: 'Monday',
     subject: [
-      'ES/Web Lab',
-      'ES/Web Lab',
-      'Math',
-      'OS',
+      'Automata Tut',
+      'Automata Tut',
+      'Big Data',
+      'Automata',
       '-',
-      'Const',
-      'DAA Tut',
-      'DAA Tut',
+      'Software',
+      'Research Method',
+      'ML *',
     ],
   },
   {
@@ -125,22 +125,22 @@ export function Timetable() {
   let newDate = new Date()
   let day_1 = newDate.getDay()
   return (
-    <section class="body-font mx-auto max-w-7xl px-4 py-2 text-gray-600 sm:px-6 lg:px-8">
-      <div class="mb-6 text-center">
-        <h1 class="title-font mb-2 text-center text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
+    <section className="body-font mx-auto max-w-7xl px-4 py-2 text-gray-600 sm:px-6 lg:px-8">
+      <div className="mb-6 text-center">
+        <h1 className="title-font mb-2 text-center text-2xl font-semibold text-gray-900 dark:text-white sm:text-3xl">
           Time Table
         </h1>
       </div>
-      <div class="flex flex-col py-1 md:px-10 lg:overflow-x-hidden">
-        <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-          <div class="inline-block min-w-full sm:px-6 lg:px-8">
-            <div class="overflow-hidden rounded-lg border-2 dark:shadow-num_d1">
-              <table class="min-w-full">
-                <thead class="border-b">
+      <div className="flex flex-col py-1 md:px-10 lg:overflow-x-hidden">
+        <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+          <div className="inline-block min-w-full sm:px-6 lg:px-8">
+            <div className="overflow-hidden rounded-lg border-2 dark:shadow-num_d1">
+              <table className="min-w-full">
+                <thead className="border-b">
                   <tr>
                     <th
                       scope="col"
-                      class="text-centre border-r px-4 py-4 text-sm font-bold text-gray-900 dark:text-white"
+                      className="text-centre border-r px-4 py-4 text-sm font-bold text-gray-900 dark:text-white"
                     >
                       Days/Time
                     </th>
@@ -148,10 +148,10 @@ export function Timetable() {
                       <th
                         key={i}
                         scope="col"
-                        class="text-centre whitespace-nowrap border-r px-4 py-4 text-sm font-bold text-gray-900 dark:text-white"
+                        className="text-centre whitespace-nowrap border-r px-4 py-4 text-sm font-bold text-gray-900 dark:text-white"
                       >
                         {get_time() === i ? (
-                          <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-800">
+                          <span className="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 dark:text-gray-800">
                             {time_class[i]}
                           </span>
                         ) : (
@@ -163,12 +163,12 @@ export function Timetable() {
                 </thead>
                 <tbody>
                   {subjects.map((subject, j) => (
-                    <tr class="border-t bg-white dark:border-gray-200 dark:bg-slate-900 dark:text-white">
-                      <td class="whitespace-nowrap border-r px-4 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
+                    <tr className="border-t bg-white dark:border-gray-200 dark:bg-slate-900 dark:text-white">
+                      <td className="whitespace-nowrap border-r px-4 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                         {subject.Day === day ? (
                           <span
                             key={j}
-                            class="rounded-md bg-green-300 px-2 py-1 text-sm font-semibold text-gray-900"
+                            className="rounded-md bg-green-300 px-2 py-1 text-sm font-semibold text-gray-900"
                           >
                             {subject.Day}
                           </span>
@@ -187,11 +187,11 @@ export function Timetable() {
                           {j === day_1 - 1 ? (
                             <span>
                               {i === get_time() ? (
-                                <span class="rounded-md border-2 border-green-500 bg-green-200 px-2 py-1 text-sm font-bold text-black dark:text-gray-900">
+                                <span className="rounded-md border-2 border-green-500 bg-green-200 px-2 py-1 text-sm font-bold text-black dark:text-gray-900">
                                   {sub}
                                 </span>
                               ) : (
-                                <span class="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 ">
+                                <span className="rounded-md bg-green-200 px-2 py-1 text-sm font-semibold text-gray-900 ">
                                   {sub}
                                 </span>
                               )}
