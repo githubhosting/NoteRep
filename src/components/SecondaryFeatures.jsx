@@ -13,7 +13,7 @@ const data = [
     title: 'SIS Parent Portal',
     subtitle: 'Even Sem 2022',
     button: 'Visit',
-    href: 'https://parent.msrit.edu/',
+    href: 'https://parents.msrit.edu/',
   },
   {
     title: 'Idea Repository',
@@ -21,10 +21,27 @@ const data = [
     button: 'Visit',
     href: 'https://idearepo.vercel.app/',
   },
+  {
+    title: 'Syllabus GPT',
+    subtitle: 'Syllabus bot for CSE (AI ML & CY)',
+    button: 'Visit',
+    href: '/syllabusgpt',
+  },
+  {
+    title: 'Communilink',
+    subtitle: 'Connecting All the groups at one place',
+    button: 'Visit',
+    href: '/communilink',
+  },
+  {
+    title: 'Noterep Bot',
+    subtitle: '*Under testing',
+    button: 'Visit',
+    href: '/cnoterepbot',
+  },
 ]
 
 export function SecondaryFeatures() {
-  const install = usePWAInstall()
   return (
     <section
       id="secondary-features"
@@ -59,7 +76,7 @@ export function SecondaryFeatures() {
                   </p> */}
                   <div className="flex justify-center">
                     <a
-                      className="mt-2 rounded border border-blue-500 bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-300 dark:text-blue-400 hover:dark:text-white"
+                      className="mt-2 rounded-md border-2 border-blue-500 bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-300 dark:text-blue-400 hover:dark:text-white"
                       href={item.href}
                       target="_blank"
                     >
@@ -71,8 +88,8 @@ export function SecondaryFeatures() {
             </ul>
             <dl className="mt-10 grid grid-cols-2 gap-x-10 gap-y-6 rounded-xl border p-4 sm:mt-16 sm:gap-x-16 sm:gap-y-10 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none">
               {[
-                ['Total Web Clics*', '5.97K'],
-                ['Total impressions*', '12.33K'],
+                ['Total Web Clics*', '41.60K'],
+                ['Total impressions*', '10.50K'],
               ].map(([name, value]) => (
                 <div key={name}>
                   <dt className="font-mono text-sm text-blue-600 dark:text-zinc-100">
@@ -84,6 +101,19 @@ export function SecondaryFeatures() {
                 </div>
               ))}
             </dl>
+
+            <p className="pt-10 text-base font-thin">
+              You can now simply search <i className="font-bold">"noterep"</i>{' '}
+              on google and find this website listing in the top results of
+              Google searches. That's pretty cool, isn't it? A big thanks to{' '}
+              <a
+                className="font-bold underline"
+                href="https://www.linkedin.com/in/gautam-menon-9a30a3233/"
+              >
+                Gautam Menon
+              </a>{' '}
+              for suggesting this creative unique name.
+            </p>
           </Container>
         </div>
       </div>

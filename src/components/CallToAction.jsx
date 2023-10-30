@@ -97,7 +97,7 @@ export function CallToAction() {
         </div>
       </div>
       <Container>
-        <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
+        {/* <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
           <Switch
             checked={enabled}
             onChange={setEnabled}
@@ -114,7 +114,7 @@ export function CallToAction() {
           <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
             {enabled ? 'Hide' : 'Show Timetable'}
           </p>
-        </div>
+        </div> */}
         <Transition
           show={enabled}
           enter="transition-opacity duration-150"

@@ -26,11 +26,11 @@ const communilinks = [
     description: 'Telegram Group',
     href: 'https://t.me/+JkfLZPe6p0cyNmY9',
   },
-  {
-    name: 'MSRIT 2025 Batch',
-    description: 'WhatsApp Group',
-    href: '#',
-  },
+  // {
+  //   name: 'MSRIT 2025 Batch',
+  //   description: 'WhatsApp Group',
+  //   href: '#',
+  // },
   {
     name: 'Anime Club',
     description: 'WhatsApp Group',
@@ -105,6 +105,9 @@ export default function NoterepBot_() {
                 <p className="text-center tracking-wider text-black dark:text-white">
                   Explore, Connect, Engage | Connecting All College Communities
                   at one place.
+                </p>
+                <p className="italic text-center text-black dark:text-[#fefefe]">
+                  Feel free to approach me to add your community to this list.
                 </p>
                 <ul
                   role="list"

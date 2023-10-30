@@ -28,6 +28,7 @@ export function Hero() {
                 Contribute to this project: Add Notes{' '}
                 <a
                   className="text-base underline"
+                  target="_blank"
                   href="https://drive.google.com/drive/folders/1qRi18giG_H8Zr8KtlSyVNCbjp2UruvRp?usp=sharing"
                 >
                   Here
@@ -37,7 +38,7 @@ export function Hero() {
                 Subject Folders.
               </p>
 
-              {/* <p className="text-base font-semibold">
+              {/* <p className="text-base font-thin">
                 You can now simply search <i className="font-bold">"noterep"</i>{' '}
                 on google and find this website listing in the top results of
                 Google searches. That's pretty cool, isn't it? A big thanks to{' '}
@@ -47,7 +48,7 @@ export function Hero() {
                 >
                   Gautam Menon
                 </a>{' '}
-                for suggesting this name.
+                for suggesting this creative unique name.
               </p> */}
               <p className="text-base font-normal">
                 Anyone interested in sharing notes for other branches can{' '}
@@ -73,19 +74,33 @@ export function Hero() {
                 Introducing the new beta feature!
               </p>
               <div className="flex flex-col gap-6 md:flex-row">
-                <ButtonLink
+                {/* <ButtonLink
                   href="/noterepbot"
                   className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                   target="_blank"
                 >
                   AI Chat Bot 🚀
+                </ButtonLink> */}
+                <ButtonLink
+                  href="/communilink"
+                  className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                  target="_blank"
+                >
+                  Communi Link 🔗
                 </ButtonLink>
                 <ButtonLink
+                  href="/noterep-forum"
+                  className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                  target="_blank"
+                >
+                  NoteRep Forum 🚀
+                </ButtonLink>
+                {/* <ButtonLink
                   href="/syllabusgpt"
                   className="button-86 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                 >
                   Syllabus GPT 🚀
-                </ButtonLink>
+                </ButtonLink> */}
               </div>
             </div>
 
