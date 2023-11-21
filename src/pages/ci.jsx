@@ -33,7 +33,7 @@ export default function Home() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth', // for smoothly scrolling
+      behavior: 'smooth',
     })
   }
 
@@ -91,7 +91,7 @@ export default function Home() {
         <HeaderMod />
         <Container>
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
-            4th Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
+            5th Sem Notes Links for CSE(AI & ML)
           </h2>
           {/* <div className="flex flex-row items-center gap-2 py-3 lg:p-5">
             <Switch

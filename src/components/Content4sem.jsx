@@ -78,6 +78,67 @@ const cseaimlstatic = [
     tag: '',
   },
 ]
+// Subjects:
+// 1. BIG DATA ANALYTICS
+// 2. MACHINE LEARNING
+// 3. AUTOMATA THEORY AND COMPILER DESIGN
+// 4. SOFTWARE ENGINEERING
+// 5. ADVANCED COMPUTER NETWORKS
+// 6. RESEARCH METHODOLOGY
+// 7. JAVA LAB
+// 8. R LAB
+// 9. Environment Something
+// Links
+// 1.https://drive.google.com/drive/folders/1yKpnOtQxkLoiu5puvEkUBZmDS1rjt3YX?usp=drive_link
+// 2.https://drive.google.com/drive/folders/1zqn9poZMiHQbKib3mCKNgWX-I6I_2h_N?usp=sharing
+// 3.https://drive.google.com/drive/folders/1x4ECw1TWAmfzgytKWTN-ReMyWz13bM05?usp=drive_link
+// 4.https://drive.google.com/drive/folders/1lwH45jAUJNsM1NwZ8WPIRYZZ4KAhDEuR?usp=drive_link
+// 5.https://drive.google.com/drive/folders/1-pmiBr3mpl9IXmKJOCGgGb6QP2H3MPtb?usp=drive_link
+// 6.https://drive.google.com/drive/folders/1XfSpA_pr-RaGzJLyICh5RtguPXX51KLz?usp=drive_link
+const cseaimlstatic5 = [
+  {
+    title: 'Big Data Analytics',
+    description: '(3:0:0) CI51',
+    link: 'https://drive.google.com/drive/folders/1yKpnOtQxkLoiu5puvEkUBZmDS1rjt3YX?usp=drive_link',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Machine Learning',
+    description: '(2:0:1) CI52',
+    link: 'https://drive.google.com/drive/folders/1zqn9poZMiHQbKib3mCKNgWX-I6I_2h_N?usp=sharing',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Automata Theory and Compiler Design',
+    description: '(2:0:1) CI53',
+    link: 'https://drive.google.com/drive/folders/1x4ECw1TWAmfzgytKWTN-ReMyWz13bM05?usp=drive_link',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Software Engineering',
+    description: '(3:0:0) CI54',
+    link: 'https://drive.google.com/drive/folders/1lwH45jAUJNsM1NwZ8WPIRYZZ4KAhDEuR?usp=drive_link',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Advanced Computer Networks',
+    description: '(3:0:0) CIE552',
+    link: 'https://drive.google.com/drive/folders/1-pmiBr3mpl9IXmKJOCGgGb6QP2H3MPtb?usp=drive_link',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Research Methodology',
+    description: '(3:0:0) AL58',
+    link: 'https://drive.google.com/drive/folders/1XfSpA_pr-RaGzJLyICh5RtguPXX51KLz?usp=drive_link',
+    otherlink: '/links',
+    tag: '',
+  },
+]
 
 export function Content() {
   return (
@@ -85,12 +146,12 @@ export function Content() {
       <Container>
         <div className="mx-auto max-w-5xl sm:text-center">
           <div className="flex flex-col items-center justify-center gap-3 pt-5 md:flex-row">
-            <ButtonLink
+            {/* <ButtonLink
               href="/syllabus"
               className="mt-5 w-auto rounded-lg py-2 hover:bg-blue-900"
             >
               Updated Syllabus
-            </ButtonLink>
+            </ButtonLink> */}
             {/* <ButtonLink href="#" className="mt-5 w-auto rounded-lg py-2">
               Previous Year Papers
             </ButtonLink> */}
@@ -112,10 +173,10 @@ export function Content() {
           <div className="flex justify-center">
             <ButtonLink
               target="_blank"
-              href="https://drive.google.com/file/d/1PF3cwTGOe6_XT_5hAtrxDZt4xVSyXUSM/view?usp=sharing"
+              href="https://docs.google.com/document/d/e/2PACX-1vR8wk2gz-Cnjhn8bQo5afLgVTQO9ZT-uptfjdhASSmwn74kmCm6ETrQrYCpC-jCFUwhf2EKNsW8v2vA/pub"
               className="hover:shadowpress mt-6 w-auto rounded-lg bg-blue-50 py-2 shadow-lg dark:text-white dark:hover:text-blue-200"
             >
-              CIE 2 Portions (Tentative)
+              CIE 1 Portions (Tentative)
             </ButtonLink>
           </div>
         </div>
@@ -123,7 +184,7 @@ export function Content() {
           role="list"
           className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
         >
-          {cseaimlstatic.map((item, index) => (
+          {cseaimlstatic5.map((item, index) => (
             <li
               key={index}
               className="rounded-xl bg-gradient-to-r from-green-300 via-blue-300 to-purple-600 p-0.5 shadow-lg transition hover:shadow-sm dark:shadow-5xl"
