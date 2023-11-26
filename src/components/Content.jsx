@@ -5,6 +5,13 @@ import { ButtonLink } from '@/components/Button'
 
 const cseaimlstatic = [
   {
+    title: 'All Subject Folder',
+    description: '-',
+    link: 'https://drive.google.com/drive/folders/19FylQDEwam6JZNnCvf7_CcSF8WoB9brt?usp=sharing',
+    otherlink: '#',
+    tag: '',
+  },
+  {
     title: 'Linear Algebra & Integral Transforms',
     description: '(2:1:0) CI31',
     link: 'https://drive.google.com/drive/folders/1d126yrfEwfL1QqEL9cJcl3SHP6skil0G?usp=share_link',

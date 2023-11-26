@@ -89,22 +89,22 @@ export function Hero() {
                   Communi Link 🔗
                 </ButtonLink>
                 <ButtonLink
+                  href="https://mini-sis.vercel.app"
+                  className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                >
+                  Mini SIS Portal ℹ️
+                </ButtonLink>
+                <ButtonLink
                   href="/noterep-forum"
                   className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"
                   target="_blank"
                 >
                   NoteRep Forum 🚀
                 </ButtonLink>
-                <ButtonLink
-                  href="https://mini-sis.vercel.app"
-                  className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                >
-                  Mini SIS Portal
-                </ButtonLink>
               </div>
             </div>
 
-            {/* <div className="mt-10 flex flex-col items-start justify-start gap-5 lg:flex-row">
+            <div className="mt-10 flex flex-col items-start justify-start gap-5 lg:flex-row">
               <ButtonLink
                 href="/ci"
                 className="w-full rounded-lg py-2 md:w-auto"
@@ -112,12 +112,12 @@ export function Hero() {
                 CSE (AI ML & CY ) Notes (Sem 5)
               </ButtonLink>
               <ButtonLink
-                href="/syllabus"
+                href="/cicy3"
                 className="w-full rounded-lg py-2 md:w-auto"
               >
-                CI & CY Curriculum
+                CSE (AI ML & CY ) Notes (Sem 3)
               </ButtonLink>
-            </div> */}
+            </div>
             <div className="mt-8 flex items-center justify-start">
               {/* <ButtonLink href="/ci1styear" className="mt-5 rounded-lg py-2">
                 CSE (AI & ML) 1st year Time Table
