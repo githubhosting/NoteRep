@@ -7,6 +7,7 @@ import React from 'react'
 import { Header } from '@/components/Header'
 import { Fragment } from 'react'
 import { Menu, Transition } from '@headlessui/react'
+import { data } from 'autoprefixer'
 
 let newDate = new Date()
 let todaydate = newDate.toISOString().slice(0, 10)
@@ -14,9 +15,9 @@ let todaydate = newDate.toISOString().slice(0, 10)
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []
-for (let i = 38; i <= 100; i++) {
+for (let i = 1; i <= 100; i++) {
   datesarray.push(
-    new Date(newDate.getFullYear(), 6, i).toISOString().slice(0, 10)
+    new Date(newDate.getFullYear(), 0, i).toISOString().slice(0, 10)
   )
 }
 
@@ -32,8 +33,20 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-12-14',
-    name: '-',
+    data: '2024-01-03',
+    name: 'DBMS',
+  },
+  {
+    date: '2024-01-04',
+    name: 'COA + Math',
+  },
+  {
+    date: '2024-01-05',
+    name: 'UHV + DS',
+  },
+  {
+    date: '2024-01-06',
+    name: 'DMS + UI/UX',
   },
 ]
 

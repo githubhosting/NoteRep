@@ -12,7 +12,7 @@ import { Author } from '@/components/Author'
 import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
-import { Timetable } from '@/components/Timetable'
+import { Timetable } from '@/components/Timetable3'
 import { Calendar } from '@/components/Calendar'
 import { Counter } from '@/components/Calendar'
 import { Button } from '@/components/Button'
@@ -91,9 +91,12 @@ export default function Home() {
         <HeaderMod />
         <Container>
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
-            5th Sem Notes Links for CSE(AI & ML)
+            3rd Sem Notes Links for CSE(AI & ML)
           </h2>
-          {/* <div className="flex flex-row items-center gap-2 py-3 lg:p-5">
+          <p className="pb-5 text-center text-sm text-gray-600 dark:text-gray-400">
+            PLease Verify the syllabus before using these notes
+          </p>
+          <div className="flex flex-row items-center gap-2 py-3 lg:p-5 justify-center">
             <Switch
               checked={enabled}
               onChange={setEnabled}
@@ -122,9 +125,9 @@ export default function Home() {
           >
             <Counter />
             <Calendar />
-          </Transition> */}
+          </Transition>
         </Container>
-        {/* <Timetable /> */}
+        <Timetable />
         <Content />
         <Author />
       </div>

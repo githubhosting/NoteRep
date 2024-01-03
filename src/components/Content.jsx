@@ -6,7 +6,7 @@ import { ButtonLink } from '@/components/Button'
 const cseaimlstatic = [
   {
     title: 'All Subject Folder',
-    description: '-',
+    description: 'Main Folder Drive Link',
     link: 'https://drive.google.com/drive/folders/19FylQDEwam6JZNnCvf7_CcSF8WoB9brt?usp=sharing',
     otherlink: '#',
     tag: '',
@@ -143,12 +143,12 @@ export function Content() {
                 </p>
                 <div className="flex justify-center gap-3">
                   <a href={item.link} target="_blank">
-                    <button className="mt-2 rounded-lg border bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 dark:shadow-num_d0 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-gray-500 dark:text-slate-100 hover:dark:text-white">
+                    <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0 hover:dark:text-white">
                       View
                     </button>
                   </a>
                   <a href={item.otherlink} target="_blank">
-                    <button className="mt-2 rounded-lg border bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 dark:shadow-num_d0 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-gray-500 dark:text-slate-100">
+                    <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
                       Other links
                     </button>
                   </a>
