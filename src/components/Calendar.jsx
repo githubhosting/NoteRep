@@ -33,20 +33,20 @@ const weekarray = [
 
 const exam = [
   {
-    data: '2024-01-03',
-    name: 'DBMS',
+    date: '2024-01-17',
+    name: 'ML + AEC',
   },
   {
-    date: '2024-01-04',
-    name: 'COA + Math',
+    date: '2024-01-18',
+    name: 'SW + Automata',
   },
   {
-    date: '2024-01-05',
-    name: 'UHV + DS',
+    date: '2024-01-19',
+    name: 'BigD + Env',
   },
   {
-    date: '2024-01-06',
-    name: 'DMS + UI/UX',
+    date: '2024-01-20',
+    name: 'IPR + ACN',
   },
 ]
 

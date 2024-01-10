@@ -176,7 +176,7 @@ export function Content() {
               href="https://docs.google.com/document/d/e/2PACX-1vR8wk2gz-Cnjhn8bQo5afLgVTQO9ZT-uptfjdhASSmwn74kmCm6ETrQrYCpC-jCFUwhf2EKNsW8v2vA/pub"
               className="hover:shadowpress mt-6 w-auto rounded-lg bg-blue-50 py-2 shadow-lg dark:text-white dark:hover:text-blue-200"
             >
-              CIE 1 Portions (Tentative)
+              CIE 2 Portions (Tentative)
             </ButtonLink>
           </div>
         </div>

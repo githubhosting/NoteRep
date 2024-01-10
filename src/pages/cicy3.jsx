@@ -96,7 +96,7 @@ export default function Home() {
           <p className="pb-5 text-center text-sm text-gray-600 dark:text-gray-400">
             PLease Verify the syllabus before using these notes
           </p>
-          <div className="flex flex-row items-center gap-2 py-3 lg:p-5 justify-center">
+          {/* <div className="flex flex-row items-center gap-2 py-3 lg:p-5 justify-center">
             <Switch
               checked={enabled}
               onChange={setEnabled}
@@ -125,7 +125,7 @@ export default function Home() {
           >
             <Counter />
             <Calendar />
-          </Transition>
+          </Transition> */}
         </Container>
         <Timetable />
         <Content />
