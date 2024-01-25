@@ -11,11 +11,11 @@ import { data } from 'autoprefixer'
 
 let newDate = new Date()
 let todaydate = newDate.toISOString().slice(0, 10)
-// let todaydate = '2023-06-30'
+// let todaydate = '2024-02-01'
 let currentmonth = newDate.getMonth() + 1
 
 const datesarray = []
-for (let i = 1; i <= 100; i++) {
+for (let i = 29; i <= 100; i++) {
   datesarray.push(
     new Date(newDate.getFullYear(), 0, i).toISOString().slice(0, 10)
   )
@@ -33,20 +33,36 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2024-01-17',
-    name: 'ML + AEC',
+    date: '2024-02-06',
+    name: 'BigD',
   },
   {
-    date: '2024-01-18',
-    name: 'SW + Automata',
+    date: '2024-02-08',
+    name: 'ML',
   },
   {
-    date: '2024-01-19',
-    name: 'BigD + Env',
+    date: '2024-02-13',
+    name: 'Automata',
   },
   {
-    date: '2024-01-20',
-    name: 'IPR + ACN',
+    date: '2024-02-15',
+    name: 'Software',
+  },
+  {
+    date: '2024-02-17',
+    name: 'ACN',
+  },
+  {
+    date: '2024-02-19',
+    name: 'EVS',
+  },
+  {
+    date: '2024-02-21',
+    name: 'IPR',
+  },
+  {
+    date: '2024-02-23',
+    name: 'AEC',
   },
 ]
 

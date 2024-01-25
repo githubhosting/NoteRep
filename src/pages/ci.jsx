@@ -124,7 +124,7 @@ export default function Home() {
             <Calendar />
           </Transition>
         </Container>
-        <Timetable />
+        {/* <Timetable /> */}
         <Content />
         <Author />
       </div>

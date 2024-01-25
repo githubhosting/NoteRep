@@ -78,23 +78,7 @@ const cseaimlstatic = [
     tag: '',
   },
 ]
-// Subjects:
-// 1. BIG DATA ANALYTICS
-// 2. MACHINE LEARNING
-// 3. AUTOMATA THEORY AND COMPILER DESIGN
-// 4. SOFTWARE ENGINEERING
-// 5. ADVANCED COMPUTER NETWORKS
-// 6. RESEARCH METHODOLOGY
-// 7. JAVA LAB
-// 8. R LAB
-// 9. Environment Something
-// Links
-// 1.https://drive.google.com/drive/folders/1yKpnOtQxkLoiu5puvEkUBZmDS1rjt3YX?usp=drive_link
-// 2.https://drive.google.com/drive/folders/1zqn9poZMiHQbKib3mCKNgWX-I6I_2h_N?usp=sharing
-// 3.https://drive.google.com/drive/folders/1x4ECw1TWAmfzgytKWTN-ReMyWz13bM05?usp=drive_link
-// 4.https://drive.google.com/drive/folders/1lwH45jAUJNsM1NwZ8WPIRYZZ4KAhDEuR?usp=drive_link
-// 5.https://drive.google.com/drive/folders/1-pmiBr3mpl9IXmKJOCGgGb6QP2H3MPtb?usp=drive_link
-// 6.https://drive.google.com/drive/folders/1XfSpA_pr-RaGzJLyICh5RtguPXX51KLz?usp=drive_link
+
 const cseaimlstatic5 = [
   {
     title: 'Big Data Analytics',
@@ -176,7 +160,7 @@ export function Content() {
               href="https://docs.google.com/document/d/e/2PACX-1vR8wk2gz-Cnjhn8bQo5afLgVTQO9ZT-uptfjdhASSmwn74kmCm6ETrQrYCpC-jCFUwhf2EKNsW8v2vA/pub"
               className="hover:shadowpress mt-6 w-auto rounded-lg bg-blue-50 py-2 shadow-lg dark:text-white dark:hover:text-blue-200"
             >
-              CIE 2 Portions (Tentative)
+             Syllabus for 5th Sem
             </ButtonLink>
           </div>
         </div>
