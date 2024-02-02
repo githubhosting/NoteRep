@@ -43,7 +43,7 @@ export default function Home() {
         >
           <Container>
             <h1 className="text-center font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Updated 4th Sem Syllabus for CSE (CI & CY)
+              Updated 5th Sem Syllabus for CSE (CI & CY)
             </h1>
             <div className="flex justify-center pt-10">
               <ButtonLink
@@ -55,9 +55,10 @@ export default function Home() {
                 Click here to Download
               </ButtonLink>
             </div>
+            {/* https://drive.google.com/file/d/1Ihu_kaJdTVyFMlDqGnKNAAKwysB1rrf3/view?usp=drive_link */}
             <div className='flex justify-center'>
               <iframe
-                src="https://drive.google.com/file/d/18oRQz24ruAVxvFF9LDUUP6HWwba0z_0p/preview"
+                src="https://drive.google.com/file/d/1Ihu_kaJdTVyFMlDqGnKNAAKwysB1rrf3/preview"
                 height="1024"
                 allow="autoplay"
                 frameborder="0"

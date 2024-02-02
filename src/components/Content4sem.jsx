@@ -140,21 +140,21 @@ export function Content() {
               Previous Year Papers
             </ButtonLink> */}
           </div>
-          {/* <div className="mt-10 flex items-center justify-center gap-3">
+          <div className="mt-10 flex items-center justify-center">
             <ButtonLink
               href="/syllabus"
-              className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3"
+              className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-2"
             >
               CSE (AI & ML) Curriculum
             </ButtonLink>
-            <ButtonLink
+            {/* <ButtonLink
               href="/syllabus_cy"
               className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-3"
             >
               CSE (Cyber Security) Curriculum
-            </ButtonLink>
-          </div> */}
-          <div className="flex justify-center">
+            </ButtonLink> */}
+          </div>
+          {/* <div className="flex justify-center">
             <ButtonLink
               target="_blank"
               href="https://docs.google.com/document/d/e/2PACX-1vR8wk2gz-Cnjhn8bQo5afLgVTQO9ZT-uptfjdhASSmwn74kmCm6ETrQrYCpC-jCFUwhf2EKNsW8v2vA/pub"
@@ -162,7 +162,7 @@ export function Content() {
             >
              Syllabus for 5th Sem
             </ButtonLink>
-          </div>
+          </div> */}
         </div>
         <ul
           role="list"
