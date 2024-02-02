@@ -34,23 +34,23 @@ const weekarray = [
 const exam = [
   {
     date: '2024-02-06',
-    name: 'BigD',
+    name: 'SE/CN/IPR',
   },
   {
     date: '2024-02-08',
-    name: 'ML',
+    name: 'AI',
   },
   {
     date: '2024-02-13',
-    name: 'Automata',
+    name: 'DBMS',
   },
   {
     date: '2024-02-15',
-    name: 'Software',
+    name: 'OS',
   },
   {
     date: '2024-02-17',
-    name: 'ACN',
+    name: 'CG/CNS/DM',
   },
   {
     date: '2024-02-19',

@@ -7,9 +7,10 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 
 const communilinks = [
   {
-    name: 'Machine Learning Community',
-    description: 'Telegram Group',
-    href: 'https://t.me/mlforbeginnners',
+    name: "Securit Club's Community",
+    description:
+      'A community of like minded individuals who support cybersecurity and FOSS.',
+    href: 'https://securit.club/links',
   },
   {
     name: 'Streamlit Community',
@@ -22,15 +23,20 @@ const communilinks = [
     href: 'https://t.me/dscrit',
   },
   {
+    name: 'advAIta Community',
+    description: 'A community of AI and ML Developers',
+    href: 'https://discord.com/invite/ZSKT4bRmUq',
+  },
+  {
+    name: 'Machine Learning Community',
+    description: 'Telegram Channel',
+    href: 'https://t.me/mlforbeginnners',
+  },
+  {
     name: 'Code RIT Community',
     description: 'Telegram Group',
     href: 'https://t.me/+JkfLZPe6p0cyNmY9',
   },
-  // {
-  //   name: 'MSRIT 2025 Batch',
-  //   description: 'WhatsApp Group',
-  //   href: '#',
-  // },
   {
     name: 'Anime Club',
     description: 'WhatsApp Group',
@@ -106,7 +112,7 @@ export default function NoterepBot_() {
                   Explore, Connect, Engage | Connecting All College Communities
                   at one place.
                 </p>
-                <p className="italic text-center text-black dark:text-[#fefefe]">
+                <p className="text-center italic text-black dark:text-[#fefefe]">
                   Feel free to approach me to add your community to this list.
                 </p>
                 <ul

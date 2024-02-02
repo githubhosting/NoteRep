@@ -88,12 +88,12 @@ export function Hero() {
                 >
                   Communi Link 🔗
                 </ButtonLink>
-                <ButtonLink
+                {/* <ButtonLink
                   href="https://mini-sis.vercel.app"
                   className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                 >
                   Mini SIS Portal ℹ️
-                </ButtonLink>
+                </ButtonLink> */}
                 <ButtonLink
                   href="/noterep-forum"
                   className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"
@@ -103,19 +103,27 @@ export function Hero() {
                 </ButtonLink>
               </div>
             </div>
-
-            <div className="mt-10 flex flex-col items-start justify-start gap-5 lg:flex-row">
-              <ButtonLink
-                href="/ci"
-                className="w-full rounded-lg py-2 md:w-auto"
-              >
+            <div className="mt-10 grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
+              <ButtonLink href="/ci" className="md:auto w-full rounded-lg py-2">
                 CSE (AI ML & CY ) Notes (Sem 5)
               </ButtonLink>
               <ButtonLink
                 href="/cicy3"
-                className="w-full rounded-lg py-2 md:w-auto"
+                className="md:auto w-full rounded-lg py-2"
               >
                 CSE (AI ML & CY ) Notes (Sem 3)
+              </ButtonLink>
+              <ButtonLink
+                href="/cse"
+                className="md:auto w-full rounded-lg py-2"
+              >
+                CSE Core Notes (Sem 5)
+              </ButtonLink>
+              <ButtonLink
+                href="/ise"
+                className="md:auto w-full rounded-lg py-2"
+              >
+                ISE Notes (Sem 5)
               </ButtonLink>
             </div>
             <div className="mt-8 flex items-center justify-start">
