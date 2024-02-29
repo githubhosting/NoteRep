@@ -89,7 +89,7 @@ export default function Home() {
       </Head>
       <div className="bg-indigo-50 dark:bg-cost5 dark:text-white">
         <HeaderMod />
-        <Container>
+        {/* <Container>
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
             5th Sem Notes Links for CSE(AI & ML)
           </h2>
@@ -123,9 +123,9 @@ export default function Home() {
             <Counter />
             <Calendar />
           </Transition>
-        </Container>
-        {/* <Timetable /> */}
-        <Content />
+        </Container> */}
+        <Timetable />
+        {/* <Content /> */}
         <Author />
       </div>
       <Footer />
