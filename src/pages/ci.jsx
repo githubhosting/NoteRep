@@ -7,7 +7,7 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { HeaderMod } from '@/components/HeaderMod'
 import { Hero } from '@/components/Hero'
-import { Content } from '@/components/Content4sem'
+import { ContentNew } from '@/components/ContentNew'
 import { Author } from '@/components/Author'
 import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
@@ -16,6 +16,124 @@ import { Timetable } from '@/components/Timetable'
 import { Calendar } from '@/components/Calendar'
 import { Counter } from '@/components/Calendar'
 import { Button } from '@/components/Button'
+
+const subjects = [
+  {
+    Day: 'Monday',
+    subject: [
+      'DL Tut',
+      'DL Tut',
+      'Entrepreneurship',
+      'Cloud Computing',
+      '-',
+      'Elective',
+      'Mini Project',
+      'Mini Project',
+    ],
+  },
+  {
+    Day: 'Tuesday',
+    subject: [
+      'Deep Learning',
+      'Cloud Computing',
+      'Cryptography',
+      'Entrepreneurship',
+      '-',
+      'Elective',
+      'Mini Project',
+      'Mini Project',
+    ],
+  },
+  {
+    Day: 'Wednesday',
+    subject: [
+      'Cloud Computing',
+      'Deep Learning',
+      'Cryptography',
+      'Entrepreneurship',
+      '-',
+      'Elective',
+      'Mini Project',
+      'Mini Project',
+    ],
+  },
+  {
+    Day: 'Thursday',
+    subject: [
+      'Deep Learning',
+      'Big Data Lab',
+      'Big Data Lab',
+      'Big Data Lab',
+      '-',
+      'Cloud Computing',
+      'Cryptography',
+      '*',
+    ],
+  },
+  {
+    Day: 'Friday',
+    subject: [
+      'Cryptography',
+      'DL Lab',
+      'DL Lab',
+      'DL Lab',
+      '-',
+      '*',
+      ' * ',
+      '*',
+    ],
+  },
+  {
+    Day: 'Saturday',
+    subject: ['Chill', 'Madi', '-', '-', '-', '-', '-', '-'],
+  },
+]
+
+const cseaimlsem6 = [
+  {
+    title: 'Management and Entrepreneurship',
+    description: '(3:0:0) AL61',
+    link: 'https://drive.google.com/drive/folders/1YofEy5hEa78PZ0fa6x9kgVEzK1KyGodR?usp=share_link',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Introduction to Deep Learning',
+    description: '(3:0:0) CI62',
+    link: 'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Principal of Cryptography',
+    description: '(3:0:0) CIE632',
+    link: 'https://drive.google.com/drive/folders/1bVTy8hA9HHbqTQyDxXsuz8xsxK0JDM53?usp=sharing',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Cloud Computing',
+    description: '(3:0:0) CIE641',
+    link: 'https://drive.google.com/drive/folders/1W6rODQ0QdaD08dxEn4HfEXFSmMWwxouK?usp=sharing',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Deep Learning Lab',
+    description: '(0:0:1) CIL65',
+    link: 'https://drive.google.com/drive/folders/1dvSqj7c3uQNdhq2qLu7yFYak5wMVBV3b?usp=share_link',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Big Data Lab',
+    description: '(0:0:1) CIL66',
+    link: 'https://drive.google.com/drive/folders/197mT9sqkxg0BwZU7aZewMeN2aQp32Ppq?usp=share_link',
+    otherlink: 'https://github.com/githubhosting',
+    extra: 'This is github repository',
+    tag: '',
+  },
+]
 
 export default function Home() {
   const [showButton, setShowButton] = useState(false)
@@ -124,8 +242,8 @@ export default function Home() {
             <Calendar />
           </Transition>
         </Container> */}
-        <Timetable />
-        {/* <Content /> */}
+        <Timetable subjects={subjects} />
+        <ContentNew drive={cseaimlsem6} sem="6th" />
         <Author />
       </div>
       <Footer />

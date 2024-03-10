@@ -4,60 +4,6 @@ import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import React from 'react'
 
-const subjects = [
-  {
-    Day: 'Monday',
-    subject: [
-      'Cryptography',
-      'Deep Learning',
-      'Entrepreneurship',
-      'Cloud Computing',
-      '-',
-      'Elective',
-      'Mini Project',
-      'Mini Project',
-    ],
-  },
-  {
-    Day: 'Tuesday',
-    subject: ['Deep Learning', 'Cloud Computing', 'Cryptography', 'Entrepreneurship', '-', 'Elective', 'Mini Project', 'Mini Project'],
-  },
-  {
-    Day: 'Wednesday',
-    subject: ['Cloud Computing', 'Deep Learning', 'Cryptography', 'Entrepreneurship', '-', 'Elective', 'Mini Project', 'Mini Project'],
-  },
-  {
-    Day: 'Thursday',
-    subject: [
-      'Deep Learning',
-      'Big Data Lab',
-      'Big Data Lab',
-      'Big Data Lab',
-      '-',
-      'Cloud Computing',
-      '*',
-      '*',
-    ],
-  },
-  {
-    Day: 'Friday',
-    subject: ['Cryptography', 'DL Lab', 'DL Lab', 'DL Lab', '-', '*', ' * ', '*'],
-  },
-  {
-    Day: 'Saturday',
-    subject: ['Chill', 'Madi', '-', '-', '-', '-', '-', '-'],
-  },
-]
-// const time_class = [
-//   '9:00 - 9:55 AM',
-//   '9:55 - 10:50 AM',
-//   '11:05 - 12:00 PM',
-//   '12:00 - 12:55 PM',
-//   '12:55 - 1:45 PM',
-//   '1:45 - 2:40 PM',
-//   '2:40 - 3:35 PM',
-//   '3:35 - 4:30 PM',
-// ]
 const time_class = [
   '9:00 - 9:55',
   '9:55 - 10:50',
@@ -112,9 +58,10 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
-export function Timetable() {
+export function Timetable(props) {
   let newDate = new Date()
   let day_1 = newDate.getDay()
+  const subjects = props.subjects
   return (
     <section className="body-font mx-auto max-w-7xl px-4 py-2 text-gray-600 sm:px-6 lg:px-8">
       <div className="mb-6 text-center">
