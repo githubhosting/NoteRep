@@ -71,7 +71,7 @@ export function Hero() {
                 </button>
               )}
               <p className="text-base font-semibold italic">
-                Introducing the new beta feature!
+                Introducing the new feature!
               </p>
               <div className="flex flex-col gap-6 md:flex-row">
                 {/* <ButtonLink
