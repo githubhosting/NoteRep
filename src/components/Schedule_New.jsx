@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import Image from 'next/future/image'
 import { Tab } from '@headlessui/react'
 import clsx from 'clsx'
 import { Container } from '@/components/Container'
@@ -410,7 +409,7 @@ export function Schedule_New() {
                   <SubjectCard item={item} index={index} />
                 ))}
               </ul>
-              <h2 className="text-center text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl mt-5">
+              <h2 className="mt-5 text-center text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
                 Chemistry Cycle
               </h2>
               <ul

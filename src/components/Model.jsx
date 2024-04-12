@@ -1,6 +1,5 @@
 import Image from 'next/image'
 
-import { ButtonLink } from '@/components/Button2'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background-call-to-action.jpg'
 

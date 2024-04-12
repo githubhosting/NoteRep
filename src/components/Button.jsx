@@ -11,7 +11,7 @@ export function Button({ className, ...props }) {
 export function ButtonLink({ href, className, ...props }) {
   return (
     <Link href={href}>
-      <a className={clsx(styles, className)} {...props} />
+      <p className={clsx(styles, className)} {...props} />
     </Link>
   )
 }

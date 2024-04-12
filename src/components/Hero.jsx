@@ -8,6 +8,7 @@ import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background.jpg'
 import darkbackgroundImage from '@/images/background-dark.jpg'
 import { check } from 'prettier'
+
 export function Hero() {
   const install = usePWAInstall()
   return (

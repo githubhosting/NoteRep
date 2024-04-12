@@ -50,7 +50,7 @@ export function ButtonLink({
 }) {
   return (
     <Link href={href}>
-      <a
+      <p
         className={clsx(
           baseStyles[variant],
           variantStyles[variant][color],
