@@ -6,11 +6,8 @@ import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { HeaderMod } from '@/components/HeaderMod'
 import { Hero } from '@/components/Hero'
-import { Content } from '@/components/Content4sem'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
-
-import { Sponsors } from '@/components/Sponsors'
 import { Author } from '@/components/Author'
 import { CallToAction } from '@/components/CallToAction'
 import { Introduction } from '@/components/Introduction'
@@ -22,8 +19,7 @@ import { Timetable } from '@/components/Timetable'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 
-export default function Home() {
-  // The back-to-top button is hidden at the beginning
+export default function CY() {
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {
@@ -58,10 +54,7 @@ export default function Home() {
           <h2 className="pb-5 pt-10 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
             4th Sem Notes Links for CSE(AI & ML) and Cyber Security Branch
           </h2>
-          {/* <Calendar /> */}
         </Container>
-        <Timetable />
-        <Content />
         <Author />
       </main>
       <Footer />
