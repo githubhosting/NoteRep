@@ -60,11 +60,20 @@ export function ContentNew(props) {
                       View
                     </button>
                   </a>
-                  <a href={item.otherlink} target="_blank">
-                    <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
-                      Other links
-                    </button>
-                  </a>
+                  {item.otherlink && (
+                    <a href={item.otherlink} target="_blank">
+                      <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
+                        Other links
+                      </button>
+                    </a>
+                  )}
+                  {item.classroom && (
+                    <a href={item.otherlink} target="_blank">
+                      <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
+                        Classroom Link
+                      </button>
+                    </a>
+                  )}
                 </div>
                 {item.tag && (
                   <div className="mt-4 flex flex-wrap justify-center gap-1">

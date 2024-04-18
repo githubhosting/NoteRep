@@ -43,11 +43,11 @@ export default function Home() {
         >
           <Container>
             <h1 className="text-center font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Updated 5th Sem Syllabus for CSE (CI & CY)
+              Updated 6th Sem Syllabus for CSE (AI & ML)
             </h1>
             <div className="flex justify-center pt-10">
               <ButtonLink
-                href="/documents/Updated 4th Sem Syllabus (CI & CY).pdf"
+                href="/documents/Sem_4_CSEAIML_Apr_Jul_24.pdf"
                 rel="noreferrer"
                 target="_blank"
                 className="rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500"
@@ -55,10 +55,35 @@ export default function Home() {
                 Click here to Download
               </ButtonLink>
             </div>
-            {/* https://drive.google.com/file/d/1Ihu_kaJdTVyFMlDqGnKNAAKwysB1rrf3/view?usp=drive_link */}
-            <div className='flex justify-center'>
+            <div className="flex justify-center">
               <iframe
                 src="https://drive.google.com/file/d/1Ihu_kaJdTVyFMlDqGnKNAAKwysB1rrf3/preview"
+                height="1024"
+                allow="autoplay"
+                frameborder="0"
+                marginheight="0"
+                marginwidth="0"
+                className="mt-10 w-full max-w-3xl rounded-md lg:rounded-xl"
+              ></iframe>
+            </div>
+          </Container>
+          <Container>
+            <h1 className="mt-10 text-center font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
+              Updated 4th Sem Syllabus for CSE (CI & CY)
+            </h1>
+            <div className="flex justify-center pt-10">
+              <ButtonLink
+                href="/documents/Sem_4_CSEAIML_Apr_Jul_24.pdf"
+                rel="noreferrer"
+                target="_blank"
+                className="rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500"
+              >
+                Click here to Download
+              </ButtonLink>
+            </div>
+            <div className="flex justify-center">
+              <iframe
+                src="https://drive.google.com/file/d/1fTD2kONajXEZjsYq3DnHSPe2YTuI6UPs/preview"
                 height="1024"
                 allow="autoplay"
                 frameborder="0"

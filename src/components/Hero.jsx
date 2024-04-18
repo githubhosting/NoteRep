@@ -109,10 +109,10 @@ export function Hero() {
                 CSE (AI ML & CY ) Notes (Sem 6)
               </ButtonLink>
               <ButtonLink
-                href="/cicy3"
+                href="/ci4"
                 className="md:auto w-full rounded-lg py-2"
               >
-                CSE (AI ML & CY ) Notes (Sem 3)
+                CSE (AI ML & CY ) Notes (Sem 4)
               </ButtonLink>
               <ButtonLink
                 href="/cse"

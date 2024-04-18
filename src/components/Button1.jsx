@@ -50,7 +50,7 @@ export function ButtonLink({
   ...props
 }) {
   return (
-    <Link href={href}>
+    <Link href={href} legacyBehavior>
       <a
         className={clsx(
           baseStyles[variant],
