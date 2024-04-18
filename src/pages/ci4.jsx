@@ -194,10 +194,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CSE (AI ML & CY) Notes</title>
+        <title>CSE (AI & ML) 4th Sem Notes</title>
         <meta
           name="description"
-          content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester"
+          content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 4th Semester"
         />
         <meta name="theme-color" content="black-translucent" />
         <meta
