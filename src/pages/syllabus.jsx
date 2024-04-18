@@ -47,7 +47,7 @@ export default function Home() {
             </h1>
             <div className="flex justify-center pt-10">
               <ButtonLink
-                href="/documents/Sem_4_CSEAIML_Apr_Jul_24.pdf"
+                href="/documents/All Course Syllabus 6th Sem.pdf"
                 rel="noreferrer"
                 target="_blank"
                 className="rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500"
@@ -55,9 +55,10 @@ export default function Home() {
                 Click here to Download
               </ButtonLink>
             </div>
+            {/* https://drive.google.com/file/d/1FtXOF068oce_gRKOug3Ul8zsrGCHZPbd/view?usp=drive_link */}
             <div className="flex justify-center">
               <iframe
-                src="https://drive.google.com/file/d/1Ihu_kaJdTVyFMlDqGnKNAAKwysB1rrf3/preview"
+                src="https://drive.google.com/file/d/1FtXOF068oce_gRKOug3Ul8zsrGCHZPbd/preview"
                 height="1024"
                 allow="autoplay"
                 frameborder="0"
