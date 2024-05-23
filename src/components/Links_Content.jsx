@@ -47,7 +47,7 @@ export function Content() {
     <section className="bg-indigo-50 dark:bg-gray-900">
       <Container>
         <div className="mx-auto max-w-2xl sm:text-center">
-          <h2 className="text-center text-2xl font-medium tracking-tight dark:text-indigo-50 text-gray-900">
+          <h2 className="text-center text-2xl font-medium tracking-tight text-gray-900 dark:text-indigo-50">
             Shared Links
           </h2>
           <p className="mt-2 text-center text-lg text-gray-500 dark:text-white">
@@ -67,12 +67,14 @@ export function Content() {
                     {item.title}
                   </h3>
                 </div>
-                <p className="mt-2 text-sm text-gray-500 line-clamp-3 dark:text-white/80">
+                <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-white/80">
                   {item.description}
                 </p>
                 {item.links?.map((link) => (
                   <div>
-                    <p className="mt-3 dark:text-white/90">{link.description}</p>
+                    <p className="mt-3 dark:text-white/90">
+                      {link.description}
+                    </p>
                     <a
                       href={link.url}
                       target="_blank"
@@ -89,11 +91,11 @@ export function Content() {
           ))}
         </ul>
         <div className="py-10">
-          <button className="mt-2 rounded-md border-2 border-blue-500 bg-transparent py-2 px-4 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-100 dark:text-white">
-            <a href="https://cgpa-estimator.vercel.app/#/otherlinks">
+          <a href="https://cgpa-estimator.vercel.app/#/otherlinks">
+            <button className="mt-2 rounded-md border-2 border-blue-500 bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-500 hover:text-white dark:border-blue-100 dark:text-white">
               Contribute Links
-            </a>
-          </button>
+            </button>
+          </a>
         </div>
       </Container>
     </section>

@@ -128,7 +128,7 @@ const cseaimlsem4 = [
     title: 'Advanced Web Technologies Lab',
     description: '(0:0:1) CIL48',
     link: 'https://github.com/githubhosting/web-technologies-lab',
-    otherlink: '/links',
+    github: 'https://github.com/githubhosting/web-technologies-lab',
     extra: 'This is github repository',
     tag: '',
   },
@@ -217,9 +217,6 @@ export default function Home() {
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
             4th Sem Notes Links for CSE(AI & ML)
           </h2>
-          <p className="pb-5 text-center text-sm text-gray-600 dark:text-gray-400">
-            PLease Verify the syllabus before using these notes
-          </p>
           {/* <div className="flex flex-row items-center gap-2 py-3 lg:p-5 justify-center">
             <Switch
               checked={enabled}

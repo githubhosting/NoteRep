@@ -72,16 +72,7 @@ const subjects = [
   },
   {
     Day: 'Friday',
-    subject: [
-      'Cryptography',
-      'DL Lab',
-      'DL Lab',
-      'DL Lab',
-      '-',
-      '*',
-      '*',
-      '*',
-    ],
+    subject: ['Cryptography', 'DL Lab', 'DL Lab', 'DL Lab', '-', '*', '*', '*'],
   },
   {
     Day: 'Saturday',
@@ -129,7 +120,7 @@ const cseaimlsem6 = [
     title: 'Big Data Lab',
     description: '(0:0:1) CIL66',
     link: '#',
-    otherlink: 'https://github.com/githubhosting',
+    github: 'https://github.com/githubhosting/BigData-Lab',
     extra: 'This is github repository',
     tag: '',
   },

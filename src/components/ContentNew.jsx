@@ -22,7 +22,7 @@ export function ContentNew(props) {
           </div>
           <div className="mt-10 flex items-center justify-center">
             <ButtonLink
-              href="/syllabus"
+              href="/syllabus_ci4"
               className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-2"
             >
               CSE (AI & ML) Curriculum
@@ -68,9 +68,16 @@ export function ContentNew(props) {
                     </a>
                   )}
                   {item.classroom && (
-                    <a href={item.otherlink} target="_blank">
+                    <a href={item.classroom} target="_blank">
                       <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
                         Classroom Link
+                      </button>
+                    </a>
+                  )}
+                  {item.github && (
+                    <a href={item.github} target="_blank">
+                      <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
+                        Github Repo
                       </button>
                     </a>
                   )}
