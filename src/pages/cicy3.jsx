@@ -78,7 +78,7 @@ export default function Home() {
         <meta name="theme-color" content="black-translucent" />
         <meta
           name="google-site-verification"
-          content="DPpz834E16UpWaEWBrvGKyPEdkGHggpb6UwrQkBKqXs"
+          content="gYJr3zyNUad36lu_-fZx1x5r272Wt_RBB26MWCSYxPA"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
