@@ -16,7 +16,6 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 
 export default function Home() {
-  // The back-to-top button is hidden at the beginning
   const [showButton, setShowButton] = useState(false)
 
   useEffect(() => {

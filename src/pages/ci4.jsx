@@ -88,6 +88,13 @@ const cseaimlsem4 = [
     tag: '',
   },
   {
+    title: 'Data Communication & Networks Lab',
+    description: '(2:0:1) CI42',
+    link: 'https://drive.google.com/drive/folders/17Nr3HILQfsF3t05CBo10v5TQj-YIFAig?usp=sharing',
+    github: 'https://github.com/githubhosting/OPNET',
+    tag: 'OPNET',
+  },
+  {
     title: 'Design and Analysis of Algorithms',
     description: '(2:1:0) CI43',
     link: 'https://drive.google.com/drive/folders/1bVTy8hA9HHbqTQyDxXsuz8xsxK0JDM53?usp=sharing',
@@ -119,15 +126,15 @@ const cseaimlsem4 = [
   {
     title: 'Algorithms Lab',
     description: '(0:0:1) CIL47',
-    link: 'https://github.com/githubhosting',
-    otherlink: '/links',
+    link: 'https://drive.google.com/drive/folders/1i2WfR13IsydXdUQum78TJAE7Yj41L_pP?usp=sharing',
+    github: 'https://github.com/githubhosting/DAA-Lab',
     extra: 'This is github repository',
     tag: '',
   },
   {
     title: 'Advanced Web Technologies Lab',
     description: '(0:0:1) CIL48',
-    link: 'https://github.com/githubhosting/web-technologies-lab',
+    link: 'https://drive.google.com/drive/folders/1n06HUcDz1g4089QE6kadaSpihl7He_h9?usp=sharing',
     github: 'https://github.com/githubhosting/web-technologies-lab',
     extra: 'This is github repository',
     tag: '',
