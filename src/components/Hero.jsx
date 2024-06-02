@@ -89,19 +89,19 @@ export function Hero() {
                 >
                   Communi Link 🔗
                 </ButtonLink>
-                {/* <ButtonLink
+                <ButtonLink
                   href="https://mini-sis.vercel.app"
                   className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                 >
-                  Mini SIS Portal ℹ️
-                </ButtonLink> */}
-                <ButtonLink
+                  Noterep Bot
+                </ButtonLink>
+                {/* <ButtonLink
                   href="/noterep-forum"
                   className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"
                   target="_blank"
                 >
                   NoteRep Forum 🚀
-                </ButtonLink>
+                </ButtonLink> */}
               </div>
             </div>
             <div className="mt-10 grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">

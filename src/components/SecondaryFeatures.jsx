@@ -28,16 +28,16 @@ const data = [
     href: '/syllabusgpt',
   },
   {
-    title: 'Communilink',
+    title: 'Communi Link',
     subtitle: 'Connecting All the groups at one place',
     button: 'Visit',
     href: '/communilink',
   },
   {
     title: 'Noterep Bot',
-    subtitle: '*Under testing',
+    subtitle: 'The Fastest AI Response generator',
     button: 'Visit',
-    href: '/cnoterepbot',
+    href: '/noterepbot',
   },
 ]
 

@@ -14,6 +14,7 @@ import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
 import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Timetable } from '@/components/Timetable'
 import { Calendar } from '@/components/Calendar'
+import { GCalendar } from '@/components/GoogleCalendar'
 import { Counter } from '@/components/Calendar'
 import { Button } from '@/components/Button'
 import { ContentNew } from '@/components/ContentNew'
@@ -231,7 +232,7 @@ export default function Home() {
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
             4th Sem Notes Links for CSE(AI & ML)
           </h2>
-          {/* <div className="flex flex-row items-center gap-2 py-3 lg:p-5 justify-center">
+          <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
             <Switch
               checked={enabled}
               onChange={setEnabled}
@@ -249,18 +250,18 @@ export default function Home() {
               {enabled ? 'Hide Calendar' : 'Show Calendar'}
             </p>
           </div>
-          <Transition
-            show={enabled}
-            enter="transition-opacity duration-150"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity duration-150"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+          <div
+            style={{
+              opacity: enabled ? 1 : 0,
+              transition: 'opacity 150ms ease-in-out',
+              height: enabled ? 'auto' : '0',
+              overflow: 'hidden',
+            }}
           >
-            <Counter />
-            <Calendar />
-          </Transition> */}
+            {/* <Counter /> */}
+            {/* <Calendar /> */}
+            <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%206&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=c2hyYXZhbm5vdGVyZXBAZ21haWwuY29t&color=%23039BE5" />
+          </div>
         </Container>
         <Timetable subjects={subjects} />
         <ContentNew drive={cseaimlsem4} links={links} />

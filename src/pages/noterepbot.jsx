@@ -62,10 +62,10 @@ export default function NoterepBot_() {
         <meta name="author" content="Shravan Revanna" />
       </Head>
       <Header />
-      <main>
+      <main className="bg-indigo-50 dark:bg-gray-900 flex flex-col h-screen justify-around">
         <Bot />
+        <Footer />
       </main>
-      <Footer />
       {showButton && (
         <button onClick={scrollToTop} className="back-to-top shadow-lg">
           <ArrowCircleUpIcon

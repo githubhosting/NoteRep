@@ -145,11 +145,11 @@ function NavItem({ href, children }) {
   let isActive = useRouter().pathname === href
 
   return (
-    <li className="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400">
+    <li className="relative block px-3 py-1 transition hover:text-blue-500 dark:hover:text-blue-400">
       <Link
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition',
+          'relative block px-3 py-1 transition',
           isActive
             ? 'text-teal-500 dark:text-teal-400'
             : 'hover:text-teal-500 dark:hover:text-teal-400'
@@ -167,12 +167,12 @@ function NavItem_({ href, children }) {
   let isActive = useRouter().pathname === href
 
   return (
-    <li className="relative block px-3 py-2 transition hover:text-blue-500 dark:hover:text-blue-400">
+    <li className="relative block px-3 py-1 transition hover:text-blue-500 dark:hover:text-blue-400">
       <Link
         target="_blank"
         href={href}
         className={clsx(
-          'relative block px-3 py-2 transition',
+          'relative block px-3 py-1 transition',
           isActive
             ? 'text-teal-500 dark:text-teal-400'
             : 'hover:text-teal-500 dark:hover:text-teal-400'
