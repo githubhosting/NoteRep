@@ -69,7 +69,7 @@ export default function Calculla_() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="noterep, notes, notes sharing, notes msrit, noterep.live"
+          content="noterep, notes, notes sharing, notes msrit, noterep.vercel.app"
         />
         <meta name="author" content="Shravan Revanna" />
       </Head>

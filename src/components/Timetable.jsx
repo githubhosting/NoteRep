@@ -101,7 +101,10 @@ export function Timetable(props) {
                 </thead>
                 <tbody>
                   {subjects.map((subject, j) => (
-                    <tr className="border-t bg-white dark:border-gray-200 dark:bg-slate-900 dark:text-white">
+                    <tr
+                      key={j}
+                      className="border-t bg-white dark:border-gray-200 dark:bg-slate-900 dark:text-white"
+                    >
                       <td className="whitespace-nowrap border-r px-4 py-4 text-center text-sm font-semibold text-gray-900 dark:text-white">
                         {subject.Day === day ? (
                           <span

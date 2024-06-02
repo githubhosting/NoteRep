@@ -5,6 +5,8 @@ import { ButtonLink } from '@/components/Button'
 
 export function ContentNew(props) {
   const drive = props.drive
+  const links = props.links
+
   return (
     <section>
       <Container>
@@ -31,7 +33,7 @@ export function ContentNew(props) {
           <div className="flex justify-center">
             <ButtonLink
               target="_blank"
-              href="https://docs.google.com/document/d/e/2PACX-1vQ3ufq062Ks7uHEx_TEOI_yEcv8OBogdiHbMW7dfQnF388pggC5MoHnV7IyZaUvVgbDjQtec6pf0Wat/pub "
+              href={links.syllabus}
               className="hover:shadowpress mt-6 w-auto rounded-lg bg-blue-50 py-2 shadow-lg dark:text-white dark:hover:text-blue-200"
             >
               Syllabus for CIE

@@ -6,15 +6,14 @@ import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { HeaderMod } from '@/components/HeaderMod'
-import { Hero } from '@/components/Hero'
 import { ContentNew } from '@/components/ContentNew'
 import { Author } from '@/components/Author'
 import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
-import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Timetable } from '@/components/Timetable'
 import { Calendar } from '@/components/Calendar'
 import { Counter } from '@/components/Calendar'
+import { GCalendar } from '@/components/GoogleCalendar'
 import { Button } from '@/components/Button'
 
 const subjects = [
@@ -79,6 +78,13 @@ const subjects = [
     subject: ['Chill', 'Madi', '-', '-', '-', '-', '-', '-'],
   },
 ]
+
+const links = {
+  syllabus:
+    'https://docs.google.com/document/d/e/2PACX-1vQ3ufq062Ks7uHEx_TEOI_yEcv8OBogdiHbMW7dfQnF388pggC5MoHnV7IyZaUvVgbDjQtec6pf0Wat/pub',
+  timetable:
+    'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
+}
 
 const cseaimlsem6 = [
   {
@@ -192,17 +198,17 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="noterep, notes, notes sharing, notes msrit, noterep.live, cse aiml notes, cse cy notes, cse notes, msrit notes, msrit cse notes, msrit cse aiml notes, msrit"
+          content="noterep, notes, notes sharing, notes msrit, noterep.vercel.app, cse aiml notes, cse cy notes, cse notes, msrit notes, msrit cse notes, msrit cse aiml notes, msrit"
         />
         <meta name="author" content="Shravan Revanna" />
       </Head>
       <div className="bg-indigo-50 dark:bg-cost5 dark:text-white">
         <HeaderMod />
-        {/* <Container>
+        <Container>
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
-            5th Sem Notes Links for CSE(AI & ML)
+            6th Sem Notes Links for CSE(AI & ML)
           </h2>
-          <div className="flex flex-row items-center gap-2 py-3 lg:p-5 justify-center">
+          <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
             <Switch
               checked={enabled}
               onChange={setEnabled}
@@ -220,21 +226,21 @@ export default function Home() {
               {enabled ? 'Hide Calendar' : 'Show Calendar'}
             </p>
           </div>
-          <Transition
-            show={enabled}
-            enter="transition-opacity duration-150"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="transition-opacity duration-150"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
+          <div
+            style={{
+              opacity: enabled ? 1 : 0,
+              transition: 'opacity 150ms ease-in-out',
+              height: enabled ? 'auto' : '0',
+              overflow: 'hidden',
+            }}
           >
-            <Counter />
-            <Calendar />
-          </Transition>
-        </Container> */}
+            {/* <Counter /> */}
+            {/* <Calendar /> */}
+            <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%206&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=c2hyYXZhbm5vdGVyZXBAZ21haWwuY29t&color=%23039BE5" />
+          </div>
+        </Container>
         <Timetable subjects={subjects} />
-        <ContentNew drive={cseaimlsem6} sem="6th" />
+        <ContentNew drive={cseaimlsem6} sem="6th" links={links} />
         <Author />
       </div>
       <Footer />

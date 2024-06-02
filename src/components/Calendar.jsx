@@ -11,7 +11,7 @@ import { data } from 'autoprefixer'
 
 let newDate = new Date()
 let todaydate = newDate.toISOString().slice(0, 10)
-// let todaydate = '2024-02-01'
+// let todaydate = '2024-05-30'
 let currentmonth = newDate.getMonth()
 
 const datesarray = []
@@ -33,7 +33,7 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2024-05-30',
+    date: '2024-05-31',
     name: 'DCN + Math',
   },
 ]
@@ -51,6 +51,7 @@ const selectedDay = days.find((day) => day.isSelected)
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
+
 export function Counter() {
   const next_exam = exam.filter((event) => event.date > todaydate)
   const next_exam_date = next_exam[0].date

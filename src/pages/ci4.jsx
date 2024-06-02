@@ -72,6 +72,13 @@ const subjects = [
   },
 ]
 
+const links = {
+  syllabus:
+    'https://docs.google.com/document/d/e/2PACX-1vQ3ufq062Ks7uHEx_TEOI_yEcv8OBogdiHbMW7dfQnF388pggC5MoHnV7IyZaUvVgbDjQtec6pf0Wat/pub',
+  timetable:
+    'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
+}
+
 const cseaimlsem4 = [
   {
     title: 'Numerical Techniques and Probability',
@@ -214,7 +221,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="noterep, notes, notes sharing, notes msrit, noterep.live, cse aiml notes, cse cy notes, cse notes, msrit notes, msrit cse notes, msrit cse aiml notes, msrit"
+          content="noterep, notes, notes sharing, notes msrit, noterep.vercel.app, cse aiml notes, cse cy notes, cse notes, msrit notes, msrit cse notes, msrit cse aiml notes, msrit"
         />
         <meta name="author" content="Shravan Revanna" />
       </Head>
@@ -256,7 +263,7 @@ export default function Home() {
           </Transition> */}
         </Container>
         <Timetable subjects={subjects} />
-        <ContentNew drive={cseaimlsem4} />
+        <ContentNew drive={cseaimlsem4} links={links} />
         <Author />
       </div>
       <Footer />
