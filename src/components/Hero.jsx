@@ -90,10 +90,10 @@ export function Hero() {
                   Communi Link 🔗
                 </ButtonLink>
                 <ButtonLink
-                  href="https://mini-sis.vercel.app"
+                  href="/noterepbot"
                   className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                 >
-                  Noterep Bot
+                  Noterep Bot 🤖
                 </ButtonLink>
                 {/* <ButtonLink
                   href="/noterep-forum"
