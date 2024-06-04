@@ -27,7 +27,11 @@ export function Bot() {
     const body = JSON.stringify({
       model: 'llama3-8b-8192',
       messages: [
-        { role: 'system', content: 'You are a helpful AI bot.' },
+        {
+          role: 'system',
+          content:
+            'You are a helpful AI bot. Your are installed inside a website called NoteRep. You are created by Shravan',
+        },
         { role: 'user', content: userQuery },
       ],
       temperature: 0.7,
