@@ -68,7 +68,7 @@ export default function Home() {
               ></iframe>
             </div>
           </Container>
-          <Container>
+          {/* <Container>
             <h1 className="mt-10 text-center font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
               Updated 4th Sem Syllabus for CSE (CI & CY)
             </h1>
@@ -93,7 +93,7 @@ export default function Home() {
                 className="mt-10 w-full max-w-3xl rounded-md lg:rounded-xl"
               ></iframe>
             </div>
-          </Container>
+          </Container> */}
         </section>
       </main>
       <Footer />

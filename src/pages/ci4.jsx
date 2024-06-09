@@ -78,6 +78,7 @@ const links = {
     'https://docs.google.com/document/d/e/2PACX-1vQ3ufq062Ks7uHEx_TEOI_yEcv8OBogdiHbMW7dfQnF388pggC5MoHnV7IyZaUvVgbDjQtec6pf0Wat/pub',
   timetable:
     'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
+  curriculum: 'syllabus_ci4',
 }
 
 const cseaimlsem4 = [

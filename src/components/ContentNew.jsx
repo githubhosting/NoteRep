@@ -24,7 +24,7 @@ export function ContentNew(props) {
           </div>
           <div className="mt-10 flex items-center justify-center">
             <ButtonLink
-              href="/syllabus_ci4"
+              href={links.curriculum}
               className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-2"
             >
               CSE (AI & ML) Curriculum

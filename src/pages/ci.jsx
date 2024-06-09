@@ -80,10 +80,13 @@ const subjects = [
 ]
 
 const links = {
-  syllabus:
+  syllabus1:
     'https://docs.google.com/document/d/e/2PACX-1vQ3ufq062Ks7uHEx_TEOI_yEcv8OBogdiHbMW7dfQnF388pggC5MoHnV7IyZaUvVgbDjQtec6pf0Wat/pub',
+  syllabus:
+    'https://docs.google.com/document/d/e/2PACX-1vRFRazfWll_UKmcqEqiLNioIn65WV8lIFmkwOEVjShDxPO4xFMZPOmB3tUN8A0NyDSeHab92K7FYuVC/pub',
   timetable:
     'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
+  curriculum: 'syllabus',
 }
 
 const cseaimlsem6 = [
