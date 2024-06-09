@@ -5,7 +5,7 @@ import { SectionHeading } from '@/components/SectionHeading'
 import authorImage from '@/images/avatars/author.jpg'
 import authorImageNew from '@/images/avatars/author.png'
 import profile3 from '@/images/avatars/profile3.jpg'
-import profile4 from '@/images/avatars/profile5.jpg'
+import profile4 from '@/images/avatars/profile6.jpg'
 import authorImageNew1 from '@/images/avatars/authornew.jpg'
 
 export function Author() {
