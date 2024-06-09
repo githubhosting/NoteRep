@@ -4,6 +4,12 @@ import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 import { firebaseConfig } from '@/firebaseconfig'
 
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig)
+} else {
+  firebase.app() // if already initialized, use that one
+}
+
 export function Bot() {
   const [isLoading, setIsLoading] = useState(false)
   const [userQuery, setUserQuery] = useState('')
@@ -17,6 +23,20 @@ export function Bot() {
   const handleKeyPress = (event) => {
     if (event.key === 'Enter' && userQuery.trim()) {
       makeApiCall()
+    }
+  }
+
+  const saveChatHistory = async (userQuery, apiResponse) => {
+    const db = firebase.firestore()
+    const timestamp = firebase.firestore.Timestamp.now()
+    try {
+      await db.collection('chathistory').add({
+        query: userQuery,
+        response: apiResponse,
+        timestamp: timestamp,
+      })
+    } catch (error) {
+      console.error('Firebase error:', error)
     }
   }
 
@@ -44,10 +64,13 @@ export function Bot() {
     try {
       const response = await fetch(endpoint, { method: 'POST', headers, body })
       const data = await response.json()
-      setApiResponse(data.choices[0].message.content)
+      const message = data.choices[0].message.content
+      setApiResponse(message)
+      saveChatHistory(userQuery, message)
     } catch (error) {
       console.error('Error:', error)
       setApiResponse('Error fetching response')
+      saveChatHistory(userQuery, 'Error fetching response');
     } finally {
       setIsLoading(false)
       setUserQuery('')
