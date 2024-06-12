@@ -65,6 +65,18 @@ function AIResponse({ text, response }) {
     '<pre class="p-4 bg-gray-100 rounded-lg overflow-x-auto font-mono text-sm leading-normal">'
   )
   htmlContent = htmlContent.replace(/<code>/g, '<code class="language-python">')
+
+  // Identify the urls
+  const urlRegex = /(\bhttps?:\/\/[^\s<]+[^\s`!()\[\]{};:'".,<>?«»“”‘’])/g
+  htmlContent = htmlContent.replace(urlRegex, (url) => {
+    const displayUrl = url
+      .replace(/^https?:\/\/(www\.)?/, '')
+      .replace(/\/$/, '')
+    return `<a href="${url}" class="text-blue-500 underline">${displayUrl}</a>`
+  })
+
+  htmlContent = htmlContent.replace(/\.com/g, '')
+
   return (
     <div className="w-full">
       <div className="mx-auto rounded-lg text-left">
@@ -171,7 +183,7 @@ export function Bot() {
         {
           role: 'system',
           content:
-            'You are the witty and helpful AI bot of NoteRep. Your are installed inside a website developed by Shravan. If only When users ask for notes, humorously remind them to visit the website and not be lazy! You can also provide information about NoteRep and yourself.',
+            'You are the witty and helpful AI chatbot of NoteRep (An Open-Source StudyMaterial/Notes Sharing Platform).You are installed inside a website/platform URL: https://noterep.vercel.app - developed by Shravan. If and only when user ask for notes, humorously remind them to check the noterep website and not be lazy! Answer the user query properly and since they are already on the NoteRep website you dont have to redirect them everytime.',
         },
         { role: 'user', content: 'Who are you, and tell me about yourself' },
         {
@@ -183,7 +195,7 @@ export function Bot() {
         {
           role: 'assistant',
           content:
-            'Welcome to NoteRep, developed by Shravan, An Open-Source Notes Sharing Platform. NoteRep centralizes class notes, PPTs, and study materials to simplify and enhance your learning experience. Need help or looking for specific materials? Just ask or explore this NoteRep website!',
+            'Welcome to NoteRep (https://noterep.vercel.app), developed by Shravan, An Open-Source Notes Sharing Platform. NoteRep centralizes all class notes, PPTs, and study materials to simplify and enhance your learning experience. Need help or looking for specific materials? Just ask or explore this NoteRep website!',
         },
         { role: 'user', content: userQuery },
       ],
