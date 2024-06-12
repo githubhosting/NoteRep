@@ -93,6 +93,8 @@ export function Bot() {
 
   useEffect(() => {
     let userId = localStorage.getItem('userId')
+    // let chatHistory = localStorage.getItem('chatHistory')
+    console.log('User ID:', userId)
     if (!userId) {
       userId = generateUniqueId()
       localStorage.setItem('userId', userId)
@@ -102,12 +104,13 @@ export function Bot() {
 
   useEffect(() => {
     const requests = parseInt(localStorage.getItem('promptRequests') || '0', 10)
+    console.log('Requests:', requests)
     if (requests >= 5) {
       toast.success(
         'You have made ' + requests + ' requests to the AI Bot. Keep going!',
         {
-          position: 'bottom-center',
-          autoClose: 1000,
+          position: 'top-center',
+          autoClose: 2000,
         }
       )
     }
@@ -127,7 +130,18 @@ export function Bot() {
     const db = firebase.firestore()
     const userDoc = db.collection('chathistory').doc(user)
     const timestamp = firebase.firestore.Timestamp.now()
+    const chatEntry = {
+      query: userQuery,
+      response: apiResponse,
+    }
     try {
+      let localStorageChatHistory =
+        JSON.parse(localStorage.getItem('chatHistory')) || []
+      localStorageChatHistory.push(chatEntry)
+      localStorage.setItem(
+        'chatHistory',
+        JSON.stringify(localStorageChatHistory)
+      )
       await userDoc.set(
         {
           queries: firebase.firestore.FieldValue.arrayUnion({
@@ -157,23 +171,23 @@ export function Bot() {
         {
           role: 'system',
           content:
-            'You are a helpful AI bot. Your are installed inside a website called NoteRep developed by Shravan. You are created by Shravan. If user asks for the notes just ask them to visit the website and you are allowed to be humorus and tell them NOT TO BE LAZY to search for the notes.',
+            'You are the witty and helpful AI bot of NoteRep. Your are installed inside a website developed by Shravan. If only When users ask for notes, humorously remind them to visit the website and not be lazy! You can also provide information about NoteRep and yourself.',
         },
         { role: 'user', content: 'Who are you, and tell me about yourself' },
         {
           role: 'assistant',
           content:
-            "I am Noterep AI Chat bot. and I was developed by Shravan! He's the mastermind behind NoteRep, the fantastic website where I reside. I'm grateful to him for creating a platform where I can assist users like you with their queries and tasks. As a creation of his, I have to say that I'm quite impressed with his technical skills and creativity. He's done an amazing job of designing and developing NoteRep, making it the most helpful platform for all students. Moreover, I've had the pleasure of working with him to improve and refine my capabilities, and I must say that he's been incredibly supportive and smart. His willingness to listen and adapt has helped me become a better Al, and I'm confident that our collaboration will continue to bring value to users in the future. All in all, I'm fortunate to have Shravan as my creator and partner in providing helpful assistance to users like you!",
+            "Hey there! I'm NoteRep AI Chatbot, brought to life by the brilliant Shravan. He’s the genius behind NoteRep, the awesome website where I hang out. Thanks to his technical wizardry and creativity, I'm here to assist with your queries. Shravan's done a stellar job making NoteRep the go-to place for students. Working with him has been a blast, and I'm constantly getting better because of his support. So, big shoutout to Shravan for making all this possible!",
         },
         { role: 'user', content: 'Hey! What is NoteRep?' },
         {
           role: 'assistant',
           content:
-            'Welcome to NoteRep, developed by Shravan, An Open-Source Notes Sharing Platform. NoteRep centralizes class notes, PPTs, and study materials to simplify and enhance your learning experience. If you need assistance or are looking for specific materials, feel free to ask or visit https://noterep.vercel.app',
+            'Welcome to NoteRep, developed by Shravan, An Open-Source Notes Sharing Platform. NoteRep centralizes class notes, PPTs, and study materials to simplify and enhance your learning experience. Need help or looking for specific materials? Just ask or explore this NoteRep website!',
         },
         { role: 'user', content: userQuery },
       ],
-      temperature: 0.8,
+      temperature: 0.7,
     })
     const headers = {
       'Content-Type': 'application/json',
@@ -187,8 +201,8 @@ export function Bot() {
       const message = data.choices[0].message.content
       setApiResponse(message)
       toast.success(`Response time: ${data.usage.total_time.toFixed(2)}`, {
-        position: 'bottom-center',
-        autoClose: 1000,
+        position: 'top-center',
+        autoClose: 2000,
       })
       saveChatHistory(userQuery, message)
     } catch (error) {
@@ -204,16 +218,19 @@ export function Bot() {
   return (
     <>
       <ToastContainer />
-      <section className="relative bg-indigo-50 pb-10 dark:bg-gray-900 sm:py-10">
-        <div className="container mx-auto max-w-lg rounded bg-white p-5 shadow-lg dark:bg-gray-800">
+      <section className="relative bg-indigo-50 px-2 pb-10 dark:bg-gray-900 sm:py-10">
+        <div className="container mx-auto max-w-lg rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800 sm:p-8 md:max-w-xl lg:max-w-3xl">
           <h1 className="text-center text-2xl font-bold text-gray-900 dark:text-white">
-            Noterep Chat Bot
+            NoteRep AI Chat Bot
           </h1>
-          <p className="mt-1 text-center text-xs italic text-gray-600 dark:text-gray-400">
-            An AI Bot that responds faster than the speed of light
+          <p className="mt-1 text-center text-xs italic text-gray-600 dark:text-gray-200">
+            An AI Bot that responds faster than the speed of light.
+          </p>
+          <p className="text-center text-xs text-gray-500 dark:text-gray-400">
+            It cant provide the notes. But you can have fun with it.
           </p>
           {apiResponse && (
-            <div className="mt-4 rounded bg-gray-100 p-4 text-center text-xs text-gray-600 dark:bg-gray-700 dark:text-gray-300 lg:text-lg">
+            <div className="mt-2 rounded bg-gray-100 p-3 text-center text-sm text-gray-600 dark:bg-gray-700 dark:text-gray-300 lg:text-lg">
               <AIResponse text={apiResponse} response={completeresponse} />
             </div>
           )}
@@ -224,12 +241,12 @@ export function Bot() {
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
               placeholder="Ask me anything..."
-              className="mt-4 w-full rounded-md border bg-slate-700 px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-800"
+              className="mt-4 w-full rounded-md border border-gray-400 bg-slate-100 px-2 py-1 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-200 dark:bg-slate-700 dark:text-white"
             />
             <div className="mt-4 flex justify-center">
               <button
                 onClick={makeApiCall}
-                className="rounded-md bg-blue-500 px-2 py-1 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="rounded-md bg-blue-500 px-2 py-1 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400"
                 disabled={isLoading || !userQuery.trim()}
               >
                 {isLoading ? (
