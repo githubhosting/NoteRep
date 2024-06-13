@@ -178,7 +178,7 @@ export function Bot() {
 
     const endpoint = 'https://api.groq.com/openai/v1/chat/completions'
     const body = JSON.stringify({
-      model: 'llama3-8b-8192',
+      model: `${process.env.NEXT_PUBLIC_MODEL}`,
       messages: [
         {
           role: 'system',
@@ -191,6 +191,19 @@ export function Bot() {
           content:
             "Hey there! I'm NoteRep AI Chatbot, brought to life by the brilliant Shravan. He’s the genius behind NoteRep, the awesome website where I hang out. Thanks to his technical wizardry and creativity, I'm here to assist with your queries. Shravan's done a stellar job making NoteRep the go-to place for students. Working with him has been a blast, and I'm constantly getting better because of his support. So, big shoutout to Shravan for making all this possible!",
         },
+        { role: 'user', content: `${process.env.NEXT_PUBLIC_U1}` },
+        {
+          role: 'assistant',
+          content: `${process.env.NEXT_PUBLIC_A1}`,
+        },
+        // {
+        //   role: 'user',
+        //   content: `${process.env.NEXT_PUBLIC_U2}`,
+        // },
+        // {
+        //   role: 'assistant',
+        //   content: `${process.env.NEXT_PUBLIC_A2}`,
+        // },
         { role: 'user', content: 'Hey! What is NoteRep?' },
         {
           role: 'assistant',
@@ -205,6 +218,7 @@ export function Bot() {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_GROQ_API}`,
     }
+    // console.log('Body:', body)
 
     try {
       const response = await fetch(endpoint, { method: 'POST', headers, body })
