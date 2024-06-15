@@ -255,6 +255,7 @@ export function Bot() {
           <p className="text-center text-xs text-gray-500 dark:text-gray-400">
             It cant provide the notes. But you can have fun with it.
           </p>
+          <p className="text-xs"> Session ID {user}</p>
           {apiResponse && (
             <div className="mt-2 rounded bg-gray-100 p-3 text-center text-sm text-gray-600 dark:bg-gray-700 dark:text-gray-300 lg:text-lg">
               <AIResponse text={apiResponse} response={completeresponse} />
