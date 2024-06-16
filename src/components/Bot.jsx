@@ -1,5 +1,5 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { use } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import firebase from 'firebase/compat/app'
 import 'firebase/compat/firestore'
 import { firebaseConfig } from '@/firebaseconfig'
@@ -95,6 +95,15 @@ export function Bot() {
   const [apiResponse, setApiResponse] = useState('')
   const [completeresponse, setCompleteResponse] = useState('')
   const [user, setUser] = useState(null)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
+  const [chathistory, setChatHistory] = useState([])
+  const [prompts, setPrompts] = useState([])
+  const chatEndRef = useRef(null)
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [chathistory])
 
   const generateUniqueId = () => {
     return (
@@ -105,7 +114,10 @@ export function Bot() {
 
   useEffect(() => {
     let userId = localStorage.getItem('userId')
-    // let chatHistory = localStorage.getItem('chatHistory')
+    let chatHistory = localStorage.getItem('chatHistory')
+    if (chatHistory) {
+      setChatHistory(JSON.parse(chatHistory))
+    }
     console.log('User ID:', userId)
     if (!userId) {
       userId = generateUniqueId()
@@ -169,16 +181,42 @@ export function Bot() {
     }
   }
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const db = firebase.firestore()
+        const response = await db.collection('prompt').get()
+        const data = response.docs.map((doc) => doc.data())
+        setPrompts(data)
+        // console.log('Prompts:', data)
+        setLoading(false)
+      } catch (error) {
+        setError(error)
+        setLoading(false)
+      }
+    }
+    fetchData()
+  }, [])
+
   const makeApiCall = async () => {
     if (!userQuery.trim()) return
     setIsLoading(true)
 
+    const activePrompts = prompts.filter((prompt) => prompt.status)
+    // console.log('Active Prompts:', activePrompts)
+
     const requests = parseInt(localStorage.getItem('promptRequests') || '0', 10)
     localStorage.setItem('promptRequests', (requests + 1).toString())
 
+    const newChatEntry = {
+      query: userQuery,
+      response: 'Waiting for response...',
+    }
+    setChatHistory([...chathistory, newChatEntry])
+
     const endpoint = 'https://api.groq.com/openai/v1/chat/completions'
     const body = JSON.stringify({
-      model: `${process.env.NEXT_PUBLIC_MODEL}`,
+      model: 'llama3-8b-8192',
       messages: [
         {
           role: 'system',
@@ -191,19 +229,13 @@ export function Bot() {
           content:
             "Hey there! I'm NoteRep AI Chatbot, brought to life by the brilliant Shravan. He’s the genius behind NoteRep, the awesome website where I hang out. Thanks to his technical wizardry and creativity, I'm here to assist with your queries. Shravan's done a stellar job making NoteRep the go-to place for students. Working with him has been a blast, and I'm constantly getting better because of his support. So, big shoutout to Shravan for making all this possible!",
         },
-        { role: 'user', content: `${process.env.NEXT_PUBLIC_U1}` },
-        {
-          role: 'assistant',
-          content: `${process.env.NEXT_PUBLIC_A1}`,
-        },
-        // {
-        //   role: 'user',
-        //   content: `${process.env.NEXT_PUBLIC_U2}`,
-        // },
-        // {
-        //   role: 'assistant',
-        //   content: `${process.env.NEXT_PUBLIC_A2}`,
-        // },
+        // this is only active prompt context
+        ...activePrompts
+          .map((prompt) => [
+            { role: 'user', content: prompt.user },
+            { role: 'assistant', content: prompt.assistant },
+          ])
+          .flat(),
         { role: 'user', content: 'Hey! What is NoteRep?' },
         {
           role: 'assistant',
@@ -226,6 +258,11 @@ export function Bot() {
       setCompleteResponse(data)
       const message = data.choices[0].message.content
       setApiResponse(message)
+      setChatHistory((prevHistory) =>
+        prevHistory.map((item, idx) =>
+          idx === prevHistory.length - 1 ? { ...item, response: message } : item
+        )
+      )
       toast.success(`Response time: ${data.usage.total_time.toFixed(2)}`, {
         position: 'top-center',
         autoClose: 2000,
@@ -235,6 +272,13 @@ export function Bot() {
       console.error('Error:', error)
       setApiResponse('Error fetching response')
       saveChatHistory(userQuery, 'Error fetching response')
+      setChatHistory((prevHistory) =>
+        prevHistory.map((item, idx) =>
+          idx === prevHistory.length - 1
+            ? { ...item, response: 'Error fetching response' }
+            : item
+        )
+      )
     } finally {
       setIsLoading(false)
       setUserQuery('')
@@ -244,31 +288,41 @@ export function Bot() {
   return (
     <>
       <ToastContainer />
-      <section className="relative bg-indigo-50 px-2 pb-10 dark:bg-gray-900 sm:py-10">
-        <div className="container mx-auto max-w-lg rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800 sm:p-8 md:max-w-xl lg:max-w-3xl">
-          <h1 className="text-center text-2xl font-bold text-gray-900 dark:text-white">
-            NoteRep AI Chat Bot
-          </h1>
-          <p className="mt-1 text-center text-xs italic text-gray-600 dark:text-gray-200">
-            An AI Bot that responds faster than the speed of light.
-          </p>
-          <p className="text-center text-xs text-gray-500 dark:text-gray-400">
-            It cant provide the notes. But you can have fun with it.
-          </p>
-          <p className="text-xs"> Session ID {user}</p>
+      <section className="relative bg-indigo-50 px-2 pb-10 dark:bg-gray-900 sm:pb-10 sm:pt-2">
+        <div className="container mx-auto max-w-lg rounded-lg bg-white p-2 shadow-lg dark:bg-gray-800 sm:p-5 md:max-w-xl lg:max-w-3xl">
+          <div className="max-h-96 overflow-y-auto pt-2">
+            {chathistory.length > 0 && (
+              <ul className="space-y-2 p-2">
+                {chathistory.slice(-4).map((chat, index) => (
+                  <li
+                    key={index}
+                    className="rounded-lg bg-gray-100 p-2 dark:bg-gray-700"
+                  >
+                    <p className="lg:text-md text-sm text-gray-700 dark:text-indigo-200">
+                      <strong>You:</strong> {chat.query}
+                    </p>
+                    <p className="lg:text-md text-sm text-gray-700 dark:text-indigo-200">
+                      <strong>Bot:</strong> {chat.response}
+                    </p>
+                  </li>
+                ))}
+                <div ref={chatEndRef} />
+              </ul>
+            )}
+          </div>
           {apiResponse && (
             <div className="mt-2 rounded bg-gray-100 p-3 text-center text-sm text-gray-600 dark:bg-gray-700 dark:text-gray-300 lg:text-lg">
               <AIResponse text={apiResponse} response={completeresponse} />
             </div>
           )}
-          <div className="flex gap-2">
+          <div className="mb-2 flex gap-2">
             <input
               type="text"
               value={userQuery}
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
               placeholder="Ask me anything..."
-              className="mt-4 w-full rounded-md border border-gray-400 bg-slate-100 px-2 py-1 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-200 dark:bg-slate-700 dark:text-white"
+              className="mt-4 flex-1 rounded-md border border-gray-400 bg-slate-100 px-2 py-1 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-200 dark:bg-slate-700 dark:text-white"
             />
             <div className="mt-4 flex justify-center">
               <button
@@ -302,6 +356,25 @@ export function Bot() {
                 )}
               </button>
             </div>
+          </div>
+          <div className="mt-2 text-center text-gray-600 dark:text-gray-400">
+            <p className="text-xs italic">
+              Note: This AI Bot can't provide the notes (yet). But who knows
+              what the future holds!
+            </p>
+            {/* <button
+              className="rounded-md border bg-gray-800 p-1"
+              onClick={() => setUserQuery('Who are you?')}
+            >
+              Who are you?
+            </button>{' '}
+            |{' '}
+            <button
+              className="rounded-md border bg-gray-800 p-1"
+              onClick={() => setUserQuery('What is NoteRep?')}
+            >
+              What is NoteRep?
+            </button> */}
           </div>
         </div>
       </section>
