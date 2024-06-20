@@ -128,7 +128,7 @@ const cseaimlsem4 = [
     title: 'Embedded Systems Lab',
     description: '(0:0:1) CIL46',
     link: 'https://drive.google.com/drive/folders/197mT9sqkxg0BwZU7aZewMeN2aQp32Ppq?usp=share_link',
-    otherlink: 'https://github.com/githubhosting',
+    github: 'https://github.com/githubhosting/ES-Lab',
     extra: 'This is github repository',
     tag: '',
   },

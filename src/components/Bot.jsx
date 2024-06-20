@@ -99,6 +99,7 @@ export function Bot() {
   const [error, setError] = useState(null)
   const [chathistory, setChatHistory] = useState([])
   const [prompts, setPrompts] = useState([])
+  const [systemprompts, setSystemPrompts] = useState([])
   const chatEndRef = useRef(null)
 
   useEffect(() => {
@@ -185,13 +186,22 @@ export function Bot() {
     const fetchData = async () => {
       try {
         const db = firebase.firestore()
-        const response = await db.collection('prompt').get()
-        const data = response.docs.map((doc) => doc.data())
-        setPrompts(data)
-        // console.log('Prompts:', data)
-        setLoading(false)
+        const [promptResponse, systemPromptResponse] = await Promise.all([
+          db.collection('prompt').get(),
+          db.collection('systemprompt').get(),
+        ])
+
+        const promptsData = promptResponse.docs.map((doc) => doc.data())
+        const systemPromptsData = systemPromptResponse.docs.map((doc) =>
+          doc.data()
+        )
+
+        setPrompts(promptsData)
+        setSystemPrompts(systemPromptsData)
       } catch (error) {
+        console.error('Error fetching data:', error)
         setError(error)
+      } finally {
         setLoading(false)
       }
     }
@@ -204,6 +214,14 @@ export function Bot() {
 
     const activePrompts = prompts.filter((prompt) => prompt.status)
     // console.log('Active Prompts:', activePrompts)
+
+    const fullSystemPrompt = systemprompts
+      .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
+      .filter((prompt) => prompt.status === true)
+      .map((prompt) => prompt.content)
+      .join(' ')
+
+    // console.log(fullSystemPrompt)
 
     const requests = parseInt(localStorage.getItem('promptRequests') || '0', 10)
     localStorage.setItem('promptRequests', (requests + 1).toString())
@@ -220,8 +238,7 @@ export function Bot() {
       messages: [
         {
           role: 'system',
-          content:
-            'You are the witty and helpful AI chatbot of NoteRep (An Open-Source StudyMaterial/Notes Sharing Platform).You are installed inside a website/platform URL: https://noterep.vercel.app - developed by Shravan. If and only when user ask for notes, humorously remind them to check the noterep website and not be lazy! Answer the user query properly and since they are already on the NoteRep website you dont have to redirect them everytime.',
+          content: fullSystemPrompt,
         },
         { role: 'user', content: 'Who are you, and tell me about yourself' },
         {
