@@ -82,7 +82,7 @@ const subjects = [
 const links = {
   syllabus1:
     'https://docs.google.com/document/d/e/2PACX-1vQ3ufq062Ks7uHEx_TEOI_yEcv8OBogdiHbMW7dfQnF388pggC5MoHnV7IyZaUvVgbDjQtec6pf0Wat/pub',
-  syllabus:
+  syllabus2:
     'https://docs.google.com/document/d/e/2PACX-1vRFRazfWll_UKmcqEqiLNioIn65WV8lIFmkwOEVjShDxPO4xFMZPOmB3tUN8A0NyDSeHab92K7FYuVC/pub',
   timetable:
     'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
@@ -171,7 +171,7 @@ export default function Home() {
   }, [])
 
   const [isShowing, setIsShowing] = useState(false)
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(true)
 
   const examDate = new Date('2021-12-17T00:00:00')
   const today = new Date()
@@ -242,7 +242,7 @@ export default function Home() {
             <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%206&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=c2hyYXZhbm5vdGVyZXBAZ21haWwuY29t&color=%23039BE5" />
           </div>
         </Container>
-        <Timetable subjects={subjects} />
+        {/* <Timetable subjects={subjects} /> */}
         <ContentNew drive={cseaimlsem6} sem="6th" links={links} />
         <Author />
       </div>

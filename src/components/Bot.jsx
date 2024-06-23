@@ -89,6 +89,77 @@ function AIResponse({ text, response }) {
   )
 }
 
+function ChatHistoryAIResponse({ text }) {
+  const converter = new showdown.Converter()
+  let htmlContent = converter.makeHtml(text)
+  htmlContent = htmlContent.replace(
+    /<(\w+)(\s+[^>]*)? id="[^"]*"([^>]*)>/g,
+    '<$1$2$3>'
+  )
+  htmlContent = htmlContent.replace(
+    /<(\w+)(\s+[^>]*)? id='[^']*'([^>]*)>/g,
+    '<$1$2$3>'
+  )
+  htmlContent = htmlContent.replace(
+    /<h1>/g,
+    '<h1 class="text-sm md:text-lg font-bold mt-10">'
+  )
+  htmlContent = htmlContent.replace(
+    /<h2>/g,
+    '<h2 class="text-sm md:text-lg font-bold mt-10">'
+  )
+  htmlContent = htmlContent.replace(
+    /<h3>/g,
+    '<h3 class="text-sm md:text-lg font-bold mt-10">'
+  )
+  // Add classes to <p> tags
+  htmlContent = htmlContent.replace(
+    /<p>/g,
+    '<p class="my-2 text-sm md:text-lg">'
+  )
+  htmlContent = htmlContent.replace(
+    /<strong>/g,
+    '<strong class="font-bold mt-10">'
+  )
+  htmlContent = htmlContent.replace(
+    /<ul>/g,
+    '<ul class="list-disc pl-5 space-y-2 mb-4">'
+  )
+  htmlContent = htmlContent.replace(
+    /<ol>/g,
+    '<ol class="list-disc pl-5 space-y-2">'
+  )
+  htmlContent = htmlContent.replace(/<li>/g, '<li class="text-sm md:text-lg">')
+  htmlContent = htmlContent.replace(
+    /<hr \/>/g,
+    '<hr class="my-8 border-t border-gray-300"/>'
+  )
+  // Add classes to <pre> tags
+  htmlContent = htmlContent.replace(
+    /<pre>/g,
+    '<pre class="p-4 bg-gray-100 rounded-lg overflow-x-auto font-mono text-sm leading-normal">'
+  )
+  htmlContent = htmlContent.replace(/<code>/g, '<code class="language-python">')
+
+  // Identify the urls
+  const urlRegex = /(\bhttps?:\/\/[^\s<]+[^\s`!()\[\]{};:'".,<>?«»“”‘’])/g
+  htmlContent = htmlContent.replace(urlRegex, (url) => {
+    const displayUrl = url
+      .replace(/^https?:\/\/(www\.)?/, '')
+      .replace(/\/$/, '')
+    return `<a href="${url}" class="text-blue-500 underline">${displayUrl}</a>`
+  })
+
+  htmlContent = htmlContent.replace(/\.com/g, '')
+
+  return (
+    <div className="text-left">
+      <p className="border-t border-slate-500 font-bold"></p>
+      <div className='' dangerouslySetInnerHTML={{ __html: htmlContent }} />
+    </div>
+  )
+}
+
 export function Bot() {
   const [isLoading, setIsLoading] = useState(false)
   const [userQuery, setUserQuery] = useState('')
@@ -310,16 +381,16 @@ export function Bot() {
           <div className="max-h-96 overflow-y-auto pt-2">
             {chathistory.length > 0 && (
               <ul className="space-y-2 p-2">
-                {chathistory.slice(-4).map((chat, index) => (
+                {chathistory.slice(-3).map((chat, index) => (
                   <li
                     key={index}
                     className="rounded-lg bg-gray-100 p-2 dark:bg-gray-700"
                   >
-                    <p className="lg:text-md text-sm text-gray-700 dark:text-indigo-200">
+                    <p className="lg:text-md text-sm text-gray-700 dark:text-indigo-200 py-2">
                       <strong>You:</strong> {chat.query}
                     </p>
                     <p className="lg:text-md text-sm text-gray-700 dark:text-indigo-200">
-                      <strong>Bot:</strong> {chat.response}
+                      <ChatHistoryAIResponse text={chat.response} />
                     </p>
                   </li>
                 ))}

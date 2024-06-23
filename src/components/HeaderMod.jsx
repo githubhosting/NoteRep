@@ -129,6 +129,7 @@ function MobileNavigation(props) {
                 <MobileNavItem href="/noterepbot">AI Chat Bot</MobileNavItem>
                 <MobileNavItem href="/communilink">CommuniLink</MobileNavItem>
                 <MobileNavItem href="/links">Other Links</MobileNavItem>
+                <MobileNavItem href="minisis">Mini SIS</MobileNavItem>
                 <MobileNavItem href="https://myselfshravan.github.io/">
                   Developer
                 </MobileNavItem>

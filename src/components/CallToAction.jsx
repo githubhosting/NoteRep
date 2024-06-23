@@ -37,10 +37,10 @@ export function CallToAction() {
                 <a
                   // href="https://gpaestimator.streamlit.app/"
                   // target="_blank"
-                  href="/calculla"
+                  href="/noterepbot"
                   className="grad_button px-4 py-2 font-semibold"
                 >
-                  Calculla - GPA Estimator
+                  NoteRep AI Chat Bot
                 </a>
               </div>
               <ButtonLink

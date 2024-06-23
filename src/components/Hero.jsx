@@ -114,7 +114,7 @@ export function Hero() {
               >
                 CSE (AI ML & CY ) Notes (Sem 4)
               </ButtonLink>
-              <ButtonLink
+              {/* <ButtonLink
                 href="/cse"
                 className="md:auto w-full rounded-lg py-2"
               >
@@ -125,7 +125,7 @@ export function Hero() {
                 className="md:auto w-full rounded-lg py-2"
               >
                 ISE Notes (Sem 5)
-              </ButtonLink>
+              </ButtonLink> */}
             </div>
             <div className="mt-8 flex items-center justify-start">
               {/* <ButtonLink href="/ci1styear" className="mt-5 rounded-lg py-2">

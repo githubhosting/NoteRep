@@ -8,7 +8,7 @@ import { Switch } from '@headlessui/react'
 
 export default function NoterepBot_() {
   const [showButton, setShowButton] = useState(false)
-  const [enabled, setEnabled] = useState(false)
+  const [enabled, setEnabled] = useState(true)
   const [userId, setUser] = useState('')
 
   useEffect(() => {
@@ -98,7 +98,7 @@ export default function NoterepBot_() {
                 />
               </Switch>
               <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
-                {enabled ? 'Fun Mood On' : 'Fun Mood Off'}
+                {enabled ? 'Fun Mood' : 'Regular Mood'}
               </p>
             </div>
           </div>
