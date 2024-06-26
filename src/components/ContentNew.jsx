@@ -11,17 +11,6 @@ export function ContentNew(props) {
     <section>
       <Container>
         <div className="mx-auto max-w-5xl sm:text-center">
-          <div className="flex flex-col items-center justify-center gap-3 pt-5 md:flex-row">
-            {/* <ButtonLink
-              href="/syllabus"
-              className="mt-5 w-auto rounded-lg py-2 hover:bg-blue-900"
-            >
-              Updated Syllabus
-            </ButtonLink> */}
-            {/* <ButtonLink href="#" className="mt-5 w-auto rounded-lg py-2">
-              Previous Year Papers
-            </ButtonLink> */}
-          </div>
           <div className="mt-10 flex items-center justify-center">
             <ButtonLink
               href={links.curriculum}
@@ -41,6 +30,20 @@ export function ContentNew(props) {
               </ButtonLink>
             </div>
           ) : null}
+          <div className="flex flex-col items-center justify-center gap-3 pt-5 md:flex-row">
+            {/* <ButtonLink
+              href="/syllabus"
+              className="mt-5 w-auto rounded-lg py-2 hover:bg-blue-900"
+            >
+              Updated Syllabus
+            </ButtonLink> */}
+            <ButtonLink
+              href="noterepbot"
+              className="button-85 mt-5 w-auto rounded-lg from-cyan-400 to-blue-500 py-1 after:bg-blue-700 dark:after:bg-gradient-to-r"
+            >
+              AI Bot 🤖
+            </ButtonLink>
+          </div>
         </div>
         <ul
           role="list"
