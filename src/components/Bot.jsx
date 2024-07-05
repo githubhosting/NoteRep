@@ -102,20 +102,20 @@ function ChatHistoryAIResponse({ text }) {
   )
   htmlContent = htmlContent.replace(
     /<h1>/g,
-    '<h1 class="text-sm md:text-lg font-bold mt-10">'
+    '<h1 class="text-sm md:text-md font-bold mt-10">'
   )
   htmlContent = htmlContent.replace(
     /<h2>/g,
-    '<h2 class="text-sm md:text-lg font-bold mt-10">'
+    '<h2 class="text-sm md:text-md font-bold mt-10">'
   )
   htmlContent = htmlContent.replace(
     /<h3>/g,
-    '<h3 class="text-sm md:text-lg font-bold mt-10">'
+    '<h3 class="text-sm md:text-md font-bold mt-10">'
   )
   // Add classes to <p> tags
   htmlContent = htmlContent.replace(
     /<p>/g,
-    '<p class="my-2 text-sm md:text-lg">'
+    '<p class="my-2 text-sm md:text-md">'
   )
   htmlContent = htmlContent.replace(
     /<strong>/g,
@@ -155,7 +155,7 @@ function ChatHistoryAIResponse({ text }) {
   return (
     <div className="text-left">
       <p className="border-t border-slate-500 font-bold"></p>
-      <div className='' dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <div className="" dangerouslySetInnerHTML={{ __html: htmlContent }} />
     </div>
   )
 }
@@ -238,6 +238,10 @@ export function Bot() {
         'chatHistory',
         JSON.stringify(localStorageChatHistory)
       )
+      const totalRequests = parseInt(
+        localStorage.getItem('promptRequests') || '0',
+        10
+      )
       await userDoc.set(
         {
           queries: firebase.firestore.FieldValue.arrayUnion({
@@ -245,6 +249,8 @@ export function Bot() {
             response: apiResponse,
             timestamp: timestamp,
           }),
+          latestRequestTime: timestamp,
+          totalRequests: totalRequests,
         },
         { merge: true }
       )
@@ -386,7 +392,7 @@ export function Bot() {
                     key={index}
                     className="rounded-lg bg-gray-100 p-2 dark:bg-gray-700"
                   >
-                    <p className="lg:text-md text-sm text-gray-700 dark:text-indigo-200 py-2">
+                    <p className="lg:text-md py-2 text-sm text-gray-700 dark:text-indigo-200">
                       <strong>You:</strong> {chat.query}
                     </p>
                     <p className="lg:text-md text-sm text-gray-700 dark:text-indigo-200">
@@ -399,7 +405,7 @@ export function Bot() {
             )}
           </div>
           {apiResponse && (
-            <div className="mt-2 rounded bg-gray-100 p-3 text-center text-sm text-gray-600 dark:bg-gray-700 dark:text-gray-300 lg:text-lg">
+            <div className="mt-2 rounded bg-gray-100 p-3 text-center text-sm text-gray-700 dark:bg-gray-700 dark:text-indigo-200 lg:text-lg">
               <AIResponse text={apiResponse} response={completeresponse} />
             </div>
           )}
