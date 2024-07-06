@@ -104,7 +104,7 @@ export default function NoterepBot_() {
           </div>
           <Bot />
         </main>
-        <Footer />
+        {/* <Footer /> */}
         {showButton && (
           <button onClick={scrollToTop} className="back-to-top shadow-lg">
             <ArrowCircleUpIcon

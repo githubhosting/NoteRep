@@ -160,6 +160,26 @@ function ChatHistoryAIResponse({ text }) {
   )
 }
 
+function SendBtn(props) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      strokeWidth={1.5}
+      stroke="currentColor"
+      className="size-6"
+      {...props}
+    >
+      <path
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
+      />
+    </svg>
+  )
+}
+
 export function Bot() {
   const [isLoading, setIsLoading] = useState(false)
   const [userQuery, setUserQuery] = useState('')
@@ -172,6 +192,7 @@ export function Bot() {
   const [prompts, setPrompts] = useState([])
   const [systemprompts, setSystemPrompts] = useState([])
   const chatEndRef = useRef(null)
+  console.log(chatEndRef)
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -305,7 +326,7 @@ export function Bot() {
 
     const newChatEntry = {
       query: userQuery,
-      response: 'Waiting for response...',
+      response: '.....',
     }
     setChatHistory([...chathistory, newChatEntry])
 
@@ -360,6 +381,8 @@ export function Bot() {
       toast.success(`Response time: ${data.usage.total_time.toFixed(2)}`, {
         position: 'top-center',
         autoClose: 2000,
+        hideProgressBar: true,
+        theme: 'dark',
       })
       saveChatHistory(userQuery, message)
     } catch (error) {
@@ -382,7 +405,7 @@ export function Bot() {
   return (
     <>
       <ToastContainer />
-      <section className="relative bg-indigo-50 px-2 pb-10 dark:bg-gray-900 sm:pb-10 sm:pt-2">
+      <section className="relative bg-indigo-50 px-2 pb-8 dark:bg-gray-900 sm:pb-2 sm:pt-2">
         <div className="container mx-auto max-w-lg rounded-lg bg-white p-2 shadow-lg dark:bg-gray-800 sm:p-5 md:max-w-xl lg:max-w-3xl">
           <div className="max-h-96 overflow-y-auto pt-2">
             {chathistory.length > 0 && (
@@ -404,12 +427,12 @@ export function Bot() {
               </ul>
             )}
           </div>
-          {apiResponse && (
+          {/* {apiResponse && (
             <div className="mt-2 rounded bg-gray-100 p-3 text-center text-sm text-gray-700 dark:bg-gray-700 dark:text-indigo-200 lg:text-lg">
               <AIResponse text={apiResponse} response={completeresponse} />
             </div>
-          )}
-          <div className="mb-2 flex gap-2">
+          )} */}
+          <div className="mb-2 flex items-center gap-2">
             <input
               type="text"
               value={userQuery}
@@ -421,7 +444,7 @@ export function Bot() {
             <div className="mt-4 flex justify-center">
               <button
                 onClick={makeApiCall}
-                className="rounded-md bg-blue-500 px-2 py-1 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400"
+                className="h-8 w-10 rounded-md bg-blue-500 px-2 py-1 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400 dark:border-blue-100 border"
                 disabled={isLoading || !userQuery.trim()}
               >
                 {isLoading ? (
@@ -446,7 +469,7 @@ export function Bot() {
                     ></path>
                   </svg>
                 ) : (
-                  'Send'
+                  <SendBtn />
                 )}
               </button>
             </div>
