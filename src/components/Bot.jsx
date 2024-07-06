@@ -180,7 +180,33 @@ function SendBtn(props) {
   )
 }
 
-export function Bot() {
+function LoadingBtn(props) {
+  return (
+    <svg
+      className="h-5 w-5 animate-spin text-white"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <circle
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        strokeWidth="4"
+        className="opacity-25"
+      ></circle>
+      <path
+        className="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C8.477 0 4 4.477 4 12z"
+      ></path>
+    </svg>
+  )
+}
+
+export function Bot({ moodstatus }) {
   const [isLoading, setIsLoading] = useState(false)
   const [userQuery, setUserQuery] = useState('')
   const [apiResponse, setApiResponse] = useState('')
@@ -192,7 +218,6 @@ export function Bot() {
   const [prompts, setPrompts] = useState([])
   const [systemprompts, setSystemPrompts] = useState([])
   const chatEndRef = useRef(null)
-  console.log(chatEndRef)
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -313,13 +338,18 @@ export function Bot() {
     const activePrompts = prompts.filter((prompt) => prompt.status)
     // console.log('Active Prompts:', activePrompts)
 
-    const fullSystemPrompt = systemprompts
+    let fullSystemPrompt = systemprompts
       .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
       .filter((prompt) => prompt.status === true)
       .map((prompt) => prompt.content)
       .join(' ')
 
-    // console.log(fullSystemPrompt)
+    const moodprompt = 'You are a witty bot and your answers will be humorous. '
+    if (moodstatus) {
+      fullSystemPrompt =
+        moodprompt + fullSystemPrompt + ' Note: Fun Mood Enabled.'
+    }
+    console.log(fullSystemPrompt)
 
     const requests = parseInt(localStorage.getItem('promptRequests') || '0', 10)
     localStorage.setItem('promptRequests', (requests + 1).toString())
@@ -444,33 +474,10 @@ export function Bot() {
             <div className="mt-4 flex justify-center">
               <button
                 onClick={makeApiCall}
-                className="h-8 w-10 rounded-md bg-blue-500 px-2 py-1 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400 dark:border-blue-100 border"
+                className="h-8 w-10 rounded-md border bg-blue-500 px-2 py-1 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400 dark:border-blue-100"
                 disabled={isLoading || !userQuery.trim()}
               >
-                {isLoading ? (
-                  <svg
-                    className="-ml-1 h-5 w-5 animate-spin text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                      className="opacity-25"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C8.477 0 4 4.477 4 12z"
-                    ></path>
-                  </svg>
-                ) : (
-                  <SendBtn />
-                )}
+                {isLoading ? <LoadingBtn /> : <SendBtn />}
               </button>
             </div>
           </div>
