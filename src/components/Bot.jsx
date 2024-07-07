@@ -89,7 +89,7 @@ function AIResponse({ text, response }) {
   )
 }
 
-function ChatHistoryAIResponse({ text }) {
+function ChatHistoryAIResponse({ text, responsetime }) {
   const converter = new showdown.Converter()
   let htmlContent = converter.makeHtml(text)
   htmlContent = htmlContent.replace(
@@ -129,7 +129,7 @@ function ChatHistoryAIResponse({ text }) {
     /<ol>/g,
     '<ol class="list-disc pl-5 space-y-2">'
   )
-  htmlContent = htmlContent.replace(/<li>/g, '<li class="text-sm md:text-lg">')
+  htmlContent = htmlContent.replace(/<li>/g, '<li class="text-sm md:text-md">')
   htmlContent = htmlContent.replace(
     /<hr \/>/g,
     '<hr class="my-8 border-t border-gray-300"/>'
@@ -156,6 +156,11 @@ function ChatHistoryAIResponse({ text }) {
     <div className="text-left">
       <p className="border-t border-slate-500 font-bold"></p>
       <div className="" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      {responsetime && (
+        <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">
+          Response time: {responsetime} seconds
+        </p>
+      )}
     </div>
   )
 }
@@ -233,6 +238,7 @@ export function Bot({ moodstatus }) {
   useEffect(() => {
     let userId = localStorage.getItem('userId')
     let chatHistory = localStorage.getItem('chatHistory')
+    console.log('Chat History:', JSON.parse(chatHistory))
     if (chatHistory) {
       setChatHistory(JSON.parse(chatHistory))
     }
@@ -268,13 +274,15 @@ export function Bot({ moodstatus }) {
     }
   }
 
-  const saveChatHistory = async (userQuery, apiResponse) => {
+  const saveChatHistory = async (userQuery, apiResponse, responseTime) => {
     const db = firebase.firestore()
     const userDoc = db.collection('chathistory').doc(user)
     const timestamp = firebase.firestore.Timestamp.now()
+    const responsetime = responseTime
     const chatEntry = {
       query: userQuery,
       response: apiResponse,
+      responsetime: responsetime,
     }
     try {
       let localStorageChatHistory =
@@ -338,6 +346,18 @@ export function Bot({ moodstatus }) {
     const activePrompts = prompts.filter((prompt) => prompt.status)
     // console.log('Active Prompts:', activePrompts)
 
+    // Get the last two entries from chat history
+    const lastTwoEntries = chathistory.slice(-2).map((entry) => ({
+      role: 'user',
+      content: entry.query,
+    }))
+
+    // Append the assistant responses corresponding to those entries
+    const pastResponses = chathistory.slice(-2).map((entry) => ({
+      role: 'assistant',
+      content: entry.response,
+    }))
+
     let fullSystemPrompt = systemprompts
       .sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp))
       .filter((prompt) => prompt.status === true)
@@ -349,7 +369,7 @@ export function Bot({ moodstatus }) {
       fullSystemPrompt =
         moodprompt + fullSystemPrompt + ' Note: Fun Mood Enabled.'
     }
-    console.log(fullSystemPrompt)
+    // console.log(fullSystemPrompt)
 
     const requests = parseInt(localStorage.getItem('promptRequests') || '0', 10)
     localStorage.setItem('promptRequests', (requests + 1).toString())
@@ -357,6 +377,7 @@ export function Bot({ moodstatus }) {
     const newChatEntry = {
       query: userQuery,
       response: '.....',
+      responsetime: '...',
     }
     setChatHistory([...chathistory, newChatEntry])
 
@@ -368,7 +389,10 @@ export function Bot({ moodstatus }) {
           role: 'system',
           content: fullSystemPrompt,
         },
-        { role: 'user', content: 'Who are you, and tell me about yourself' },
+        {
+          role: 'user',
+          content: 'Who are you? Can you tell me about yourself?',
+        },
         {
           role: 'assistant',
           content:
@@ -387,6 +411,11 @@ export function Bot({ moodstatus }) {
           content:
             'Welcome to NoteRep (https://noterep.vercel.app), developed by Shravan, An Open-Source Notes Sharing Platform. NoteRep centralizes all class notes, PPTs, and study materials to simplify and enhance your learning experience. Need help or looking for specific materials? Just ask or explore this NoteRep website!',
         },
+        // this is users past context
+        ...pastResponses.flatMap((entry, index) => [
+          lastTwoEntries[index],
+          entry,
+        ]),
         { role: 'user', content: userQuery },
       ],
       temperature: 0.7,
@@ -395,26 +424,30 @@ export function Bot({ moodstatus }) {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_GROQ_API}`,
     }
-    // console.log('Body:', body)
+    let json_body = JSON.parse(body)
+    // console.log('Request:', json_body)
 
     try {
       const response = await fetch(endpoint, { method: 'POST', headers, body })
       const data = await response.json()
       setCompleteResponse(data)
       const message = data.choices[0].message.content
+      const responseTime = data.usage.total_time.toFixed(2)
       setApiResponse(message)
       setChatHistory((prevHistory) =>
         prevHistory.map((item, idx) =>
-          idx === prevHistory.length - 1 ? { ...item, response: message } : item
+          idx === prevHistory.length - 1
+            ? { ...item, response: message, responsetime: responseTime }
+            : item
         )
       )
-      toast.success(`Response time: ${data.usage.total_time.toFixed(2)}`, {
-        position: 'top-center',
-        autoClose: 2000,
-        hideProgressBar: true,
-        theme: 'dark',
-      })
-      saveChatHistory(userQuery, message)
+      // toast.success(`Response time: ${data.usage.total_time.toFixed(2)}`, {
+      //   position: 'top-center',
+      //   autoClose: 2000,
+      //   hideProgressBar: true,
+      //   theme: 'dark',
+      // })
+      saveChatHistory(userQuery, message, responseTime)
     } catch (error) {
       console.error('Error:', error)
       setApiResponse('Error fetching response')
@@ -422,7 +455,7 @@ export function Bot({ moodstatus }) {
       setChatHistory((prevHistory) =>
         prevHistory.map((item, idx) =>
           idx === prevHistory.length - 1
-            ? { ...item, response: 'Error fetching response' }
+            ? { ...item, response: 'Error fetching response', responsetime: 0 }
             : item
         )
       )
@@ -449,7 +482,10 @@ export function Bot({ moodstatus }) {
                       <strong>You:</strong> {chat.query}
                     </p>
                     <p className="lg:text-md text-sm text-gray-700 dark:text-indigo-200">
-                      <ChatHistoryAIResponse text={chat.response} />
+                      <ChatHistoryAIResponse
+                        text={chat.response}
+                        responsetime={chat.responsetime}
+                      />
                     </p>
                   </li>
                 ))}
