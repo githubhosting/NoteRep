@@ -142,15 +142,12 @@ function ChatHistoryAIResponse({ text, responsetime }) {
   htmlContent = htmlContent.replace(/<code>/g, '<code class="language-python">')
 
   // Identify the urls
-  const urlRegex = /(\bhttps?:\/\/[^\s<]+[^\s`!()\[\]{};:'".,<>?«»“”‘’])/g
+  const urlRegex = /(\bhttps?:\/\/[^\s<]+[^\s`!()\[\]{};:'".,<>?«»""''])/g
   htmlContent = htmlContent.replace(urlRegex, (url) => {
-    const displayUrl = url
-      .replace(/^https?:\/\/(www\.)?/, '')
-      .replace(/\/$/, '')
-    return `<a href="${url}" class="text-blue-500 underline">${displayUrl}</a>`
+    let displayUrl = url.replace(/^https?:\/\/(www\.)?/, '')
+    displayUrl = displayUrl.replace(/\/$/, '')
+    return `<a href="${url}" target="_blank" class="text-blue-400 underline">${displayUrl}</a>`
   })
-
-  htmlContent = htmlContent.replace(/\.com/g, '')
 
   return (
     <div className="text-left">
