@@ -121,7 +121,7 @@ const cseaimlsem6 = [
   {
     title: 'Deep Learning Lab',
     description: '(0:0:1) CIL65',
-    link: 'https://github.com/githubhosting',
+    link: 'https://github.com/githubhosting/DeepLearning-Lab',
     classroom: 'https://classroom.google.com/c/NjY4NDQ0NzkzMjYx',
     tag: '',
   },
