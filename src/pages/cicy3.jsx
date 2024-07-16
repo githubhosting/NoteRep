@@ -16,6 +16,99 @@ import { Timetable } from '@/components/Timetable3'
 import { Calendar } from '@/components/Calendar'
 import { Counter } from '@/components/Calendar'
 import { Button } from '@/components/Button'
+import { ContentNew } from '@/components/ContentNew'
+
+const cicy3 = [
+  {
+    title: 'All Subject Folder',
+    description: 'Main Folder Drive Link',
+    link: 'https://drive.google.com/drive/folders/19FylQDEwam6JZNnCvf7_CcSF8WoB9brt?usp=sharing',
+    otherlink: '#',
+    tag: '',
+  },
+  {
+    title: 'Linear Algebra & Integral Transforms',
+    description: '(2:1:0) CI31',
+    link: 'https://drive.google.com/drive/folders/1d126yrfEwfL1QqEL9cJcl3SHP6skil0G?usp=share_link',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Data Base Management Systems',
+    description: '(3:0:0) CI32',
+    link: 'https://drive.google.com/drive/folders/1Jp1yODvx1-EO5SywKVLxsVdsqLYAf_d7?usp=share_link',
+    otherlink: '/links',
+    tag: 'SQL',
+  },
+  {
+    title: 'Data Structures',
+    description: '(3:0:0) CI33',
+    link: 'https://drive.google.com/drive/folders/1xKwDfh47KlX5yOFw_zPK7gHJwnd64gIC?usp=share_link',
+    otherlink: '/links',
+    tag: 'C Programming',
+  },
+  {
+    title: 'Computer organization and Architecture',
+    description: '(3:0:0) CI34',
+    link: 'https://drive.google.com/drive/folders/1sGeLN9AV2mPm3CxNCz8Ws9u0nwHNY33k?usp=share_link',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Discrete Mathematical Structures',
+    description: '(2:1:0) CI35',
+    link: 'https://drive.google.com/drive/folders/1UjfYJyCRSz8KtQeWxnypGEz9q1uIBbSs?usp=share_link',
+    otherlink: '/links',
+    // tag: 'Maths',
+  },
+  {
+    title: 'Data Structures Laboratory',
+    description: '(0:0:1) CIL36',
+    github: 'https://github.com/githubhosting/DS_Lab_c-programming_Personal',
+    otherlink: 'https://github.com/githubhosting/DS_Lab_c-programming',
+    extra: 'This is github repository',
+    tag: 'C Programming',
+  },
+  {
+    title: 'OOPS Laboratory',
+    description: '(0:0:1) CIL37',
+    github: 'https://github.com/githubhosting/OOPS_Lab_CPP',
+    otherlink: '/links',
+    extra: 'This is github repository',
+    tag: 'C++',
+  },
+  {
+    title: 'Universal Human Value Course ',
+    description: '(2:0:0) UHV38',
+    link: 'https://drive.google.com/drive/folders/1i6_X176UpyXi_aufwXyWcLiHVgpD6yEz?usp=sharingl̥',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Kannada (Kali / Manasu)',
+    description: '(1:0:0) HS391/491',
+    link: 'https://drive.google.com/drive/folders/1MIXAORMZ0GYUFJqYDjsYZbKYEnv8Rgch?usp=share_link',
+    otherlink: '/links',
+    tag: 'Language',
+  },
+  {
+    title: 'Ability Enhancement Course-III',
+    description: '(1:0:0) AEC310',
+    link: '#',
+    otherlink: '/links',
+    tag: '',
+  },
+]
+
+const links = {
+  syllabus1:
+    'https://docs.google.com/document/d/e/2PACX-1vQ3ufq062Ks7uHEx_TEOI_yEcv8OBogdiHbMW7dfQnF388pggC5MoHnV7IyZaUvVgbDjQtec6pf0Wat/pub',
+  syllabus2:
+    'https://docs.google.com/document/d/e/2PACX-1vRFRazfWll_UKmcqEqiLNioIn65WV8lIFmkwOEVjShDxPO4xFMZPOmB3tUN8A0NyDSeHab92K7FYuVC/pub',
+  timetable:
+    'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
+  curriculum: '#',
+}
 
 export default function Home() {
   const [showButton, setShowButton] = useState(false)
@@ -70,7 +163,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CSE (AI ML & CY) Notes</title>
+        <title>NoteRep | 3rd Sem CSE (AI ML & CY) Notes</title>
         <meta
           name="description"
           content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester"
@@ -127,8 +220,8 @@ export default function Home() {
             <Calendar />
           </Transition> */}
         </Container>
-        <Timetable />
-        <Content />
+        {/* <Timetable /> */}
+        <ContentNew drive={cicy3} sem="3rd" links={links} />
         <Author />
       </div>
       <Footer />

@@ -91,12 +91,12 @@ export function Content() {
       <Container>
         <div className="mx-auto max-w-5xl sm:text-center">
           <div className="flex flex-col items-center justify-center gap-3 pt-5 md:flex-row">
-            <ButtonLink
+            {/* <ButtonLink
               href="/syllabus"
               className="mt-5 w-full rounded-lg py-2 hover:bg-blue-900"
             >
               Curriculum Book
-            </ButtonLink>
+            </ButtonLink> */}
             <ButtonLink
               href="https://drive.google.com/drive/folders/10KCeAYroDNMJ4rLRbJWVaWdgiz84M2vh?usp=sharing"
               className="mt-5 w-full rounded-lg py-2"

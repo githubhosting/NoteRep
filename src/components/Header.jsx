@@ -152,8 +152,8 @@ function NavItem({ href, children }) {
         className={clsx(
           'relative block px-3 py-1 transition',
           isActive
-            ? 'text-teal-500 dark:text-teal-400'
-            : 'hover:text-teal-500 dark:hover:text-teal-400'
+            ? 'text-blue-500 dark:text-blue-400'
+            : 'hover:text-blue-500 dark:hover:text-blue-400'
         )}
       >
         {children}
@@ -175,8 +175,8 @@ function NavItem_({ href, children }) {
         className={clsx(
           'relative block px-3 py-1 transition',
           isActive
-            ? 'text-teal-500 dark:text-teal-400'
-            : 'hover:text-teal-500 dark:hover:text-teal-400'
+            ? 'text-blue-500 dark:text-blue-400'
+            : 'hover:text-blue-500 dark:hover:text-blue-400'
         )}
       >
         {children}

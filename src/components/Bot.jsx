@@ -374,7 +374,7 @@ export function Bot({ moodstatus }) {
     const newChatEntry = {
       query: userQuery,
       response: '.....',
-      responsetime: '...',
+      responsetime: '.',
     }
     setChatHistory([...chathistory, newChatEntry])
 
@@ -422,7 +422,7 @@ export function Bot({ moodstatus }) {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_GROQ_API}`,
     }
     let json_body = JSON.parse(body)
-    // console.log('Request:', json_body)
+    console.log('Request:', json_body)
 
     try {
       const response = await fetch(endpoint, { method: 'POST', headers, body })

@@ -188,7 +188,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>CSE (AI ML & CY) Notes</title>
+        <title>NoteRep | CSE (AI ML & CY) Notes</title>
         <meta
           name="description"
           content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester"
