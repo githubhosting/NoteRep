@@ -44,12 +44,12 @@ export function CallToAction() {
                 </a>
               </div>
               <ButtonLink
-                href="https://githubhosting.github.io/eventcalender/"
+                href="https://gpaestimator.streamlit.app"
                 color="white"
                 className="mb-5 shadow-md"
                 target="_blank"
               >
-                Events Calendar
+                Calculla GPA Estimator
               </ButtonLink>
               <div className="my-1 border-t text-lg tracking-tight text-white">
                 <p className="mt-5 font-bold drop-shadow-lg">
@@ -97,7 +97,7 @@ export function CallToAction() {
         </div>
       </div>
       <Container>
-        {/* <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
+        <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
           <Switch
             checked={enabled}
             onChange={setEnabled}
@@ -114,7 +114,7 @@ export function CallToAction() {
           <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
             {enabled ? 'Hide' : 'Show Timetable'}
           </p>
-        </div> */}
+        </div>
         <Transition
           show={enabled}
           enter="transition-opacity duration-150"
@@ -124,7 +124,7 @@ export function CallToAction() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <Counter />
+          {/* <Counter /> */}
           <Calendar />
         </Transition>
       </Container>

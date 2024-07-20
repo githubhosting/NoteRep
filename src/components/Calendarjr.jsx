@@ -34,69 +34,49 @@ const weekarray = [
 
 const exam = [
   {
-    date: '2023-09-15',
-    name: 'Math',
-    long_name: 'Maths',
+    date: '2024-07-31',
+    name: 'CS',
+    long_name: 'Computer Science',
   },
   {
-    date: '2023-09-16',
-    name: 'Chemistry',
-    long_name: 'Chemistry',
-  },
-  {
-    date: '2023-09-19',
-    name: 'English',
+    date: '2024-07-22',
+    name: 'Eng',
     long_name: 'English',
   },
   {
-    date: '2023-09-21',
-    name: 'Const',
-    long_name: 'Constitution',
+    date: '2024-07-23',
+    name: 'MA21',
+    long_name: 'Maths',
   },
   {
-    date: '2023-09-22',
-    name: 'Kannada',
-    long_name: 'Kannada',
+    date: '2024-07-24',
+    name: 'Chem',
+    long_name: 'Chemistry',
   },
   {
-    date: '2023-09-23',
-    name: 'Design Thinking',
+    date: '2024-07-25',
+    name: 'DT',
     long_name: 'Design Thinking',
   },
   {
-    date: '2023-09-25',
-    name: 'ECT',
-    long_name: 'ECT',
-  },
-  {
-    date: '2023-09-27',
-    name: 'Civil/Electrical',
-    long_name: 'Civil/Electrical',
-  },
-  {
-    date: '2023-09-29',
-    name: 'Electronics/Mechanical',
-    long_name: 'Electronics/Mechanical',
-  },
-  {
-    date: '2023-09-30',
-    name: 'C-Prog',
-    long_name: 'C-Programming',
-  },
-  {
-    date: '2023-10-03',
-    name: 'Scientific Health',
+    date: '2024-07-26',
+    name: 'Health',
     long_name: 'Scientific Health',
   },
   {
-    date: '2023-10-04',
-    name: 'Physics',
-    long_name: 'Physics',
+    date: '2024-07-27',
+    name: 'Mech',
+    long_name: 'Mechanical',
   },
   {
-    date: '2023-10-05',
-    name: 'PLC',
-    long_name: 'PLC',
+    date: '2024-07-29',
+    name: 'Civil+EE',
+    long_name: 'Civil + Electrical',
+  },
+  {
+    date: '2024-07-30',
+    name: 'Electronics+Mech',
+    long_name: 'Electronics + Mechanical',
   },
 ]
 
@@ -282,6 +262,7 @@ export function Calendar() {
                       {day.events.map((event) => (
                         <span className="flex justify-center rounded-md bg-indigo-50 px-1 align-middle dark:bg-[#0071f0] dark:text-white">
                           {event.name}
+                          {event.name2}
                         </span>
                       ))}
                     </span>
