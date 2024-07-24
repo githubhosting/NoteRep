@@ -380,7 +380,7 @@ export function Bot({ moodstatus }) {
 
     const endpoint = 'https://api.groq.com/openai/v1/chat/completions'
     const body = JSON.stringify({
-      model: 'llama3-8b-8192',
+      model: 'llama-3.1-8b-instant',
       messages: [
         {
           role: 'system',
@@ -422,7 +422,7 @@ export function Bot({ moodstatus }) {
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_GROQ_API}`,
     }
     let json_body = JSON.parse(body)
-    console.log('Request:', json_body)
+    // console.log('Request:', json_body)
 
     try {
       const response = await fetch(endpoint, { method: 'POST', headers, body })
@@ -516,8 +516,8 @@ export function Bot({ moodstatus }) {
           </div>
           <div className="mt-2 text-center text-gray-600 dark:text-gray-400">
             <p className="text-xs italic">
-              Note: This AI Bot can't provide the notes (yet). But who knows
-              what the future holds!
+              Note: This AI Bot can’t directly fetch notes just yet — but stay
+              tuned! The future might surprise us.
             </p>
             {/* <button
               className="rounded-md border bg-gray-800 p-1"

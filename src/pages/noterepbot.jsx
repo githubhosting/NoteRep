@@ -74,12 +74,16 @@ export default function NoterepBot_() {
               NoteRep AI Chat Bot
             </h1>
             <p className="mt-2 text-center text-xs text-gray-600 dark:text-gray-200">
-              An AI Bot that responds faster than the speed of light.
+              Experience lightning-fast responses with this AI Chatbot &mdash;
+              <span className="text-xs italic text-gray-500 dark:text-gray-100">
+                {' '}
+                Powered by Llama 3.1 8B
+              </span>
             </p>
             {/* <p className="text-center text-xs italic text-gray-600 dark:text-gray-400">
               It can't provide the notes. But you can have fun with it.
             </p> */}
-            <p className="text-center text-xs text-gray-500 dark:text-gray-400">
+            <p className="mt-1 text-center text-xs text-gray-500 dark:text-gray-400">
               Session ID: {userId}
             </p>
             {/* add a toogle for fun mode  */}

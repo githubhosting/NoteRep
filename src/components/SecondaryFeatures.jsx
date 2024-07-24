@@ -11,9 +11,9 @@ const data = [
   },
   {
     title: 'SIS Parent Portal',
-    subtitle: 'Even Sem 2022',
+    subtitle: 'All Sem academic performance',
     button: 'Visit',
-    href: 'https://parents.msrit.edu/',
+    href: 'https://parents.msrit.edu/webfiles/',
   },
   {
     title: 'Idea Repository',
@@ -88,8 +88,9 @@ export function SecondaryFeatures() {
             </ul>
             <dl className="mt-10 grid grid-cols-2 gap-x-10 gap-y-6 rounded-xl border p-4 sm:mt-16 sm:gap-x-16 sm:gap-y-10 sm:text-center lg:auto-cols-auto lg:grid-flow-col lg:grid-cols-none">
               {[
-                ['Total Web Clics*', '41.60K'],
-                ['Total impressions*', '10.50K'],
+                ['Total Web Clicks*', '65.63K'],
+                ['Total impressions*', '15.51K'],
+                ['Monthly Active Users*', '2257+'],
               ].map(([name, value]) => (
                 <div key={name}>
                   <dt className="font-mono text-sm text-blue-600 dark:text-zinc-100">

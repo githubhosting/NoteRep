@@ -7,7 +7,19 @@ import { ButtonLink } from '@/components/Button'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background.jpg'
 import darkbackgroundImage from '@/images/background-dark.jpg'
-import { check } from 'prettier'
+
+function AnimatedGradientText({ children, className = '' }) {
+  const defaultClasses =
+    'group relative flex max-w-fit flex-row items-center justify-center rounded-2xl bg-white/40 px-4 py-1.5 text-base font-medium shadow-[inset_0_-8px_10px_#8fdfff1f] backdrop-blur-sm transition-shadow duration-500 ease-out [--bg-size:300%] hover:shadow-[inset_0_-5px_10px_#8fdfff3f] dark:bg-black/30'
+  return (
+    <div className={`${defaultClasses} ${className}`}>
+      <div
+        className={`animate-gradient absolute inset-0 block h-full w-full bg-gradient-to-r from-[#ffaa40]/50 via-[#9c40ff]/50 to-[#ffaa40]/50 bg-[length:var(--bg-size)_100%] p-[1px] [border-radius:inherit] ![mask-composite:subtract] [mask:linear-gradient(#fff_0_0)_content-box,linear-gradient(#fff_0_0)]`}
+      />
+      {children}
+    </div>
+  )
+}
 
 export function Hero() {
   const install = usePWAInstall()
@@ -38,19 +50,6 @@ export function Hero() {
                 You can also upload to the "Upload Here" Folder in Respective
                 Subject Folders.
               </p>
-
-              {/* <p className="text-base font-thin">
-                You can now simply search <i className="font-bold">"noterep"</i>{' '}
-                on google and find this website listing in the top results of
-                Google searches. That's pretty cool, isn't it? A big thanks to{' '}
-                <a
-                  className="font-bold underline"
-                  href="https://www.linkedin.com/in/gautam-menon-9a30a3233/"
-                >
-                  Gautam Menon
-                </a>{' '}
-                for suggesting this creative unique name.
-              </p> */}
               <p className="text-base font-normal">
                 Anyone interested in sharing notes for other branches can{' '}
                 <a
@@ -71,37 +70,36 @@ export function Hero() {
                   </p>
                 </button>
               )}
-              <p className="text-base font-semibold italic">
-                Introducing the new feature!
-              </p>
-              <div className="flex flex-col gap-6 md:flex-row">
-                {/* <ButtonLink
-                  href="/noterepbot"
-                  className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                  target="_blank"
-                >
-                  AI Chat Bot 🚀
-                </ButtonLink> */}
-                <ButtonLink
-                  href="/communilink"
-                  className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                  target="_blank"
-                >
-                  Communi Link 🔗
-                </ButtonLink>
-                <ButtonLink
-                  href="/noterepbot"
-                  className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                >
-                  Noterep Bot 🤖
-                </ButtonLink>
-                {/* <ButtonLink
+              <div className="z-10 flex flex-col items-center justify-center align-middle">
+                <AnimatedGradientText>
+                  🎉 <hr className="mx-2 h-4 w-[1px] shrink-0 bg-gray-300" />{' '}
+                  <span className="animate-gradient inline bg-gradient-to-r from-[#ffaa40] via-[#9c40ff] to-[#ffaa40] bg-[length:var(--bg-size)_100%] bg-clip-text font-semibold text-transparent">
+                    Introducing the new feature!
+                  </span>
+                </AnimatedGradientText>
+                <div className="flex flex-col items-center gap-6 pt-6 md:flex-row">
+                  <ButtonLink
+                    href="/noterepbot"
+                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                  >
+                    Noterep Bot 🤖
+                  </ButtonLink>
+                  <ButtonLink
+                    href="/communilink"
+                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                    target="_blank"
+                  >
+                    Communi Link 🔗
+                  </ButtonLink>
+
+                  {/* <ButtonLink
                   href="/noterep-forum"
                   className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"
                   target="_blank"
-                >
+                  >
                   NoteRep Forum 🚀
-                </ButtonLink> */}
+                  </ButtonLink> */}
+                </div>
               </div>
             </div>
             <div className="mt-10 grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
@@ -114,12 +112,12 @@ export function Hero() {
               >
                 CSE (AI ML & CY) Notes (Sem 4)
               </ButtonLink>
-              <ButtonLink
+              {/* <ButtonLink
                 href="/cicy3"
                 className="md:auto w-full rounded-lg py-2"
               >
                 CSE (AI ML & CY) (Sem 3)
-              </ButtonLink>
+              </ButtonLink> */}
               {/* <ButtonLink
                 href="/ise"
                 className="md:auto w-full rounded-lg py-2"

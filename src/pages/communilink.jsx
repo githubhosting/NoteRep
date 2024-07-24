@@ -26,6 +26,7 @@ const communilinks = [
     name: 'advAIta Community',
     description: 'A community of AI and ML Developers',
     href: 'https://discord.com/invite/ZSKT4bRmUq',
+    subhref: 'https://chat.whatsapp.com/Jqv8QYSgjZyBrxsPlOEvGs',
   },
   {
     name: 'Machine Learning Community',
@@ -141,6 +142,20 @@ export default function NoterepBot_() {
                               : String(item.href)}
                           </a>
                         </div>
+                        {/* if subhref then show that as well */}
+                        {item.subhref && (
+                          <div>
+                            <a
+                              href={item.subhref}
+                              target="_blank"
+                              className="mt-3 text-sm font-medium text-blue-800 hover:text-indigo-500 dark:text-blue-600"
+                            >
+                              {String(item.subhref).length > 17
+                                ? String(item.subhref).substring(0, 35) + '...'
+                                : String(item.subhref)}
+                            </a>
+                          </div>
+                        )}
                       </div>
                     </li>
                   ))}

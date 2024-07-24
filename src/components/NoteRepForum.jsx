@@ -39,28 +39,28 @@ export function NoteRepForum() {
         width={width}
         height={height}
         recycle={false}
-        numberOfPieces={300}
+        numberOfPieces={400}
       />
       <section className="relative bg-indigo-50 py-7 pb-10 dark:bg-gray-900 sm:py-10">
         <Container className="relative">
           <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
             <div>
-              <h2 className="mb-5 text-3xl font-bold text-gray-900 dark:text-white">
+              <h2 className="mb-5 justify-center text-center text-3xl font-bold text-gray-900 dark:text-white">
                 NoteRep Forum
               </h2>
-              <p className="mb-5 text-lg text-gray-500 dark:text-gray-400">
-                Checkout the demo version
+              <p className="mb-5 text-center text-lg text-gray-500 dark:text-gray-400">
+                Checkout the demo of NoteRep Forum, a beta feature of NoteRep.
               </p>
+              <div className="mb-6 rounded-lg bg-blue-700 px-6 py-6 text-center">
+                <a
+                  href="http://noterep-forum.vercel.app/"
+                  className="grad_button2 border border-blue-600 px-4 py-2 font-semibold"
+                  target="_blank"
+                >
+                  NoteRep Forum
+                </a>
+              </div>
               <Image src={noterepforumPreview} alt="NoteRep Forum Preview" />
-            </div>
-            <div className="mb-5 rounded-lg bg-blue-700 px-6 py-6 text-center">
-              <a
-                href="http://noterep-forum.vercel.app/"
-                className="grad_button2 border border-blue-600 py-2 px-4 font-semibold"
-                target="_blank"
-              >
-                NoteRep Forum
-              </a>
             </div>
           </div>
         </Container>
