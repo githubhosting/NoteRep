@@ -140,7 +140,6 @@ function ChatHistoryAIResponse({ text, responsetime }) {
     '<pre class="p-4 bg-gray-100 rounded-lg overflow-x-auto font-mono text-sm leading-normal">'
   )
   htmlContent = htmlContent.replace(/<code>/g, '<code class="language-python">')
-
   // Identify the urls
   const urlRegex = /(\bhttps?:\/\/[^\s<]+[^\s`!()\[\]{};:'".,<>?«»""''])/g
   htmlContent = htmlContent.replace(urlRegex, (url) => {
@@ -151,10 +150,10 @@ function ChatHistoryAIResponse({ text, responsetime }) {
 
   return (
     <div className="text-left">
-      <p className="border-t border-slate-500 font-bold"></p>
+      {/* <p className="border-t border-slate-500 font-bold"></p> */}
       <div className="" dangerouslySetInnerHTML={{ __html: htmlContent }} />
       {responsetime && (
-        <p className="mt-2 text-xs text-gray-600 dark:text-gray-400">
+        <p className="mt-2 text-xs text-gray-600 dark:text-gray-300">
           Response time: {responsetime} seconds
         </p>
       )}
@@ -374,7 +373,7 @@ export function Bot({ moodstatus }) {
     const newChatEntry = {
       query: userQuery,
       response: '.....',
-      responsetime: '.',
+      responsetime: '0.15',
     }
     setChatHistory([...chathistory, newChatEntry])
 
@@ -466,24 +465,26 @@ export function Bot({ moodstatus }) {
     <>
       <ToastContainer />
       <section className="relative bg-indigo-50 px-2 pb-8 dark:bg-gray-900 sm:pb-2 sm:pt-2">
-        <div className="container mx-auto max-w-lg rounded-lg bg-white p-2 shadow-lg dark:bg-gray-800 sm:p-5 md:max-w-xl lg:max-w-3xl">
+        <div className="container mx-auto max-w-lg rounded-lg bg-white p-2 shadow-lg dark:bg-slate-950 sm:p-5 md:max-w-xl lg:max-w-3xl">
           <div className="max-h-96 overflow-y-auto pt-2">
             {chathistory.length > 0 && (
               <ul className="space-y-2 p-2">
                 {chathistory.slice(-3).map((chat, index) => (
-                  <li
-                    key={index}
-                    className="rounded-lg bg-gray-100 p-2 dark:bg-gray-700"
-                  >
-                    <p className="lg:text-md py-2 text-sm text-gray-700 dark:text-indigo-200">
-                      <strong>You:</strong> {chat.query}
-                    </p>
-                    <p className="lg:text-md text-sm text-gray-700 dark:text-indigo-200">
-                      <ChatHistoryAIResponse
-                        text={chat.response}
-                        responsetime={chat.responsetime}
-                      />
-                    </p>
+                  <li key={index} className="flex flex-col p-2">
+                    <div className="mb-2 flex justify-end">
+                      <p className="lg:text-md mb-2 inline-block rounded-xl bg-blue-200 p-2 text-sm text-gray-700 dark:bg-blue-700 dark:text-indigo-100">
+                        {/* <strong className="">You:</strong>  */}
+                        {chat.query}
+                      </p>
+                    </div>
+                    <div className="flex justify-start">
+                      <p className="lg:text-md rounded-xl bg-slate-100 p-2 text-sm text-gray-700 dark:bg-slate-700 dark:text-indigo-100">
+                        <ChatHistoryAIResponse
+                          text={chat.response}
+                          responsetime={chat.responsetime}
+                        />
+                      </p>
+                    </div>
                   </li>
                 ))}
                 <div ref={chatEndRef} />
