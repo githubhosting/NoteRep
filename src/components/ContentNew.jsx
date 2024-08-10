@@ -101,6 +101,15 @@ export function ContentNew(props) {
                     </a>
                   )}
                 </div>
+                <div className="flex flex-wrap justify-center">
+                  {item.other && (
+                    <a href={item.github} target="_blank">
+                      <button className="mt-2 rounded-lg border bg-transparent px-4 py-2 font-semibold text-blue-700 shadow-lg shadow-blue-900/10 hover:border-transparent hover:bg-blue-900 hover:text-white dark:border-gray-500 dark:text-slate-100 dark:shadow-num_d0">
+                        New Repo
+                      </button>
+                    </a>
+                  )}
+                </div>
                 {item.tag && (
                   <div className="mt-4 flex flex-wrap justify-center gap-1">
                     <span className="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-xs text-purple-600 dark:bg-purple-900 dark:text-indigo-50">
