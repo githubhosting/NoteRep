@@ -32,7 +32,7 @@ export function Hero() {
               NoteRep
             </h1>
             <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900 dark:text-[#fefefe]">
-              <p className="text-lg">An Open-Source Notes Sharing Platform</p>
+              <p className="text-lg">An open-source crowdsourced notes sharing platform</p>
               {/* <p className="text-base font-medium">
                 Please let me know if there are any errors or if you want to
                 update anything in the notes.
