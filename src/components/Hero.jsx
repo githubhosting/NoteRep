@@ -104,13 +104,13 @@ export function Hero() {
             </div>
             <div className="mt-10 grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
               <ButtonLink href="/ci" className="md:auto w-full rounded-lg py-2">
-                CSE (AI ML & CY) Notes (Sem 6)
+                CSE (AI ML & CY) Notes (Sem 7)
               </ButtonLink>
               <ButtonLink
-                href="/ci4"
+                href="/ci5"
                 className="md:auto w-full rounded-lg py-2"
               >
-                CSE (AI ML & CY) Notes (Sem 4)
+                CSE (AI ML & CY) Notes (Sem 5)
               </ButtonLink>
               {/* <ButtonLink
                 href="/cicy3"

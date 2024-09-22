@@ -6,131 +6,120 @@ import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { HeaderMod } from '@/components/HeaderMod'
-import { ContentNew } from '@/components/ContentNew'
+import { Hero } from '@/components/Hero'
+import { Content } from '@/components/Content'
 import { Author } from '@/components/Author'
 import chevronup from '@/images/chevronup.svg'
 import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp'
+import { SecondaryFeatures } from '@/components/SecondaryFeatures'
 import { Timetable } from '@/components/Timetable'
 import { Calendar } from '@/components/Calendar'
-import { Counter } from '@/components/Calendar'
 import { GCalendar } from '@/components/GoogleCalendar'
+import { Counter } from '@/components/Calendar'
 import { Button } from '@/components/Button'
+import { ContentNew } from '@/components/ContentNew'
 
 const subjects = [
   {
     Day: 'Monday',
     subject: [
-      'DL Tut',
-      'DL Tut',
-      'Entrepreneurship',
-      'Cloud Computing',
+      'DCN',
+      'DCN',
+      'Algo Lab',
+      'Algo Lab',
       '-',
-      'Elective',
-      'Mini Project',
-      'Mini Project',
+      'Web',
+      'ES/Web Lab',
+      'Es/Web Lab',
     ],
   },
   {
     Day: 'Tuesday',
-    subject: [
-      'Deep Learning',
-      'Cloud Computing',
-      'Cryptography',
-      'Entrepreneurship',
-      '-',
-      'Elective',
-      'Mini Project',
-      'Mini Project',
-    ],
+    subject: ['DAA', 'AI', 'OS', 'DCN', '-', 'Math Tut', 'Math Tut', '-'],
   },
   {
     Day: 'Wednesday',
-    subject: [
-      'Cloud Computing',
-      'Deep Learning',
-      'Cryptography',
-      'Entrepreneurship',
-      '-',
-      'Elective',
-      'Mini Project',
-      'Mini Project',
-    ],
+    subject: ['DCN Lab', 'DCN Lab', 'Maths', 'AI', '-', 'DAA', 'AEC', '-'],
   },
   {
     Day: 'Thursday',
     subject: [
-      'Deep Learning',
-      'Big Data Lab',
-      'Big Data Lab',
-      'Big Data Lab',
+      'Math',
+      'AI',
+      'DAA',
+      'AEC',
       '-',
-      'Cloud Computing',
-      'Cryptography',
-      '*',
+      'OS',
+      'ES/Web Lab',
+      'Es/Web Lab',
     ],
   },
   {
     Day: 'Friday',
-    subject: ['Cryptography', 'DL Lab', 'DL Lab', 'DL Lab', '-', '*', '*', '*'],
+    subject: [
+      'Math',
+      'OS',
+      'Algo Lab',
+      'Algo Lab',
+      '-',
+      'Procter Meet',
+      'Dept-',
+      '-Activity',
+    ],
   },
   {
     Day: 'Saturday',
-    subject: ['Chill', 'Madi', '-', '-', '-', '-', '-', '-'],
+    subject: ['OS', 'OS', 'AM41 ', 'AM41', '-', '-', '-', '-'],
   },
 ]
 
 const links = {
-  syllabus1:
-    'https://docs.google.com/document/d/e/2PACX-1vQ3ufq062Ks7uHEx_TEOI_yEcv8OBogdiHbMW7dfQnF388pggC5MoHnV7IyZaUvVgbDjQtec6pf0Wat/pub',
-  syllabus2:
-    'https://docs.google.com/document/d/e/2PACX-1vRFRazfWll_UKmcqEqiLNioIn65WV8lIFmkwOEVjShDxPO4xFMZPOmB3tUN8A0NyDSeHab92K7FYuVC/pub',
-  timetable:
-    'https://drive.google.com/drive/folders/1HcJSkqZ7xgWW2cymK8EtS5X_7MI5v84F?usp=share_link',
-  curriculum: 'syllabus',
+  // syllabus: '#',
+  timetable: '#',
+  curriculum: '#',
 }
 
-const cseaimlsem6 = [
+const cseaimlsem5 = [
   {
-    title: 'Management and Entrepreneurship',
-    description: '(3:0:0) AL61',
-    link: 'https://drive.google.com/drive/folders/1t6z-wFeMHvXU42J1ebVe0K6xq4qUAv0b?usp=drive_link',
+    title: 'Big Data Analytics',
+    description: '(3:0:0) CI51',
+    link: 'https://drive.google.com/drive/folders/1yKpnOtQxkLoiu5puvEkUBZmDS1rjt3YX?usp=drive_link',
     otherlink: '/links',
     tag: '',
   },
   {
-    title: 'Introduction to Deep Learning',
-    description: '(3:0:0) CI62',
-    link: 'https://drive.google.com/drive/folders/1MVuBOvFXH2FzOAeYxTz94oPoN3tPybFY?usp=drive_link',
+    title: 'Machine Learning',
+    description: '(2:0:1) CI52',
+    link: 'https://drive.google.com/drive/folders/1zqn9poZMiHQbKib3mCKNgWX-I6I_2h_N?usp=sharing',
     otherlink: '/links',
     tag: '',
   },
   {
-    title: 'Principal of Cryptography',
-    description: '(3:0:0) CIE632',
-    link: 'https://drive.google.com/drive/folders/140cUzgqzz9NIpqiI10_OkEVxT-WhGO_u?usp=drive_link',
+    title: 'Automata Theory and Compiler Design',
+    description: '(2:0:1) CI53',
+    link: 'https://drive.google.com/drive/folders/1x4ECw1TWAmfzgytKWTN-ReMyWz13bM05?usp=drive_link',
     otherlink: '/links',
     tag: '',
   },
   {
-    title: 'Cloud Computing',
-    description: '(3:0:0) CIE641',
-    link: 'https://drive.google.com/drive/folders/1CCAxPgoL_-zvfoN2JQc-Zclr9CNdWKHO?usp=drive_link',
-    classroom: 'https://classroom.google.com/c/NjU5MDMzMTI1MzMy',
+    title: 'Software Engineering',
+    description: '(3:0:0) CI54',
+    link: 'https://drive.google.com/drive/folders/1lwH45jAUJNsM1NwZ8WPIRYZZ4KAhDEuR?usp=drive_link',
+    otherlink: '/links',
     tag: '',
   },
   {
-    title: 'Deep Learning Lab',
-    description: '(0:0:1) CIL65',
-    link: 'https://github.com/githubhosting/DeepLearning-Lab',
-    classroom: 'https://classroom.google.com/c/NjY4NDQ0NzkzMjYx',
+    title: 'Advanced Computer Networks',
+    description: '(3:0:0) CIE552',
+    link: 'https://drive.google.com/drive/folders/1-pmiBr3mpl9IXmKJOCGgGb6QP2H3MPtb?usp=drive_link',
+    otherlink: '/links',
     tag: '',
   },
   {
-    title: 'Big Data Lab',
-    description: '(0:0:1) CIL66',
-    link: '#',
-    github: 'https://github.com/githubhosting/BigData-Lab',
-    extra: 'This is github repository',
+    title: 'Research Methodology',
+    description: '(3:0:0) AL58',
+    link: 'https://drive.google.com/drive/folders/1XfSpA_pr-RaGzJLyICh5RtguPXX51KLz?usp=drive_link',
+    otherlink: '/links',
     tag: '',
   },
 ]
@@ -171,7 +160,7 @@ export default function Home() {
   }, [])
 
   const [isShowing, setIsShowing] = useState(false)
-  const [enabled, setEnabled] = useState(true)
+  const [enabled, setEnabled] = useState(false)
 
   const examDate = new Date('2021-12-17T00:00:00')
   const today = new Date()
@@ -188,10 +177,10 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>NoteRep | CSE (AI ML & CY) Notes</title>
+        <title>CSE (AI & ML) 4th Sem Notes</title>
         <meta
           name="description"
-          content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 3rd Semester"
+          content="NoteRep - Links to CSE(AI & ML) and Cyber Security Notes for 4th Semester"
         />
         <meta name="theme-color" content="black-translucent" />
         <meta
@@ -209,7 +198,7 @@ export default function Home() {
         <HeaderMod />
         <Container>
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
-            7th Sem Notes Links for CSE(AI & ML)
+            5th Sem Notes Links for CSE(AI & ML)
           </h2>
           <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
             <Switch
@@ -239,17 +228,11 @@ export default function Home() {
           >
             {/* <Counter /> */}
             {/* <Calendar /> */}
-            {/* <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%206&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=c2hyYXZhbm5vdGVyZXBAZ21haWwuY29t&color=%23039BE5" /> */}
+            <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%204&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=ZDg4NjQ2MTZmMmQ3MGQwOTRlYjcxMGRjZDk2YmQxZGZlNzE2YmRmZGZiMWUzOGUwNWFlYTFiNzdhZTQ3ZjUxNkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5" />
           </div>
         </Container>
         {/* <Timetable subjects={subjects} /> */}
-        {/* <ContentNew drive={cseaimlsem6} sem="6th" links={links} /> */}
-        <p className="flex justify-center align-middle italic">
-          I know that above switch is pretty useless 😂
-        </p>
-        <div className="flex justify-center align-middle">
-          ughh i am lazzy this semester 😴
-        </div>
+        <ContentNew drive={cseaimlsem5} links={links} />
         <Author />
       </div>
       <Footer />
