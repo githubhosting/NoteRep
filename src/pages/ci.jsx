@@ -82,12 +82,12 @@ const subjects7 = [
   {
     Day: 'Monday',
     subject: [
+      'Information Retrieval',
+      'Computer Vision',
       'Multicore Architecture and Programming',
-      'Multicore Architecture and Programming',
-      'Foundations of Computer Vision',
       'Skill Lab: Generative AI',
       '-',
-      '-',
+      'OE',
       'Skill Lab: Generative AI',
       'Skill Lab: Generative AI',
     ],
@@ -95,12 +95,12 @@ const subjects7 = [
   {
     Day: 'Tuesday',
     subject: [
-      'Foundations of Computer Vision Tut',
-      'Containerization Laboratory',
-      'Foundations of Computer Vision',
+      'Computer Vision Tut',
+      'Computer Vision Tut',
+      'Information Retrieval',
+      'Multicore Architecture and Programming',
       '-',
-      '-',
-      '-',
+      'OE',
       '-',
       '-',
     ],
@@ -108,12 +108,12 @@ const subjects7 = [
   {
     Day: 'Wednesday',
     subject: [
-      'Foundations of Computer Vision Lab',
-      'Containerization Laboratory',
-      'Foundations of Computer Vision',
+      'Multicore Architecture -',
+      '- and Programming Tutorial',
+      'Information Retrieval',
+      'Computer Vision',
       '-',
-      '-',
-      '-',
+      'OE',
       '-',
       '-',
     ],
@@ -121,23 +121,23 @@ const subjects7 = [
   {
     Day: 'Thursday',
     subject: [
+      '-',
       'Skill Lab: Generative AI',
-      'Foundations of Computer Vision',
-      'Containerization Laboratory',
       'Skill Lab: Generative AI',
+      'Multicore Architecture and Programming',
       '-',
-      '-',
-      '-',
-      '-',
+      'Information Retrieval',
+      'Skill Lab: Generative AI',
+      'Skill Lab: Generative AI',
     ],
   },
   {
     Day: 'Friday',
     subject: [
-      'Information Retrieval',
       'Multicore Architecture and Programming',
-      '-',
-      '-',
+      'Containerization Lab',
+      'Containerization Lab',
+      'Computer Vision',
       '-',
       '-',
       '-',
@@ -146,19 +146,9 @@ const subjects7 = [
   },
   {
     Day: 'Saturday',
-    subject: [
-      'Industry Interaction',
-      '-',
-      '-',
-      '-',
-      '-',
-      '-',
-      '-',
-      '-',
-    ],
+    subject: ['Industry Interaction', '-', '-', '-', '-', '-', '-', '-'],
   },
 ]
-
 
 const links = {
   syllabus1:
@@ -216,7 +206,41 @@ const cseaimlsem6 = [
   },
 ]
 
-const cseaimlsem7=[
+const cseaimlsem7 = [
+  {
+    title: 'Multicore Architecture and Programming',
+    description: '(3:0:1) CI71',
+    link: '#',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Computer Vision',
+    description: '(2:1:0) CI72',
+    link: '#',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Information Retrieval',
+    description: '(3:0:0) CIE731',
+    link: '#',
+    otherlink: '/links',
+    tag: '',
+  },
+  {
+    title: 'Containerization Lab',
+    description: '(0:0:1) CIL74',
+    link: '#',
+    github: '#',
+  },
+  {
+    title: 'Skill Lab: Generative AI',
+    description: '(0:0:1) CIL75',
+    link: '#',
+    classroom: '#',
+    tag: '',
+  },
 ]
 
 export default function Home() {
@@ -327,13 +351,7 @@ export default function Home() {
           </div>
         </Container>
         <Timetable subjects={subjects7} />
-        {/* <ContentNew drive={cseaimlsem6} sem="6th" links={links} /> */}
-        {/* <p className="flex justify-center align-middle italic">
-          I know that above switch is pretty useless 😂
-        </p>
-        <div className="flex justify-center align-middle">
-          ughh i am lazzy this semester 😴
-        </div> */}
+        <ContentNew drive={cseaimlsem7} sem="7th" links={links} />
         <Author />
       </div>
       <Footer />
