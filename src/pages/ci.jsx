@@ -16,7 +16,7 @@ import { Counter } from '@/components/Calendar'
 import { GCalendar } from '@/components/GoogleCalendar'
 import { Button } from '@/components/Button'
 
-const subjects = [
+const subjects6 = [
   {
     Day: 'Monday',
     subject: [
@@ -78,6 +78,87 @@ const subjects = [
     subject: ['Chill', 'Madi', '-', '-', '-', '-', '-', '-'],
   },
 ]
+const subjects7 = [
+  {
+    Day: 'Monday',
+    subject: [
+      'Multicore Architecture and Programming',
+      'Multicore Architecture and Programming',
+      'Foundations of Computer Vision',
+      'Skill Lab: Generative AI',
+      '-',
+      '-',
+      'Skill Lab: Generative AI',
+      'Skill Lab: Generative AI',
+    ],
+  },
+  {
+    Day: 'Tuesday',
+    subject: [
+      'Foundations of Computer Vision Tut',
+      'Containerization Laboratory',
+      'Foundations of Computer Vision',
+      '-',
+      '-',
+      '-',
+      '-',
+      '-',
+    ],
+  },
+  {
+    Day: 'Wednesday',
+    subject: [
+      'Foundations of Computer Vision Lab',
+      'Containerization Laboratory',
+      'Foundations of Computer Vision',
+      '-',
+      '-',
+      '-',
+      '-',
+      '-',
+    ],
+  },
+  {
+    Day: 'Thursday',
+    subject: [
+      'Skill Lab: Generative AI',
+      'Foundations of Computer Vision',
+      'Containerization Laboratory',
+      'Skill Lab: Generative AI',
+      '-',
+      '-',
+      '-',
+      '-',
+    ],
+  },
+  {
+    Day: 'Friday',
+    subject: [
+      'Information Retrieval',
+      'Multicore Architecture and Programming',
+      '-',
+      '-',
+      '-',
+      '-',
+      '-',
+      '-',
+    ],
+  },
+  {
+    Day: 'Saturday',
+    subject: [
+      'Industry Interaction',
+      '-',
+      '-',
+      '-',
+      '-',
+      '-',
+      '-',
+      '-',
+    ],
+  },
+]
+
 
 const links = {
   syllabus1:
@@ -133,6 +214,9 @@ const cseaimlsem6 = [
     extra: 'This is github repository',
     tag: '',
   },
+]
+
+const cseaimlsem7=[
 ]
 
 export default function Home() {
@@ -242,7 +326,7 @@ export default function Home() {
             {/* <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%206&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=c2hyYXZhbm5vdGVyZXBAZ21haWwuY29t&color=%23039BE5" /> */}
           </div>
         </Container>
-        {/* <Timetable subjects={subjects} /> */}
+        <Timetable subjects={subjects7} />
         {/* <ContentNew drive={cseaimlsem6} sem="6th" links={links} /> */}
         {/* <p className="flex justify-center align-middle italic">
           I know that above switch is pretty useless 😂
