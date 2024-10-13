@@ -244,12 +244,12 @@ export default function Home() {
         </Container>
         {/* <Timetable subjects={subjects} /> */}
         {/* <ContentNew drive={cseaimlsem6} sem="6th" links={links} /> */}
-        <p className="flex justify-center align-middle italic">
+        {/* <p className="flex justify-center align-middle italic">
           I know that above switch is pretty useless 😂
         </p>
         <div className="flex justify-center align-middle">
           ughh i am lazzy this semester 😴
-        </div>
+        </div> */}
         <Author />
       </div>
       <Footer />
