@@ -347,7 +347,7 @@ export default function Home() {
           >
             {/* <Counter /> */}
             {/* <Calendar /> */}
-            {/* <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%206&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=c2hyYXZhbm5vdGVyZXBAZ21haWwuY29t&color=%23039BE5" /> */}
+            <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%207&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=c2hyYXZhbm5vdGVyZXBAZ21haWwuY29t&color=%23039BE5" />
           </div>
         </Container>
         <Timetable subjects={subjects7} />
