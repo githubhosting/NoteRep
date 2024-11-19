@@ -122,6 +122,16 @@ const cseaimlsem5 = [
     otherlink: '/links',
     tag: '',
   },
+  {
+    title: 'Generative AI',
+    description: '(1:0:0) AEC59',
+    link: 'https://drive.google.com/drive/folders/1qY8sMJq4ZX-H2jBFUUVjyVB2oPJpOMrc?usp=sharing',
+  },
+  {
+    title: 'Environment Studies',
+    description: 'NCMC',
+    link: 'https://drive.google.com/drive/folders/1PRi6Bbc5gCS_BwcS11ptz2FLo5lvSuh4?usp=sharing',
+  },
 ]
 
 export default function Home() {
