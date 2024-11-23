@@ -142,8 +142,8 @@ const subjects7 = [
 ]
 
 const links = {
-  syllabus1:
-    'https://docs.google.com/document/d/e/2PACX-1vQ3ufq062Ks7uHEx_TEOI_yEcv8OBogdiHbMW7dfQnF388pggC5MoHnV7IyZaUvVgbDjQtec6pf0Wat/pub',
+  syllabus:
+    'https://docs.google.com/document/d/e/2PACX-1vTCMSPuhx-RN0tfdVnXrZnjkMucAeYoFwhfEBqiXh3L-Sa-7UX6vMe7GfgAjRLUSrLyJVpWxXSKJsit/pub',
   syllabus2:
     'https://docs.google.com/document/d/e/2PACX-1vRFRazfWll_UKmcqEqiLNioIn65WV8lIFmkwOEVjShDxPO4xFMZPOmB3tUN8A0NyDSeHab92K7FYuVC/pub',
   timetable:
@@ -201,34 +201,34 @@ const cseaimlsem7 = [
   {
     title: 'Multicore Architecture and Programming',
     description: '(3:0:1) CI71',
-    link: '#',
+    link: 'https://drive.google.com/drive/folders/1Q-zuu-J90wQuzY6Sbcp3Ltqxa1IurCdK?usp=sharing',
     otherlink: '/links',
     tag: '',
   },
   {
     title: 'Computer Vision',
     description: '(2:1:0) CI72',
-    link: '#',
+    link: 'https://drive.google.com/drive/folders/1PrOvTgemJMjau5ZscGexgB3JJr0-7A2Y?usp=sharing',
     otherlink: '/links',
     tag: '',
   },
   {
     title: 'Information Retrieval',
     description: '(3:0:0) CIE731',
-    link: '#',
+    link: 'https://drive.google.com/drive/folders/1UVY0zGayzSeiPB6mY7aZOJlnNmZeOsEb?usp=sharing',
     otherlink: '/links',
     tag: '',
   },
   {
     title: 'Containerization Lab',
     description: '(0:0:1) CIL74',
-    link: '#',
+    link: 'https://drive.google.com/drive/folders/1XeWhwFc96ik8bViUdaz0GssGZ1pFf9Yd?usp=sharing',
     github: '#',
   },
   {
     title: 'Skill Lab: Generative AI',
     description: '(0:0:1) CIL75',
-    link: '#',
+    link: 'https://drive.google.com/drive/folders/1Wi83kXCKzW3EaXSIv3-fLKwX7uDZSCRV?usp=sharing',
     classroom: '#',
     tag: '',
   },

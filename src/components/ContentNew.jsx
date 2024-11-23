@@ -31,7 +31,7 @@ export function ContentNew(props) {
               </ButtonLink>
             </div>
           ) : null}
-          {sem == '6th' ? (
+          {sem == '7th' ? (
             <div className="flex justify-center">
               <ButtonLink
                 target="_blank"
