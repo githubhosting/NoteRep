@@ -33,7 +33,7 @@ export function CallToAction() {
           <p className="border-t border-blue-900 pt-10 text-center text-3xl font-bold dark:border-white/70"></p>
           <div className="mx-auto max-w-7xl rounded-xl bg-blue-600 px-4 py-10 dark:bg-[#0761d1] sm:px-6 lg:px-8">
             <div className="mx-auto max-w-lg text-center">
-              <div className="pb-10">
+              <div className="pb-6">
                 <a
                   target="_blank"
                   href="https://drive.google.com/drive/folders/1FPZP22gKIv_A-bJbOZR-6jZtiK8hFbnp?usp=sharing"
@@ -41,6 +41,8 @@ export function CallToAction() {
                 >
                   MSRIT NOTES All Semester
                 </a>
+              </div>
+              <div className="pb-6">
                 <a
                   target="_blank"
                   href="https://drive.google.com/drive/folders/1FDy6mEK5kV3Jost-dsjdoZUoTHowq2om?usp=sharing"
