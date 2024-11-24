@@ -47,7 +47,7 @@ export default function Home() {
             </h1>
             <div className="flex justify-center pt-10">
               <ButtonLink
-                href="/documents/All Course Syllabus 6th Sem.pdf"
+                href="/documents/CSE(AI ML) Sem 7 Syllabus.pdf"
                 rel="noreferrer"
                 target="_blank"
                 className="rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500"
@@ -56,9 +56,10 @@ export default function Home() {
               </ButtonLink>
             </div>
             {/* https://drive.google.com/file/d/1FtXOF068oce_gRKOug3Ul8zsrGCHZPbd/view?usp=drive_link */}
+            {/* https://drive.google.com/file/d/1T0R0vdFkMBgAcuWiY7irmDm7vIzg8T9O/view?usp=sharing */}
             <div className="flex justify-center">
               <iframe
-                src="https://drive.google.com/file/d/1FtXOF068oce_gRKOug3Ul8zsrGCHZPbd/preview"
+                src="https://drive.google.com/file/d/1T0R0vdFkMBgAcuWiY7irmDm7vIzg8T9O/preview"
                 height="1024"
                 allow="autoplay"
                 frameborder="0"
