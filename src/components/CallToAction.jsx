@@ -35,12 +35,18 @@ export function CallToAction() {
             <div className="mx-auto max-w-lg text-center">
               <div className="pb-10">
                 <a
-                  // href="https://gpaestimator.streamlit.app/"
-                  // target="_blank"
+                  target="_blank"
                   href="https://drive.google.com/drive/folders/1FPZP22gKIv_A-bJbOZR-6jZtiK8hFbnp?usp=sharing"
                   className="grad_button px-4 py-2 font-semibold"
                 >
                   MSRIT NOTES All Semester
+                </a>
+                <a
+                  target="_blank"
+                  href="https://drive.google.com/drive/folders/1FDy6mEK5kV3Jost-dsjdoZUoTHowq2om?usp=sharing"
+                  className="grad_button px-4 py-2 font-semibold"
+                >
+                  All Previous Year Papers
                 </a>
               </div>
               <ButtonLink
