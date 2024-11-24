@@ -37,10 +37,10 @@ export function CallToAction() {
                 <a
                   // href="https://gpaestimator.streamlit.app/"
                   // target="_blank"
-                  href="/noterepbot"
+                  href="https://drive.google.com/drive/folders/1FPZP22gKIv_A-bJbOZR-6jZtiK8hFbnp?usp=sharing"
                   className="grad_button px-4 py-2 font-semibold"
                 >
-                  NoteRep AI Chat Bot
+                  MSRIT NOTES All Semester
                 </a>
               </div>
               <ButtonLink
