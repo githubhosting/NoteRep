@@ -43,7 +43,7 @@ export default function Home() {
         >
           <Container>
             <h1 className="text-center font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Updated 6th Sem Syllabus for CSE (AI & ML)
+              Updated 7th Sem Syllabus for CSE (AI & ML)
             </h1>
             <div className="flex justify-center pt-10">
               <ButtonLink
