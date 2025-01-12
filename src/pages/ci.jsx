@@ -223,13 +223,13 @@ const cseaimlsem7 = [
     title: 'Containerization Lab',
     description: '(0:0:1) CIL74',
     link: 'https://drive.google.com/drive/folders/1XeWhwFc96ik8bViUdaz0GssGZ1pFf9Yd?usp=sharing',
-    github: '#',
+    github: 'https://github.com/githubhosting/Docker_Lab',
   },
   {
     title: 'Skill Lab: Generative AI',
     description: '(0:0:1) CIL75',
     link: 'https://drive.google.com/drive/folders/1Wi83kXCKzW3EaXSIv3-fLKwX7uDZSCRV?usp=sharing',
-    classroom: '#',
+    github: 'https://github.com/githubhosting/GenAI_Lab',
     tag: '',
   },
 ]
