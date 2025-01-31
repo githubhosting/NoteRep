@@ -1,4 +1,5 @@
 import 'focus-visible'
+import '../styles/loader.css';
 import '@/styles/tailwind.css'
 import { Analytics } from '@vercel/analytics/react'
 import { Footer } from '@/components/Footer'
