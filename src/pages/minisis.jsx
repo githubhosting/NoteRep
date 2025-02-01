@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Head from 'next/head'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -389,6 +389,14 @@ function HomePage() {
     }
   }
 
+  const aiResponseRef = useRef(null)
+
+  const handleScrollToResponse = () => {
+    if (aiResponseRef.current) {
+      aiResponseRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <>
       <Head>
@@ -424,6 +432,44 @@ function HomePage() {
                 Calculate required SEE marks for your target grades.
               </span>
             </p>
+            {/* if student data the show a button to scroll to generate ai roast */}
+            <div className="flex items-center justify-center ">
+              {studentData && (
+                // <button
+                //   onClick={handleScrollToResponse}
+                //   className="mt-1 rounded bg-blue-600 px-2 py-1 font-semibold text-white hover:bg-blue-700"
+                // >
+                //   Scroll to AI Roast
+                // </button>
+                <button
+                  onClick={handleScrollToResponse}
+                  className="mt-2 group relative inline-block cursor-pointer rounded-full dark:bg-slate-800 p-px text-xs font-semibold leading-6 text-white no-underline  shadow-2xl shadow-zinc-900"
+                >
+                  <span className="absolute inset-0 overflow-hidden rounded-full">
+                    <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                  </span>
+                  <div className="relative z-10 flex items-center space-x-2 rounded-full bg-slate-900 px-4 py-0.5 ring-1 ring-white/10 ">
+                    <span>Scroll to AI Roast</span>
+                    <svg
+                      fill="none"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M10.75 8.75L14.25 12L10.75 15.25"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="1.5"
+                      />
+                    </svg>
+                  </div>
+                  <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
+                </button>
+              )}
+            </div>
           </div>
           {!isLoggedIn ? (
             <section className="relative rounded-md border bg-indigo-50 px-4 py-6 shadow-md dark:border-gray-500 dark:bg-gray-900 sm:mt-6 sm:pb-2 sm:pt-2">
@@ -531,10 +577,14 @@ function HomePage() {
                     </div>
 
                     <div className="border-t">
+                      <div ref={aiResponseRef} />
                       <h1 className="mt-4 text-center text-lg font-bold">
                         Roast by AI 🤖
                       </h1>
-                      <RoastAI studentData={studentData} />
+                      <RoastAI
+                        studentData={studentData}
+                        onRoastGenerated={handleScrollToResponse}
+                      />
                     </div>
                   </>
                 )}

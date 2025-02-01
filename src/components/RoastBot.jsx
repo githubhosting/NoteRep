@@ -27,9 +27,8 @@ function LoadingBtn(props) {
     <svg
       aria-hidden="true"
       role="status"
-      class="me-3 inline h-5 w-5 animate-spin text-white"
+      className="me-3 inline h-5 w-5 animate-spin text-white"
       viewBox="0 0 100 101"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
     >
@@ -128,7 +127,7 @@ function AIResponse({ text }) {
   )
 }
 
-const RoastAI = ({ studentData }) => {
+const RoastAI = ({ studentData, onRoastGenerated }) => {
   const [roast, setRoast] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
@@ -261,6 +260,9 @@ const RoastAI = ({ studentData }) => {
       setError(err.message || 'Error generating roast')
     } finally {
       setIsLoading(false)
+      if (onRoastGenerated) {
+        onRoastGenerated()
+      }
     }
   }
 
@@ -283,7 +285,7 @@ const RoastAI = ({ studentData }) => {
         ) : (
           <SendBtn className="mr-2 h-5 w-5" />
         )}{' '}
-        Generate Roast by AI
+        Generate Roast
       </button>
       {error && <p className="mt-2 text-red-400">{error}</p>}
     </div>
