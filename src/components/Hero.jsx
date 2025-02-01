@@ -32,7 +32,9 @@ export function Hero() {
               NoteRep
             </h1>
             <div className="mt-6 space-y-6 font-sans text-2xl tracking-tight text-blue-900 dark:text-[#fefefe]">
-              <p className="text-lg">An open-source crowdsourced notes sharing platform</p>
+              <p className="text-lg">
+                An open-source crowdsourced notes sharing platform
+              </p>
               {/* <p className="text-base font-medium">
                 Please let me know if there are any errors or if you want to
                 update anything in the notes.
@@ -47,16 +49,16 @@ export function Hero() {
                   Here
                 </a>
                 <br></br>
-                You can also upload to the "Upload Here" Folder in Respective
-                Subject Folders.
+                You can also upload your notes to the 'Upload Here' folder
+                within the respective course folders.
               </p>
               <p className="text-base font-normal">
-                Anyone interested in sharing notes for other branches can{' '}
+                Anyone interested in sharing notes for any branches can{' '}
                 <a
                   className="font-semibold underline"
                   href="https://wa.me/919945332995?text=Hey, This is regarding NoteRep ..."
                 >
-                  approach me.
+                  reach out to me.
                 </a>
               </p>
               {install && (
@@ -79,18 +81,24 @@ export function Hero() {
                 </AnimatedGradientText>
                 <div className="flex flex-col items-center gap-6 pt-6 md:flex-row">
                   <ButtonLink
+                    href="/minisis"
+                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                  >
+                    Student Portal (Calculla 2.0)
+                  </ButtonLink>
+                  <ButtonLink
                     href="/noterepbot"
                     className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                   >
                     Noterep Bot 🤖
                   </ButtonLink>
-                  <ButtonLink
+                  {/* <ButtonLink
                     href="/communilink"
                     className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                     target="_blank"
                   >
                     Communi Link 🔗
-                  </ButtonLink>
+                  </ButtonLink> */}
 
                   {/* <ButtonLink
                   href="/noterep-forum"
