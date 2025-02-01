@@ -40,24 +40,29 @@ const MobileCourseCard = ({ course }) => {
 
   const visibleThresholds = gradeThresholds
     .filter((th) => (th.target - course.InternalScore) * 2 <= 100)
-    .slice(0, 5)
+    .slice(0, 6)
   console.log(visibleThresholds)
 
   return (
     <div className="my-4 rounded-md border bg-white p-4 shadow dark:bg-gray-800">
-      <h3 className="text-lg font-bold">{course.CourseName}</h3>
-      <p className="mb-2">CIE Score: {course.InternalScore} / 50</p>
-      <div className="flex flex-wrap gap-2">
+      <h3 className="mb-1 text-lg font-bold">{course.CourseName}</h3>
+      <p className="mb-3 text-sm md:text-base">
+        CIE Score: {course.InternalScore} / 50
+      </p>
+
+      {/* Grid layout instead of flex-wrap */}
+      <div className="grid grid-cols-3 gap-1.5 sm:grid-cols-6 sm:gap-2">
         {visibleThresholds.map((th) => {
           const required = (th.target - course.InternalScore) * 2
           const displayValue = required <= 0 ? 'P' : required
+
           return (
             <div
               key={th.label}
-              className="min-w-[80px] flex-1 rounded border p-2 text-center"
+              className="flex flex-col justify-center rounded border p-1.5 text-center sm:p-2"
             >
-              <div className="font-bold">{th.label}</div>
-              <div className="text-sm">{displayValue}</div>
+              <div className="text-sm font-bold sm:text-base">{th.label}</div>
+              <div className="text-xs sm:text-sm">{displayValue}</div>
             </div>
           )
         })}
