@@ -219,6 +219,23 @@ function HomePage() {
   const [usn, setUsn] = useState('')
   const [dob, setDob] = useState('')
 
+  // Theme detection and setting.
+  useEffect(() => {
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+    localStorage.theme = 'light'
+    localStorage.theme = 'dark'
+    localStorage.removeItem('theme')
+  }, [])
+
+  // Load user data from localStorage.
   useEffect(() => {
     const storedUsn = localStorage.getItem('usn')
     const storedDob = localStorage.getItem('dob')
@@ -241,7 +258,7 @@ function HomePage() {
     try {
       const userRef = doc(db, 'studentAnalytics', usn)
       const userDoc = await getDoc(userRef)
-      const name = studentData?.name || 'Unknown'
+      const name = JSON.parse(localStorage.getItem('studentData')).name
       const timestamp = serverTimestamp()
 
       if (userDoc.exists()) {
@@ -260,6 +277,7 @@ function HomePage() {
           loginCount: 1,
         })
       }
+      console.log('Analytics updated successfully!')
     } catch (err) {
       console.error('Error updating analytics:', err)
     }
@@ -273,7 +291,7 @@ function HomePage() {
       return
     }
 
-    const usnRegex = /^1[A-Z]{2}\d{2}[A-Z]{2}\d{3}$/
+    const usnRegex = /^1ms\d{2}[a-z]{2}\d{3}$/i
     if (!usnRegex.test(currentUsn)) {
       setError('Invalid USN format. Expected format: 1MS00XX000')
       toast.error('Invalid USN format. Expected format: 1MS00XX000')
@@ -284,7 +302,7 @@ function HomePage() {
       setError('')
       setIsLoading(true)
       const testurl = 'http://127.0.0.1:5000/test'
-      const apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
+      const apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}&fast=true`
       const response = await fetch(apiurl)
       if (!response.ok) {
         const resp = await response.json()
@@ -294,8 +312,8 @@ function HomePage() {
       localStorage.setItem('usn', currentUsn)
       localStorage.setItem('dob', currentDob)
       localStorage.setItem('studentData', JSON.stringify(data))
-      await updateAnalytics(currentUsn, currentDob)
       setStudentData(data)
+      await updateAnalytics(currentUsn, currentDob)
       setIsLoggedIn(true)
       setLoginCounter((prev) => prev + 1)
       toast.success('Data fetched successfully!')
@@ -471,7 +489,7 @@ function HomePage() {
                       <GradesTable studentData={studentData} />
                     </div>
 
-                    <div>
+                    <div className="border-t">
                       <h1 className="mt-4 text-center text-lg font-bold">
                         Roast by AI 🤖
                       </h1>

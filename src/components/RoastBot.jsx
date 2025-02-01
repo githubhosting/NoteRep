@@ -175,17 +175,26 @@ const RoastAI = ({ studentData }) => {
 
   function extractData(jsonData) {
     let result = ''
-    result += `Name: ${jsonData.name}\n`
+    result += `Name: ${jsonData.name.toLowerCase()}\n`
     result += `CGPA: ${jsonData.cgpa}\n`
-    result += 'Semester SGPA:\n'
-    jsonData.academicHistory.semesters.forEach((sem) => {
-      result += `  ${sem.semester}: ${sem.sgpa}\n`
+    result += 'Semester SGPAs:\n---\n'
+    const { semesters } = jsonData.academicHistory
+    let semCount = 1
+    semesters.forEach((semesterData) => {
+      const { semester, sgpa } = semesterData
+      const semesterName = semester.trim()
+      if (semesterName.toLowerCase().includes('supplementary')) {
+        result += `  Supplementary Semester: SGPA = ${sgpa} in (${semesterName})\n`
+      } else {
+        result += `  Sem ${semCount}: SGPA = ${sgpa} during (${semesterName})\n --- \n`
+        semCount += 1
+      }
     })
 
     result += '\nCourse Details:\n'
     jsonData.courses.forEach((course) => {
       result += `  ${course.CourseName}\n`
-      result += `    Internal Score: ${course.InternalScore}, Attendance: ${course.attendance}%\n`
+      result += `    Internal Score: ${course.InternalScore}/50, Attendance: ${course.attendance}%\n`
     })
 
     return result
@@ -201,13 +210,14 @@ const RoastAI = ({ studentData }) => {
     setError('')
     setRoast('')
     const stringData = extractData(studentData)
-
+    console.log('Student Data:', stringData)
     const prompt = `Roast this student in a witty and humorous manner based on the following details:
+
     My Details:
     ---
     ${stringData}
     ---
-    Give a roast that is playful and sarcastic.`
+    Give a roast that is playful and extreamly sarcastic. Focus on Cources and SGPAs which has extream scores like lows and highs.`
 
     const endpoint = 'https://api.groq.com/openai/v1/chat/completions'
     const body = JSON.stringify({
@@ -216,7 +226,7 @@ const RoastAI = ({ studentData }) => {
         {
           role: 'system',
           content:
-            'You are a witty and humorous AI that generates very creative roasts.',
+            'You are a roast master. You are a witty and humorous AI that generates very creative roasts. You are a comedic AI specializing in roasts.',
         },
         {
           role: 'user',
@@ -258,7 +268,7 @@ const RoastAI = ({ studentData }) => {
   }
 
   return (
-    <div className="mt-6 flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center">
       {aiRoasts.length > 0 && (
         <div className="mt-4 flex justify-start">
           <div className="lg:text-md rounded-md bg-slate-100 p-2 text-sm text-gray-700 dark:bg-slate-700 dark:text-indigo-100">
@@ -268,7 +278,7 @@ const RoastAI = ({ studentData }) => {
       )}
       <button
         onClick={handleRoast}
-        className="flex items-center justify-center rounded bg-purple-600 px-4 py-2 font-semibold text-white hover:bg-purple-700"
+        className="mt-4 flex items-center justify-center rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-purple-700"
         disabled={isLoading}
       >
         {isLoading ? (
