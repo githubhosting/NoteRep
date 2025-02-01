@@ -212,6 +212,73 @@ const GradesTable = ({ studentData }) => {
   )
 }
 
+const SGPAPrediction = ({ studentData }) => {
+  const predictions = [
+    {
+      title: 'Minimum Expected',
+      value: studentData.predictions.atleast.predicted_sgpa,
+      description: 'Your baseline grade with current effort',
+      color: 'text-blue-600',
+      bgColor: 'bg-blue-50',
+    },
+    {
+      title: 'Most Likely',
+      value: studentData.predictions.mostlikely.predicted_sgpa,
+      description: 'Expected grade based on current performance',
+      color: 'text-green-600',
+      bgColor: 'bg-green-50',
+    },
+    {
+      title: 'Maximum Potential',
+      value: studentData.predictions.maxeffort.predicted_sgpa,
+      description: 'Achievable with maximum effort',
+      color: 'text-purple-600',
+      bgColor: 'bg-purple-50',
+    },
+  ]
+
+  return (
+    <div className="w-full border-t px-4 py-6">
+      <div className="mx-auto max-w-4xl">
+        <h2 className="mb-6 text-center text-2xl font-bold tracking-tight">
+          Predicted SGPA
+        </h2>
+
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {predictions.map((prediction) => (
+            <div
+              key={prediction.title}
+              className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
+            >
+              <div className="flex items-center gap-4">
+                {/* <div
+                  className={`rounded-full p-2 ${prediction.bgColor} dark:bg-opacity-10`}
+                >
+                  <div className={`h-6 w-6 ${prediction.color}`}>•</div>
+                </div> */}
+                <div>
+                  <h3 className="font-semibold text-gray-900 dark:text-gray-100">
+                    {prediction.title}
+                  </h3>
+                </div>
+              </div>
+
+              <div className="mt-4">
+                <p className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
+                  {prediction.value}
+                </p>
+                <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+                  {prediction.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function HomePage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -340,8 +407,8 @@ function HomePage() {
     try {
       setError('')
       setIsLoading(true)
-      const testurl = 'http://127.0.0.1:5000/test'
-      const apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}&fast=true`
+      const testurl = `http://127.0.0.1:5000/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
+      const apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
       const response = await fetch(apiurl)
       if (!response.ok) {
         const resp = await response.json()
@@ -390,10 +457,17 @@ function HomePage() {
   }
 
   const aiResponseRef = useRef(null)
+  const predictionRef = useRef(null)
 
   const handleScrollToResponse = () => {
     if (aiResponseRef.current) {
       aiResponseRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  const handleScrollToPrediction = () => {
+    if (predictionRef.current) {
+      predictionRef.current.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
@@ -435,39 +509,42 @@ function HomePage() {
             {/* if student data the show a button to scroll to generate ai roast */}
             <div className="flex items-center justify-center ">
               {studentData && (
-                // <button
-                //   onClick={handleScrollToResponse}
-                //   className="mt-1 rounded bg-blue-600 px-2 py-1 font-semibold text-white hover:bg-blue-700"
-                // >
-                //   Scroll to AI Roast
-                // </button>
-                <button
-                  onClick={handleScrollToResponse}
-                  className="mt-2 group relative inline-block cursor-pointer rounded-full dark:bg-slate-800 p-px text-xs font-semibold leading-6 text-white no-underline  shadow-2xl shadow-zinc-900"
-                >
-                  <span className="absolute inset-0 overflow-hidden rounded-full">
-                    <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                  </span>
-                  <div className="relative z-10 flex items-center space-x-2 rounded-full bg-slate-900 px-4 py-0.5 ring-1 ring-white/10 ">
-                    <span>Scroll to AI Roast</span>
-                    <svg
-                      fill="none"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      width="16"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M10.75 8.75L14.25 12L10.75 15.25"
-                        stroke="currentColor"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="1.5"
-                      />
-                    </svg>
-                  </div>
-                  <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
-                </button>
+                <div className="flex flex-col gap-2">
+                  <button
+                    onClick={handleScrollToResponse}
+                    className="group relative mt-2 inline-block cursor-pointer rounded-full p-px text-xs font-semibold leading-6 text-white no-underline shadow-2xl  shadow-zinc-900 dark:bg-slate-800"
+                  >
+                    <span className="absolute inset-0 overflow-hidden rounded-full">
+                      <span className="absolute inset-0 rounded-full bg-[image:radial-gradient(75%_100%_at_50%_0%,rgba(56,189,248,0.6)_0%,rgba(56,189,248,0)_75%)] opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+                    </span>
+                    <div className="relative z-10 flex items-center space-x-2 rounded-full bg-slate-900 px-4 py-0.5 ring-1 ring-white/10 ">
+                      <span>Scroll to AI Roast</span>
+                      <svg
+                        fill="none"
+                        height="16"
+                        viewBox="0 0 24 24"
+                        width="16"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M10.75 8.75L14.25 12L10.75 15.25"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1.5"
+                        />
+                      </svg>
+                    </div>
+                    <span className="absolute -bottom-0 left-[1.125rem] h-px w-[calc(100%-2.25rem)] bg-gradient-to-r from-emerald-400/0 via-emerald-400/90 to-emerald-400/0 transition-opacity duration-500 group-hover:opacity-40" />
+                  </button>
+
+                  <button
+                    onClick={handleScrollToPrediction}
+                    className="text-xs inline-flex h-6 animate-shimmer items-center justify-center rounded-full border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                  >
+                    Predicted SGPA
+                  </button>
+                </div>
               )}
             </div>
           </div>
@@ -480,7 +557,7 @@ function HomePage() {
                     type="text"
                     value={usn}
                     onChange={(e) => setUsn(e.target.value.toUpperCase())}
-                    placeholder="e.g., 1MS22CS020"
+                    placeholder="1MS22CS020"
                     className="rounded-md border bg-slate-50 px-3 py-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:placeholder-gray-500"
                   />
                 </label>
@@ -585,6 +662,10 @@ function HomePage() {
                         studentData={studentData}
                         onRoastGenerated={handleScrollToResponse}
                       />
+                    </div>
+
+                    <div ref={predictionRef} className="mt-4">
+                      <SGPAPrediction studentData={studentData} />
                     </div>
                   </>
                 )}
