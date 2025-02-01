@@ -213,6 +213,7 @@ export function Bot({ moodstatus }) {
   const [apiResponse, setApiResponse] = useState('')
   const [completeresponse, setCompleteResponse] = useState('')
   const [user, setUser] = useState(null)
+  const [studentData, setStudentData] = useState({ name: 'Student' })
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
   const [chathistory, setChatHistory] = useState([])
@@ -234,6 +235,10 @@ export function Bot({ moodstatus }) {
   useEffect(() => {
     let userId = localStorage.getItem('userId')
     let chatHistory = localStorage.getItem('chatHistory')
+    let studentData = localStorage.getItem('studentData')
+    if (studentData) {
+      setStudentData(JSON.parse(studentData))
+    }
     console.log('Chat History:', JSON.parse(chatHistory))
     if (chatHistory) {
       setChatHistory(JSON.parse(chatHistory))
