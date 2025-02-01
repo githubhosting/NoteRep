@@ -6,6 +6,7 @@ import { firebaseConfig } from '@/firebaseconfig'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import showdown from 'showdown'
+import { getOrCreateUserId } from '@/utils/user'
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
@@ -225,13 +226,6 @@ export function Bot({ moodstatus }) {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
   }, [chathistory])
 
-  const generateUniqueId = () => {
-    return (
-      Math.random().toString(36).substring(2) +
-      new Date().getTime().toString(36)
-    )
-  }
-
   useEffect(() => {
     let userId = localStorage.getItem('userId')
     let chatHistory = localStorage.getItem('chatHistory')
@@ -245,7 +239,7 @@ export function Bot({ moodstatus }) {
     }
     console.log('User ID:', userId)
     if (!userId) {
-      userId = generateUniqueId()
+      userId = getOrCreateUserId()
       localStorage.setItem('userId', userId)
     }
     setUser(userId)

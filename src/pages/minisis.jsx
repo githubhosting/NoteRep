@@ -18,6 +18,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import LoadingNew from '@/components/LoadingNew'
 import RoastAI from '@/components/RoastBot'
+import { getOrCreateUserId } from '@/utils/user'
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
@@ -283,6 +284,43 @@ function HomePage() {
     }
   }
 
+  const updateChatHistoryLoginFound = async (usn, name) => {
+    try {
+      const deviceId = getOrCreateUserId()
+      const chatHistoryDocRef = doc(db, 'chathistory', deviceId)
+      await updateDoc(chatHistoryDocRef, {
+        loginFound: arrayUnion({ usn, name }),
+      })
+      console.log('Updated loginFound in chatHistory for device', deviceId)
+    } catch (err) {
+      console.error('Error updating loginFound in chatHistory:', err)
+    }
+  }
+
+  const updateDeviceAnalytics = async (usn) => {
+    try {
+      const deviceId = getOrCreateUserId()
+      const deviceDocRef = doc(db, 'deviceAnalytics', deviceId)
+      const deviceDocSnap = await getDoc(deviceDocRef)
+      const timestamp = new Date().toISOString()
+
+      if (deviceDocSnap.exists()) {
+        await updateDoc(deviceDocRef, {
+          loginCount: increment(1),
+          loginEvents: arrayUnion({ usn, timestamp }),
+        })
+      } else {
+        await setDoc(deviceDocRef, {
+          loginCount: 1,
+          loginEvents: [{ usn, timestamp }],
+        })
+      }
+      console.log(`Device analytics updated for device ${deviceId}`)
+    } catch (err) {
+      console.error('Error updating device analytics:', err)
+    }
+  }
+
   // Fetch student data from the API.
   const handleFetchData = async (currentUsn, currentDob) => {
     if (!currentUsn || !currentDob) {
@@ -314,6 +352,8 @@ function HomePage() {
       localStorage.setItem('studentData', JSON.stringify(data))
       setStudentData(data)
       await updateAnalytics(currentUsn, currentDob)
+      await updateDeviceAnalytics(currentUsn)
+      await updateChatHistoryLoginFound(currentUsn, data.name)
       setIsLoggedIn(true)
       setLoginCounter((prev) => prev + 1)
       toast.success('Data fetched successfully!')
