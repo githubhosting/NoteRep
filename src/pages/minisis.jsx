@@ -27,6 +27,45 @@ if (!firebase.apps.length) {
 
 const db = getFirestore()
 
+const MobileCourseCard = ({ course }) => {
+  const gradeThresholds = [
+    { label: 'O', target: 90 },
+    { label: 'A+', target: 80 },
+    { label: 'A', target: 70 },
+    { label: 'B+', target: 60 },
+    { label: 'B', target: 55 },
+    { label: 'C', target: 50 },
+    { label: 'P', target: 40 },
+  ]
+
+  const visibleThresholds = gradeThresholds
+    .filter((th) => (th.target - course.InternalScore) * 2 <= 100)
+    .slice(0, 5)
+  console.log(visibleThresholds)
+
+  return (
+    <div className="my-4 rounded-md border bg-white p-4 shadow dark:bg-gray-800">
+      <h3 className="text-lg font-bold">{course.CourseName}</h3>
+      <p className="mb-2">CIE Score: {course.InternalScore} / 50</p>
+      <div className="flex flex-wrap gap-2">
+        {visibleThresholds.map((th) => {
+          const required = (th.target - course.InternalScore) * 2
+          const displayValue = required <= 0 ? 'P' : required
+          return (
+            <div
+              key={th.label}
+              className="min-w-[80px] flex-1 rounded border p-2 text-center"
+            >
+              <div className="font-bold">{th.label}</div>
+              <div className="text-sm">{displayValue}</div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
 function HomePage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
@@ -230,119 +269,133 @@ function HomePage() {
               </div>
             </section>
           ) : (
-            <section className="relative bg-indigo-50 px-2 pb-8 dark:bg-gray-900 sm:max-w-4xl sm:pb-2 sm:pt-2">
-              <div className="w-full max-w-6xl">
+            <section className="flex w-full items-center justify-center bg-indigo-50 px-2 pb-8 dark:bg-gray-900 sm:pb-2 sm:pt-2">
+              <div className="max-w-3xl lg:mx-auto lg:w-full">
                 {studentData && (
-                  <div className="rounded-md p-4 shadow-md dark:bg-gray-800">
-                    <p className="mb-2">
-                      <span className="font-semibold">Name: </span>
-                      {studentData.name}
-                    </p>
-                    <p className="mb-2">
-                      <span className="font-semibold">ID: </span>
-                      {studentData.usn}
-                    </p>
-                    <p className="mb-4">
-                      <span className="font-semibold">Last Updated: </span>
-                      {studentData.lastUpdated || 'N/A'}
-                    </p>
+                  <>
+                    <div className="rounded-md p-4 shadow-md dark:bg-gray-800">
+                      <p className="mb-2">
+                        <span className="font-semibold">Name: </span>
+                        {studentData.name}
+                      </p>
+                      <p className="mb-2">
+                        <span className="font-semibold">USN: </span>
+                        {studentData.usn}
+                      </p>
+                      <p className="mb-4">
+                        <span className="font-semibold">Last Updated: </span>
+                        {studentData.lastUpdated || 'N/A'}
+                      </p>
 
-                    <div className="overflow-x-auto">
-                      <table className="min-w-full rounded-md text-sm dark:bg-gray-700">
-                        <thead className="border-b text-left">
-                          <tr className="rounded-t-md">
-                            <th className="px-3 py-2">Course Code</th>
-                            <th className="px-3 py-2">Course Name</th>
-                            <th className="px-3 py-2">Internals</th>
-                          </tr>
-                        </thead>
-                        <tbody className="">
-                          {studentData.courses.map((course, index) => (
-                            <tr
-                              key={index}
-                              className="border-b border-gray-600 last:border-0"
-                            >
-                              <td className="px-3 py-2">{course.CourseCode}</td>
-                              <td className="px-3 py-2">{course.CourseName}</td>
-                              <td className="px-3 py-2 text-center">
-                                {course.InternalScore}
-                              </td>
-                            </tr>
-                          ))}
-                        </tbody>
-                      </table>
-                    </div>
-
-                    {/* <div className="mt-8 overflow-x-auto">
-                      <h2 className="mb-4 text-center text-xl font-bold">
-                        Required SEE Marks for Target Grades
-                      </h2>
                       <div className="overflow-x-auto">
-                        <table className="min-w-max rounded-md bg-gray-700 text-sm">
+                        <table className="min-w-full rounded-md text-sm dark:bg-gray-700">
                           <thead className="border-b text-left">
                             <tr className="rounded-t-md">
-                              <th className="px-2 py-2">Course Name</th>
-                              <th className="px-2 py-2">O (≥90)</th>
-                              <th className="px-2 py-2">A+ (≥80)</th>
-                              <th className="px-2 py-2">A (≥70)</th>
-                              <th className="px-2 py-2">B+ (≥60)</th>
-                              <th className="px-2 py-2">B (≥50)</th>
+                              <th className="px-3 py-2">Course Code</th>
+                              <th className="px-3 py-2">Course Name</th>
+                              <th className="px-3 py-2">Internals</th>
                             </tr>
                           </thead>
-                          <tbody>
-                            {studentData.courses.map((course, index) => {
-                              const internal = course.InternalScore
-                              const requiredO = getRequiredExamMarks(
-                                internal,
-                                90
-                              )
-                              const requiredAPlus = getRequiredExamMarks(
-                                internal,
-                                80
-                              )
-                              const requiredA = getRequiredExamMarks(
-                                internal,
-                                70
-                              )
-                              const requiredBPlus = getRequiredExamMarks(
-                                internal,
-                                60
-                              )
-                              const requiredB = getRequiredExamMarks(
-                                internal,
-                                50
-                              )
-                              return (
-                                <tr
-                                  key={index}
-                                  className="border-b border-gray-600 last:border-0"
-                                >
-                                  <td className="max-w-[150px] truncate px-2 py-2">
-                                    {course.CourseName}
-                                  </td>
-                                  <td className="px-2 py-2 text-center">
-                                    {requiredO}
-                                  </td>
-                                  <td className="px-2 py-2 text-center sm:table-cell">
-                                    {requiredAPlus}
-                                  </td>
-                                  <td className="px-2 py-2 text-center sm:table-cell">
-                                    {requiredA}
-                                  </td>
-                                  <td className="px-2 py-2 text-center md:table-cell">
-                                    {requiredBPlus}
-                                  </td>
-                                  <td className="px-2 py-2 text-center md:table-cell">
-                                    {requiredB}
-                                  </td>
-                                </tr>
-                              )
-                            })}
+                          <tbody className="">
+                            {studentData.courses.map((course, index) => (
+                              <tr
+                                key={index}
+                                className="border-b border-gray-600 last:border-0"
+                              >
+                                <td className="px-3 py-2">
+                                  {course.CourseCode}
+                                </td>
+                                <td className="px-3 py-2">
+                                  {course.CourseName}
+                                </td>
+                                <td className="px-3 py-2 text-center">
+                                  {course.InternalScore}
+                                </td>
+                              </tr>
+                            ))}
                           </tbody>
                         </table>
                       </div>
-                    </div> */}
-                  </div>
+                    </div>
+
+                    <div>
+                      <div className="block md:hidden">
+                        {studentData.courses.map((course, index) => (
+                          <MobileCourseCard key={index} course={course} />
+                        ))}
+                      </div>
+
+                      <div className="mt-8 hidden items-center md:block">
+                        <h2 className="mb-4 text-center text-xl font-bold">
+                          Required SEE Marks for Target Grades
+                        </h2>
+                        <div className="overflow-x-auto">
+                          <table className="min-w-max rounded-md text-sm dark:bg-gray-700">
+                            <thead className="border-b text-left">
+                              <tr className="rounded-t-md">
+                                <th className="px-2 py-2">Course Name</th>
+                                <th className="px-2 py-2">O (≥90)</th>
+                                <th className="px-2 py-2">A+ (≥80)</th>
+                                <th className="px-2 py-2">A (≥70)</th>
+                                <th className="px-2 py-2">B+ (≥60)</th>
+                                <th className="px-2 py-2">B (≥50)</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {studentData.courses.map((course, index) => {
+                                const internal = course.InternalScore
+                                const requiredO = getRequiredExamMarks(
+                                  internal,
+                                  90
+                                )
+                                const requiredAPlus = getRequiredExamMarks(
+                                  internal,
+                                  80
+                                )
+                                const requiredA = getRequiredExamMarks(
+                                  internal,
+                                  70
+                                )
+                                const requiredBPlus = getRequiredExamMarks(
+                                  internal,
+                                  60
+                                )
+                                const requiredB = getRequiredExamMarks(
+                                  internal,
+                                  50
+                                )
+                                return (
+                                  <tr
+                                    key={index}
+                                    className="border-b border-gray-600 last:border-0"
+                                  >
+                                    <td className="truncate px-2 py-2">
+                                      {course.CourseName}
+                                    </td>
+                                    <td className="px-2 py-2 text-center">
+                                      {requiredO}
+                                    </td>
+                                    <td className="px-2 py-2 text-center sm:table-cell">
+                                      {requiredAPlus}
+                                    </td>
+                                    <td className="px-2 py-2 text-center sm:table-cell">
+                                      {requiredA}
+                                    </td>
+                                    <td className="px-2 py-2 text-center md:table-cell">
+                                      {requiredBPlus}
+                                    </td>
+                                    <td className="px-2 py-2 text-center md:table-cell">
+                                      {requiredB}
+                                    </td>
+                                  </tr>
+                                )
+                              })}
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </>
                 )}
                 <div className="mt-4 flex justify-center gap-4">
                   <button
