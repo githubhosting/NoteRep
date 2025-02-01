@@ -13,6 +13,7 @@ import {
   doc,
   serverTimestamp,
   increment,
+  arrayUnion,
 } from 'firebase/firestore'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
