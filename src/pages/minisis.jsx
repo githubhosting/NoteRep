@@ -20,6 +20,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import LoadingNew from '@/components/LoadingNew'
 import RoastAI from '@/components/RoastBot'
 import { getOrCreateUserId } from '@/utils/user'
+import { BadgeCheck, Target, TrendingUp } from 'lucide-react'
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
@@ -212,37 +213,75 @@ const GradesTable = ({ studentData }) => {
   )
 }
 
-const SGPAPrediction = ({ studentData }) => {
+const SGPAPrediction = ({ studentData, onReload }) => {
+  if (!studentData?.predictions) {
+    return (
+      <div className="w-full border-t px-4 py-6">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="mb-6 text-center text-2xl font-bold tracking-tight">
+            Predicted SGPA
+          </h2>
+          <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+            <p className="text-center text-gray-500 dark:text-gray-400">
+              Predicted SGPA data not available. Please reload the data to view
+              predictions.
+            </p>
+            <div className="mt-4 flex justify-center">
+              <button
+                onClick={onReload}
+                className="rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+              >
+                Reload Data
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   const predictions = [
     {
       title: 'Minimum Expected',
-      value: studentData.predictions.atleast.predicted_sgpa,
+      value: studentData?.predictions?.atleast?.predicted_sgpa || 'N/A',
       description: 'Your baseline grade with current effort',
       color: 'text-blue-600',
       bgColor: 'bg-blue-50',
+      icon: BadgeCheck,
     },
     {
       title: 'Most Likely',
-      value: studentData.predictions.mostlikely.predicted_sgpa,
+      value: studentData?.predictions?.mostlikely?.predicted_sgpa || 'N/A',
       description: 'Expected grade based on current performance',
       color: 'text-green-600',
       bgColor: 'bg-green-50',
+      icon: TrendingUp,
     },
     {
       title: 'Maximum Potential',
-      value: studentData.predictions.maxeffort.predicted_sgpa,
+      value: studentData?.predictions?.maxeffort?.predicted_sgpa || 'N/A',
       description: 'Achievable with maximum effort',
       color: 'text-purple-600',
       bgColor: 'bg-purple-50',
+      icon: Target,
     },
   ]
 
   return (
     <div className="w-full border-t px-4 py-6">
       <div className="mx-auto max-w-4xl">
-        <h2 className="mb-6 text-center text-2xl font-bold tracking-tight">
+        <h2 className="text-center text-2xl font-bold tracking-tight">
           Predicted SGPA
         </h2>
+        {/* the how part redirect to `/howitworks` */}
+        <div className="mb-6 text-center">
+          <a
+            href="/howitworks"
+            className="text-blue-600 hover:underline dark:text-blue-400"
+          >
+            Click here to know How this works?
+          </a>
+        </div>
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {predictions.map((prediction) => (
@@ -251,18 +290,17 @@ const SGPAPrediction = ({ studentData }) => {
               className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800"
             >
               <div className="flex items-center gap-4">
-                {/* <div
-                  className={`rounded-full p-2 ${prediction.bgColor} dark:bg-opacity-10`}
+                <div
+                  className={`rounded-full p-2 ${prediction.color} dark:bg-opacity-10`}
                 >
-                  <div className={`h-6 w-6 ${prediction.color}`}>•</div>
-                </div> */}
+                  <prediction.icon className={`h-6 w-6 ${prediction.color}`} />
+                </div>
                 <div>
                   <h3 className="font-semibold text-gray-900 dark:text-gray-100">
                     {prediction.title}
                   </h3>
                 </div>
               </div>
-
               <div className="mt-4">
                 <p className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
                   {prediction.value}
@@ -356,7 +394,7 @@ function HomePage() {
     try {
       const deviceId = getOrCreateUserId()
       const chatHistoryDocRef = doc(db, 'chathistory', deviceId)
-      await updateDoc(chatHistoryDocRef, {
+      await setDoc(chatHistoryDocRef, {
         loginFound: arrayUnion({ usn, name }),
       })
       console.log('Updated loginFound in chatHistory for device', deviceId)
@@ -540,7 +578,7 @@ function HomePage() {
 
                   <button
                     onClick={handleScrollToPrediction}
-                    className="text-xs inline-flex h-6 animate-shimmer items-center justify-center rounded-full border border-slate-800 bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] bg-[length:200%_100%] px-6 font-medium text-slate-400 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50"
+                    className="inline-flex h-[1.8rem] animate-shimmer items-center justify-center rounded-full border border-slate-700 bg-[linear-gradient(110deg,#fefcea,45%,#f1f1f1,55%,#fefcea)] bg-[length:200%_100%] px-6 text-xs font-medium text-slate-900 shadow-slate-600 transition-colors focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 dark:bg-[linear-gradient(110deg,#000103,45%,#1e2631,55%,#000103)] dark:text-white"
                   >
                     Predicted SGPA
                   </button>
