@@ -703,7 +703,7 @@ function HomePage() {
                     </div>
 
                     <div ref={predictionRef} className="mt-4">
-                      <SGPAPrediction studentData={studentData} />
+                      <SGPAPrediction studentData={studentData} onReload={handleReload} />
                     </div>
                   </>
                 )}
