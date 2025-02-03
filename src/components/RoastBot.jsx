@@ -112,16 +112,18 @@ function AIResponse({ text }) {
 function EmojiRating({ onRate, roastId }) {
   const [currentVal, setCurrentVal] = useState(3)
   const emojis = [
+    { id: 'offended', label: 'offended', emoji: '🤬', value: 1 }, // Personally attacked
     {
       id: 'veryDissatisfied',
       label: 'very dissatisfied',
-      emoji: '🥴',
-      value: 1,
-    },
-    { id: 'dissatisfied', label: 'dissatisfied', emoji: '😕', value: 2 },
-    { id: 'neutral', label: 'neutral', emoji: '😐', value: 3 },
-    { id: 'satisfied', label: 'satisfied', emoji: '😊', value: 4 },
-    { id: 'verySatisfied', label: 'very satisfied', emoji: '😍', value: 5 },
+      emoji: '😡',
+      value: 2,
+    }, // Annoyed
+    { id: 'dissatisfied', label: 'dissatisfied', emoji: '😒', value: 3 }, // Unamused
+    { id: 'neutral', label: 'neutral', emoji: '😐', value: 4 }, // Meh
+    { id: 'satisfied', label: 'satisfied', emoji: '😆', value: 5 }, // Laughing but not wrecked
+    { id: 'verySatisfied', label: 'very satisfied', emoji: '😂', value: 6 }, // Fully enjoying the roast
+    { id: 'obliterated', label: 'absolutely roasted', emoji: '💀', value: 7 }, // Roast was fatal
   ]
 
   const handleRating = (value) => {
@@ -362,7 +364,8 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
         )
         toast.success(`Roast rated ${rating} stars!`)
       } else {
-        setError('Error: latest roast message is undefined')
+        setError('Error: try generating a new roast to rate')
+        toast.error('Error: try generating a new roast to rate')
       }
     } else {
       setError('Error: No roasts available to rate')
