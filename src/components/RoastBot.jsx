@@ -11,8 +11,12 @@ import {
   getDoc,
   arrayUnion,
   serverTimestamp,
+  Timestamp,
 } from 'firebase/firestore'
 import showdown from 'showdown'
+import LoadingNew from './LoadingNew'
+import { toast } from 'react-toastify'
+import { v4 as uuidv4 } from 'uuid'
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
@@ -21,28 +25,6 @@ if (!firebase.apps.length) {
 }
 
 const db = getFirestore()
-
-function LoadingBtn(props) {
-  return (
-    <svg
-      aria-hidden="true"
-      role="status"
-      className="me-3 inline h-5 w-5 animate-spin text-white"
-      viewBox="0 0 100 101"
-      xmlns="http://www.w3.org/2000/svg"
-      {...props}
-    >
-      <path
-        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
-        fill="#E5E7EB"
-      />
-      <path
-        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
-}
 
 function SendBtn(props) {
   return (
@@ -127,6 +109,57 @@ function AIResponse({ text }) {
   )
 }
 
+function EmojiRating({ onRate, roastId }) {
+  const [currentVal, setCurrentVal] = useState(3)
+  const emojis = [
+    {
+      id: 'veryDissatisfied',
+      label: 'very dissatisfied',
+      emoji: '🥴',
+      value: 1,
+    },
+    { id: 'dissatisfied', label: 'dissatisfied', emoji: '😕', value: 2 },
+    { id: 'neutral', label: 'neutral', emoji: '😐', value: 3 },
+    { id: 'satisfied', label: 'satisfied', emoji: '😊', value: 4 },
+    { id: 'verySatisfied', label: 'very satisfied', emoji: '😍', value: 5 },
+  ]
+
+  const handleRating = (value) => {
+    setCurrentVal(value)
+    onRate(value, roastId)
+  }
+
+  return (
+    <div className="flex items-center gap-1 p-4">
+      {emojis.map(({ id, label, emoji, value }) => (
+        <label
+          key={id}
+          htmlFor={id}
+          className="transition focus-within:scale-125 hover:scale-125"
+        >
+          <span className="sr-only">{label}</span>
+          <input
+            type="radio"
+            id={id}
+            name="rating"
+            value={value}
+            className="sr-only"
+            checked={currentVal === value}
+            onChange={() => handleRating(value)}
+          />
+          <span
+            className={`text-2xl ${
+              currentVal >= value ? 'grayscale-0' : 'grayscale'
+            }`}
+          >
+            {emoji}
+          </span>
+        </label>
+      ))}
+    </div>
+  )
+}
+
 const RoastAI = ({ studentData, onRoastGenerated }) => {
   const [roast, setRoast] = useState('')
   const [isLoading, setIsLoading] = useState(false)
@@ -138,6 +171,7 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
     if (storedRoasts) {
       try {
         setAiRoasts(JSON.parse(storedRoasts))
+        setRoast(JSON.parse(storedRoasts)[0].message)
       } catch (e) {
         console.error('Error parsing aiRoasts from localStorage', e)
       }
@@ -148,21 +182,52 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
     localStorage.setItem('aiRoasts', JSON.stringify(aiRoasts))
   }, [aiRoasts])
 
-  const updateAiRoastsInFirebase = async (usn, roastResponse) => {
+  const updateAiRoastsInFirebase = async (
+    usn,
+    roastResponse,
+    rating,
+    roastId
+  ) => {
     try {
+      console.error(usn, roastResponse, rating, roastId)
+      if (!usn || !roastResponse || rating === undefined || !roastId) {
+        throw new Error(
+          'Invalid input data. Ensure usn, roastResponse, rating, and roastId are provided.'
+        )
+      }
       const userRef = doc(db, 'studentAnalytics', usn)
       const userDoc = await getDoc(userRef)
-      const timestamp = firebase.firestore.Timestamp.now()
-      const roastEntry = { response: roastResponse, timestamp }
 
       if (userDoc.exists()) {
-        await updateDoc(userRef, {
-          airoasts: arrayUnion(roastEntry),
-        })
+        const aiRoasts = userDoc.data().airoasts || []
+        const existingRoastIndex = aiRoasts.findIndex(
+          (roast) => roast.roast_id === roastId
+        )
+
+        if (existingRoastIndex !== -1) {
+          // Update existing roast rating
+          aiRoasts[existingRoastIndex].ratings = rating
+          await updateDoc(userRef, { airoasts: aiRoasts })
+        } else {
+          // Add new roast if not found
+          const timestamp = Timestamp.now()
+          const roastEntry = {
+            roast_id: roastId,
+            response: roastResponse,
+            timestamp,
+            ratings: rating,
+          }
+          await updateDoc(userRef, { airoasts: arrayUnion(roastEntry) })
+        }
       } else {
-        await setDoc(userRef, {
-          airoasts: [roastEntry],
-        })
+        const timestamp = new Date()
+        const roastEntry = {
+          roast_id: roastId,
+          response: roastResponse,
+          timestamp,
+          ratings: rating,
+        }
+        await setDoc(userRef, { airoasts: [roastEntry] })
       }
     } catch (err) {
       console.error('Error updating AI roasts in Firebase:', err)
@@ -246,15 +311,31 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
       const message = data.choices[0].message.content
       setRoast(message)
 
-      const timestamp = new Date().toISOString()
-      const roastResponse = { message, timestamp }
-      setAiRoasts((prev) => [...prev, roastResponse])
-      //   console.log('Roast:', aiRoasts)
+      if (message) {
+        const timestamp = new Date().toISOString()
+        setRoast(message)
+        const roastId = uuidv4()
 
-      const usnFromStudentData =
-        studentData['usn'] || localStorage.getItem('usn')
-      if (usnFromStudentData) {
-        await updateAiRoastsInFirebase(usnFromStudentData, message)
+        const roastResponse = {
+          message,
+          timestamp,
+          ratings: null,
+          roast_id: roastId,
+        }
+        setAiRoasts((prev) => [...prev, roastResponse])
+
+        const usnFromStudentData =
+          studentData['usn'] || localStorage.getItem('usn')
+        if (usnFromStudentData) {
+          await updateAiRoastsInFirebase(
+            usnFromStudentData,
+            message,
+            null,
+            roastId
+          )
+        }
+      } else {
+        setError('Error generating roast')
       }
     } catch (err) {
       setError(err.message || 'Error generating roast')
@@ -266,12 +347,35 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
     }
   }
 
+  const handleRating = async (rating) => {
+    if (aiRoasts.length > 0) {
+      const latestRoast = aiRoasts[aiRoasts.length - 1]
+      console.log('Latest Roast:', latestRoast)
+      const usn = studentData.usn || 'default_usn'
+
+      if (latestRoast && latestRoast.message && latestRoast.roast_id) {
+        await updateAiRoastsInFirebase(
+          usn,
+          latestRoast.message,
+          rating,
+          latestRoast.roast_id
+        )
+        toast.success(`Roast rated ${rating} stars!`)
+      } else {
+        setError('Error: latest roast message is undefined')
+      }
+    } else {
+      setError('Error: No roasts available to rate')
+    }
+  }
+
   return (
     <div className="flex flex-col items-center justify-center">
-      {aiRoasts.length > 0 && (
+      {roast && (
         <div className="mt-4 flex justify-start">
           <div className="lg:text-md rounded-md bg-slate-100 p-2 text-sm text-gray-700 dark:bg-slate-700 dark:text-indigo-100">
-            <AIResponse text={aiRoasts[aiRoasts.length - 1].message} />
+            <AIResponse text={roast} />
+            <EmojiRating onRate={handleRating} />
           </div>
         </div>
       )}
@@ -280,11 +384,7 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
         className="mt-4 flex items-center justify-center rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
         disabled={isLoading}
       >
-        {isLoading ? (
-          <LoadingBtn className="mr-2 h-5 w-5" />
-        ) : (
-          <SendBtn className="mr-2 h-5 w-5" />
-        )}{' '}
+        {isLoading ? <LoadingNew /> : <SendBtn className="mr-2 h-5 w-5" />}{' '}
         Generate Roast
       </button>
       {error && <p className="mt-2 text-red-400">{error}</p>}

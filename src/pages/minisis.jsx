@@ -371,6 +371,7 @@ function HomePage() {
       if (userDoc.exists()) {
         await updateDoc(userRef, {
           name,
+          dob,
           lastLogin: timestamp,
           loginCount: increment(1),
         })
@@ -703,7 +704,10 @@ function HomePage() {
                     </div>
 
                     <div ref={predictionRef} className="mt-4">
-                      <SGPAPrediction studentData={studentData} onReload={handleReload} />
+                      <SGPAPrediction
+                        studentData={studentData}
+                        onReload={handleReload}
+                      />
                     </div>
                   </>
                 )}
