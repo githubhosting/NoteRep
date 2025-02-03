@@ -354,6 +354,15 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
       const latestRoast = aiRoasts[aiRoasts.length - 1]
       console.log('Latest Roast:', latestRoast)
       const usn = studentData.usn || 'default_usn'
+      const roastAcknowledgments = {
+        1: 'Oof, too spicy? We’ll tone it down... or not. 😈',
+        2: 'Okay, okay—maybe that one hit too hard. 🫣',
+        3: 'Mid roast? I’ll have a word with the AI. 🤖',
+        4: 'Balanced. Like all things should be. ⚖️',
+        5: 'Now we’re cookin’! 🔥',
+        6: 'Peak comedy. AI’s on a roll. 🚀',
+        7: 'We just witnessed a digital homicide. RIP you. 🪦',
+      }
 
       if (latestRoast && latestRoast.message && latestRoast.roast_id) {
         await updateAiRoastsInFirebase(
@@ -362,7 +371,7 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
           rating,
           latestRoast.roast_id
         )
-        toast.success(`Roast rated ${rating} stars!`)
+        toast.success(roastAcknowledgments[rating])
       } else {
         setError('Error: try generating a new roast to rate')
         toast.error('Error: try generating a new roast to rate')
