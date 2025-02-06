@@ -111,6 +111,59 @@ const MobileCourseCard = ({ course }) => {
   )
 }
 
+const NewMobileCourseCard = ({ course }) => {
+  const gradeThresholds = [
+    { label: 'O', min: 90, max: 100 },
+    { label: 'A+', min: 80, max: 89 },
+    { label: 'A', min: 70, max: 79 },
+    { label: 'B+', min: 60, max: 69 },
+    { label: 'B', min: 55, max: 59 },
+    { label: 'C', min: 50, max: 54 },
+    { label: 'P', min: 40, max: 49 },
+  ]
+
+  const calculateRange = (minTarget, maxTarget) => {
+    const minSEE = Math.max(35, (minTarget - course.InternalScore) * 2)
+    const maxSEE = Math.max(35, (maxTarget - course.InternalScore) * 2) + 1
+
+    if (minSEE > 100) return null // Not achievable if more than 100 marks are required
+    const minDisplay = minSEE <= 0 ? 35 : minSEE
+    const maxDisplay = maxSEE > 100 ? 100 : maxSEE
+
+    return minDisplay === maxDisplay
+      ? `${minDisplay}`
+      : `${maxDisplay} - ${minDisplay}`
+  }
+
+  const visibleThresholds = gradeThresholds
+    .map((th) => {
+      const range = calculateRange(th.min, th.max)
+      return range == '36 - 35' || range === null ? null : { ...th, range }
+    })
+    .filter((th) => th !== null)
+
+  return (
+    <div className="my-4 rounded-md border bg-white p-4 shadow dark:bg-gray-800">
+      <h3 className="mb-1 text-lg font-bold">{course.CourseName}</h3>
+      <p className="mb-3 text-sm md:text-base">
+        Internal Score: {course.InternalScore} / 50
+      </p>
+
+      <div className="flex flex-wrap justify-center gap-2">
+        {visibleThresholds.map((th) => (
+          <div
+            key={th.label}
+            className="flex flex-[1_1_calc(33.33%-0.5rem)] flex-col items-center justify-center rounded border p-2 text-center sm:flex-[1_1_calc(16.66%-0.5rem)]"
+          >
+            <div className="text-sm font-bold sm:text-base">{th.label}</div>
+            <div className="text-xs sm:text-sm">{th.range}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 const GradesTable = ({ studentData }) => {
   const gradeThresholds = [
     { label: 'O', target: 90, header: 'O (≥90)' },
@@ -124,32 +177,25 @@ const GradesTable = ({ studentData }) => {
 
   const getRequiredExamMarks = (internal, target) => {
     const required = (target - internal) * 2
-    if (required <= 0) return '-'
+    if (required <= 0) return null
     const finalRequired = Math.max(35, required)
-    return finalRequired > 100 ? 'NA' : finalRequired
+    return finalRequired > 100 ? null : finalRequired
   }
 
   const getVisibleGrades = (course) => {
     const internal = course.InternalScore
-
-    return gradeThresholds.filter((th) => {
-      const required = (th.target - internal) * 2
-      return (
-        required > 35 ||
-        (required > 0 &&
-          required <= 35 &&
-          th ===
-            gradeThresholds.find(
-              (t) =>
-                (t.target - internal) * 2 > 0 && (t.target - internal) * 2 <= 35
-            ))
-      )
-    })
+    return gradeThresholds
+      .map((th) => {
+        const required = getRequiredExamMarks(internal, th.target)
+        return required === 35 || required === null ? null : { ...th, required }
+      })
+      .filter((th) => th !== null)
   }
 
   const maxVisibleGrades = Math.max(
     ...studentData.courses.map((course) => getVisibleGrades(course).length)
   )
+
   const showAllGrades = maxVisibleGrades === 0
   const visibleColumns = showAllGrades
     ? gradeThresholds.slice(0, 1)
@@ -160,7 +206,7 @@ const GradesTable = ({ studentData }) => {
       <h2 className="mb-4 text-center text-xl font-bold">
         Required SEE Marks for Target Grades
       </h2>
-      <div className="overflow-x-auto">
+      <div className="mb-6 flex justify-center overflow-x-auto">
         <table className="min-w-max rounded-md text-sm dark:bg-gray-700">
           <thead className="border-b text-left">
             <tr className="rounded-t-md">
@@ -193,14 +239,14 @@ const GradesTable = ({ studentData }) => {
                       <td
                         key={grade.label}
                         className={`px-2 py-2 text-center ${
-                          value === '-'
-                            ? 'bg-green-50 dark:bg-green-900/20'
+                          value === null
+                            ? 'bg-red-50 dark:bg-red-900/20'
                             : value === 35
                             ? 'bg-blue-50 dark:bg-blue-900/20'
                             : ''
                         }`}
                       >
-                        {value}
+                        {value !== null ? `${value}+` : ''}
                       </td>
                     )
                   })}
@@ -239,6 +285,11 @@ const SGPAPrediction = ({ studentData, onReload }) => {
         </div>
       </div>
     )
+  }
+
+  // function to add the sgpa to cgpa
+  function addSGPAtoCGPA(sgpa, cgpa) {
+    return (sgpa + 6 * cgpa) / 7
   }
 
   const predictions = [
@@ -305,6 +356,10 @@ const SGPAPrediction = ({ studentData, onReload }) => {
               <div className="mt-4">
                 <p className="text-3xl font-bold tracking-tight text-gray-900 dark:text-gray-100">
                   {prediction.value}
+                </p>
+                <p className="text-sm text-gray-600 dark:text-gray-200">
+                  CGPA:{' '}
+                  {addSGPAtoCGPA(prediction.value, studentData.cgpa).toFixed(2)}
                 </p>
                 <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
                   {prediction.description}
@@ -687,7 +742,7 @@ function HomePage() {
                           Required SEE Marks (min) for Respective Grades
                         </h2>
                         {studentData.courses.map((course, index) => (
-                          <MobileCourseCard key={index} course={course} />
+                          <NewMobileCourseCard key={index} course={course} />
                         ))}
                       </div>
                       <GradesTable studentData={studentData} />

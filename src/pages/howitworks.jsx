@@ -143,6 +143,10 @@ function HomePage() {
     },
   ]
 
+  function addSGPAtoCGPA(sgpa, cgpa) {
+    return (sgpa + 6 * cgpa) / 7
+  }
+
   return (
     <>
       <Head>
@@ -191,6 +195,10 @@ function HomePage() {
                     </div>
                     <p className="mt-3 text-xl font-extrabold text-gray-900 dark:text-white">
                       {pred.value}
+                    </p>
+                    <p className="text-sm text-gray-600 dark:text-gray-200">
+                      CGPA:{' '}
+                      {addSGPAtoCGPA(pred.value, studentData.cgpa).toFixed(2)}
                     </p>
                     <p className="mt-2 text-sm text-gray-600 dark:text-gray-200">
                       {pred.description}
