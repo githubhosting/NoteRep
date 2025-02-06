@@ -109,26 +109,26 @@ function AIResponse({ text }) {
   )
 }
 
-function EmojiRating({ onRate, roastId }) {
+function EmojiRating({ onRate, complimentId }) {
   const [currentVal, setCurrentVal] = useState(4)
   const emojis = [
-    { id: 'offended', label: 'offended', emoji: '🤬', value: 1 }, // Personally attacked
+    { id: 'blushing', label: 'blushing', emoji: '😊', value: 1 }, // Flattered but shy
     {
-      id: 'veryDissatisfied',
-      label: 'very dissatisfied',
-      emoji: '😡',
+      id: 'pleasantlySurprised',
+      label: 'pleasantly surprised',
+      emoji: '😲',
       value: 2,
-    }, // Annoyed
-    { id: 'dissatisfied', label: 'dissatisfied', emoji: '😒', value: 3 }, // Unamused
-    { id: 'neutral', label: 'neutral', emoji: '😐', value: 4 }, // Meh
-    { id: 'satisfied', label: 'satisfied', emoji: '😆', value: 5 }, // Laughing but not wrecked
-    { id: 'verySatisfied', label: 'very satisfied', emoji: '😂', value: 6 }, // Fully enjoying the roast
-    { id: 'obliterated', label: 'absolutely roasted', emoji: '💀', value: 7 }, // Roast was fatal
+    }, // Didn't see it coming
+    { id: 'warmFuzzies', label: 'warm fuzzies', emoji: '🥰', value: 3 }, // Feeling all warm inside
+    { id: 'grateful', label: 'grateful', emoji: '🙏', value: 4 }, // Appreciative
+    { id: 'confident', label: 'confident', emoji: '😎', value: 5 }, // Compliment boosted confidence
+    { id: 'ecstatic', label: 'ecstatic', emoji: '🤩', value: 6 }, // On cloud nine
+    { id: 'royalty', label: 'absolute royalty', emoji: '👑', value: 7 }, // Crowned by the compliment
   ]
 
   const handleRating = (value) => {
     setCurrentVal(value)
-    onRate(value, roastId)
+    onRate(value, complimentId)
   }
 
   return (
@@ -162,37 +162,42 @@ function EmojiRating({ onRate, roastId }) {
   )
 }
 
-const RoastAI = ({ studentData, onRoastGenerated }) => {
-  const [roast, setRoast] = useState('')
+const ComplimentAI = ({ studentData, onComplimentGenerated }) => {
+  const [compliment, setCompliment] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState('')
-  const [aiRoasts, setAiRoasts] = useState([])
+  const [aiCompliments, setAiCompliments] = useState([])
 
   useEffect(() => {
-    const storedRoasts = localStorage.getItem('aiRoasts')
-    if (storedRoasts) {
+    const storedCompliments = localStorage.getItem('aiCompliments')
+    if (storedCompliments) {
       try {
-        setAiRoasts(JSON.parse(storedRoasts))
-        setRoast(JSON.parse(storedRoasts)[0].message)
+        setAiCompliments(JSON.parse(storedCompliments))
+        setCompliment(JSON.parse(storedCompliments)[0].message)
       } catch (e) {
-        console.error('Error parsing aiRoasts from localStorage', e)
+        console.error('Error parsing aiCompliments from localStorage', e)
       }
     }
   }, [])
 
   useEffect(() => {
-    localStorage.setItem('aiRoasts', JSON.stringify(aiRoasts))
-  }, [aiRoasts])
+    localStorage.setItem('aiCompliments', JSON.stringify(aiCompliments))
+  }, [aiCompliments])
 
-  const updateAiRoastsInFirebase = async (
+  const updateAiComplimentsInFirebase = async (
     usn,
-    roastResponse,
+    complimentResponse,
     rating,
-    roastId
+    complimentId
   ) => {
     try {
-      console.error(usn, roastResponse, rating, roastId)
-      if (!usn || !roastResponse || rating === undefined || !roastId) {
+      console.log(usn, complimentResponse, rating, complimentId)
+      if (
+        !usn ||
+        !complimentResponse ||
+        rating === undefined ||
+        !complimentId
+      ) {
         throw new Error(
           'Invalid input data. Ensure usn, roastResponse, rating, and roastId are provided.'
         )
@@ -201,35 +206,37 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
       const userDoc = await getDoc(userRef)
 
       if (userDoc.exists()) {
-        const aiRoasts = userDoc.data().airoasts || []
-        const existingRoastIndex = aiRoasts.findIndex(
-          (roast) => roast.roast_id === roastId
+        const aiCompliments = userDoc.data().aiCompliments || []
+        const existingComplimentIndex = aiCompliments.findIndex(
+          (compliment) => compliment.compliment_id === complimentId
         )
 
-        if (existingRoastIndex !== -1) {
-          // Update existing roast rating
-          aiRoasts[existingRoastIndex].ratings = rating
-          await updateDoc(userRef, { airoasts: aiRoasts })
+        if (existingComplimentIndex !== -1) {
+          // Update existing compliment rating
+          aiCompliments[existingComplimentIndex].ratings = rating
+          await updateDoc(userRef, { aicompliments: aiCompliments })
         } else {
           // Add new roast if not found
           const timestamp = Timestamp.now()
-          const roastEntry = {
-            roast_id: roastId,
-            response: roastResponse,
+          const complimentEntry = {
+            compliment_id: complimentId,
+            response: complimentResponse,
             timestamp,
             ratings: rating,
           }
-          await updateDoc(userRef, { airoasts: arrayUnion(roastEntry) })
+          await updateDoc(userRef, {
+            aicompliments: arrayUnion(complimentEntry),
+          })
         }
       } else {
         const timestamp = new Date()
-        const roastEntry = {
-          roast_id: roastId,
-          response: roastResponse,
+        const complimentEntry = {
+          compliment_id: complimentId,
+          response: complimentResponse,
           timestamp,
           ratings: rating,
         }
-        await setDoc(userRef, { airoasts: [roastEntry] })
+        await setDoc(userRef, { aicompliments: [complimentEntry] })
       }
     } catch (err) {
       console.error('Error updating AI roasts in Firebase:', err)
@@ -240,30 +247,26 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
     let result = ''
     result += `Name: ${jsonData.name.toLowerCase()}\n`
     result += `CGPA: ${jsonData.cgpa}\n`
+    const cgpaList = [...jsonData.academicHistory.semesters]
+      .sort((a, b) => b.sgpa - a.sgpa) // Sort semesters by SGPA in descending order
+      .slice(0, 3) // Take the top 2 CGPAs
     result += 'Semester SGPAs:\n---\n'
-    const { semesters } = jsonData.academicHistory
-    let semCount = 1
-    semesters.forEach((semesterData) => {
-      const { semester, sgpa } = semesterData
-      const semesterName = semester.trim()
-      if (semesterName.toLowerCase().includes('supplementary')) {
-        result += `  Supplementary Semester: SGPA = ${sgpa} in (${semesterName})\n`
-      } else {
-        result += `  Sem ${semCount}: SGPA = ${sgpa} during (${semesterName})\n --- \n`
-        semCount += 1
-      }
+    cgpaList.forEach((semesterData, index) => {
+      result += `  Top ${index + 1}: SGPA = ${
+        semesterData.sgpa
+      } (${semesterData.semester.trim()})\n---\n`
     })
 
     result += '\nCourse Details:\n'
     jsonData.courses.forEach((course) => {
       result += `  ${course.CourseName}\n`
-      result += `    Internal Score: ${course.InternalScore}/50, Attendance: ${course.attendance}%\n`
+      result += `    Internal Score: ${course.InternalScore}/50,\n`
     })
 
     return result
   }
 
-  const handleRoast = async () => {
+  const handleCompliment = async () => {
     if (!studentData) {
       setError('Student data is missing.')
       return
@@ -271,16 +274,16 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
 
     setIsLoading(true)
     setError('')
-    setRoast('')
+    setCompliment('')
     const stringData = extractData(studentData)
     // console.log('Student Data:', stringData)
-    const prompt = `Roast this student in a witty and humorous manner based on the following details:
+    const prompt = `Compliment this student in a witty and humorous manner based on the following details:
 
     My Details:
     ---
     ${stringData}
     ---
-    Give a roast that is playful and extreamly sarcastic. Focus on Cources and SGPAs which has extream scores like lows and highs.`
+    Give a compliment that is playful and nice. Focus on Cources and SGPAs which has extream scores like lows and highs.`
 
     const endpoint = 'https://api.groq.com/openai/v1/chat/completions'
     const body = JSON.stringify({
@@ -289,14 +292,14 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
         {
           role: 'system',
           content:
-            'You are a roast master. You are a witty and humorous AI that generates very creative roasts. You are a comedic AI specializing in roasts.',
+            'You are a compliment master. You are a witty and humorous AI that generates very creative compliments. You are a comedic AI specializing in praising.',
         },
         {
           role: 'user',
           content: prompt,
         },
       ],
-      temperature: 0.7,
+      temperature: 0.6,
     })
     const headers = {
       'Content-Type': 'application/json',
@@ -311,67 +314,71 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
       }
       const data = await response.json()
       const message = data.choices[0].message.content
-      setRoast(message)
+      setCompliment(message)
 
       if (message) {
         const timestamp = new Date().toISOString()
-        setRoast(message)
-        const roastId = uuidv4()
+        setCompliment(message)
+        const complimentId = uuidv4()
 
-        const roastResponse = {
+        const complimentResponse = {
           message,
           timestamp,
           ratings: null,
-          roast_id: roastId,
+          compliment_id: complimentId,
         }
-        setAiRoasts((prev) => [...prev, roastResponse])
+        setAiCompliments((prev) => [...prev, complimentResponse])
 
         const usnFromStudentData =
           studentData['usn'] || localStorage.getItem('usn')
         if (usnFromStudentData) {
-          await updateAiRoastsInFirebase(
+          await updateAiComplimentsInFirebase(
             usnFromStudentData,
             message,
             null,
-            roastId
+            complimentId
           )
         }
       } else {
-        setError('Error generating roast')
+        setError('Error generating compliment')
       }
     } catch (err) {
-      setError(err.message || 'Error generating roast')
+      setError(err.message || 'Error generating compliment')
     } finally {
       setIsLoading(false)
-      if (onRoastGenerated) {
-        onRoastGenerated()
+      if (onComplimentGenerated) {
+        onComplimentGenerated()
       }
     }
   }
 
   const handleRating = async (rating) => {
-    if (aiRoasts.length > 0) {
-      const latestRoast = aiRoasts[aiRoasts.length - 1]
-      console.log('Latest Roast:', latestRoast)
+    if (aiCompliments.length > 0) {
+      const latestCompliment = aiCompliments[aiCompliments.length - 1]
+      console.log('Latest Roast:', latestCompliment)
       const usn = studentData.usn || 'default_usn'
-      const roastAcknowledgments = {
-        1: 'Oof, too spicy? We’ll tone it down... or not. 😈',
-        2: 'Okay, okay—maybe that one hit too hard. 🫣',
-        3: 'Mid roast? I’ll have a word with the AI. 🤖',
-        4: 'Balanced. Like all things should be. ⚖️',
-        5: 'Now we’re cookin’! 🔥',
-        6: 'Peak comedy. AI’s on a roll. 🚀',
-        7: 'We just witnessed a digital homicide. RIP you. 🪦',
+      const complimentAcknowledgments = {
+        1: 'Aww, blushing already? Too cute. 😊',
+        2: 'Didn’t see that coming, huh? Surprise compliments are the best! 😲',
+        3: 'Feeling the warm fuzzies yet? You deserve it! 🥰',
+        4: 'Gratitude looks good on you. 🙏',
+        5: 'Confidence unlocked. You’re glowing! 😎',
+        6: 'Living your best life now, aren’t you? 🤩',
+        7: 'Bow down, we’re in the presence of royalty. 👑',
       }
 
-      if (latestRoast && latestRoast.message && latestRoast.roast_id) {
-        await updateAiRoastsInFirebase(
+      if (
+        latestCompliment &&
+        latestCompliment.message &&
+        latestCompliment.compliment_id
+      ) {
+        await updateAiComplimentsInFirebase(
           usn,
-          latestRoast.message,
+          latestCompliment.message,
           rating,
-          latestRoast.roast_id
+          latestCompliment.compliment_id
         )
-        toast.success(roastAcknowledgments[rating])
+        toast.success(complimentAcknowledgments[rating])
       } else {
         setError('Error: try generating a new roast to rate')
         toast.error('Error: try generating a new roast to rate')
@@ -383,25 +390,25 @@ const RoastAI = ({ studentData, onRoastGenerated }) => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      {roast && (
+      {compliment && (
         <div className="mt-4 flex justify-start">
           <div className="lg:text-md rounded-md bg-slate-100 p-2 text-sm text-gray-700 dark:bg-slate-700 dark:text-indigo-100">
-            <AIResponse text={roast} />
+            <AIResponse text={compliment} />
             <EmojiRating onRate={handleRating} />
           </div>
         </div>
       )}
       <button
-        onClick={handleRoast}
+        onClick={handleCompliment}
         className="mt-4 flex items-center justify-center rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
         disabled={isLoading}
       >
         {isLoading ? <LoadingNew /> : <SendBtn className="mr-2 h-5 w-5" />}{' '}
-        Generate Roast
+        Generate Compliment
       </button>
       {error && <p className="mt-2 text-red-400">{error}</p>}
     </div>
   )
 }
 
-export default RoastAI
+export default ComplimentAI

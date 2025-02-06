@@ -19,6 +19,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import LoadingNew from '@/components/LoadingNew'
 import RoastAI from '@/components/RoastBot'
+import ComplimentAI from '@/components/ComplimentBot'
 import { getOrCreateUserId } from '@/utils/user'
 import { BadgeCheck, Target, TrendingUp } from 'lucide-react'
 
@@ -395,7 +396,7 @@ function HomePage() {
     try {
       const deviceId = getOrCreateUserId()
       const chatHistoryDocRef = doc(db, 'chathistory', deviceId)
-      await setDoc(chatHistoryDocRef, {
+      await updateDoc(chatHistoryDocRef, {
         loginFound: arrayUnion({ usn, name }),
       })
       console.log('Updated loginFound in chatHistory for device', deviceId)
@@ -463,7 +464,7 @@ function HomePage() {
       await updateChatHistoryLoginFound(currentUsn, data.name)
       setIsLoggedIn(true)
       setLoginCounter((prev) => prev + 1)
-      toast.success('Data fetched successfully!')
+      toast.success(`Welcome, ${data.name}!`)
     } catch (err) {
       setError(err.message || 'Unknown error occurred')
       setIsLoggedIn(false)
@@ -708,6 +709,13 @@ function HomePage() {
                         studentData={studentData}
                         onReload={handleReload}
                       />
+                    </div>
+
+                    <div className="border-t">
+                      <h1 className="mt-4 text-center text-lg font-bold">
+                        Compliment by AI 🤖
+                      </h1>
+                      <ComplimentAI studentData={studentData} />
                     </div>
                   </>
                 )}
