@@ -142,7 +142,7 @@ const subjects7 = [
 ]
 
 const links = {
-  syllabus:
+  syllabus1:
     'https://docs.google.com/document/d/e/2PACX-1vTCMSPuhx-RN0tfdVnXrZnjkMucAeYoFwhfEBqiXh3L-Sa-7UX6vMe7GfgAjRLUSrLyJVpWxXSKJsit/pub',
   syllabus2:
     'https://docs.google.com/document/d/e/2PACX-1vRFRazfWll_UKmcqEqiLNioIn65WV8lIFmkwOEVjShDxPO4xFMZPOmB3tUN8A0NyDSeHab92K7FYuVC/pub',

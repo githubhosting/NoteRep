@@ -406,7 +406,7 @@ export function Schedule_New() {
                 className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
               >
                 {physicscycle.map((item, index) => (
-                  <SubjectCard item={item} index={index} />
+                  <SubjectCard item={item} index={index} key={index} />
                 ))}
               </ul>
               <h2 className="mt-5 text-center text-3xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-4xl">
@@ -417,7 +417,7 @@ export function Schedule_New() {
                 className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:grid-cols-3 lg:items-center"
               >
                 {chemistrycycle.map((item, index) => (
-                  <SubjectCard item={item} index={index} />
+                  <SubjectCard item={item} index={index} key={index} />
                 ))}
               </ul>
 

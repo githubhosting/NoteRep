@@ -12,14 +12,16 @@ export function ContentNew(props) {
     <section>
       <Container>
         <div className="mx-auto max-w-5xl sm:text-center">
-          <div className="mt-10 flex items-center justify-center">
-            <ButtonLink
-              href={links.curriculum}
-              className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-2"
-            >
-              CSE (AI & ML) Curriculum
-            </ButtonLink>
-          </div>
+          {links.curriculum ? (
+            <div className="mt-10 flex items-center justify-center">
+              <ButtonLink
+                href={links.curriculum}
+                className="hover:shadowpress rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 p-2"
+              >
+                CSE (AI & ML) Curriculum
+              </ButtonLink>
+            </div>
+          ) : null}
           {links.syllabus ? (
             <div className="flex justify-center">
               <ButtonLink
@@ -31,16 +33,7 @@ export function ContentNew(props) {
               </ButtonLink>
             </div>
           ) : null}
-            <div className="flex justify-center">
-              <ButtonLink
-                target="_blank"
-                href="minisis"
-                className="hover:shadowpress mt-6 w-auto rounded-lg bg-blue-50 py-2 shadow-lg dark:text-white dark:hover:text-blue-200"
-              >
-                Mini SIS
-              </ButtonLink>
-            </div>
-          <div className="flex flex-col items-center justify-center gap-3 pt-5 md:flex-row">
+          <div className="flex flex-col items-center justify-center gap-3 py-5 md:flex-row">
             {/* <ButtonLink
               href="/syllabus"
               className="mt-5 w-auto rounded-lg py-2 hover:bg-blue-900"
@@ -49,10 +42,41 @@ export function ContentNew(props) {
             </ButtonLink> */}
             <ButtonLink
               href="noterepbot"
-              className="button-85 mt-5 w-auto rounded-lg from-cyan-400 to-blue-500 py-1 after:bg-blue-700 dark:after:bg-gradient-to-r"
+              className="mt-5 w-auto rounded-lg from-cyan-400 to-blue-500 py-1 after:bg-blue-700 dark:after:bg-gradient-to-r"
             >
               AI Bot 🤖
             </ButtonLink>
+          </div>
+          <div className="flex justify-center pt-2">
+            <div className="group relative">
+              <a
+                href="/minisis"
+                className="relative inline-block cursor-pointer rounded-xl bg-gray-800 p-px font-semibold leading-6 text-white shadow-2xl shadow-zinc-900 transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95"
+              >
+                <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
+                <span className="relative z-10 block rounded-xl bg-gray-950 px-6 py-3">
+                  <div className="relative z-10 flex items-center space-x-2">
+                    <span className="transition-all duration-500 group-hover:translate-x-1">
+                      Check Mini SIS
+                    </span>
+                    <svg
+                      className="h-6 w-6 transition-transform duration-500 group-hover:translate-x-1"
+                      data-slot="icon"
+                      aria-hidden="true"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        clipRule="evenodd"
+                        d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
+                        fillRule="evenodd"
+                      ></path>
+                    </svg>
+                  </div>
+                </span>
+              </a>
+            </div>
           </div>
         </div>
         <ul
