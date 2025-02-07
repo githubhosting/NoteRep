@@ -338,10 +338,10 @@ export default function Home() {
           >
             {/* <Counter /> */}
             {/* <Calendar /> */}
-            <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%207&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=NThhNmI0YmMxZGM1MzQ1YTRmMWMxZjlkMzBlZjM3NDhlZDBjOGQ3MmRhODZhZjliZDMwNzM3ZTRhZDVkYTIyM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t&color=%23039BE5" />
+            <GCalendar url="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=Asia%2FKolkata&bgcolor=%23ffffff&title=CSE(AI%26ML)%20Sem%207&mode=MONTH&showTz=0&showPrint=0&showTabs=0&showCalendars=0&src=7c29d7105d36a8aade5606de286abaa0d08d58f6061bb60f7473f149efb020d2%40group.calendar.google.com&color=%23039BE5" />
           </div>
         </Container>
-        <Timetable subjects={subjects7} />
+        {/* <Timetable subjects={subjects7} /> */}
         <ContentNew drive={cseaimlsem7} sem="7th" links={links} />
         <Author />
       </div>

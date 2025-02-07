@@ -31,17 +31,15 @@ export function ContentNew(props) {
               </ButtonLink>
             </div>
           ) : null}
-          {sem == '7th' ? (
             <div className="flex justify-center">
               <ButtonLink
                 target="_blank"
-                href="https://cgpa-calculator.streamlit.app"
+                href="minisis"
                 className="hover:shadowpress mt-6 w-auto rounded-lg bg-blue-50 py-2 shadow-lg dark:text-white dark:hover:text-blue-200"
               >
-                CGPA Calculator
+                Mini SIS
               </ButtonLink>
             </div>
-          ) : null}
           <div className="flex flex-col items-center justify-center gap-3 pt-5 md:flex-row">
             {/* <ButtonLink
               href="/syllabus"
