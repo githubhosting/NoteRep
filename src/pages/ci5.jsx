@@ -128,6 +128,16 @@ const cseaimlsem5 = [
     link: 'https://drive.google.com/drive/folders/1qY8sMJq4ZX-H2jBFUUVjyVB2oPJpOMrc?usp=sharing',
   },
   {
+    title: 'Java Lab',
+    description: '(0:0:1) CIL56',
+    link: 'https://drive.google.com/drive/folders/1O2K4UtWoSEWa7YBGe9-NubUTjk6VtuTm?usp=sharing',
+  },
+  {
+    title: "R Lab",
+    description: '(0:0:1) CIL57',
+    link: 'https://drive.google.com/drive/folders/1R-7a9qTsBFxSyvR2dhaWDAolq1KF7sPk?usp=sharing'
+  },
+  {
     title: 'Environment Studies',
     description: 'NCMC',
     link: 'https://drive.google.com/drive/folders/1PRi6Bbc5gCS_BwcS11ptz2FLo5lvSuh4?usp=sharing',
