@@ -421,13 +421,25 @@ function HomePage() {
     try {
       const userRef = doc(db, 'studentAnalytics', usn)
       const userDoc = await getDoc(userRef)
-      const name = JSON.parse(localStorage.getItem('studentData')).name
+      const studentdata = JSON.parse(localStorage.getItem('studentData'))
+      const name = studentdata.name
+      const cgpa = studentdata.cgpa
+      const predicted = studentdata.predictions
+      // make an array of the predicted gpa with key and value
+      const predictedGPA = [
+        { key: 'atleast', value: predicted.atleast.predicted_sgpa },
+        { key: 'mostlikely', value: predicted.mostlikely.predicted_sgpa },
+        { key: 'maxeffort', value: predicted.maxeffort.predicted_sgpa },
+      ]
       const timestamp = serverTimestamp()
 
       if (userDoc.exists()) {
         await updateDoc(userRef, {
-          name,
+          usn,
           dob,
+          name,
+          cgpa,
+          predicted: predictedGPA,
           lastLogin: timestamp,
           loginCount: increment(1),
         })
@@ -436,6 +448,8 @@ function HomePage() {
           usn,
           dob,
           name,
+          cgpa,
+          predicted: predictedGPA,
           firstLogin: timestamp,
           lastLogin: timestamp,
           loginCount: 1,
