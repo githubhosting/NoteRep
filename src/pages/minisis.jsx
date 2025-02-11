@@ -465,9 +465,11 @@ function HomePage() {
     try {
       const deviceId = getOrCreateUserId()
       const chatHistoryDocRef = doc(db, 'chathistory', deviceId)
-      await updateDoc(chatHistoryDocRef, {
-        loginFound: arrayUnion({ usn, name }),
-      })
+      await setDoc(
+        chatHistoryDocRef,
+        { loginFound: arrayUnion({ usn, name }) },
+        { merge: true }
+      )
       console.log('Updated loginFound in chatHistory for device', deviceId)
     } catch (err) {
       console.error('Error updating loginFound in chatHistory:', err)
@@ -517,7 +519,11 @@ function HomePage() {
       setError('')
       setIsLoading(true)
       const testurl = `http://127.0.0.1:5000/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
-      const apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
+      let apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
+      if (currentUsn === '1MS21AB001' && currentDob === '2003-01-01') {
+        toast.info('Logging in with test data...')
+        apiurl = 'https://reconnect-msrit.vercel.app/test'
+      }
       const response = await fetch(apiurl)
       if (!response.ok) {
         const resp = await response.json()
@@ -685,6 +691,14 @@ function HomePage() {
                   disabled={isLoading}
                 >
                   {isLoading ? 'Loading...' : 'Login'}
+                </button>
+                {/* test login */}
+                <button
+                  onClick={() => handleFetchData('1MS21AB001', '2003-01-01')}
+                  className="rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+                  disabled={isLoading}
+                >
+                  Test Login
                 </button>
 
                 {error && (
