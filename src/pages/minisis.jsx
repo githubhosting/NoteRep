@@ -502,6 +502,8 @@ function HomePage() {
 
   // Fetch student data from the API.
   const handleFetchData = async (currentUsn, currentDob) => {
+    // strip the current usn if any spaces
+    currentUsn = currentUsn.replace(/\s/g, '')
     if (!currentUsn || !currentDob) {
       setError('Please enter both USN and DOB')
       toast.error('Please enter both USN and DOB')
