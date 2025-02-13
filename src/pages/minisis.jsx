@@ -502,8 +502,7 @@ function HomePage() {
 
   // Fetch student data from the API.
   const handleFetchData = async (currentUsn, currentDob) => {
-    // strip the current usn if any spaces
-    currentUsn = currentUsn.replace(/\s/g, '')
+    console.log('Logging in with USN:', currentUsn)
     if (!currentUsn || !currentDob) {
       setError('Please enter both USN and DOB')
       toast.error('Please enter both USN and DOB')
@@ -673,7 +672,9 @@ function HomePage() {
                   <input
                     type="text"
                     value={usn}
-                    onChange={(e) => setUsn(e.target.value.toUpperCase())}
+                    onChange={(e) =>
+                      setUsn(e.target.value.toUpperCase().trim())
+                    }
                     placeholder="1MS22CS020"
                     className="rounded-md border bg-slate-50 px-3 py-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:placeholder-gray-500"
                   />
