@@ -308,7 +308,7 @@ export default function Home() {
         <HeaderMod />
         <Container>
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
-            7th Sem Notes Links for CSE(AI & ML)
+            6th Sem Notes Links for CSE(AI & ML)
           </h2>
           <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
             <Switch
@@ -342,7 +342,7 @@ export default function Home() {
           </div>
         </Container>
         {/* <Timetable subjects={subjects7} /> */}
-        <ContentNew drive={cseaimlsem7} sem="7th" links={links} />
+        <ContentNew drive={cseaimlsem6} sem="6th" links={links} />
         <Author />
       </div>
       <Footer />
