@@ -520,7 +520,7 @@ function HomePage() {
       setError('')
       setIsLoading(true)
       const testurl = `http://127.0.0.1:5000/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
-      let apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
+      let apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=parentsodd&usn=${currentUsn}&dob=${currentDob}`
       if (currentUsn === '1MS21AB001' && currentDob === '2003-01-01') {
         toast.info('Logging in with test data...')
         apiurl = 'https://reconnect-msrit.vercel.app/test'
@@ -688,6 +688,7 @@ function HomePage() {
                     className="rounded-md border bg-slate-50 px-3 py-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:placeholder-gray-500"
                   />
                 </label>
+                
                 <button
                   onClick={() => handleFetchData(usn, dob)}
                   className="rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
