@@ -387,6 +387,8 @@ function HomePage() {
     () => (enabled ? 'newparents' : 'parentsodd'),
     [enabled]
   )
+  const [showRoast, setShowRoast] = useState(false)
+  const [showCompliment, setShowCompliment] = useState(false)
   // Theme detection and setting.
   useEffect(() => {
     if (
@@ -743,7 +745,7 @@ function HomePage() {
               <div className="max-w-3xl lg:mx-auto lg:w-full">
                 {studentData && (
                   <>
-                    <div className="rounded-md shadow-md dark:bg-gray-800">
+                    <div className="rounded-md shadow-md dark:bg-gray-800 my-2">
                       <div className="p-3">
                         <p className="mb-2">
                           <span className="font-semibold">Name: </span>
@@ -754,16 +756,28 @@ function HomePage() {
                           {studentData.usn}
                         </p>
                         <p className="mb-2">
-                          <span className="font-semibold">CGPA: </span>
-                          {studentData.cgpa}
+                          <span className="font-semibold">Latest CGPA: </span>
+                          {studentData.fetched_cgpa}
                         </p>
-                        <p className="mb-4">
+                        <p className="mb-1">
                           <span className="font-semibold">Last Updated: </span>
                           {studentData.lastUpdated || 'N/A'}
                         </p>
                       </div>
+                    </div>
+                    <p className="mb-4 rounded-lg border border-neutral-700 bg-black/30 px-6 py-3 text-white shadow-md backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                      <span className="font-medium text-gray-400">
+                        SGPA for {' '}
+                      </span>
+                      <span className="font-semibold text-white">
+                        {studentData.semester}
+                      </span>
+                      <span className="ml-2 rounded-md bg-neutral-800 px-2 py-1 text-xl font-bold text-emerald-400 shadow-sm">
+                        {studentData.fetched_sgpa}
+                      </span>
+                    </p>
 
-                      <div className="overflow-x-auto">
+                    {/* <div className="overflow-x-auto">
                         <table className="min-w-full rounded-md text-sm dark:bg-gray-700">
                           <thead className="border-b text-left">
                             <tr className="rounded-t-md">
@@ -791,8 +805,8 @@ function HomePage() {
                             ))}
                           </tbody>
                         </table>
-                      </div>
-                    </div>
+                      </div> */}
+                    {/* </div> */}
 
                     <div className="mt-2">
                       <div className="block md:hidden">
@@ -806,16 +820,28 @@ function HomePage() {
                       <GradesTable studentData={studentData} />
                     </div>
 
-                    <div className="border-t">
-                      <div ref={aiResponseRef} />
-                      <h1 className="mt-4 text-center text-lg font-bold">
-                        Roast by AI 🤖
-                      </h1>
-                      <RoastAI
-                        studentData={studentData}
-                        onRoastGenerated={handleScrollToResponse}
-                      />
+                    <div className="my-4 flex justify-center gap-4">
+                      <button
+                        onClick={setShowRoast.bind(null, (prev) => !prev)}
+                        className="rounded bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-700"
+                        disabled={isLoading}
+                      >
+                        {showRoast ? 'Hide Roast' : 'Show Roast'}
+                      </button>
                     </div>
+
+                    {showRoast && (
+                      <div className="border-t">
+                        <div ref={aiResponseRef} />
+                        <h1 className="mt-4 text-center text-lg font-bold">
+                          Roast by AI 🤖
+                        </h1>
+                        <RoastAI
+                          studentData={studentData}
+                          onRoastGenerated={handleScrollToResponse}
+                        />
+                      </div>
+                    )}
 
                     <div ref={predictionRef} className="mt-4">
                       <SGPAPrediction
@@ -824,12 +850,24 @@ function HomePage() {
                       />
                     </div>
 
-                    <div className="border-t">
-                      <h1 className="mt-4 text-center text-lg font-bold">
-                        Compliment by AI 🤖
-                      </h1>
-                      <ComplimentAI studentData={studentData} />
+                    <div className="my-4 flex justify-center gap-4">
+                      <button
+                        onClick={setShowCompliment.bind(null, (prev) => !prev)}
+                        className="rounded bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-700"
+                        disabled={isLoading}
+                      >
+                        {showCompliment ? 'Hide Compliment' : 'Show Compliment'}
+                      </button>
                     </div>
+
+                    {showCompliment && (
+                      <div className="border-t">
+                        <h1 className="mt-4 text-center text-lg font-bold">
+                          Compliment by AI 🤖
+                        </h1>
+                        <ComplimentAI studentData={studentData} />
+                      </div>
+                    )}
                   </>
                 )}
                 <div className="mt-4 flex justify-center gap-4">
