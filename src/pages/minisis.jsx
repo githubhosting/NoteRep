@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import Head from 'next/head'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -22,6 +22,7 @@ import RoastAI from '@/components/RoastBot'
 import ComplimentAI from '@/components/ComplimentBot'
 import { getOrCreateUserId } from '@/utils/user'
 import { BadgeCheck, Target, TrendingUp } from 'lucide-react'
+import { Switch } from '@headlessui/react'
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
@@ -381,7 +382,11 @@ function HomePage() {
   const [loginCounter, setLoginCounter] = useState(0)
   const [usn, setUsn] = useState('')
   const [dob, setDob] = useState('')
-
+  const [enabled, setEnabled] = useState(false)
+  const semurl = useMemo(
+    () => (enabled ? 'newparents' : 'parentsodd'),
+    [enabled]
+  )
   // Theme detection and setting.
   useEffect(() => {
     if (
@@ -520,7 +525,8 @@ function HomePage() {
       setError('')
       setIsLoading(true)
       const testurl = `http://127.0.0.1:5000/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
-      let apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=parentsodd&usn=${currentUsn}&dob=${currentDob}`
+      let apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=${semurl}&usn=${currentUsn}&dob=${currentDob}`
+      console.log('API URL:', apiurl)
       if (currentUsn === '1MS21AB001' && currentDob === '2003-01-01') {
         toast.info('Logging in with test data...')
         apiurl = 'https://reconnect-msrit.vercel.app/test'
@@ -688,7 +694,27 @@ function HomePage() {
                     className="rounded-md border bg-slate-50 px-3 py-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:placeholder-gray-500"
                   />
                 </label>
-                
+                <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
+                  <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
+                    Odd Sem
+                  </p>
+                  <Switch
+                    checked={enabled}
+                    onChange={setEnabled}
+                    className={`${
+                      enabled ? 'bg-blue-600' : 'bg-white dark:bg-gray-500'
+                    } relative inline-flex h-6 w-11 items-center rounded-full`}
+                  >
+                    <span
+                      className={`${
+                        enabled ? 'translate-x-6' : 'translate-x-1'
+                      } inline-block h-4 w-4 transform rounded-full bg-gray-200 transition dark:bg-white`}
+                    />
+                  </Switch>
+                  <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
+                    Even Sem
+                  </p>
+                </div>
                 <button
                   onClick={() => handleFetchData(usn, dob)}
                   className="rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
