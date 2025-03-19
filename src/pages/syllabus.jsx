@@ -43,11 +43,11 @@ export default function Home() {
         >
           <Container>
             <h1 className="text-center font-display text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
-              Updated 7th Sem Syllabus for CSE (AI & ML)
+              Updated 6th Sem Syllabus for CSE (AI & ML)
             </h1>
             <div className="flex justify-center pt-10">
               <ButtonLink
-                href="/documents/CSE(AI ML) Sem 7 Syllabus.pdf"
+                href="/documents/AIML_SEM6_22CI.pdf"
                 rel="noreferrer"
                 target="_blank"
                 className="rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500"
@@ -57,9 +57,10 @@ export default function Home() {
             </div>
             {/* https://drive.google.com/file/d/1FtXOF068oce_gRKOug3Ul8zsrGCHZPbd/view?usp=drive_link */}
             {/* https://drive.google.com/file/d/1T0R0vdFkMBgAcuWiY7irmDm7vIzg8T9O/view?usp=sharing */}
+            {/* https://drive.google.com/file/d/1N_ttI4ut41bQ6gAYiZX9HSoOa7nmjz1l/view?usp=sharing */}
             <div className="flex justify-center">
               <iframe
-                src="https://drive.google.com/file/d/1T0R0vdFkMBgAcuWiY7irmDm7vIzg8T9O/preview"
+                src="https://drive.google.com/file/d/1N_ttI4ut41bQ6gAYiZX9HSoOa7nmjz1l/preview"
                 height="1024"
                 allow="autoplay"
                 frameborder="0"
