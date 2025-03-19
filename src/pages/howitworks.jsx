@@ -180,7 +180,7 @@ function HomePage() {
               Prepare to be Amazed by Your SGPA Prediction!
             </h1>
             <p className="mt-3 text-center text-sm text-gray-700 dark:text-gray-300">
-              Using a algorithm that I have developed, where we combine your
+              Using a algorithm that I have developed, where I combine your
               internal score (out of 50) with your final exam score (predicted)
               to generate a total out of 100. This total is then mapped to a
               grade using a predefined scale. The result? A precise prediction
