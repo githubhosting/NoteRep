@@ -124,11 +124,10 @@ function MobileNavigation(props) {
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base leading-7 text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/">Home</MobileNavItem>
-                <MobileNavItem href="/ci">CSE (AI & ML)</MobileNavItem>
-                <MobileNavItem href="/cy">CSE (CY)</MobileNavItem>
-                <MobileNavItem href="/noterepbot">AI Chat Bot</MobileNavItem>
-                <MobileNavItem href="/communilink">CommuniLink</MobileNavItem>
-                <MobileNavItem href="/links">Other Links</MobileNavItem>
+                <MobileNavItem href="ci6">CSE (AI & ML and CY - 6)</MobileNavItem>
+                <MobileNavItem href="noterepbot">AI Chat Bot</MobileNavItem>
+                <MobileNavItem href="communilink">CommuniLink</MobileNavItem>
+                <MobileNavItem href="links">Other Links</MobileNavItem>
                 <MobileNavItem href="minisis">Mini SIS</MobileNavItem>
                 <MobileNavItem href="https://myselfshravan.github.io/">
                   Developer
@@ -195,7 +194,7 @@ function DesktopNavigation(props) {
   return (
     <nav {...props}>
       <ul className="flex rounded-full bg-white/90 px-3 text-sm font-medium text-zinc-800 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur dark:bg-zinc-800/90 dark:text-zinc-200 dark:ring-white/10">
-        <NavItem href="/ci">CSE (AI & ML)</NavItem>
+        <NavItem href="/ci6">CSE (AI & ML)</NavItem>
         <NavItem href="/noterepbot">AI Chat Bot</NavItem>
         <NavItem href="/communilink">CommuniLink</NavItem>
         <NavItem href="/links">Other Links</NavItem>
