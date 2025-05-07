@@ -111,21 +111,21 @@ export function Hero() {
               </div>
             </div>
             <div className="mt-10 grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-              <ButtonLink href="/ci8" className="md:auto w-full rounded-lg py-2">
+              <ButtonLink
+                href="/ci8"
+                className="md:auto w-full rounded-lg py-2"
+              >
                 CSE (AI ML & CY) Notes (Sem 8)
               </ButtonLink>
-              <ButtonLink
-                href="/ci"
-                className="md:auto w-full rounded-lg py-2"
-              >
+              <ButtonLink href="/ci6" className="md:auto w-full rounded-lg py-2">
                 CSE (AI ML & CY) Notes (Sem 6)
               </ButtonLink>
-              {/* <ButtonLink
-                href="/cicy3"
+              <ButtonLink
+                href="/ci4"
                 className="md:auto w-full rounded-lg py-2"
               >
-                CSE (AI ML & CY) (Sem 3)
-              </ButtonLink> */}
+                CSE (AI ML & CY) (Sem 4)
+              </ButtonLink>
               {/* <ButtonLink
                 href="/ise"
                 className="md:auto w-full rounded-lg py-2"
