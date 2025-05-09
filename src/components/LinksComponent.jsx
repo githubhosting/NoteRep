@@ -158,7 +158,7 @@ function ContributeModal({ isOpen, onClose, onSubmit }) {
   )
 }
 
-export function Content() {
+export function LinksComponent() {
   const [cseaiml, setCseaiml] = useState([])
   const [otherlinks, setOtherlinks] = useState([])
   const [loading, setLoading] = useState(true)

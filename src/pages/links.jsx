@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
-import { Content } from '@/components/Links_Content'
+import { LinksComponent } from '@/components/LinksComponent'
 import { Newsletter } from '@/components/Newsletter'
 import { Schedule } from '@/components/Schedule'
 import { Sponsors } from '@/components/Sponsors'
@@ -46,8 +46,8 @@ export default function Home() {
       </Head>
       <Header />
       <main>
-        <Content />
-        {/* <Author /> */}
+        <LinksComponent />
+        <Author />
       </main>
       <Footer />
       {showButton && (
