@@ -6,17 +6,8 @@ import 'firebase/compat/firestore'
 import { Button } from './Button'
 import { query, orderBy, limit, documentId } from 'firebase/firestore'
 import { Dialog } from '@headlessui/react'
+import { firebaseConfig } from '@/firebaseconfig'
 
-//Firebase Api Key
-const firebaseConfig = {
-  apiKey: 'AIzaSyACyiB2f-Sl8fbez4sjwBxJwn-eGadnXcg',
-  authDomain: 'auth-44578.firebaseapp.com',
-  projectId: 'auth-44578',
-  storageBucket: 'auth-44578.appspot.com',
-  messagingSenderId: '595971213871',
-  appId: '1:595971213871:web:432717a56846feb84a14da',
-  measurementId: 'G-BJWWD8H4BX',
-}
 firebase.initializeApp(firebaseConfig)
 const database = firebase.firestore()
 
@@ -209,7 +200,7 @@ export function Content() {
           className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:items-center"
         >
           {otherlinks.map((item) => (
-          <li key={item.id} className="relative h-full">
+            <li key={item.id} className="relative h-full">
               <div className="flex h-full flex-col rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800 dark:shadow-num_d">
                 <div className="mb-4">
                   <h3 className="text-lg font-medium text-gray-900 dark:text-white">
