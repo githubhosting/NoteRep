@@ -1,4 +1,4 @@
-# NoteRep by Shravan
+# NoteRep by Shravan Revanna
 
 NoteRep is a [Tailwind UI](https://tailwindui.com) Study Material site built using [Tailwind CSS](https://tailwindcss.com) and [Next.js](https://nextjs.org).
 
