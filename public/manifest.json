@@ -6,26 +6,53 @@
     "start_url": "/",
     "name": "NoteRep",
     "short_name": "NoteRep",
+    "description": "Your comprehensive educational resource and note-taking companion",
+    "orientation": "portrait",
+    "display_override": ["standalone", "browser"],
+    "categories": ["education", "productivity"],
     "icons": [
         {
             "src": "/icon-192x192.png",
             "sizes": "192x192",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any maskable"
         },
         {
             "src": "/icon-256x256.png",
             "sizes": "256x256",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "/icon-384x384.png",
             "sizes": "384x384",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "/icon-512x512.png",
             "sizes": "512x512",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "any"
         }
-    ]
+    ],
+    "shortcuts": [
+        {
+            "name": "Home",
+            "url": "/",
+            "description": "Return to homepage"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshots/home.png",
+            "type": "image/png",
+            "sizes": "1080x1920",
+            "form_factor": "narrow"
+        }
+    ],
+    "prefer_related_applications": false,
+    "launch_handler": {
+        "client_mode": ["focus-existing", "auto"]
+    }
 }

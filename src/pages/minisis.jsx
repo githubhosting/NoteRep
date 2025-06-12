@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import Head from 'next/head'
 import { Header } from '@/components/Header'
 import { Footer } from '@/components/Footer'
@@ -22,6 +22,7 @@ import RoastAI from '@/components/RoastBot'
 import ComplimentAI from '@/components/ComplimentBot'
 import { getOrCreateUserId } from '@/utils/user'
 import { BadgeCheck, Target, TrendingUp } from 'lucide-react'
+import { Switch } from '@headlessui/react'
 
 if (!firebase.apps.length) {
   firebase.initializeApp(firebaseConfig)
@@ -381,7 +382,13 @@ function HomePage() {
   const [loginCounter, setLoginCounter] = useState(0)
   const [usn, setUsn] = useState('')
   const [dob, setDob] = useState('')
-
+  const [enabled, setEnabled] = useState(false)
+  const semurl = useMemo(
+    () => (enabled ? 'newparents' : 'parentsodd'),
+    [enabled]
+  )
+  const [showRoast, setShowRoast] = useState(false)
+  const [showCompliment, setShowCompliment] = useState(false)
   // Theme detection and setting.
   useEffect(() => {
     if (
@@ -421,13 +428,25 @@ function HomePage() {
     try {
       const userRef = doc(db, 'studentAnalytics', usn)
       const userDoc = await getDoc(userRef)
-      const name = JSON.parse(localStorage.getItem('studentData')).name
+      const studentdata = JSON.parse(localStorage.getItem('studentData'))
+      const name = studentdata.name
+      const cgpa = studentdata.cgpa
+      const predicted = studentdata.predictions
+      // make an array of the predicted gpa with key and value
+      const predictedGPA = [
+        { key: 'atleast', value: predicted.atleast.predicted_sgpa },
+        { key: 'mostlikely', value: predicted.mostlikely.predicted_sgpa },
+        { key: 'maxeffort', value: predicted.maxeffort.predicted_sgpa },
+      ]
       const timestamp = serverTimestamp()
 
       if (userDoc.exists()) {
         await updateDoc(userRef, {
-          name,
+          usn,
           dob,
+          name,
+          cgpa,
+          predicted: predictedGPA,
           lastLogin: timestamp,
           loginCount: increment(1),
         })
@@ -436,6 +455,8 @@ function HomePage() {
           usn,
           dob,
           name,
+          cgpa,
+          predicted: predictedGPA,
           firstLogin: timestamp,
           lastLogin: timestamp,
           loginCount: 1,
@@ -451,9 +472,11 @@ function HomePage() {
     try {
       const deviceId = getOrCreateUserId()
       const chatHistoryDocRef = doc(db, 'chathistory', deviceId)
-      await updateDoc(chatHistoryDocRef, {
-        loginFound: arrayUnion({ usn, name }),
-      })
+      await setDoc(
+        chatHistoryDocRef,
+        { loginFound: arrayUnion({ usn, name }) },
+        { merge: true }
+      )
       console.log('Updated loginFound in chatHistory for device', deviceId)
     } catch (err) {
       console.error('Error updating loginFound in chatHistory:', err)
@@ -486,6 +509,7 @@ function HomePage() {
 
   // Fetch student data from the API.
   const handleFetchData = async (currentUsn, currentDob) => {
+    console.log('Logging in with USN:', currentUsn)
     if (!currentUsn || !currentDob) {
       setError('Please enter both USN and DOB')
       toast.error('Please enter both USN and DOB')
@@ -503,7 +527,12 @@ function HomePage() {
       setError('')
       setIsLoading(true)
       const testurl = `http://127.0.0.1:5000/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
-      const apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=newparents&usn=${currentUsn}&dob=${currentDob}`
+      let apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=${semurl}&usn=${currentUsn}&dob=${currentDob}`
+      console.log('API URL:', apiurl)
+      if (currentUsn === '1MS21AB001' && currentDob === '2003-01-01') {
+        toast.info('Logging in with test data...')
+        apiurl = 'https://reconnect-msrit.vercel.app/test'
+      }
       const response = await fetch(apiurl)
       if (!response.ok) {
         const resp = await response.json()
@@ -651,7 +680,9 @@ function HomePage() {
                   <input
                     type="text"
                     value={usn}
-                    onChange={(e) => setUsn(e.target.value.toUpperCase())}
+                    onChange={(e) =>
+                      setUsn(e.target.value.toUpperCase().trim())
+                    }
                     placeholder="1MS22CS020"
                     className="rounded-md border bg-slate-50 px-3 py-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:placeholder-gray-500"
                   />
@@ -665,12 +696,41 @@ function HomePage() {
                     className="rounded-md border bg-slate-50 px-3 py-2 focus:outline-none dark:border-gray-700 dark:bg-gray-800 dark:placeholder-gray-500"
                   />
                 </label>
+                <div className="flex flex-row items-center justify-center gap-2 py-3 lg:p-5">
+                  <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
+                    Odd Sem
+                  </p>
+                  <Switch
+                    checked={enabled}
+                    onChange={setEnabled}
+                    className={`${
+                      enabled ? 'bg-blue-600' : 'bg-white dark:bg-gray-500'
+                    } relative inline-flex h-6 w-11 items-center rounded-full`}
+                  >
+                    <span
+                      className={`${
+                        enabled ? 'translate-x-6' : 'translate-x-1'
+                      } inline-block h-4 w-4 transform rounded-full bg-gray-200 transition dark:bg-white`}
+                    />
+                  </Switch>
+                  <p className="text-xs font-semibold text-slate-900 dark:text-zinc-50">
+                    Even Sem
+                  </p>
+                </div>
                 <button
                   onClick={() => handleFetchData(usn, dob)}
                   className="rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
                   disabled={isLoading}
                 >
                   {isLoading ? 'Loading...' : 'Login'}
+                </button>
+                {/* test login */}
+                <button
+                  onClick={() => handleFetchData('1MS21AB001', '2003-01-01')}
+                  className="rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700"
+                  disabled={isLoading}
+                >
+                  Test Login
                 </button>
 
                 {error && (
@@ -685,7 +745,7 @@ function HomePage() {
               <div className="max-w-3xl lg:mx-auto lg:w-full">
                 {studentData && (
                   <>
-                    <div className="rounded-md shadow-md dark:bg-gray-800">
+                    <div className="rounded-md shadow-md dark:bg-gray-800 my-2">
                       <div className="p-3">
                         <p className="mb-2">
                           <span className="font-semibold">Name: </span>
@@ -696,16 +756,28 @@ function HomePage() {
                           {studentData.usn}
                         </p>
                         <p className="mb-2">
-                          <span className="font-semibold">CGPA: </span>
-                          {studentData.cgpa}
+                          <span className="font-semibold">Latest CGPA: </span>
+                          {studentData.fetched_cgpa}
                         </p>
-                        <p className="mb-4">
+                        <p className="mb-1">
                           <span className="font-semibold">Last Updated: </span>
                           {studentData.lastUpdated || 'N/A'}
                         </p>
                       </div>
+                    </div>
+                    <p className="mb-4 rounded-lg border border-neutral-700 bg-black/30 px-6 py-3 text-white shadow-md backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:shadow-xl">
+                      <span className="font-medium text-gray-400">
+                        SGPA for {' '}
+                      </span>
+                      <span className="font-semibold text-white">
+                        {studentData.semester}
+                      </span>
+                      <span className="ml-2 rounded-md bg-neutral-800 px-2 py-1 text-xl font-bold text-emerald-400 shadow-sm">
+                        {studentData.fetched_sgpa}
+                      </span>
+                    </p>
 
-                      <div className="overflow-x-auto">
+                    {/* <div className="overflow-x-auto">
                         <table className="min-w-full rounded-md text-sm dark:bg-gray-700">
                           <thead className="border-b text-left">
                             <tr className="rounded-t-md">
@@ -733,8 +805,8 @@ function HomePage() {
                             ))}
                           </tbody>
                         </table>
-                      </div>
-                    </div>
+                      </div> */}
+                    {/* </div> */}
 
                     <div className="mt-2">
                       <div className="block md:hidden">
@@ -748,16 +820,28 @@ function HomePage() {
                       <GradesTable studentData={studentData} />
                     </div>
 
-                    <div className="border-t">
-                      <div ref={aiResponseRef} />
-                      <h1 className="mt-4 text-center text-lg font-bold">
-                        Roast by AI 🤖
-                      </h1>
-                      <RoastAI
-                        studentData={studentData}
-                        onRoastGenerated={handleScrollToResponse}
-                      />
+                    <div className="my-4 flex justify-center gap-4">
+                      <button
+                        onClick={setShowRoast.bind(null, (prev) => !prev)}
+                        className="rounded bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-700"
+                        disabled={isLoading}
+                      >
+                        {showRoast ? 'Hide Roast' : 'Show Roast'}
+                      </button>
                     </div>
+
+                    {showRoast && (
+                      <div className="border-t">
+                        <div ref={aiResponseRef} />
+                        <h1 className="mt-4 text-center text-lg font-bold">
+                          Roast by AI 🤖
+                        </h1>
+                        <RoastAI
+                          studentData={studentData}
+                          onRoastGenerated={handleScrollToResponse}
+                        />
+                      </div>
+                    )}
 
                     <div ref={predictionRef} className="mt-4">
                       <SGPAPrediction
@@ -766,12 +850,24 @@ function HomePage() {
                       />
                     </div>
 
-                    <div className="border-t">
-                      <h1 className="mt-4 text-center text-lg font-bold">
-                        Compliment by AI 🤖
-                      </h1>
-                      <ComplimentAI studentData={studentData} />
+                    <div className="my-4 flex justify-center gap-4">
+                      <button
+                        onClick={setShowCompliment.bind(null, (prev) => !prev)}
+                        className="rounded bg-green-600 px-4 py-2 font-semibold text-white hover:bg-green-700"
+                        disabled={isLoading}
+                      >
+                        {showCompliment ? 'Hide Compliment' : 'Show Compliment'}
+                      </button>
                     </div>
+
+                    {showCompliment && (
+                      <div className="border-t">
+                        <h1 className="mt-4 text-center text-lg font-bold">
+                          Compliment by AI 🤖
+                        </h1>
+                        <ComplimentAI studentData={studentData} />
+                      </div>
+                    )}
                   </>
                 )}
                 <div className="mt-4 flex justify-center gap-4">

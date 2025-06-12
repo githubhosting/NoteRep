@@ -76,7 +76,8 @@ const subjects = [
 const links = {
   // syllabus: '#',
   timetable: '#',
-  curriculum: '#',
+  curriculum:
+    'https://drive.google.com/drive/folders/1mfqhZj8mkOHoZqD62xhTveko05_JdG2U?usp=sharing',
 }
 
 const cseaimlsem5 = [
@@ -133,9 +134,9 @@ const cseaimlsem5 = [
     link: 'https://drive.google.com/drive/folders/1O2K4UtWoSEWa7YBGe9-NubUTjk6VtuTm?usp=sharing',
   },
   {
-    title: "R Lab",
+    title: 'R Lab',
     description: '(0:0:1) CIL57',
-    link: 'https://drive.google.com/drive/folders/1R-7a9qTsBFxSyvR2dhaWDAolq1KF7sPk?usp=sharing'
+    link: 'https://drive.google.com/drive/folders/1R-7a9qTsBFxSyvR2dhaWDAolq1KF7sPk?usp=sharing',
   },
   {
     title: 'Environment Studies',

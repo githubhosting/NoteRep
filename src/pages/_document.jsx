@@ -25,19 +25,6 @@ export default function Document() {
         <script
           dangerouslySetInnerHTML={{
             __html: `
-            src="https://www.chatbase.co/embed.min.js"
-            id="Of_Tl-oEwCkXx1-5gqIHc"
-            defer>
-            `,
-          }}
-        />
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=G-DRMB9KGYDB`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());

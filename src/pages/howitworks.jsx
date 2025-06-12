@@ -50,26 +50,34 @@ const SeeMarksCalculatorExplanation = () => {
       </p>
       <ul className="mb-6 list-disc pl-6 text-gray-800 dark:text-gray-300">
         <li>
-          <strong>Minimum Expected (Exponent = 2.2):</strong> This conservative
-          value reflects the harsh truth of finals—no matter how good your
-          internals, reaching sky high finals marks is brutally hard.
+          <strong>
+            Minimum Expected (Exponent = 0.85): relatively easy to reach high
+            SEE if internal is high.
+          </strong>{' '}
+          This conservative value reflects the harsh truth of finals—no matter
+          how good your internals, reaching sky high finals marks is brutally
+          hard.
         </li>
         <li>
-          <strong>Most Likely (Exponent = 2.0):</strong> A balanced exponent
-          that predicts where you’re truly headed.
+          <strong>Most Likely (Exponent = 1.0): moderate difficulty.</strong> A
+          balanced exponent that predicts where you’re truly headed.
         </li>
         <li>
-          <strong>Maximum Potential (Exponent = 1.5):</strong> When you leave
-          nothing to chance and put in maximum effort, this optimistic exponent
-          rewards you with a stellar predicted score.
+          <strong>
+            Maximum Potential (Exponent = 1.15): quite punishing near the top.
+          </strong>{' '}
+          When you leave nothing to chance and put in maximum effort, this
+          optimistic exponent rewards you with a stellar predicted score.
         </li>
       </ul>
       <p className="lg:text-md text-sm text-gray-800 dark:text-gray-300">
         This SEE Marks Calculator is designed to show you exactly where you
-        stand and what’s possible. Crafted with precision, driven by data, and
-        built for students who want real answers. It elegantly fuses your
-        internal performance with an exponential model. This is my
-        masterpiece—precision engineered to reveal your true potential.
+        stand and what’s possible. Put simply, my main focus is that the
+        difference between, say, 40 → 60 in SEE might be moderate, while the
+        difference between 80 → 90 or 95 → 100 should be steep. Thus you won’t
+        see an extremely high SEE predicted just because you have a 90+ internal
+        score—unless you’re in the “maxeffort” scenario or you also have great
+        attendance and an “easy-lab” factor.
       </p>
     </div>
   )
@@ -172,7 +180,7 @@ function HomePage() {
               Prepare to be Amazed by Your SGPA Prediction!
             </h1>
             <p className="mt-3 text-center text-sm text-gray-700 dark:text-gray-300">
-              Using a algorithm that I have developed, where we combine your
+              Using a algorithm that I have developed, where I combine your
               internal score (out of 50) with your final exam score (predicted)
               to generate a total out of 100. This total is then mapped to a
               grade using a predefined scale. The result? A precise prediction

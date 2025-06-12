@@ -137,7 +137,8 @@ const cseaimlsem4 = [
     description: '(0:0:1) CIL47',
     link: 'https://drive.google.com/drive/folders/1i2WfR13IsydXdUQum78TJAE7Yj41L_pP?usp=sharing',
     github: 'https://github.com/githubhosting/DAA-Lab',
-    other: "https://github.com/williamfiset/algorithms?tab=readme-ov-file#graph-theory",
+    other:
+      'https://github.com/williamfiset/algorithms?tab=readme-ov-file#graph-theory',
     extra: 'This is github repository',
     tag: '',
   },
