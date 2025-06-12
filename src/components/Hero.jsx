@@ -96,7 +96,7 @@ export function Hero() {
                     href="/exam"
                     className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                   >
-                    Exam Results 📊
+                    8th Sem Exam Results 📊
                   </ButtonLink>
                   {/* <ButtonLink
                     href="/communilink"
