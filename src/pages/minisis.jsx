@@ -383,6 +383,7 @@ function HomePage() {
   const [usn, setUsn] = useState('')
   const [dob, setDob] = useState('')
   const [enabled, setEnabled] = useState(false)
+  const [loginHistory, setLoginHistory] = useState([])
   const semurl = useMemo(
     () => (enabled ? 'newparents' : 'parentsodd'),
     [enabled]
@@ -405,11 +406,21 @@ function HomePage() {
     localStorage.removeItem('theme')
   }, [])
 
-  // Load user data from localStorage.
+  // Load user data and login history from localStorage.
   useEffect(() => {
     const storedUsn = localStorage.getItem('usn')
     const storedDob = localStorage.getItem('dob')
     const storedStudentData = localStorage.getItem('studentData')
+    const storedHistory = localStorage.getItem('loginHistory')
+    
+    if (storedHistory) {
+      try {
+        const history = JSON.parse(storedHistory)
+        setLoginHistory(history)
+      } catch (e) {
+        console.error('Error parsing login history', e)
+      }
+    }
     if (storedUsn && storedDob) {
       setUsn(storedUsn)
       setDob(storedDob)
@@ -546,6 +557,14 @@ function HomePage() {
       await updateAnalytics(currentUsn, currentDob)
       await updateDeviceAnalytics(currentUsn)
       await updateChatHistoryLoginFound(currentUsn, data.name)
+      // Add to login history
+      addToLoginHistory({
+        usn: currentUsn,
+        dob: currentDob,
+        name: data.name,
+        lastUsed: new Date().toISOString(),
+        semester: enabled ? 'even' : 'odd'
+      })
       setIsLoggedIn(true)
       setLoginCounter((prev) => prev + 1)
       toast.success(`Welcome, ${data.name}!`)
@@ -556,6 +575,29 @@ function HomePage() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  const addToLoginHistory = (newEntry) => {
+    setLoginHistory(prevHistory => {
+      const updatedHistory = [
+        newEntry,
+        ...prevHistory.filter(entry => entry.usn !== newEntry.usn).slice(0, 4)
+      ]
+      localStorage.setItem('loginHistory', JSON.stringify(updatedHistory))
+      return updatedHistory
+    })
+  }
+
+  const removeFromHistory = (usnToRemove) => {
+    setLoginHistory(prevHistory => {
+      const updatedHistory = prevHistory.filter(entry => entry.usn !== usnToRemove)
+      localStorage.setItem('loginHistory', JSON.stringify(updatedHistory))
+      return updatedHistory
+    })
+  }
+
+  const handleQuickLogin = async (historyEntry) => {
+    await handleFetchData(historyEntry.usn, historyEntry.dob)
   }
 
   const handleLogout = () => {
@@ -674,6 +716,37 @@ function HomePage() {
           </div>
           {!isLoggedIn ? (
             <section className="relative rounded-md border bg-indigo-50 px-4 py-6 shadow-md dark:border-gray-500 dark:bg-gray-900 sm:mt-6 sm:pb-2 sm:pt-2">
+              {loginHistory.length > 0 && (
+                <div className="mb-6">
+                  <h3 className="mb-4 text-center font-bold">Quick Login</h3>
+                  <div className="grid gap-3">
+                    {loginHistory.map((entry) => (
+                      <div key={entry.usn} className="flex items-center justify-between rounded-lg border bg-white p-3 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                        <div className="flex flex-col">
+                          <span className="font-medium">{entry.name}</span>
+                          <span className="text-sm text-gray-600 dark:text-gray-400">{entry.usn}</span>
+                          <span className="text-xs text-gray-500 dark:text-gray-500">Last login: {new Date(entry.lastUsed).toLocaleDateString()}</span>
+                        </div>
+                        <div className="flex gap-2">
+                          <button
+                            onClick={() => handleQuickLogin(entry)}
+                            className="rounded bg-blue-600 px-3 py-1 text-sm text-white hover:bg-blue-700"
+                          >
+                            Login
+                          </button>
+                          <button
+                            onClick={() => removeFromHistory(entry.usn)}
+                            className="rounded bg-red-600 px-3 py-1 text-sm text-white hover:bg-red-700"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700"></div>
+                </div>
+              )}
               <div className="flex w-full max-w-md flex-col gap-4">
                 <label className="flex flex-col">
                   <span className="mb-2 text-sm">USN</span>
@@ -747,14 +820,55 @@ function HomePage() {
                   <>
                     <div className="rounded-md shadow-md dark:bg-gray-800 my-2">
                       <div className="p-3">
-                        <p className="mb-2">
-                          <span className="font-semibold">Name: </span>
-                          {studentData.name}
-                        </p>
-                        <p className="mb-2">
-                          <span className="font-semibold">USN: </span>
-                          {studentData.usn}
-                        </p>
+                        <div className="flex items-center justify-between">
+                          <div>
+                            <p className="mb-2">
+                              <span className="font-semibold">Name: </span>
+                              {studentData.name}
+                            </p>
+                            <p className="mb-2">
+                              <span className="font-semibold">USN: </span>
+                              {studentData.usn}
+                            </p>
+                          </div>
+                          <div className="flex flex-col items-center">
+                            <div className="flex items-center gap-2">
+                              <p className="text-sm font-semibold">Semester:</p>
+                              <Switch
+                                checked={enabled}
+                                onChange={(newValue) => {
+                                  setEnabled(newValue);
+                                  const newEndpoint = newValue ? 'newparents' : 'parentsodd';
+                                  const apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=${newEndpoint}&usn=${usn}&dob=${dob}`;
+                                  setIsLoading(true);
+                                  fetch(apiurl)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                      setStudentData(data);
+                                      localStorage.setItem('studentData', JSON.stringify(data));
+                                      toast.success(`Switched to ${newValue ? 'Even' : 'Odd'} Semester`);
+                                    })
+                                    .catch(err => {
+                                      toast.error('Failed to fetch semester data');
+                                      console.error(err);
+                                    })
+                                    .finally(() => {
+                                      setIsLoading(false);
+                                    });
+                                }}
+                                className={`${enabled ? 'bg-blue-600' : 'bg-gray-400'} relative inline-flex h-6 w-11 items-center rounded-full`}
+                              >
+                                <span className="sr-only">Toggle semester</span>
+                                <span
+                                  className={`${enabled ? 'translate-x-6' : 'translate-x-1'} inline-block h-4 w-4 transform rounded-full bg-white transition`}
+                                />
+                              </Switch>
+                            </div>
+                            <span className="mt-1 text-xs text-gray-600 dark:text-gray-400">
+                              {enabled ? 'Even' : 'Odd'} Semester
+                            </span>
+                          </div>
+                        </div>
                         <p className="mb-2">
                           <span className="font-semibold">Latest CGPA: </span>
                           {studentData.fetched_cgpa}
