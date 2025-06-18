@@ -838,7 +838,23 @@ function HomePage() {
                                 checked={enabled}
                                 onChange={(newValue) => {
                                   setEnabled(newValue);
-                                  handleFetchData(usn, dob);
+                                  const newEndpoint = newValue ? 'newparents' : 'parentsodd';
+                                  const apiurl = `https://reconnect-msrit.vercel.app/sis?endpoint=${newEndpoint}&usn=${usn}&dob=${dob}`;
+                                  setIsLoading(true);
+                                  fetch(apiurl)
+                                    .then(response => response.json())
+                                    .then(data => {
+                                      setStudentData(data);
+                                      localStorage.setItem('studentData', JSON.stringify(data));
+                                      toast.success(`Switched to ${newValue ? 'Even' : 'Odd'} Semester`);
+                                    })
+                                    .catch(err => {
+                                      toast.error('Failed to fetch semester data');
+                                      console.error(err);
+                                    })
+                                    .finally(() => {
+                                      setIsLoading(false);
+                                    });
                                 }}
                                 className={`${enabled ? 'bg-blue-600' : 'bg-gray-400'} relative inline-flex h-6 w-11 items-center rounded-full`}
                               >
