@@ -44,26 +44,28 @@ export default function Home() {
           content="NoteRep allows you to share/access any useful links or resources that you come across while studying."
         />
       </Head>
-      <Header />
-      <main>
-        <LinksComponent />
-        <Author />
-      </main>
-      <Footer />
-      {showButton && (
-        <button onClick={scrollToTop} className="back-to-top">
-          <ArrowCircleUpIcon
-            sx={{
-              fontSize: '40px',
-              width: 40,
-              height: 40,
-              padding: 0.7,
-              borderRadius: 2,
-              background: 'linear-gradient(45deg, #002a8f, #00b5f5)',
-            }}
-          />
-        </button>
-      )}
+      <div className="flex h-screen flex-col bg-indigo-50 dark:bg-gray-900 dark:text-gray-100">
+        <Header />
+        <main>
+          <LinksComponent />
+          <Author />
+        </main>
+        <Footer />
+        {showButton && (
+          <button onClick={scrollToTop} className="back-to-top">
+            <ArrowCircleUpIcon
+              sx={{
+                fontSize: '40px',
+                width: 40,
+                height: 40,
+                padding: 0.7,
+                borderRadius: 2,
+                background: 'linear-gradient(45deg, #002a8f, #00b5f5)',
+              }}
+            />
+          </button>
+        )}
+      </div>
     </>
   )
 }
