@@ -92,32 +92,27 @@ export function Hero() {
                   >
                     Noterep Bot 🤖
                   </ButtonLink>
-                  <ButtonLink
+                  {/* <ButtonLink
                     href="/exam"
                     className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                   >
                     8th Sem Exam Results 📊
-                  </ButtonLink>
-                  {/* <ButtonLink
-                    href="/communilink"
-                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                  </ButtonLink> */}
+                  <ButtonLink
+                    href="/noterep-forum"
+                    className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"
                     target="_blank"
                   >
-                    Communi Link 🔗
-                  </ButtonLink> */}
-
-                  {/* <ButtonLink
-                  href="/noterep-forum"
-                  className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"
-                  target="_blank"
-                  >
-                  NoteRep Forum 🚀
-                  </ButtonLink> */}
+                    NoteRep Forum 🚀
+                  </ButtonLink>
                 </div>
               </div>
             </div>
             <div className="mt-10 grid gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2">
-              <ButtonLink href="/ci6" className="md:auto w-full rounded-lg py-2">
+              <ButtonLink
+                href="/ci6"
+                className="md:auto w-full rounded-lg py-2"
+              >
                 CSE (AI ML & CY) Notes (Sem 6)
               </ButtonLink>
               <ButtonLink
