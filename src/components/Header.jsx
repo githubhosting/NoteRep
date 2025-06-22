@@ -187,9 +187,6 @@ function ModeToggle() {
     </button>
   )
 }
-// mx-4 mx-auto mt-3 max-w-4xl rounded-2xl border border-white/20 bg-white/30 px-4 py-3 shadow-xl shadow-black/5
-// ring-1 ring-black/10 backdrop-blur-xl transition-transform duration-200 hover:scale-[1.01] dark:border-white/10
-// dark:bg-zinc-900/30 dark:shadow-white/5 dark:ring-white/10 sm:px-16 lg:px-12
 
 export function Header() {
   return (
