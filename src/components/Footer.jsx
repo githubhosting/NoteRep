@@ -7,7 +7,7 @@ export function Footer() {
       <Container className="flex flex-col items-center justify-between">
         {/* <Logo className="h-12 w-auto text-slate-900" /> */}
         <p className="mt-2 text-base text-slate-500 md:mt-0">
-          Website developed by{' '}
+          Platform developed by{' '}
           <a
             className="font-bold underline"
             href="https://myselfshravan.github.io"

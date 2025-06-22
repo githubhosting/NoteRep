@@ -5,7 +5,6 @@ import { Switch } from '@headlessui/react'
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
 import { Header } from '@/components/Header'
-import { HeaderMod } from '@/components/HeaderMod'
 import { Hero } from '@/components/Hero'
 import { Content } from '@/components/Content'
 import { Author } from '@/components/Author'
@@ -180,8 +179,8 @@ export default function Home() {
         />
         <meta name="author" content="Shravan Revanna" />
       </Head>
-      <div className="bg-indigo-50 dark:bg-cost5 dark:text-white">
-        <HeaderMod />
+      <div className="bg-indigo-50 dark:bg-cost5 dark:text-gray-100">
+        <Header />
         <Container>
           <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
             3rd Sem Notes Links for CSE(AI & ML)

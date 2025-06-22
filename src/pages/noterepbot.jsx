@@ -66,7 +66,7 @@ export default function NoterepBot_() {
         />
         <meta name="author" content="Shravan Revanna" />
       </Head>
-      <div className="flex h-screen flex-col">
+      <div className="flex h-screen flex-col bg-indigo-50 dark:bg-gray-900 dark:text-gray-100">
         <Header />
         <main className="flex flex-1 flex-col justify-between bg-indigo-50 dark:bg-gray-900">
           <div className="mx-2 mb-2 max-w-3xl rounded-lg bg-indigo-50 px-4 py-2 shadow dark:bg-slate-800 sm:px-6 lg:mx-auto lg:w-full lg:px-8">

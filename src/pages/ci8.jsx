@@ -90,7 +90,7 @@ export default function Home() {
         <meta name="author" content="Shravan Revanna" />
       </Head>
       <div className="bg-indigo-50 dark:bg-cost5 dark:text-white">
-        <HeaderMod />
+        <Header />
         <h2 className="pb-5 pt-8 text-center text-lg font-semibold tracking-tight text-gray-900 dark:text-white md:text-xl">
           8th Sem Notes Links for CSE(AI & ML)
         </h2>

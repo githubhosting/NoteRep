@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
+import { WhatsAppDialog } from '@/components/WhatsAppDialog'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { Newsletter } from '@/components/Newsletter'
@@ -74,30 +75,33 @@ export default function Home() {
         />
         <meta name="author" content="Shravan Revanna" />
       </Head>
-      <Header />
-      <main>
-        <Hero />
-        <CallToAction />
-        <Schedule_New />
-        <FreeChapters />
-        <SecondaryFeatures />
-        <Author />
-      </main>
-      <Footer />
-      {showButton && (
-        <button onClick={scrollToTop} className="back-to-top shadow-lg">
-          <ArrowCircleUpIcon
-            sx={{
-              fontSize: '40px',
-              width: 40,
-              height: 40,
-              padding: 0.7,
-              borderRadius: 2,
-              background: 'linear-gradient(45deg, #002a8f, #00b5f5)',
-            }}
-          />
-        </button>
-      )}
+      <div className="flex h-screen flex-col bg-indigo-50 dark:bg-gray-900 dark:text-gray-100">
+        <WhatsAppDialog />
+        <Header />
+        <main>
+          <Hero />
+          <CallToAction />
+          <Schedule_New />
+          <FreeChapters />
+          <SecondaryFeatures />
+          <Author />
+        </main>
+        <Footer />
+        {showButton && (
+          <button onClick={scrollToTop} className="back-to-top shadow-lg">
+            <ArrowCircleUpIcon
+              sx={{
+                fontSize: '40px',
+                width: 40,
+                height: 40,
+                padding: 0.7,
+                borderRadius: 2,
+                background: 'linear-gradient(45deg, #002a8f, #00b5f5)',
+              }}
+            />
+          </button>
+        )}
+      </div>
     </>
   )
 }

@@ -103,83 +103,86 @@ export default function NoterepBot_() {
         />
         <meta name="author" content="Shravan Revanna" />
       </Head>
-      <Header />
-      <main>
-        <section className="relative bg-indigo-50 py-7 pb-10 dark:bg-gray-900 sm:py-10">
-          <Container>
-            <div className="relative mx-auto max-w-7xl px-1 sm:px-6 lg:px-8">
-              <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
-                <p className="text-center tracking-wider text-black dark:text-white">
-                  Explore, Connect, Engage | Connecting All College Communities
-                  at one place.
-                </p>
-                <p className="text-center italic text-black dark:text-[#fefefe]">
-                  Feel free to approach me to add your community to this list.
-                </p>
-                <ul
-                  role="list"
-                  className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:items-center"
-                >
-                  {communilinks.map((item) => (
-                    <li key={item.id} className="relative">
-                      <div className="flex flex-col rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-md font-medium text-gray-900 dark:text-white">
-                            {item.name}
-                          </h3>
-                        </div>
-                        <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-white/80">
-                          {item.description}
-                        </p>
-                        <div>
-                          <a
-                            href={item.href}
-                            target="_blank"
-                            className="mt-3 text-sm font-medium text-blue-800 hover:text-indigo-500 dark:text-blue-600"
-                          >
-                            {String(item.href).length > 17
-                              ? String(item.href).substring(0, 35) + '...'
-                              : String(item.href)}
-                          </a>
-                        </div>
-                        {/* if subhref then show that as well */}
-                        {item.subhref && (
+      <div className="flex h-screen flex-col bg-indigo-50 dark:bg-gray-900 dark:text-gray-100">
+        <Header />
+        <main>
+          <section className="relative bg-indigo-50 py-7 pb-10 dark:bg-gray-900 sm:py-10">
+            <Container>
+              <div className="relative mx-auto max-w-7xl px-1 sm:px-6 lg:px-8">
+                <div className="mx-auto max-w-2xl lg:max-w-4xl lg:px-12">
+                  <p className="text-center tracking-wider text-black dark:text-white">
+                    Explore, Connect, Engage | Connecting All College
+                    Communities at one place.
+                  </p>
+                  <p className="text-center italic text-black dark:text-[#fefefe]">
+                    Feel free to approach me to add your community to this list.
+                  </p>
+                  <ul
+                    role="list"
+                    className="mx-auto mt-8 grid max-w-2xl grid-cols-1 gap-6 text-sm sm:mt-10 sm:grid-cols-2 md:gap-y-10 lg:max-w-none lg:items-center"
+                  >
+                    {communilinks.map((item) => (
+                      <li key={item.id} className="relative">
+                        <div className="flex flex-col rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
+                          <div className="flex items-center justify-between">
+                            <h3 className="text-md font-medium text-gray-900 dark:text-white">
+                              {item.name}
+                            </h3>
+                          </div>
+                          <p className="mt-2 line-clamp-3 text-sm text-gray-500 dark:text-white/80">
+                            {item.description}
+                          </p>
                           <div>
                             <a
-                              href={item.subhref}
+                              href={item.href}
                               target="_blank"
                               className="mt-3 text-sm font-medium text-blue-800 hover:text-indigo-500 dark:text-blue-600"
                             >
-                              {String(item.subhref).length > 17
-                                ? String(item.subhref).substring(0, 35) + '...'
-                                : String(item.subhref)}
+                              {String(item.href).length > 17
+                                ? String(item.href).substring(0, 35) + '...'
+                                : String(item.href)}
                             </a>
                           </div>
-                        )}
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                          {/* if subhref then show that as well */}
+                          {item.subhref && (
+                            <div>
+                              <a
+                                href={item.subhref}
+                                target="_blank"
+                                className="mt-3 text-sm font-medium text-blue-800 hover:text-indigo-500 dark:text-blue-600"
+                              >
+                                {String(item.subhref).length > 17
+                                  ? String(item.subhref).substring(0, 35) +
+                                    '...'
+                                  : String(item.subhref)}
+                              </a>
+                            </div>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-            </div>
-          </Container>
-        </section>
-      </main>
-      <Footer />
-      {showButton && (
-        <button onClick={scrollToTop} className="back-to-top shadow-lg">
-          <ArrowCircleUpIcon
-            sx={{
-              fontSize: '40px',
-              width: 40,
-              height: 40,
-              padding: 0.7,
-              borderRadius: 2,
-              background: 'linear-gradient(45deg, #002a8f, #00b5f5)',
-            }}
-          />
-        </button>
-      )}
+            </Container>
+          </section>
+        </main>
+        <Footer />
+        {showButton && (
+          <button onClick={scrollToTop} className="back-to-top shadow-lg">
+            <ArrowCircleUpIcon
+              sx={{
+                fontSize: '40px',
+                width: 40,
+                height: 40,
+                padding: 0.7,
+                borderRadius: 2,
+                background: 'linear-gradient(45deg, #002a8f, #00b5f5)',
+              }}
+            />
+          </button>
+        )}
+      </div>
     </>
   )
 }
