@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { useEffect, useState } from 'react'
 import { Footer } from '@/components/Footer'
+import { WhatsAppDialog } from '@/components/WhatsAppDialog'
 import { Header } from '@/components/Header'
 import { Hero } from '@/components/Hero'
 import { Newsletter } from '@/components/Newsletter'
@@ -75,6 +76,7 @@ export default function Home() {
         <meta name="author" content="Shravan Revanna" />
       </Head>
       <div className="flex h-screen flex-col bg-indigo-50 dark:bg-gray-900 dark:text-gray-100">
+        <WhatsAppDialog />
         <Header />
         <main>
           <Hero />
