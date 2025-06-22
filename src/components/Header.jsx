@@ -136,7 +136,11 @@ function NavItem_External({ href, children }) {
 function DesktopNavigation(props) {
   return (
     <nav {...props}>
-      <ul className="flex rounded-full bg-zinc-100/30 px-3 py-1.5 text-sm font-medium shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-md transition-all duration-300 hover:bg-zinc-100/40 dark:bg-zinc-900/30 dark:ring-white/10 dark:hover:bg-zinc-900/40">
+      <ul
+        className="flex rounded-full bg-zinc-100/30 px-3 py-1.5 text-sm font-medium shadow-lg 
+      shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-md transition-all duration-300 hover:bg-zinc-100/40 
+      dark:border-white/10 dark:bg-zinc-900/30 dark:shadow-white/5 dark:ring-white/10 dark:hover:bg-zinc-900/40"
+      >
         <NavItem href="minisis">Mini SIS</NavItem>
         <NavItem href="noterepbot">AI Chat Bot</NavItem>
         <NavItem href="communilink">CommuniLink</NavItem>
@@ -183,11 +187,14 @@ function ModeToggle() {
     </button>
   )
 }
+// mx-4 mx-auto mt-3 max-w-4xl rounded-2xl border border-white/20 bg-white/30 px-4 py-3 shadow-xl shadow-black/5
+// ring-1 ring-black/10 backdrop-blur-xl transition-transform duration-200 hover:scale-[1.01] dark:border-white/10
+// dark:bg-zinc-900/30 dark:shadow-white/5 dark:ring-white/10 sm:px-16 lg:px-12
 
 export function Header() {
   return (
     <header className="pointer-events-none sticky top-0 z-50 bg-transparent">
-      <div className="py-4">
+      <div className="m-3 rounded-xl px-4 py-3 shadow-black/5 ring-1 ring-black/10 dark:shadow-white/5 dark:ring-white/10 sm:px-16 lg:px-12 max-w-5xl mx-auto">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="relative flex items-center gap-4">
             <div className="flex flex-1">
