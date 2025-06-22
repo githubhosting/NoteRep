@@ -54,7 +54,7 @@ export default function NoterepBot_() {
         <meta name="theme-color" content="black-translucent" />
         <meta
           name="google-site-verification"
-          content="gYJr3zyNUad36lu_-fZx1x5r272Wt_RBB26MWCSYxPA"
+          content="9l6jBCdCjl0ZW1Q6RrsllF3h9y5WdO-_rNvO1BKgH9s"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
