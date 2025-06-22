@@ -45,7 +45,7 @@ export function WhatsAppDialog() {
 
   const handleWhatsAppClick = () => {
     // Replace with your WhatsApp number
-    window.open('https://wa.me/+919876543210?text=Hi,%20I%20am%20interested%20in%20maintaining%20NoteRep', '_blank');
+    window.open('https://wa.me/+919945332995?text=Hi,%20I%20am%20interested%20in%20maintaining%20NoteRep', '_blank');
     handleClose();
   };
 
