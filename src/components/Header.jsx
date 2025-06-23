@@ -191,7 +191,7 @@ function ModeToggle() {
 export function Header() {
   return (
     <header className="pointer-events-none sticky top-0 z-50 bg-transparent">
-      <div className="m-3 rounded-xl px-4 py-3 shadow-black/5 ring-1 ring-black/10 dark:shadow-white/5 dark:ring-white/10 sm:px-16 lg:px-12 max-w-5xl mx-auto">
+      <div className="m-3 backdrop-blur-sm rounded-xl px-4 py-3 shadow-black/5 ring-1 ring-black/10 dark:shadow-white/5 dark:ring-white/10 sm:px-16 lg:px-12 max-w-5xl mx-auto">
         <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 lg:px-8">
           <div className="relative flex items-center gap-4">
             <div className="flex flex-1">

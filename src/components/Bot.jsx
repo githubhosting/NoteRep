@@ -463,21 +463,21 @@ export function Bot({ moodstatus }) {
   return (
     <>
       <ToastContainer />
-      <section className="relative bg-indigo-50 px-2 pb-8 dark:bg-gray-900 sm:pb-2 sm:pt-2">
-        <div className="container mx-auto max-w-lg rounded-lg bg-white p-2 shadow-lg dark:bg-slate-950 sm:p-5 md:max-w-xl lg:max-w-3xl">
-          <div className="max-h-96 overflow-y-auto pt-2">
+      <section className="relative flex-1 bg-indigo-50 px-2 pb-4 pt-2 dark:bg-gray-900">
+        <div className="container mx-auto h-full max-w-lg rounded-lg bg-white p-4 shadow-lg dark:bg-slate-950 sm:p-6 md:max-w-xl lg:max-w-3xl flex flex-col">
+          <div className="flex-1 overflow-y-auto pt-2">
             {chathistory.length > 0 && (
-              <ul className="space-y-2 p-2">
+              <ul className="space-y-4 px-2">
                 {chathistory.slice(-3).map((chat, index) => (
                   <li key={index} className="flex flex-col p-2">
                     <div className="mb-2 flex justify-end">
-                      <p className="lg:text-md mb-2 inline-block rounded-xl bg-blue-200 p-2 text-sm text-gray-700 dark:bg-blue-700 dark:text-indigo-100">
+                      <p className="lg:text-md mb-2 inline-block rounded-xl bg-blue-200 px-4 py-2 text-sm text-gray-700 dark:bg-blue-700 dark:text-indigo-100">
                         {/* <strong className="">You:</strong>  */}
                         {chat.query}
                       </p>
                     </div>
                     <div className="flex justify-start">
-                      <p className="lg:text-md rounded-xl bg-slate-100 p-2 text-sm text-gray-700 dark:bg-slate-700 dark:text-indigo-100">
+                      <p className="lg:text-md rounded-xl bg-slate-100 px-4 py-2 text-sm text-gray-700 dark:bg-slate-700 dark:text-indigo-100">
                         <ChatHistoryAIResponse
                           text={chat.response}
                           responsetime={chat.responsetime}
@@ -495,14 +495,14 @@ export function Bot({ moodstatus }) {
               <AIResponse text={apiResponse} response={completeresponse} />
             </div>
           )} */}
-          <div className="mb-2 flex items-center gap-2">
+          <div className="mt-auto mb-4 flex items-center gap-2">
             <input
               type="text"
               value={userQuery}
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
               placeholder="Ask me anything..."
-              className="mt-4 flex-1 rounded-md border border-gray-400 bg-slate-100 px-2 py-1 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-200 dark:bg-slate-700 dark:text-white"
+              className="mt-4 flex-1 rounded-md border border-gray-400 bg-slate-100 px-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-200 dark:bg-slate-700 dark:text-white"
             />
             <div className="mt-4 flex justify-center">
               <button
