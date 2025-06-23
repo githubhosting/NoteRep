@@ -4,6 +4,7 @@ import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import { initializeApp } from 'firebase/app';
 import { getFirestore, doc, getDoc, setDoc, increment } from 'firebase/firestore';
 import { firebaseConfig } from '@/firebaseconfig';
+import { getOrCreateUserId } from '@/utils/user';
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
@@ -13,28 +14,45 @@ export function WhatsAppDialog() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    const incrementDialogCount = async () => {
+    const trackDialogShow = async () => {
       try {
-        const countRef = doc(db, 'metrics', 'whatsappDialog');
-        const countDoc = await getDoc(countRef);
+        const deviceId = getOrCreateUserId();
+        const lastShownKey = `whatsapp_dialog_last_shown_${deviceId}`;
+        const lastShown = localStorage.getItem(lastShownKey);
+        const now = new Date();
         
-        if (!countDoc.exists()) {
-          // Initialize counter if it doesn't exist
-          await setDoc(countRef, { count: 1 });
-        } else {
-          // Increment existing counter
-          await setDoc(countRef, { count: increment(1) }, { merge: true });
+        // Check if we should show the dialog (once per 24 hours)
+        if (lastShown) {
+          const lastShownDate = new Date(lastShown);
+          const hoursSinceLastShow = (now - lastShownDate) / (1000 * 60 * 60);
+          if (hoursSinceLastShow < 24) {
+            return;
+          }
         }
+
+        // Update metrics with both count and last timestamp in one operation
+        const metricsRef = doc(db, 'metrics', deviceId);
+        await setDoc(metricsRef, {
+          deviceId,
+          whatsappDialog: {
+            count: increment(1),
+            lastShown: now.toISOString()
+          },
+          updatedAt: now.toISOString()
+        }, { merge: true });
+
+        // Update local storage
+        localStorage.setItem(lastShownKey, now.toISOString());
+        
+        // Show the dialog
+        setOpen(true);
       } catch (error) {
-        console.error('Error updating dialog count:', error);
+        console.error('Error tracking dialog:', error);
       }
     };
 
-    // Show dialog after 2 seconds
-    const timer = setTimeout(() => {
-      setOpen(true);
-      incrementDialogCount();
-    }, 2000);
+    // Show dialog after 2 seconds if conditions are met
+    const timer = setTimeout(trackDialogShow, 2000);
 
     return () => clearTimeout(timer);
   }, []);
