@@ -21,11 +21,11 @@ export function WhatsAppDialog() {
         const lastShown = localStorage.getItem(lastShownKey);
         const now = new Date();
         
-        // Check if we should show the dialog (once per 24 hours)
+        // Check if we should show the dialog (once per 2 hours)
         if (lastShown) {
           const lastShownDate = new Date(lastShown);
           const hoursSinceLastShow = (now - lastShownDate) / (1000 * 60 * 60);
-          if (hoursSinceLastShow < 24) {
+          if (hoursSinceLastShow < 2) {
             return;
           }
         }
