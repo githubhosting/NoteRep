@@ -463,8 +463,8 @@ export function Bot({ moodstatus }) {
   return (
     <>
       <ToastContainer />
-      <section className="relative flex-1 bg-indigo-50 px-2 pb-4 pt-2 dark:bg-gray-900">
-        <div className="container mx-auto h-full max-w-lg rounded-lg bg-white p-4 shadow-lg dark:bg-slate-950 sm:p-6 md:max-w-xl lg:max-w-3xl flex flex-col">
+      <section className="relative bg-indigo-50 px-2 dark:bg-gray-900">
+        <div className="container mx-auto max-w-lg h-[600px] flex flex-col rounded-lg bg-white p-4 shadow-lg dark:bg-slate-950 sm:p-6 md:max-w-xl lg:max-w-3xl my-2">
           <div className="flex-1 overflow-y-auto pt-2">
             {chathistory.length > 0 && (
               <ul className="space-y-4 px-2">
@@ -495,7 +495,7 @@ export function Bot({ moodstatus }) {
               <AIResponse text={apiResponse} response={completeresponse} />
             </div>
           )} */}
-          <div className="mt-auto mb-4 flex items-center gap-2">
+          <div className="mb-4 mt-auto flex items-center gap-2">
             <input
               type="text"
               value={userQuery}

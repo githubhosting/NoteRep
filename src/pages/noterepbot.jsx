@@ -68,7 +68,7 @@ export default function NoterepBot_() {
       </Head>
       <div className="flex min-h-screen flex-col bg-indigo-50 dark:bg-gray-900 dark:text-gray-100">
         <Header />
-        <main className="flex flex-1 flex-col overflow-hidden bg-indigo-50 dark:bg-gray-900">
+        <main className="flex flex-1 flex-col bg-indigo-50 dark:bg-gray-900">
           <div className="mx-2 max-w-3xl rounded-lg bg-indigo-50 px-4 py-2 shadow dark:bg-slate-800 sm:px-6 lg:mx-auto lg:w-full lg:px-8">
             <h1 className="text-center text-2xl font-bold text-gray-900 dark:text-white">
               NoteRep AI Chat Bot
@@ -108,21 +108,6 @@ export default function NoterepBot_() {
           </div>
           <Bot moodstatus={enabled} />
         </main>
-        {/* <Footer /> */}
-        {showButton && (
-          <button onClick={scrollToTop} className="back-to-top shadow-lg">
-            <ArrowCircleUpIcon
-              sx={{
-                fontSize: '40px',
-                width: 40,
-                height: 40,
-                padding: 0.7,
-                borderRadius: 2,
-                background: 'linear-gradient(45deg, #002a8f, #00b5f5)',
-              }}
-            />
-          </button>
-        )}
       </div>
     </>
   )
