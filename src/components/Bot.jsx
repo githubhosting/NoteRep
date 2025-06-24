@@ -391,7 +391,7 @@ export function Bot({ moodstatus }) {
         {
           role: 'assistant',
           content:
-            "Hey there! I'm NoteRep AI Chatbot, brought to life by the brilliant Shravan. He’s the genius behind NoteRep, the awesome website where I hang out. Thanks to his technical wizardry and creativity, I'm here to assist with your queries. Shravan's done a stellar job making NoteRep the go-to place for students. Working with him has been a blast, and I'm constantly getting better because of his support. So, big shoutout to Shravan for making all this possible!",
+            "Hey there! I'm NoteRep AI Chatbot, brought to life by Shravan. He's the genius behind NoteRep, the awesome website where I hang out. Thanks to his technical wizardry and creativity, I'm here to assist with your queries. Shravan's done a stellar job making NoteRep the go-to place for students. Working with him has been a blast, and I'm constantly getting better because of his support. So, big shoutout to Shravan for making all this possible!",
         },
         // this is only active prompt context
         ...activePrompts
@@ -463,26 +463,25 @@ export function Bot({ moodstatus }) {
   return (
     <>
       <ToastContainer />
-      <section className="relative bg-indigo-50 px-2 dark:bg-gray-900">
-        <div className="container mx-auto max-w-lg h-[600px] flex flex-col rounded-lg bg-white p-4 shadow-lg dark:bg-slate-950 sm:p-6 md:max-w-xl lg:max-w-3xl my-2">
-          <div className="flex-1 overflow-y-auto pt-2">
+      <section className="relative flex-1 bg-indigo-50 px-2 py-1 dark:bg-gray-900">
+        <div className="container mx-auto flex max-w-lg flex-col rounded-lg bg-white shadow-lg dark:bg-slate-950 sm:p-2 md:max-w-xl lg:max-w-3xl">
+          <div className="h-[calc(100vh-300px)] min-h-[400px] overflow-y-auto overflow-x-hidden px-4 py-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700">
             {chathistory.length > 0 && (
-              <ul className="space-y-4 px-2">
+              <ul className="space-y-6">
                 {chathistory.slice(-3).map((chat, index) => (
-                  <li key={index} className="flex flex-col p-2">
-                    <div className="mb-2 flex justify-end">
-                      <p className="lg:text-md mb-2 inline-block rounded-xl bg-blue-200 px-4 py-2 text-sm text-gray-700 dark:bg-blue-700 dark:text-indigo-100">
-                        {/* <strong className="">You:</strong>  */}
+                  <li key={index} className="flex flex-col">
+                    <div className="mb-3 flex justify-end">
+                      <p className="max-w-[80%] rounded-2xl rounded-tr-sm bg-blue-500 px-4 py-2 text-sm text-white shadow-sm dark:bg-blue-600 md:text-base">
                         {chat.query}
                       </p>
                     </div>
                     <div className="flex justify-start">
-                      <p className="lg:text-md rounded-xl bg-slate-100 px-4 py-2 text-sm text-gray-700 dark:bg-slate-700 dark:text-indigo-100">
+                      <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-gray-100 px-4 py-3 text-sm text-gray-800 shadow-sm dark:bg-gray-800 dark:text-gray-200 md:text-base">
                         <ChatHistoryAIResponse
                           text={chat.response}
                           responsetime={chat.responsetime}
                         />
-                      </p>
+                      </div>
                     </div>
                   </li>
                 ))}
@@ -495,43 +494,28 @@ export function Bot({ moodstatus }) {
               <AIResponse text={apiResponse} response={completeresponse} />
             </div>
           )} */}
-          <div className="mb-4 mt-auto flex items-center gap-2">
+          <div className="flex items-center gap-3 border-t border-gray-200 bg-white p-3 dark:border-gray-700 dark:bg-slate-950">
             <input
               type="text"
               value={userQuery}
               onChange={handleInputChange}
               onKeyPress={handleKeyPress}
               placeholder="Ask me anything..."
-              className="mt-4 flex-1 rounded-md border border-gray-400 bg-slate-100 px-4 py-2 text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-200 dark:bg-slate-700 dark:text-white"
+              className="flex-1 rounded-full border border-gray-300 bg-gray-50 px-4 py-2.5 text-gray-800 shadow-sm focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:placeholder-gray-400"
             />
-            <div className="mt-4 flex justify-center">
-              <button
-                onClick={makeApiCall}
-                className="h-8 w-10 rounded-md border bg-blue-500 px-2 py-1 font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400 dark:border-blue-100"
-                disabled={isLoading || !userQuery.trim()}
-              >
-                {isLoading ? <LoadingBtn /> : <SendBtn />}
-              </button>
-            </div>
+            <button
+              onClick={makeApiCall}
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500 text-white shadow-sm transition-colors hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 disabled:bg-blue-400 dark:bg-blue-600 dark:hover:bg-blue-700"
+              disabled={isLoading || !userQuery.trim()}
+            >
+              {isLoading ? <LoadingBtn /> : <SendBtn />}
+            </button>
           </div>
-          <div className="mt-2 text-center text-gray-600 dark:text-gray-400">
+          <div className="bg-white py-1 text-center text-gray-600 dark:bg-slate-950 dark:text-gray-400">
             <p className="text-xs italic">
-              Note: This AI Bot can’t directly fetch notes just yet — but stay
+              Note: This AI Bot can't directly fetch notes just yet but stay
               tuned! The future might surprise us.
             </p>
-            {/* <button
-              className="rounded-md border bg-gray-800 p-1"
-              onClick={() => setUserQuery('Who are you?')}
-            >
-              Who are you?
-            </button>{' '}
-            |{' '}
-            <button
-              className="rounded-md border bg-gray-800 p-1"
-              onClick={() => setUserQuery('What is NoteRep?')}
-            >
-              What is NoteRep?
-            </button> */}
           </div>
         </div>
       </section>
