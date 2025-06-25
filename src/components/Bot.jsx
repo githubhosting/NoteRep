@@ -6,6 +6,8 @@ import { firebaseConfig } from '@/firebaseconfig'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import showdown from 'showdown'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import { getOrCreateUserId } from '@/utils/user'
 
 if (!firebase.apps.length) {
@@ -90,69 +92,90 @@ function AIResponse({ text, response }) {
   )
 }
 
-function ChatHistoryAIResponse({ text, responsetime }) {
-  const converter = new showdown.Converter()
-  let htmlContent = converter.makeHtml(text)
-  htmlContent = htmlContent.replace(
-    /<(\w+)(\s+[^>]*)? id="[^"]*"([^>]*)>/g,
-    '<$1$2$3>'
-  )
-  htmlContent = htmlContent.replace(
-    /<(\w+)(\s+[^>]*)? id='[^']*'([^>]*)>/g,
-    '<$1$2$3>'
-  )
-  htmlContent = htmlContent.replace(
-    /<h1>/g,
-    '<h1 class="text-sm md:text-md font-bold mt-10">'
-  )
-  htmlContent = htmlContent.replace(
-    /<h2>/g,
-    '<h2 class="text-sm md:text-md font-bold mt-10">'
-  )
-  htmlContent = htmlContent.replace(
-    /<h3>/g,
-    '<h3 class="text-sm md:text-md font-bold mt-10">'
-  )
-  // Add classes to <p> tags
-  htmlContent = htmlContent.replace(
-    /<p>/g,
-    '<p class="my-2 text-sm md:text-md">'
-  )
-  htmlContent = htmlContent.replace(
-    /<strong>/g,
-    '<strong class="font-bold mt-10">'
-  )
-  htmlContent = htmlContent.replace(
-    /<ul>/g,
-    '<ul class="list-disc pl-5 space-y-2 mb-4">'
-  )
-  htmlContent = htmlContent.replace(
-    /<ol>/g,
-    '<ol class="list-disc pl-5 space-y-2">'
-  )
-  htmlContent = htmlContent.replace(/<li>/g, '<li class="text-sm md:text-md">')
-  htmlContent = htmlContent.replace(
-    /<hr \/>/g,
-    '<hr class="my-8 border-t border-gray-300"/>'
-  )
-  // Add classes to <pre> tags
-  htmlContent = htmlContent.replace(
-    /<pre>/g,
-    '<pre class="p-4 bg-gray-100 rounded-lg overflow-x-auto font-mono text-sm leading-normal">'
-  )
-  htmlContent = htmlContent.replace(/<code>/g, '<code class="language-python">')
-  // Identify the urls
-  const urlRegex = /(\bhttps?:\/\/[^\s<]+[^\s`!()\[\]{};:'".,<>?«»""''])/g
-  htmlContent = htmlContent.replace(urlRegex, (url) => {
-    let displayUrl = url.replace(/^https?:\/\/(www\.)?/, '')
-    displayUrl = displayUrl.replace(/\/$/, '')
-    return `<a href="${url}" target="_blank" class="text-blue-400 underline">${displayUrl}</a>`
-  })
-
+function LLMUIResponse({ text, responsetime }) {
   return (
     <div className="text-left">
-      {/* <p className="border-t border-slate-500 font-bold"></p> */}
-      <div className="" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+      <div className="">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            h1: ({ node, ...props }) => (
+              <h1 className="text-xl font-bold md:text-xl" {...props} />
+            ),
+            h2: ({ node, ...props }) => (
+              <h2 className="text-md md:text-md font-bold" {...props} />
+            ),
+            h3: ({ node, ...props }) => (
+              <h3 className="text-sm font-bold md:text-sm" {...props} />
+            ),
+            p: ({ node, ...props }) => (
+              <p className="md:text-md my-2 text-sm" {...props} />
+            ),
+            strong: ({ node, ...props }) => (
+              <strong className="font-bold" {...props} />
+            ),
+            ul: ({ node, ...props }) => (
+              <ul className="mb-4 list-disc space-y-1 pl-5" {...props} />
+            ),
+            ol: ({ node, ...props }) => (
+              <ol className="list-disc space-y-1 pl-5" {...props} />
+            ),
+            li: ({ node, ...props }) => (
+              <li className="md:text-md text-sm" {...props} />
+            ),
+            hr: ({ node, ...props }) => (
+              <hr className="my-8 border-t border-gray-300" {...props} />
+            ),
+            pre: ({ node, ...props }) => (
+              <pre
+                className="overflow-x-auto rounded-lg bg-gray-100 p-4 font-mono text-sm leading-normal"
+                {...props}
+              />
+            ),
+            code: ({ node, inline, ...props }) =>
+              inline ? (
+                <code {...props} />
+              ) : (
+                <code className="language-python" {...props} />
+              ),
+            a: ({ node, ...props }) => (
+              <a
+                className="text-blue-400 underline"
+                target="_blank"
+                {...props}
+              />
+            ),
+            table: ({ node, ...props }) => (
+              <div className="overflow-hidden rounded-md border border-gray-300 dark:border-gray-700">
+                <table
+                  className="min-w-full table-auto text-sm"
+                  {...props}
+                />
+              </div>
+            ),
+            th: ({ node, ...props }) => (
+              <th
+                className="border border-gray-300 bg-gray-100 px-3 py-2 text-left font-semibold text-gray-700 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200"
+                {...props}
+              />
+            ),
+            td: ({ node, ...props }) => (
+              <td
+                className="border border-gray-200 px-3 py-1.5 text-gray-800 dark:border-gray-700 dark:text-gray-100"
+                {...props}
+              />
+            ),
+            blockquote: ({ node, ...props }) => (
+              <blockquote
+                className="border-l-4 border-gray-300 pl-4 italic text-gray-600 dark:border-gray-600 dark:text-gray-400"
+                {...props}
+              />
+            ),
+          }}
+        >
+          {text}
+        </ReactMarkdown>
+      </div>
       {responsetime && (
         <p className="mt-2 text-xs text-gray-600 dark:text-gray-300">
           Response time: {responsetime} seconds
@@ -465,7 +488,7 @@ export function Bot({ moodstatus }) {
       <ToastContainer />
       <section className="relative flex-1 bg-indigo-50 px-2 py-1 dark:bg-gray-900">
         <div className="container mx-auto flex max-w-lg flex-col rounded-lg bg-white shadow-lg dark:bg-slate-950 sm:p-2 md:max-w-xl lg:max-w-3xl">
-          <div className="h-[calc(100vh-300px)] min-h-[400px] overflow-y-auto overflow-x-hidden px-4 py-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700">
+          <div className="scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-700 h-[calc(100vh-350px)] min-h-[400px] overflow-y-auto overflow-x-hidden px-4 py-2">
             {chathistory.length > 0 && (
               <ul className="space-y-6">
                 {chathistory.slice(-3).map((chat, index) => (
@@ -477,7 +500,7 @@ export function Bot({ moodstatus }) {
                     </div>
                     <div className="flex justify-start">
                       <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-gray-100 px-4 py-3 text-sm text-gray-800 shadow-sm dark:bg-gray-800 dark:text-gray-200 md:text-base">
-                        <ChatHistoryAIResponse
+                        <LLMUIResponse
                           text={chat.response}
                           responsetime={chat.responsetime}
                         />
