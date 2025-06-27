@@ -46,6 +46,7 @@ function ChatProvider({ children }) {
     { id: 'general-anon', name: 'General (Anonymous)', type: 'anonymous' },
   ])
   const [initialized, setInitialized] = useState(false)
+  const [currentRoom, setCurrentRoom] = useState(rooms.find(room => room.type === 'anonymous') || null)
 
   useEffect(() => {
     // Initialize chat rooms in the database if not already done
@@ -73,8 +74,7 @@ function ChatProvider({ children }) {
       }, { onlyOnce: true })
     }
     initChatRooms()
-  }, [initialized])
-  const [currentRoom, setCurrentRoom] = useState(null)
+  }, [initialized, rooms])
   const [messages, setMessages] = useState([])
   const [activeUsers, setActiveUsers] = useState([])
   const [activePageUsers, setActivePageUsers] = useState(0)
@@ -118,7 +118,7 @@ function ChatProvider({ children }) {
 
     // Track presence in the current room
     const userId = user ? user.uid : deviceId
-    const userName = user ? user.displayName : `Anonymous-${deviceId.slice(0, 5)}`
+    const userName = user ? user.displayName : (deviceId ? `Anonymous-${deviceId.slice(0, 5)}` : 'Anonymous')
     const roomPresenceRef = ref(db, `chatRooms/${currentRoom.id}/activeUsers/${userId}`)
     set(roomPresenceRef, { name: userName, timestamp: serverTimestamp() })
     onDisconnect(roomPresenceRef).remove()
@@ -148,7 +148,7 @@ function ChatProvider({ children }) {
     if (!currentRoom || !text) return
 
     const userId = user ? user.uid : deviceId
-    const userName = user ? user.displayName : `Anonymous-${deviceId.slice(0, 5)}`
+    const userName = user ? user.displayName : (deviceId ? `Anonymous-${deviceId.slice(0, 5)}` : 'Anonymous')
     const messagesRef = ref(db, `chatRooms/${currentRoom.id}/messages`)
     const newMessageRef = push(messagesRef)
     set(newMessageRef, {
@@ -187,17 +187,19 @@ function ChatRoomList({ rooms, currentRoom, setCurrentRoom, activePageUsers }) {
   }, [])
 
   return (
-    <div className="w-full md:w-1/4 border-b md:border-b-0 md:border-r border-gray-300 p-4 dark:border-gray-700">
-      <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">Chat Rooms</h2>
-      <p className="mb-4 text-sm text-gray-500 dark:text-gray-400">
+    <div className="w-full p-4 border-b border-gray-300 dark:border-gray-700">
+      <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">Chat Rooms</h2>
+      <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
         Active users on page: {activePageUsers}
       </p>
-      <ul className="space-y-2">
+      <div className="flex flex-wrap gap-2">
         {rooms.map((room) => (
-          <li
+          <button
             key={room.id}
-            className={`cursor-pointer rounded p-2 flex items-center justify-between ${
-              currentRoom?.id === room.id ? 'bg-blue-100 dark:bg-blue-900' : 'hover:bg-gray-100 dark:hover:bg-gray-800'
+            className={`flex items-center justify-between px-4 py-2 rounded-lg min-w-[150px] ${
+              currentRoom?.id === room.id 
+                ? 'bg-blue-100 dark:bg-blue-900 border-2 border-blue-500 dark:border-blue-400' 
+                : 'hover:bg-gray-100 dark:hover:bg-gray-800 border border-gray-300 dark:border-gray-700'
             }`}
             onClick={() => {
               if (room.type === 'authenticated' && !user) {
@@ -207,15 +209,17 @@ function ChatRoomList({ rooms, currentRoom, setCurrentRoom, activePageUsers }) {
               setCurrentRoom(room)
             }}
           >
-            <span className="text-gray-900 dark:text-white">{room.name}</span>
+            <span className="text-gray-900 dark:text-white">{room.name.split(' ')[0]}</span>
             <span className={`text-xs px-2 py-1 rounded-full ${
-              room.type === 'authenticated' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
+              room.type === 'authenticated' 
+                ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300' 
+                : 'bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-300'
             }`}>
-              {room.type === 'authenticated' ? 'Authenticated (Coming Soon)' : 'Anonymous'}
+              {room.type === 'authenticated' ? 'Auth (Soon)' : 'Anon'}
             </span>
-          </li>
+          </button>
         ))}
-      </ul>
+      </div>
     </div>
   )
 }
@@ -237,14 +241,14 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
 
   if (!currentRoom) {
     return (
-      <div className="flex w-full md:w-3/4 flex-col items-center justify-center p-4">
+      <div className="flex w-full flex-col items-center justify-center p-4 h-[60vh]">
         <p className="text-gray-500 dark:text-gray-400">Select a room to start chatting</p>
       </div>
     )
   }
 
   return (
-    <div className="flex w-full md:w-3/4 flex-col p-4 h-[calc(100vh-200px)] md:h-auto">
+    <div className="flex w-full flex-col p-4 h-[60vh]">
       <h2 className="mb-4 text-xl font-bold text-gray-900 dark:text-white">
         {currentRoom.name}
       </h2>
@@ -351,7 +355,7 @@ export default function Chat() {
                   setCurrentRoom,
                   sendMessage,
                 }) => (
-                  <div className="flex flex-col md:flex-row rounded-lg bg-white shadow-lg dark:bg-gray-800 min-h-[70vh]">
+                  <div className="flex flex-col rounded-lg bg-white shadow-lg dark:bg-gray-800 h-[75vh]">
                     <ChatRoomList
                       rooms={rooms}
                       currentRoom={currentRoom}
