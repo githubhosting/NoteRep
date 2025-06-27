@@ -43,14 +43,6 @@
             "description": "Return to homepage"
         }
     ],
-    "screenshots": [
-        {
-            "src": "/screenshots/home.png",
-            "type": "image/png",
-            "sizes": "1080x1920",
-            "form_factor": "narrow"
-        }
-    ],
     "prefer_related_applications": false,
     "launch_handler": {
         "client_mode": ["focus-existing", "auto"]
