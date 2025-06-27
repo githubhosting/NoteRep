@@ -12,13 +12,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # fetch full history to avoid invalid revision range error
 
       - name: Check commit messages for #deploy
         id: check_deploy
         run: |
           echo "Checking commits for #deploy keyword..."
-          # Get commit messages for all commits in this push
-          # (for push events, ${{ github.event.before }} is previous commit, ${{ github.sha }} is latest)
           commits=$(git log --format=%B ${{ github.event.before }}..${{ github.sha }})
           echo "Commit messages in push:"
           echo "$commits"
