@@ -25,7 +25,7 @@ export function WhatsAppDialog() {
         if (lastShown) {
           const lastShownDate = new Date(lastShown);
           const hoursSinceLastShow = (now - lastShownDate) / (1000 * 60 * 60);
-          if (hoursSinceLastShow < 2) {
+          if (hoursSinceLastShow < 24) {
             return;
           }
         }
@@ -52,7 +52,7 @@ export function WhatsAppDialog() {
     };
 
     // Show dialog after 2 seconds if conditions are met
-    const timer = setTimeout(trackDialogShow, 2000);
+    const timer = setTimeout(trackDialogShow, 1000);
 
     return () => clearTimeout(timer);
   }, []);
