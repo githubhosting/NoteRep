@@ -16,6 +16,7 @@ import { getFirestore, getDoc, doc, setDoc } from 'firebase/firestore/lite'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { getOrCreateUserId, generateRandomUsername } from '@/utils/user'
+import { Mail, Phone, Globe } from 'lucide-react'
 
 const googleProvider = new GoogleAuthProvider()
 
@@ -52,6 +53,16 @@ function Login({ onLogin, setUser }) {
         setIsLoggedIn(false)
       }
     })
+
+    // Check for theme preference
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
 
     return () => unsubscribe()
   }, [])
@@ -189,135 +200,190 @@ function Login({ onLogin, setUser }) {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-blue-50">
-      <div className="container mx-auto max-w-md p-4">
-        <h2 className="mb-6 text-center text-2xl font-bold">
-          Login to NoteRep Chat
-        </h2>
-        <div className="rounded-lg bg-white p-6 shadow-md dark:bg-gray-800">
-          <div className="mb-4 flex justify-center">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 sm:px-6 lg:px-8">
+      <div className="w-full max-w-md space-y-8">
+        <div className="text-center">
+          <img src="/icon-192x192.png" alt="NoteRep Logo" className="mx-auto h-16 w-auto mb-4" />
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Welcome to NoteRep</h1>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">Sign in or create an account</p>
+        </div>
+        <div className="mt-8 bg-white dark:bg-gray-800 shadow-xl rounded-lg p-6">
+          <div className="flex justify-center mb-6">
             <button
-              className={`mx-1 rounded px-4 py-2 ${
+              className={`mx-2 px-4 py-2 rounded-md font-medium transition-colors flex items-center ${
                 loginMethod === 'google'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 dark:text-gray-300'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
               onClick={() => setLoginMethod('google')}
             >
+              <Globe className="h-5 w-5 mr-2" />
               Google
             </button>
             <button
-              className={`mx-1 rounded px-4 py-2 ${
+              className={`mx-2 px-4 py-2 rounded-md font-medium transition-colors flex items-center ${
                 loginMethod === 'email'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 dark:text-gray-300'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
               onClick={() => setLoginMethod('email')}
             >
+              <Mail className="h-5 w-5 mr-2" />
               Email
             </button>
             <button
-              className={`mx-1 rounded px-4 py-2 ${
+              className={`mx-2 px-4 py-2 rounded-md font-medium transition-colors flex items-center ${
                 loginMethod === 'phone'
-                  ? 'bg-blue-500 text-white'
-                  : 'bg-gray-200 dark:bg-gray-700 dark:text-gray-300'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
               }`}
               onClick={() => setLoginMethod('phone')}
             >
+              <Phone className="h-5 w-5 mr-2" />
               Phone
             </button>
           </div>
 
           {loginMethod === 'google' && (
             <button
-              className="mt-4 w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600"
+              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
               onClick={handleGoogleLogin}
               disabled={loading}
             >
-              {loading ? 'Loading...' : 'Login with Google'}
+              {loading ? 'Loading...' : 'Sign in with Google'}
             </button>
           )}
 
           {loginMethod === 'email' && (
-            <div className="mt-4">
-              <input
-                type="email"
-                className="mb-3 w-full rounded border border-gray-300 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={loading}
-              />
-              <input
-                type="password"
-                className="mb-3 w-full rounded border border-gray-300 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                disabled={loading}
-              />
-              <button
-                className="w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600"
-                onClick={handleEmailLogin}
-                disabled={loading}
-              >
-                {loading
-                  ? 'Loading...'
-                  : isSigningUp
-                  ? 'Sign Up with Email'
-                  : 'Login with Email'}
-              </button>
-              <p className="mt-2 text-center text-sm">
-                {isSigningUp
-                  ? 'Already have an account?'
-                  : 'Don’t have an account?'}{' '}
+            <form className="mt-6 space-y-4" onSubmit={(e) => { e.preventDefault(); handleEmailLogin(); }}>
+              <div className="rounded-md shadow-sm -space-y-px">
+                <div>
+                  <label htmlFor="email-address" className="sr-only">Email address</label>
+                  <input
+                    id="email-address"
+                    name="email"
+                    type="email"
+                    autoComplete="email"
+                    required
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                    placeholder="Email address"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    disabled={loading}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="password" className="sr-only">Password</label>
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    autoComplete="current-password"
+                    required
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={loading}
+                  />
+                </div>
+              </div>
+
+              {!isSigningUp && (
+                <div className="text-sm text-right">
+                  <button
+                    type="button"
+                    className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+                    onClick={() => toast.info('Forgot Password functionality will be implemented soon.')}
+                    disabled={loading}
+                  >
+                    Forgot your password?
+                  </button>
+                </div>
+              )}
+
+              <div>
                 <button
-                  className="text-blue-500 hover:underline"
+                  type="submit"
+                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
+                  disabled={loading}
+                >
+                  {loading
+                    ? 'Loading...'
+                    : isSigningUp
+                    ? 'Sign Up with Email'
+                    : 'Sign In with Email'}
+                </button>
+              </div>
+
+              <div className="text-sm text-center">
+                <span className="text-gray-600 dark:text-gray-400">
+                  {isSigningUp ? 'Already have an account?' : 'Don’t have an account?'}
+                </span>
+                <button
+                  type="button"
+                  className="ml-1 text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
                   onClick={toggleSignUp}
                   disabled={loading}
                 >
-                  {isSigningUp ? 'Login' : 'Sign Up'}
+                  {isSigningUp ? 'Sign In' : 'Sign Up'}
                 </button>
-              </p>
-            </div>
+              </div>
+            </form>
           )}
 
           {loginMethod === 'phone' && (
-            <div className="mt-4">
-              <input
-                type="tel"
-                className="mb-3 w-full rounded border border-gray-300 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                placeholder="Phone Number (e.g., +1234567890)"
-                value={phone}
-                onChange={(e) => setPhone(e.target.value)}
-                disabled={loading || confirmationResult}
-              />
-              {confirmationResult && (
-                <input
-                  type="text"
-                  className="mb-3 w-full rounded border border-gray-300 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
-                  placeholder="Enter OTP"
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
+            <form className="mt-6 space-y-4" onSubmit={(e) => { e.preventDefault(); handlePhoneLogin(); }}>
+              <div className="rounded-md shadow-sm">
+                <div>
+                  <label htmlFor="phone-number" className="sr-only">Phone Number</label>
+                  <input
+                    id="phone-number"
+                    name="phone"
+                    type="tel"
+                    required
+                    className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                    placeholder="Phone Number (e.g., +1234567890)"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    disabled={loading || confirmationResult}
+                  />
+                </div>
+                {confirmationResult && (
+                  <div className="mt-4">
+                    <label htmlFor="otp-code" className="sr-only">OTP Code</label>
+                    <input
+                      id="otp-code"
+                      name="otp"
+                      type="text"
+                      required
+                      className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                      placeholder="Enter OTP"
+                      value={otp}
+                      onChange={(e) => setOtp(e.target.value)}
+                      disabled={loading}
+                    />
+                  </div>
+                )}
+              </div>
+              <div id="recaptcha-container" className="flex justify-center"></div>
+              <div>
+                <button
+                  type="submit"
+                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
                   disabled={loading}
-                />
-              )}
-              <div id="recaptcha-container"></div>
-              <button
-                className="w-full rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600"
-                onClick={handlePhoneLogin}
-                disabled={loading}
-              >
-                {loading
-                  ? 'Loading...'
-                  : confirmationResult
-                  ? 'Verify OTP'
-                  : 'Send OTP'}
-              </button>
-            </div>
+                >
+                  {loading
+                    ? 'Loading...'
+                    : confirmationResult
+                    ? 'Verify OTP'
+                    : 'Send OTP'}
+                </button>
+              </div>
+            </form>
           )}
 
-          {error && <p className="mt-4 text-center text-red-500">{error}</p>}
+          {error && <div className="mt-4 text-center text-sm text-red-600 dark:text-red-400">{error}</div>}
         </div>
         <ToastContainer
           position="top-right"
