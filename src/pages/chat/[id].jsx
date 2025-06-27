@@ -99,7 +99,7 @@ function ChatProvider({ children, roomId }) {
     const userName = user
       ? user.displayName
       : deviceId
-      ? `Anonymous-${deviceId.slice(0, 5)}`
+      ? `Anon-${deviceId.slice(0, 5)}`
       : 'Anonymous'
     const roomPresenceRef = ref(
       db,
@@ -138,7 +138,7 @@ function ChatProvider({ children, roomId }) {
     const userName = user
       ? user.displayName
       : deviceId
-      ? `Anonymous-${deviceId.slice(0, 5)}`
+      ? `Anon-${deviceId.slice(0, 5)}`
       : 'Anonymous'
     const messagesRef = ref(db, `chatRooms/${currentRoom.id}/messages`)
     const newMessageRef = push(messagesRef)
