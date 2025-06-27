@@ -174,9 +174,9 @@ function ModeToggle() {
   )
 }
 
-function CompactHeader() {
+export function CompactHeader() {
   return (
-    <header className="pointer-events-none sticky top-0 z-50 bg-transparent">
+    <header className="pointer-events-none sticky top-0 z-50 bg-transparent px-2">
       <div className="m-2 backdrop-blur-sm rounded-xl px-3 py-2 shadow-black/5 ring-1 ring-black/10 dark:shadow-white/5 dark:ring-white/10 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="mx-auto w-full max-w-6xl">
           <div className="relative flex items-center gap-2">

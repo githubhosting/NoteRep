@@ -6,10 +6,7 @@ import { Button } from '@/components/Button'
 import { getOrCreateUserId } from '@/utils/user'
 import firebase from 'firebase/compat/app'
 import { firebaseConfig } from '@/firebaseconfig'
-import {
-  getAuth,
-  onAuthStateChanged,
-} from 'firebase/auth'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 import {
   getDatabase,
   ref,
@@ -19,6 +16,7 @@ import {
   onDisconnect,
   serverTimestamp,
 } from 'firebase/database'
+import { CompactHeader } from './noterepbot'
 
 // Initialize Firebase if not already done
 if (!firebase.apps.length) {
@@ -42,36 +40,49 @@ const ChatContext = createContext({
 
 function ChatProvider({ children }) {
   const [rooms, setRooms] = useState([
-    { id: 'general-auth', name: 'General (Authenticated)', type: 'authenticated' },
+    {
+      id: 'general-auth',
+      name: 'General (Authenticated)',
+      type: 'authenticated',
+    },
     { id: 'general-anon', name: 'General (Anonymous)', type: 'anonymous' },
   ])
   const [initialized, setInitialized] = useState(false)
-  const [currentRoom, setCurrentRoom] = useState(rooms.find(room => room.type === 'anonymous') || null)
+  const [currentRoom, setCurrentRoom] = useState(
+    rooms.find((room) => room.type === 'anonymous') || null
+  )
 
   useEffect(() => {
     // Initialize chat rooms in the database if not already done
     const initChatRooms = async () => {
       const chatRoomsRef = ref(db, 'chatRooms')
-      onValue(chatRoomsRef, async (snapshot) => {
-        if (!snapshot.exists() && !initialized) {
-          setInitialized(true)
-          try {
-            for (const room of rooms) {
-              const roomRef = ref(db, `chatRooms/${room.id}`)
-              await set(roomRef, {
-                name: room.name,
-                type: room.type,
-                description: room.type === 'authenticated' ? 'General chat for authenticated users' : 'General chat for everyone',
-                createdAt: Date.now()
-              })
-              console.log(`Initialized room: ${room.name}`)
+      onValue(
+        chatRoomsRef,
+        async (snapshot) => {
+          if (!snapshot.exists() && !initialized) {
+            setInitialized(true)
+            try {
+              for (const room of rooms) {
+                const roomRef = ref(db, `chatRooms/${room.id}`)
+                await set(roomRef, {
+                  name: room.name,
+                  type: room.type,
+                  description:
+                    room.type === 'authenticated'
+                      ? 'General chat for authenticated users'
+                      : 'General chat for everyone',
+                  createdAt: Date.now(),
+                })
+                console.log(`Initialized room: ${room.name}`)
+              }
+              console.log('All chat rooms initialized successfully.')
+            } catch (error) {
+              console.error('Error initializing chat rooms:', error)
             }
-            console.log('All chat rooms initialized successfully.')
-          } catch (error) {
-            console.error('Error initializing chat rooms:', error)
           }
-        }
-      }, { onlyOnce: true })
+        },
+        { onlyOnce: true }
+      )
     }
     initChatRooms()
   }, [initialized, rooms])
@@ -118,8 +129,15 @@ function ChatProvider({ children }) {
 
     // Track presence in the current room
     const userId = user ? user.uid : deviceId
-    const userName = user ? user.displayName : (deviceId ? `Anonymous-${deviceId.slice(0, 5)}` : 'Anonymous')
-    const roomPresenceRef = ref(db, `chatRooms/${currentRoom.id}/activeUsers/${userId}`)
+    const userName = user
+      ? user.displayName
+      : deviceId
+      ? `Anonymous-${deviceId.slice(0, 5)}`
+      : 'Anonymous'
+    const roomPresenceRef = ref(
+      db,
+      `chatRooms/${currentRoom.id}/activeUsers/${userId}`
+    )
     set(roomPresenceRef, { name: userName, timestamp: serverTimestamp() })
     onDisconnect(roomPresenceRef).remove()
 
@@ -148,7 +166,11 @@ function ChatProvider({ children }) {
     if (!currentRoom || !text) return
 
     const userId = user ? user.uid : deviceId
-    const userName = user ? user.displayName : (deviceId ? `Anonymous-${deviceId.slice(0, 5)}` : 'Anonymous')
+    const userName = user
+      ? user.displayName
+      : deviceId
+      ? `Anonymous-${deviceId.slice(0, 5)}`
+      : 'Anonymous'
     const messagesRef = ref(db, `chatRooms/${currentRoom.id}/messages`)
     const newMessageRef = push(messagesRef)
     set(newMessageRef, {
@@ -187,19 +209,23 @@ function ChatRoomList({ rooms, currentRoom, setCurrentRoom, activePageUsers }) {
   }, [])
 
   return (
-    <div className="w-full p-3 border-b border-gray-300 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-indigo-900">
-      <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">Chat Rooms</h2>
-      <p className="mb-2 text-xs text-gray-600 dark:text-gray-300">
-        Active users on page: <span className="font-semibold">{activePageUsers}</span>
-      </p>
-      <div className="flex flex-wrap gap-2">
+    <div className="w-full border-b border-gray-300 bg-gradient-to-r from-blue-50 to-indigo-50 p-3 dark:border-gray-700 dark:from-blue-900 dark:to-indigo-900">
+      <div className="mb-2 flex items-center justify-between">
+        <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+          Chat Rooms
+        </h2>
+        <p className="text-xs text-gray-600 dark:text-gray-300">
+          Active: <span className="font-semibold">{activePageUsers}</span>
+        </p>
+      </div>
+      <div className="flex gap-3">
         {rooms.map((room) => (
           <button
             key={room.id}
-            className={`flex items-center justify-between px-4 py-2 rounded-xl min-w-[140px] shadow-md transition-all duration-200 ${
-              currentRoom?.id === room.id 
-                ? 'bg-blue-500 dark:bg-blue-700 text-white border-2 border-blue-400 dark:border-blue-600 transform scale-105' 
-                : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-800'
+            className={`flex min-w-[120px] items-center justify-center rounded-lg px-4 py-2 shadow transition-all duration-200 ${
+              currentRoom?.id === room.id
+                ? 'border border-blue-400 bg-blue-500 text-white dark:border-blue-600 dark:bg-blue-700'
+                : 'border border-gray-200 bg-white text-gray-900 hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600'
             }`}
             onClick={() => {
               if (room.type === 'authenticated' && !user) {
@@ -209,13 +235,8 @@ function ChatRoomList({ rooms, currentRoom, setCurrentRoom, activePageUsers }) {
               setCurrentRoom(room)
             }}
           >
-            <span className="font-medium">{room.name.split(' ')[0]}</span>
-            <span className={`text-xs px-3 py-1 rounded-full ${
-              room.type === 'authenticated' 
-                ? 'bg-green-100 text-green-800 dark:bg-green-800 dark:text-green-200' 
-                : 'bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200'
-            } ${currentRoom?.id === room.id ? 'bg-opacity-20' : ''}`}>
-              {room.type === 'authenticated' ? 'Auth (Soon)' : 'Anon'}
+            <span className="text-sm font-medium">
+              {room.name.split(' ')[1].replace('(', '').replace(')', '')}
             </span>
           </button>
         ))}
@@ -241,18 +262,20 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
 
   if (!currentRoom) {
     return (
-      <div className="flex w-full flex-col items-center justify-center p-6 flex-1">
-        <p className="text-gray-500 dark:text-gray-400 text-lg">Select a room to start chatting</p>
+      <div className="flex w-full flex-1 flex-col items-center justify-center p-6">
+        <p className="text-lg text-gray-500 dark:text-gray-400">
+          Select a room to start chatting
+        </p>
       </div>
     )
   }
 
   return (
-    <div className="flex w-full flex-col p-6 flex-1 min-h-0">
-      <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+    <div className="flex min-h-0 w-full flex-1 flex-col p-6">
+      {/* <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
         {currentRoom.name}
-      </h2>
-      <div className="mb-6 flex-1 overflow-y-auto rounded-xl border border-gray-200 p-4 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 shadow-inner">
+      </h2> */}
+      <div className="mb-6 flex-1 overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 p-4 shadow-inner dark:border-gray-700 dark:bg-gray-800">
         {messages.length === 0 ? (
           <div className="flex h-full items-center justify-center text-gray-500 dark:text-gray-400">
             No messages yet. Start the conversation!
@@ -260,11 +283,15 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
         ) : (
           <>
             {messages.map((msg, index) => (
-              <div key={index} className="mb-3 p-3 rounded-lg bg-white dark:bg-gray-700 shadow-sm hover:shadow-md transition-shadow">
-                <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">
-                  {msg.userName} - {new Date(msg.timestamp).toLocaleTimeString()}
+              <div
+                key={index}
+                className="mb-3 rounded-lg bg-white p-3 shadow-sm transition-shadow hover:shadow-md dark:bg-gray-700"
+              >
+                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                  {msg.userName} -{' '}
+                  {new Date(msg.timestamp).toLocaleTimeString()}
                 </span>
-                <p className="text-gray-900 dark:text-white mt-1">{msg.text}</p>
+                <p className="mt-1 text-gray-900 dark:text-white">{msg.text}</p>
               </div>
             ))}
             <div ref={messagesEndRef} />
@@ -274,27 +301,34 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
       <div className="flex gap-3">
         <input
           type="text"
-          className="flex-1 rounded-xl border border-gray-300 p-3 dark:border-gray-700 dark:bg-gray-800 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 focus:border-transparent"
+          className="flex-1 rounded-xl border border-gray-300 p-3 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 bg-indigo-50 dark:bg-gray-800 dark:text-white dark:focus:ring-blue-400"
           placeholder="Type a message..."
           value={messageText}
           onChange={(e) => setMessageText(e.target.value)}
           onKeyPress={(e) => e.key === 'Enter' && handleSendMessage()}
         />
-        <Button 
+        <Button
           onClick={handleSendMessage}
-          className="px-6 py-3 rounded-xl bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600 text-white font-medium transition-colors"
+          className="rounded-xl bg-blue-500 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600"
         >
           Send
         </Button>
       </div>
-      <div className="mt-6">
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Active in Room:</h3>
-        <div className="flex flex-wrap gap-3 mt-3">
+      <div className="mt-4 sm:mt-6">
+        <h3 className="text-base font-medium text-gray-900 dark:text-white sm:text-lg">
+          Active Users:
+        </h3>
+        <div className="mt-2 flex flex-wrap gap-2 sm:gap-3">
           {activeUsers.length === 0 ? (
-            <p className="text-gray-500 dark:text-gray-400">No active users in this room.</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">
+              No active users.
+            </p>
           ) : (
             activeUsers.map((user, index) => (
-              <div key={index} className="px-4 py-2 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-300 rounded-full text-sm font-medium shadow">
+              <div
+                key={index}
+                className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800 shadow-sm dark:bg-blue-900 dark:text-blue-300 sm:text-sm"
+              >
                 {user.name}
               </div>
             ))
@@ -351,15 +385,18 @@ export default function Chat() {
         />
         <meta name="theme-color" content="black-translucent" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="keywords" content="noterep, chat, student chat, real-time chat" />
+        <meta
+          name="keywords"
+          content="noterep, chat, student chat, real-time chat"
+        />
         <meta name="author" content="Shravan Revanna" />
       </Head>
-      <Header />
-      <main className="min-h-screen bg-indigo-50 dark:bg-gray-900 overflow-hidden">
-        <section className="py-7 sm:py-10 h-screen flex flex-col">
-          <div className="container mx-auto p-4 flex-1 flex flex-col">
+      <main className="flex min-h-screen flex-col bg-indigo-50 dark:bg-gray-900">
+        <CompactHeader />
+        <section className="flex h-screen flex-col py-7 sm:py-10">
+          <div className="container mx-auto flex flex-1 flex-col p-4">
             <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
-              NoteRep Chat
+              NoteRep Live Chat
             </h1>
             <ChatProvider>
               <ChatContext.Consumer>
@@ -372,7 +409,7 @@ export default function Chat() {
                   setCurrentRoom,
                   sendMessage,
                 }) => (
-                  <div className="flex flex-col rounded-2xl bg-white shadow-2xl dark:bg-gray-800 h-[85vh] overflow-hidden">
+                  <div className="flex h-[85vh] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-800">
                     <ChatRoomList
                       rooms={rooms}
                       currentRoom={currentRoom}
@@ -392,11 +429,6 @@ export default function Chat() {
           </div>
         </section>
       </main>
-      {showButton && (
-        <button onClick={scrollToTop} className="back-to-top shadow-lg">
-          <span>↑</span>
-        </button>
-      )}
     </>
   )
 }
