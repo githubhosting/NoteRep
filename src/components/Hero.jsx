@@ -79,24 +79,18 @@ export function Hero() {
                     Introducing the new feature!
                   </span>
                 </AnimatedGradientText>
-                <div className="flex flex-col items-center gap-6 pt-6 md:flex-row">
+                <div className="grid grid-cols-1 gap-6 pt-6 md:grid-cols-3">
                   <ButtonLink
                     href="/minisis"
                     className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                   >
-                    Student Portal (Calculla 2.0)
+                    Mini SIS (Calculla 2.0)
                   </ButtonLink>
                   <ButtonLink
                     href="/noterepbot"
                     className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
                   >
                     Noterep Bot 🤖
-                  </ButtonLink>
-                  <ButtonLink
-                    href="/chat"
-                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                  >
-                    Live Chat 💬
                   </ButtonLink>
                   {/* <ButtonLink
                     href="/exam"
@@ -110,6 +104,12 @@ export function Hero() {
                     target="_blank"
                   >
                     NoteRep Forum 🚀
+                  </ButtonLink>
+                  <ButtonLink
+                    href="/chat"
+                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                  >
+                    Live Chat 💬
                   </ButtonLink>
                 </div>
               </div>
