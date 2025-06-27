@@ -62,7 +62,7 @@ function Login({ onLogin, setUser }) {
     return () => unsubscribe()
   }, [])
 
-  const handleUserData = async (user) => {
+    const handleUserData = async (user) => {
     const deviceId = getOrCreateUserId()
     const userRef = doc(db, 'sisusers', user.uid)
     const userDoc = await getDoc(userRef)
@@ -71,15 +71,24 @@ function Login({ onLogin, setUser }) {
       const userData = userDoc.data()
       console.log('Existing user data:', userData)
     } else {
+      let randomUsername = localStorage.getItem('randomUsername');
+      if (!randomUsername) {
+        try {
+          randomUsername = typeof getOrCreateRandomUsername === 'function' ? getOrCreateRandomUsername() : generateRandomUsername();
+        } catch (e) {
+          console.error('Error getting random username:', e);
+          randomUsername = generateRandomUsername();
+        }
+      }
       await setDoc(userRef, {
         id: user.uid,
         displayName: user.displayName || 'User',
         email: user.email || '',
         phoneNumber: user.phoneNumber || '',
         deviceId: deviceId,
+        trackingUsername: randomUsername,
         createdAt: new Date().toISOString(),
-        isAdmin: false, // Default to non-admin
-        anonymousName: user.displayName || generateRandomUsername(), // Store anonymous name separately if needed
+        isAdmin: false // Default to non-admin
       })
       console.log('New user document written with ID:', user.uid)
     }

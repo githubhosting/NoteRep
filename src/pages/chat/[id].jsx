@@ -16,6 +16,7 @@ import {
   serverTimestamp,
 } from 'firebase/database'
 import { CompactHeader } from '../noterepbot'
+import { Edit } from 'lucide-react'
 
 // Initialize Firebase if not already done
 if (!firebase.apps.length) {
@@ -94,19 +95,18 @@ function ChatProvider({ children, roomId }) {
   useEffect(() => {
     if (!currentRoom) return
 
-    // Track presence in the current room
-    const userId = user ? user.uid : deviceId
-    const userName = user
-      ? user.displayName
-      : deviceId
-      ? getOrCreateRandomUsername()
-      : 'Anonymous'
-    const roomPresenceRef = ref(
-      db,
-      `chatRooms/${currentRoom.id}/activeUsers/${userId}`
-    )
-    set(roomPresenceRef, { name: userName, timestamp: serverTimestamp() })
-    onDisconnect(roomPresenceRef).remove()
+    // Track presence in the current room only for authenticated users
+    let roomPresenceRef = null;
+    if (user) {
+      const userId = user.uid
+      const userName = getOrCreateRandomUsername()
+      roomPresenceRef = ref(
+        db,
+        `chatRooms/${currentRoom.id}/activeUsers/${userId}`
+      )
+      set(roomPresenceRef, { name: userName, timestamp: serverTimestamp() })
+      onDisconnect(roomPresenceRef).remove()
+    }
 
     // Listen for active users in the room
     const activeUsersRef = ref(db, `chatRooms/${currentRoom.id}/activeUsers`)
@@ -125,26 +125,27 @@ function ChatProvider({ children, roomId }) {
     })
 
     return () => {
-      set(roomPresenceRef, null)
+      if (roomPresenceRef) {
+        set(roomPresenceRef, null)
+      }
       unsubscribeActiveUsers()
       unsubscribeMessages()
     }
   }, [currentRoom?.id, user, deviceId])
 
   const sendMessage = (text) => {
-    if (!currentRoom || !text) return
+    if (!currentRoom || !text || !user) return
 
-    const userId = user ? user.uid : deviceId
-    const userName = user
-      ? user.displayName
-      : deviceId
-      ? getOrCreateRandomUsername()
-      : 'Anonymous'
+    const userName = getOrCreateRandomUsername()
     const messagesRef = ref(db, `chatRooms/${currentRoom.id}/messages`)
     const newMessageRef = push(messagesRef)
     set(newMessageRef, {
-      userId,
+      userId: {
+        uid: user.uid,
+        deviceId: deviceId
+      },
       userName,
+      email: user.email || '',
       text,
       timestamp: serverTimestamp(),
     })
@@ -184,7 +185,7 @@ function ChatWindow({
   }, [messages])
 
   const handleSendMessage = () => {
-    if (messageText.trim()) {
+    if (messageText.trim() && isAuthenticated) {
       sendMessage(messageText)
       setMessageText('')
     }
@@ -209,29 +210,32 @@ function ChatWindow({
   return (
     <div className="flex min-h-0 w-full flex-1 flex-col p-3">
       <div className="mb-4 rounded-lg bg-white p-3 shadow-sm dark:bg-gray-700">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center">
-            <span className="text-sm font-medium text-gray-900 dark:text-white">
-              Your Username:{' '}
-            </span>
-            <span className="ml-1 text-sm text-gray-700 dark:text-gray-300">
-              {user
-                ? user.displayName
-                : deviceId
-                ? getOrCreateRandomUsername()
-                : 'Anonymous'}
-            </span>
-          </div>
-          {!user && (
-            <button
-              onClick={handleLoginRedirect}
-              className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
-            >
-              Login to Chat
-            </button>
-          )}
+      <div className="flex items-center justify-between">
+        <div className="flex items-center">
+          <span className="text-sm font-medium text-gray-900 dark:text-white">
+            Your Username:{' '}
+          </span>
+          <span className="ml-1 text-sm text-gray-700 dark:text-gray-300">
+            {getOrCreateRandomUsername()}
+          </span>
+          <button
+            onClick={handleLoginRedirect}
+            className="ml-2 text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+            aria-label="Edit Username"
+          >
+            <Edit size={16} />
+          </button>
         </div>
+        {!user && (
+          <button
+            onClick={handleLoginRedirect}
+            className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+          >
+            Login to Chat
+          </button>
+        )}
       </div>
+    </div>
       <div className="mb-6 flex-1 overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 p-4 shadow-inner dark:border-gray-700 dark:bg-gray-800">
         {messages.length === 0 ? (
           <div className="flex h-full items-center justify-center text-gray-500 dark:text-gray-400">
@@ -240,9 +244,7 @@ function ChatWindow({
         ) : (
           <>
             {messages.map((msg, index) => {
-              const isCurrentUser = user
-                ? msg.userId === user.uid
-                : msg.userId === deviceId
+              const isCurrentUser = user && msg.userId && msg.userId.uid === user.uid
               return (
                 <div
                   key={index}
@@ -254,7 +256,7 @@ function ChatWindow({
                 >
                   <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                     {msg.userName} -{' '}
-                    {new Date(msg.timestamp).toLocaleTimeString()}
+                    {msg.timestamp ? new Date(msg.timestamp).toLocaleTimeString() : 'Just now'}
                   </span>
                   <p className="mt-1 text-gray-900 dark:text-white">
                     {msg.text}
@@ -389,7 +391,7 @@ export default function ChatRoom() {
                   deviceId,
                 }) => (
                   <div className="flex h-[85vh] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-800">
-                    <div className="w-full border-b border-gray-300 bg-gradient-to-r from-blue-50 to-indigo-50 p-5 dark:border-gray-700 dark:from-blue-900 dark:to-indigo-900">
+                    <div className="w-full border-b border-gray-300 bg-gradient-to-r from-blue-50 to-indigo-50 py-2 px-5 dark:border-gray-700 dark:from-blue-900 dark:to-indigo-900">
                       <div className="mb-2 flex items-center justify-between">
                         <h2 className="text-lg font-bold text-gray-900 dark:text-white">
                           {currentRoom ? currentRoom.name : 'Loading...'}
