@@ -43,6 +43,8 @@ function ChatProvider({ children, roomId }) {
   const [activePageUsers, setActivePageUsers] = useState(0)
   const [user, setUser] = useState(null)
   const [deviceId, setDeviceId] = useState(null)
+  const [isEditingUsername, setIsEditingUsername] = useState(false)
+  const [newUsername, setNewUsername] = useState('')
 
   useEffect(() => {
     // Get or create device ID for anonymous tracking
@@ -150,6 +152,19 @@ function ChatProvider({ children, roomId }) {
     })
   }
 
+  const handleEditUsername = async () => {
+    if (newUsername.trim() && user) {
+      try {
+        await user.updateProfile({ displayName: newUsername })
+        setUser({ ...user, displayName: newUsername })
+        setIsEditingUsername(false)
+        setNewUsername('')
+      } catch (error) {
+        console.error('Error updating username:', error)
+      }
+    }
+  }
+
   return (
     <ChatContext.Provider
       value={{
@@ -158,6 +173,13 @@ function ChatProvider({ children, roomId }) {
         activeUsers,
         activePageUsers,
         sendMessage,
+        user,
+        deviceId,
+        isEditingUsername,
+        setIsEditingUsername,
+        newUsername,
+        setNewUsername,
+        handleEditUsername,
       }}
     >
       {children}
@@ -165,7 +187,7 @@ function ChatProvider({ children, roomId }) {
   )
 }
 
-function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
+function ChatWindow({ currentRoom, messages, activeUsers, sendMessage, user, deviceId, isEditingUsername, setIsEditingUsername, newUsername, setNewUsername, handleEditUsername }) {
   const [messageText, setMessageText] = useState('')
   const messagesEndRef = useRef(null)
 
@@ -192,9 +214,45 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
 
   return (
     <div className="flex min-h-0 w-full flex-1 flex-col p-3">
-      {/* <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
-        {currentRoom.name}
-      </h2> */}
+      <div className="mb-4 p-3 rounded-lg bg-white shadow-sm dark:bg-gray-700">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center">
+            <span className="text-lg font-medium text-gray-900 dark:text-white">Your Username: </span>
+            <span className="text-lg text-gray-700 dark:text-gray-300">{user ? user.displayName : deviceId ? `Anon-${deviceId.slice(0, 5)}` : 'Anonymous'}</span>
+          </div>
+          {user && (
+            <button 
+              onClick={() => setIsEditingUsername(true)} 
+              className="text-sm text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+            >
+              Edit Username
+            </button>
+          )}
+        </div>
+        {isEditingUsername && user && (
+          <div className="mt-2 flex gap-2">
+            <input
+              type="text"
+              className="flex-1 rounded-md border border-gray-300 p-2 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white"
+              placeholder="Enter new username"
+              value={newUsername}
+              onChange={(e) => setNewUsername(e.target.value)}
+            />
+            <button
+              onClick={handleEditUsername}
+              className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 dark:bg-blue-700"
+            >
+              Save
+            </button>
+            <button
+              onClick={() => setIsEditingUsername(false)}
+              className="rounded-md bg-gray-300 px-4 py-2 text-gray-700 hover:bg-gray-400 dark:bg-gray-600 dark:text-gray-300"
+            >
+              Cancel
+            </button>
+          </div>
+        )}
+      </div>
       <div className="mb-6 flex-1 overflow-y-auto rounded-xl border border-gray-200 bg-gray-50 p-4 shadow-inner dark:border-gray-700 dark:bg-gray-800">
         {messages.length === 0 ? (
           <div className="flex h-full items-center justify-center text-gray-500 dark:text-gray-400">
@@ -202,18 +260,21 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
           </div>
         ) : (
           <>
-            {messages.map((msg, index) => (
-              <div
-                key={index}
-                className="mb-2 rounded-lg bg-white p-1.5 shadow-sm transition-shadow hover:shadow-md dark:bg-gray-700"
-              >
-                <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
-                  {msg.userName} -{' '}
-                  {new Date(msg.timestamp).toLocaleTimeString()}
-                </span>
-                <p className="mt-1 text-gray-900 dark:text-white">{msg.text}</p>
-              </div>
-            ))}
+            {messages.map((msg, index) => {
+              const isCurrentUser = user ? msg.userId === user.uid : msg.userId === deviceId;
+              return (
+                <div
+                  key={index}
+                  className={`mb-2 rounded-lg bg-white p-1.5 shadow-sm transition-shadow hover:shadow-md dark:bg-gray-700 ${isCurrentUser ? 'border-2 border-blue-500 dark:border-blue-400' : ''}`}
+                >
+                  <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
+                    {msg.userName} -{' '}
+                    {new Date(msg.timestamp).toLocaleTimeString()}
+                  </span>
+                  <p className="mt-1 text-gray-900 dark:text-white">{msg.text}</p>
+                </div>
+              );
+            })}
             <div ref={messagesEndRef} />
           </>
         )}
@@ -321,6 +382,13 @@ export default function ChatRoom() {
                   activeUsers,
                   activePageUsers,
                   sendMessage,
+                  user,
+                  deviceId,
+                  isEditingUsername,
+                  setIsEditingUsername,
+                  newUsername,
+                  setNewUsername,
+                  handleEditUsername,
                 }) => (
                   <div className="flex h-[85vh] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-800">
                     <div className="w-full border-b border-gray-300 bg-gradient-to-r from-blue-50 to-indigo-50 p-5 dark:border-gray-700 dark:from-blue-900 dark:to-indigo-900">
@@ -349,6 +417,13 @@ export default function ChatRoom() {
                       messages={messages}
                       activeUsers={activeUsers}
                       sendMessage={sendMessage}
+                      user={user}
+                      deviceId={deviceId}
+                      isEditingUsername={isEditingUsername}
+                      setIsEditingUsername={setIsEditingUsername}
+                      newUsername={newUsername}
+                      setNewUsername={setNewUsername}
+                      handleEditUsername={handleEditUsername}
                     />
                   </div>
                 )}
