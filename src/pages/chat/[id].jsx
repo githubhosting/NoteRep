@@ -178,7 +178,6 @@ function ChatWindow({
   const [messageText, setMessageText] = useState('')
   const messagesEndRef = useRef(null)
   const router = useRouter()
-  console.log(user, deviceId)
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -215,7 +214,7 @@ function ChatWindow({
             <span className="text-sm font-medium text-gray-900 dark:text-white">
               Your Username:{' '}
             </span>
-            <span className="text-lg text-gray-700 dark:text-gray-300">
+            <span className="ml-1 text-sm text-gray-700 dark:text-gray-300">
               {user
                 ? user.displayName
                 : deviceId

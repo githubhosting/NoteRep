@@ -7,8 +7,6 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signInWithPhoneNumber,
-  RecaptchaVerifier,
   onAuthStateChanged,
   updateProfile,
 } from 'firebase/auth'
@@ -16,7 +14,7 @@ import { getFirestore, getDoc, doc, setDoc } from 'firebase/firestore/lite'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { getOrCreateUserId, generateRandomUsername } from '@/utils/user'
-import { Mail, Phone, Globe } from 'lucide-react'
+import { Mail, Globe } from 'lucide-react'
 
 const googleProvider = new GoogleAuthProvider()
 
@@ -36,11 +34,7 @@ function Login({ onLogin, setUser }) {
   const [loginMethod, setLoginMethod] = useState('google')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [phone, setPhone] = useState('')
-  const [otp, setOtp] = useState('')
   const [isSigningUp, setIsSigningUp] = useState(false)
-  const [recaptchaVerifier, setRecaptchaVerifier] = useState(null)
-  const [confirmationResult, setConfirmationResult] = useState(null)
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -57,7 +51,8 @@ function Login({ onLogin, setUser }) {
     // Check for theme preference
     if (
       localStorage.theme === 'dark' ||
-      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
     ) {
       document.documentElement.classList.add('dark')
     } else {
@@ -66,22 +61,6 @@ function Login({ onLogin, setUser }) {
 
     return () => unsubscribe()
   }, [])
-
-  useEffect(() => {
-    if (loginMethod === 'phone' && !recaptchaVerifier) {
-      const verifier = new RecaptchaVerifier(
-        'recaptcha-container',
-        {
-          size: 'invisible',
-          callback: (response) => {
-            // reCAPTCHA solved, allow signInWithPhoneNumber.
-          },
-        },
-        auth
-      )
-      setRecaptchaVerifier(verifier)
-    }
-  }, [loginMethod])
 
   const handleUserData = async (user) => {
     const deviceId = getOrCreateUserId()
@@ -100,6 +79,7 @@ function Login({ onLogin, setUser }) {
         deviceId: deviceId,
         createdAt: new Date().toISOString(),
         isAdmin: false, // Default to non-admin
+        anonymousName: user.displayName || generateRandomUsername(), // Store anonymous name separately if needed
       })
       console.log('New user document written with ID:', user.uid)
     }
@@ -114,9 +94,11 @@ function Login({ onLogin, setUser }) {
     try {
       const result = await signInWithPopup(auth, googleProvider)
       const user = result.user
-      // Always assign a random username to ensure anonymity by default
-      const randomName = generateRandomUsername()
-      await updateProfile(user, { displayName: randomName })
+      // Assign a random username only if no display name is set to preserve existing names
+      if (!user.displayName || user.displayName === 'User') {
+        const randomName = generateRandomUsername()
+        await updateProfile(user, { displayName: randomName })
+      }
       setLoading(false)
     } catch (error) {
       console.error('Google sign-in error:', error)
@@ -137,16 +119,20 @@ function Login({ onLogin, setUser }) {
           password
         )
         const user = result.user
-        // Always assign a random username to ensure anonymity by default
-        const randomName = generateRandomUsername()
-        await updateProfile(user, { displayName: randomName })
+        // Assign a random username only if no display name is set to preserve existing names
+        if (!user.displayName || user.displayName === 'User') {
+          const randomName = generateRandomUsername()
+          await updateProfile(user, { displayName: randomName })
+        }
         setLoading(false)
       } else {
         const result = await signInWithEmailAndPassword(auth, email, password)
         const user = result.user
-        // Always assign a random username to ensure anonymity by default
-        const randomName = generateRandomUsername()
-        await updateProfile(user, { displayName: randomName })
+        // Assign a random username only if no display name is set to preserve existing names
+        if (!user.displayName || user.displayName === 'User') {
+          const randomName = generateRandomUsername()
+          await updateProfile(user, { displayName: randomName })
+        }
         setLoading(false)
       }
     } catch (error) {
@@ -161,37 +147,6 @@ function Login({ onLogin, setUser }) {
     }
   }
 
-  const handlePhoneLogin = async () => {
-    setLoading(true)
-    setError(null)
-    try {
-      if (!confirmationResult) {
-        const result = await signInWithPhoneNumber(
-          auth,
-          phone,
-          recaptchaVerifier
-        )
-        setConfirmationResult(result)
-        setLoading(false)
-        toast.info('OTP sent to your phone. Please check and enter the code.')
-      } else {
-        const result = await confirmationResult.confirm(otp)
-        const user = result.user
-        // Always assign a random username to ensure anonymity by default
-        const randomName = generateRandomUsername()
-        await updateProfile(user, { displayName: randomName })
-        setConfirmationResult(null)
-        setOtp('')
-        setLoading(false)
-      }
-    } catch (error) {
-      console.error('Phone sign-in error:', error)
-      toast.error('Error during Phone sign-in: ' + error.message)
-      setError('Failed to sign in with Phone')
-      setLoading(false)
-    }
-  }
-
   const toggleSignUp = () => {
     setIsSigningUp(!isSigningUp)
     setError(null)
@@ -200,53 +155,50 @@ function Login({ onLogin, setUser }) {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900 px-4 sm:px-6 lg:px-8">
+    <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 dark:bg-gray-900 sm:px-6 lg:px-8">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
-          <img src="/icon-192x192.png" alt="NoteRep Logo" className="mx-auto h-16 w-auto mb-4" />
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">Welcome to NoteRep</h1>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">Sign in or create an account</p>
+          <img
+            src="/icon-192x192.png"
+            alt="NoteRep Logo"
+            className="mx-auto mb-4 h-16 w-auto"
+          />
+          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+            Welcome to NoteRep
+          </h1>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">
+            Sign in or create an account
+          </p>
         </div>
-        <div className="mt-8 bg-white dark:bg-gray-800 shadow-xl rounded-lg p-6">
-          <div className="flex justify-center mb-6">
+        <div className="mt-8 rounded-lg bg-white p-6 shadow-xl dark:bg-gray-800">
+          <div className="mb-6 flex justify-center">
             <button
-              className={`mx-2 px-4 py-2 rounded-md font-medium transition-colors flex items-center ${
+              className={`mx-2 flex items-center rounded-md px-4 py-2 font-medium transition-colors ${
                 loginMethod === 'google'
                   ? 'bg-blue-600 text-white'
-                  : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
               }`}
               onClick={() => setLoginMethod('google')}
             >
-              <Globe className="h-5 w-5 mr-2" />
+              <Globe className="mr-2 h-5 w-5" />
               Google
             </button>
             <button
-              className={`mx-2 px-4 py-2 rounded-md font-medium transition-colors flex items-center ${
+              className={`mx-2 flex items-center rounded-md px-4 py-2 font-medium transition-colors ${
                 loginMethod === 'email'
                   ? 'bg-blue-600 text-white'
-                  : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
+                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'
               }`}
               onClick={() => setLoginMethod('email')}
             >
-              <Mail className="h-5 w-5 mr-2" />
+              <Mail className="mr-2 h-5 w-5" />
               Email
-            </button>
-            <button
-              className={`mx-2 px-4 py-2 rounded-md font-medium transition-colors flex items-center ${
-                loginMethod === 'phone'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-gray-200 text-gray-700 dark:bg-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600'
-              }`}
-              onClick={() => setLoginMethod('phone')}
-            >
-              <Phone className="h-5 w-5 mr-2" />
-              Phone
             </button>
           </div>
 
           {loginMethod === 'google' && (
             <button
-              className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
+              className="flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-700 dark:hover:bg-blue-800"
               onClick={handleGoogleLogin}
               disabled={loading}
             >
@@ -255,17 +207,25 @@ function Login({ onLogin, setUser }) {
           )}
 
           {loginMethod === 'email' && (
-            <form className="mt-6 space-y-4" onSubmit={(e) => { e.preventDefault(); handleEmailLogin(); }}>
-              <div className="rounded-md shadow-sm -space-y-px">
+            <form
+              className="mt-6 space-y-4"
+              onSubmit={(e) => {
+                e.preventDefault()
+                handleEmailLogin()
+              }}
+            >
+              <div className="-space-y-px rounded-md shadow-sm">
                 <div>
-                  <label htmlFor="email-address" className="sr-only">Email address</label>
+                  <label htmlFor="email-address" className="sr-only">
+                    Email address
+                  </label>
                   <input
                     id="email-address"
                     name="email"
                     type="email"
                     autoComplete="email"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm"
                     placeholder="Email address"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -273,14 +233,16 @@ function Login({ onLogin, setUser }) {
                   />
                 </div>
                 <div>
-                  <label htmlFor="password" className="sr-only">Password</label>
+                  <label htmlFor="password" className="sr-only">
+                    Password
+                  </label>
                   <input
                     id="password"
                     name="password"
                     type="password"
                     autoComplete="current-password"
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+                    className="relative block w-full appearance-none rounded-none border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-blue-500 focus:outline-none focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400 sm:text-sm"
                     placeholder="Password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -290,11 +252,15 @@ function Login({ onLogin, setUser }) {
               </div>
 
               {!isSigningUp && (
-                <div className="text-sm text-right">
+                <div className="text-right text-sm">
                   <button
                     type="button"
-                    className="text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
-                    onClick={() => toast.info('Forgot Password functionality will be implemented soon.')}
+                    className="text-blue-600 transition-colors hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
+                    onClick={() =>
+                      toast.info(
+                        'Forgot Password functionality will be implemented soon.'
+                      )
+                    }
                     disabled={loading}
                   >
                     Forgot your password?
@@ -305,7 +271,7 @@ function Login({ onLogin, setUser }) {
               <div>
                 <button
                   type="submit"
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
+                  className="group relative flex w-full justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:bg-blue-700 dark:hover:bg-blue-800"
                   disabled={loading}
                 >
                   {loading
@@ -316,13 +282,15 @@ function Login({ onLogin, setUser }) {
                 </button>
               </div>
 
-              <div className="text-sm text-center">
+              <div className="text-center text-sm">
                 <span className="text-gray-600 dark:text-gray-400">
-                  {isSigningUp ? 'Already have an account?' : 'Don’t have an account?'}
+                  {isSigningUp
+                    ? 'Already have an account?'
+                    : 'Don’t have an account?'}
                 </span>
                 <button
                   type="button"
-                  className="ml-1 text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300 transition-colors"
+                  className="ml-1 text-blue-600 transition-colors hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300"
                   onClick={toggleSignUp}
                   disabled={loading}
                 >
@@ -332,58 +300,11 @@ function Login({ onLogin, setUser }) {
             </form>
           )}
 
-          {loginMethod === 'phone' && (
-            <form className="mt-6 space-y-4" onSubmit={(e) => { e.preventDefault(); handlePhoneLogin(); }}>
-              <div className="rounded-md shadow-sm">
-                <div>
-                  <label htmlFor="phone-number" className="sr-only">Phone Number</label>
-                  <input
-                    id="phone-number"
-                    name="phone"
-                    type="tel"
-                    required
-                    className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                    placeholder="Phone Number (e.g., +1234567890)"
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    disabled={loading || confirmationResult}
-                  />
-                </div>
-                {confirmationResult && (
-                  <div className="mt-4">
-                    <label htmlFor="otp-code" className="sr-only">OTP Code</label>
-                    <input
-                      id="otp-code"
-                      name="otp"
-                      type="text"
-                      required
-                      className="appearance-none rounded relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 dark:text-white dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
-                      placeholder="Enter OTP"
-                      value={otp}
-                      onChange={(e) => setOtp(e.target.value)}
-                      disabled={loading}
-                    />
-                  </div>
-                )}
-              </div>
-              <div id="recaptcha-container" className="flex justify-center"></div>
-              <div>
-                <button
-                  type="submit"
-                  className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:bg-blue-700 dark:hover:bg-blue-800 transition-colors"
-                  disabled={loading}
-                >
-                  {loading
-                    ? 'Loading...'
-                    : confirmationResult
-                    ? 'Verify OTP'
-                    : 'Send OTP'}
-                </button>
-              </div>
-            </form>
+          {error && (
+            <div className="mt-4 text-center text-sm text-red-600 dark:text-red-400">
+              {error}
+            </div>
           )}
-
-          {error && <div className="mt-4 text-center text-sm text-red-600 dark:text-red-400">{error}</div>}
         </div>
         <ToastContainer
           position="top-right"
