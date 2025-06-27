@@ -1,0 +1,30 @@
+name: Trigger Vercel Deployment on #deploy Commit
+
+on:
+  push:
+    branches:
+      - main  # or whichever branch you want to watch
+
+jobs:
+  trigger-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check commit messages for #deploy
+        id: check_deploy
+        run: |
+          echo "Checking commits for #deploy keyword..."
+          # Get the commit messages for this push
+          commits=$(git log --format=%B ${{ github.sha }} -1)
+          echo "Commit message: $commits"
+          
+          if echo "$commits" | grep -q "#deploy"; then
+            echo "deploy=true" >> $GITHUB_OUTPUT
+          else
+            echo "deploy=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Trigger Vercel Deployment
+        if: steps.check_deploy.outputs.deploy == 'true'
+        run: |
+          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
