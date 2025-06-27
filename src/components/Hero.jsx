@@ -79,38 +79,48 @@ export function Hero() {
                     Introducing the new feature!
                   </span>
                 </AnimatedGradientText>
-                <div className="grid grid-cols-1 gap-6 pt-6 md:grid-cols-3">
-                  <ButtonLink
-                    href="/minisis"
-                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                  >
-                    Mini SIS (Calculla 2.0)
-                  </ButtonLink>
-                  <ButtonLink
-                    href="/noterepbot"
-                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                  >
-                    Noterep Bot 🤖
-                  </ButtonLink>
-                  {/* <ButtonLink
-                    href="/exam"
-                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                  >
-                    8th Sem Exam Results 📊
-                  </ButtonLink> */}
-                  <ButtonLink
-                    href="/noterep-forum"
-                    className="button-85 rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900"
-                    target="_blank"
-                  >
-                    NoteRep Forum 🚀
-                  </ButtonLink>
-                  <ButtonLink
-                    href="/chat"
-                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
-                  >
-                    Live Chat 💬
-                  </ButtonLink>
+                <div className="flex w-full justify-center pt-6">
+                  <div className="flex w-full max-w-3xl flex-col items-center gap-6">
+                    <div className="flex w-full justify-center">
+                      <ButtonLink
+                        href="/chat"
+                        className="button-85 w-full rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900 md:w-auto"
+                        style={{ animationDelay: '0.6s' }}
+                      >
+                        Live Chat 💬
+                      </ButtonLink>
+                    </div>
+                    <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:place-items-center">
+                      <ButtonLink
+                        href="/minisis"
+                        className="button-85 w-full rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900 md:w-auto"
+                        style={{ animation: 'none' }}
+                      >
+                        Mini SIS (Calculla 2.0)
+                      </ButtonLink>
+                      <ButtonLink
+                        href="/noterepbot"
+                        className="button-85 w-full rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900 md:w-auto"
+                        style={{ animation: 'none' }}
+                      >
+                        Noterep Bot 🤖
+                      </ButtonLink>
+                      {/* <ButtonLink
+                        href="/exam"
+                        className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                      >
+                        8th Sem Exam Results 📊
+                      </ButtonLink> */}
+                      <ButtonLink
+                        href="/noterep-forum"
+                        className="button-85 w-full rounded-lg py-2 after:bg-blue-600 dark:after:bg-gray-900 md:w-auto"
+                        style={{ animation: 'none' }}
+                        target="_blank"
+                      >
+                        NoteRep Forum 🚀
+                      </ButtonLink>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
