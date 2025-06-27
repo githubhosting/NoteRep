@@ -2,7 +2,7 @@ import { Head, Html, Main, NextScript } from 'next/document'
 
 export default function Document() {
   return (
-    <Html className="bg-white antialiased" lang="en">
+    <Html className="bg-white antialiased dark:bg-gray-900" lang="en">
       <Head>
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="#"></link>

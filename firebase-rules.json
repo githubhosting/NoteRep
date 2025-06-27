@@ -1,0 +1,26 @@
+{
+  "rules": {
+    ".read": "true",
+    ".write": "true",
+    "chat": {
+      "activePageUsers": {
+        ".read": "true",
+        ".write": "true"
+      }
+    },
+    "chatRooms": {
+      "$roomId": {
+        ".read": "data.child('type').val() === 'anonymous' || (data.child('type').val() === 'authenticated' && auth != null)",
+        ".write": "data.child('type').val() === 'anonymous' || (data.child('type').val() === 'authenticated' && auth != null)",
+        "activeUsers": {
+          ".read": "true",
+          ".write": "true"
+        },
+        "messages": {
+          ".read": "data.parent().child('type').val() === 'anonymous' || (data.parent().child('type').val() === 'authenticated' && auth != null)",
+          ".write": "data.parent().child('type').val() === 'anonymous' || (data.parent().child('type').val() === 'authenticated' && auth != null)"
+        }
+      }
+    }
+  }
+}
