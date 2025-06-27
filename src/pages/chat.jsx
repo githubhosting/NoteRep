@@ -3,14 +3,10 @@ import { useEffect, useState, useContext, createContext } from 'react'
 import { useRouter } from 'next/router'
 import firebase from 'firebase/compat/app'
 import { firebaseConfig } from '@/firebaseconfig'
-import { getAuth } from 'firebase/auth'
-import {
-  getDatabase,
-  ref,
-  onValue,
-  set,
-} from 'firebase/database'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { getDatabase, ref, onValue, set } from 'firebase/database'
 import { CompactHeader } from './noterepbot'
+import { Button } from '@/components/Button'
 
 // Initialize Firebase if not already done
 if (!firebase.apps.length) {
@@ -36,17 +32,18 @@ function ChatProvider({ children }) {
   ])
   const [initialized, setInitialized] = useState(false)
   const [activePageUsers, setActivePageUsers] = useState(0)
+  const [user, setUser] = useState(null)
 
   useEffect(() => {
     // Initialize chat rooms in the database if not already done
     const initChatRooms = async () => {
-      if (initialized) return;
-      setInitialized(true);
+      if (initialized) return
+      setInitialized(true)
       const chatRoomsRef = ref(db, 'chatRooms')
       onValue(
         chatRoomsRef,
         async (snapshot) => {
-          const existingRooms = snapshot.val() || {};
+          const existingRooms = snapshot.val() || {}
           try {
             for (const room of rooms) {
               if (!existingRooms[room.id]) {
@@ -54,9 +51,10 @@ function ChatProvider({ children }) {
                 await set(roomRef, {
                   name: room.name,
                   type: room.type,
-                  description: room.type === 'authenticated'
-                    ? 'General chat for authenticated users'
-                    : 'General chat for everyone',
+                  description:
+                    room.type === 'authenticated'
+                      ? 'General chat for authenticated users'
+                      : 'General chat for everyone',
                   createdAt: Date.now(),
                 })
                 console.log(`Initialized room: ${room.name}`)
@@ -74,12 +72,25 @@ function ChatProvider({ children }) {
   }, [initialized, rooms])
 
   useEffect(() => {
+    // Monitor authentication state
+    const unsubscribeAuth = onAuthStateChanged(auth, (authUser) => {
+      if (authUser) {
+        setUser(authUser)
+      } else {
+        setUser(null)
+      }
+    })
+
     // Track active users on the chat page
     const activeUsersRef = ref(db, 'chat/activePageUsers')
     onValue(activeUsersRef, (snapshot) => {
       const count = snapshot.val() ? Object.keys(snapshot.val()).length : 0
       setActivePageUsers(count)
     })
+
+    return () => {
+      unsubscribeAuth()
+    }
   }, [])
 
   return (
@@ -87,6 +98,7 @@ function ChatProvider({ children }) {
       value={{
         rooms,
         activePageUsers,
+        user,
       }}
     >
       {children}
@@ -110,12 +122,10 @@ function ChatRoomList({ rooms, activePageUsers }) {
         {rooms.map((room) => (
           <button
             key={room.id}
-            className="flex min-w-[120px] items-center justify-center rounded-lg px-4 py-2 shadow transition-all duration-200 border border-gray-200 bg-white text-gray-900 hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
+            className="flex min-w-[120px] items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-900 shadow transition-all duration-200 hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
             onClick={() => router.push(`/chat/${room.id}`)}
           >
-            <span className="text-sm font-medium">
-              {room.name}
-            </span>
+            <span className="text-sm font-medium">{room.name}</span>
           </button>
         ))}
       </div>
@@ -123,12 +133,32 @@ function ChatRoomList({ rooms, activePageUsers }) {
   )
 }
 
-function ChatWindow() {
+function ChatWindow({ user }) {
+  const router = useRouter()
+  const isAuthenticated = !!user
+
+  const handleLoginRedirect = () => {
+    router.push('/login')
+  }
+
   return (
     <div className="flex w-full flex-1 flex-col items-center justify-center p-6">
       <p className="text-lg text-gray-500 dark:text-gray-400">
         Select a room to start chatting
       </p>
+      {!isAuthenticated && (
+        <div className="mt-4 flex flex-col items-center">
+          <p className="text-md mb-2 text-gray-500 dark:text-gray-400">
+            Login to send messages and participate in chats
+          </p>
+          <Button
+            onClick={handleLoginRedirect}
+            className="rounded-xl bg-blue-500 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600"
+          >
+            Login
+          </Button>
+        </div>
+      )}
     </div>
   )
 }
@@ -188,22 +218,19 @@ export default function Chat() {
       <main className="flex min-h-screen flex-col bg-indigo-50 dark:bg-gray-900">
         <CompactHeader />
         <section className="flex h-screen flex-col py-3 sm:py-10">
-          <div className="container mx-auto flex flex-1 flex-col p-4 max-w-5xl">
+          <div className="container mx-auto flex max-w-5xl flex-1 flex-col p-4">
             <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
               NoteRep Live Chat
             </h1>
             <ChatProvider>
               <ChatContext.Consumer>
-                {({
-                  rooms,
-                  activePageUsers,
-                }) => (
+                {({ rooms, activePageUsers, user }) => (
                   <div className="flex h-[85vh] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-800">
                     <ChatRoomList
                       rooms={rooms}
                       activePageUsers={activePageUsers}
                     />
-                    <ChatWindow />
+                    <ChatWindow user={user} />
                   </div>
                 )}
               </ChatContext.Consumer>
