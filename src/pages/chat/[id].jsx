@@ -398,9 +398,8 @@ export default function ChatRoom() {
                         </h2>
                         <div className="flex items-center gap-4">
                           <p className="text-xs text-gray-600 dark:text-gray-300">
-                            Active:{' '}
-                            <span className="font-semibold">
-                              {activePageUsers}
+                            <span className="rounded-full bg-green-200 px-2 py-0.5 font-medium text-blue-900 dark:bg-green-800 dark:text-blue-200">
+                              Active: {activePageUsers}
                             </span>
                           </p>
                           <button
