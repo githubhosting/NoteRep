@@ -4,6 +4,8 @@ import { usePWAInstall } from 'react-use-pwa-install'
 import React from 'react'
 import { useState } from 'react'
 import { ButtonLink } from '@/components/Button'
+import { LiveChatButton } from '@/components/LiveChatButton'
+import { SpaceButton } from '@/components/SpaceButton'
 import { Container } from '@/components/Container'
 import backgroundImage from '@/images/background.jpg'
 import darkbackgroundImage from '@/images/background-dark.jpg'
@@ -82,13 +84,10 @@ export function Hero() {
                 <div className="flex w-full justify-center pt-6">
                   <div className="flex w-full max-w-3xl flex-col items-center gap-6">
                     <div className="flex w-full justify-center">
-                      <ButtonLink
+                      <SpaceButton
                         href="/chat"
-                        className="button-85 w-full rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900 md:w-auto"
-                        style={{ animationDelay: '0.6s' }}
-                      >
-                        Live Chat 💬
-                      </ButtonLink>
+                        className="ml-4 w-full md:w-auto"
+                      />
                     </div>
                     <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3 md:place-items-center">
                       <ButtonLink
