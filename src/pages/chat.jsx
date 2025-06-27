@@ -97,7 +97,7 @@ function ChatProvider({ children }) {
 function ChatRoomList({ rooms, activePageUsers }) {
   const router = useRouter()
   return (
-    <div className="w-full border-b border-gray-300 bg-gradient-to-r from-blue-50 to-indigo-50 p-3 dark:border-gray-700 dark:from-blue-900 dark:to-indigo-900">
+    <div className="w-full border-b border-gray-300 bg-gradient-to-r from-blue-50 to-indigo-50 p-5 dark:border-gray-700 dark:from-blue-900 dark:to-indigo-900">
       <div className="mb-2 flex items-center justify-between">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white">
           NoteRep Chat Rooms
@@ -188,7 +188,7 @@ export default function Chat() {
       <main className="flex min-h-screen flex-col bg-indigo-50 dark:bg-gray-900">
         <CompactHeader />
         <section className="flex h-screen flex-col py-3 sm:py-10">
-          <div className="container mx-auto flex flex-1 flex-col p-4">
+          <div className="container mx-auto flex flex-1 flex-col p-4 max-w-5xl">
             <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
               NoteRep Live Chat
             </h1>

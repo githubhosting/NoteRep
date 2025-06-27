@@ -146,7 +146,7 @@ function DesktopNavigation(props) {
         <NavItem href="noterepbot">AI Chat Bot</NavItem>
         <NavItem href="chat">Live Chat</NavItem>
         <NavItem href="communilink">CommuniLink</NavItem>
-        <NavItem href="links">Other Links</NavItem>
+        <NavItem href="links">Links</NavItem>
         <NavItem_External href="https://myselfshravan.github.io">
           Developer
         </NavItem_External>
