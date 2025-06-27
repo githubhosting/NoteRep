@@ -191,7 +191,7 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
   }
 
   return (
-    <div className="flex min-h-0 w-full flex-1 flex-col p-6">
+    <div className="flex min-h-0 w-full flex-1 flex-col p-3">
       {/* <h2 className="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
         {currentRoom.name}
       </h2> */}
@@ -205,7 +205,7 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className="mb-3 rounded-lg bg-white p-3 shadow-sm transition-shadow hover:shadow-md dark:bg-gray-700"
+                className="mb-2 rounded-lg bg-white p-1.5 shadow-sm transition-shadow hover:shadow-md dark:bg-gray-700"
               >
                 <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
                   {msg.userName} -{' '}
@@ -218,10 +218,10 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
           </>
         )}
       </div>
-      <div className="flex gap-3">
+      <div className="flex gap-2">
         <input
           type="text"
-          className="flex-1 rounded-xl border border-gray-300 p-3 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 bg-indigo-50 dark:bg-gray-800 dark:text-white dark:focus:ring-blue-400"
+          className="flex-1 rounded-xl border border-gray-300 bg-indigo-50 p-3 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-500 dark:border-gray-700 dark:bg-gray-800 dark:text-white dark:focus:ring-blue-400"
           placeholder="Type a message..."
           value={messageText}
           onChange={(e) => setMessageText(e.target.value)}
@@ -234,20 +234,20 @@ function ChatWindow({ currentRoom, messages, activeUsers, sendMessage }) {
           Send
         </Button>
       </div>
-      <div className="mt-4 sm:mt-6">
-        <h3 className="text-base font-medium text-gray-900 dark:text-white sm:text-lg">
-          Active Users:
+      <div className="mt-2 sm:mt-4">
+        <h3 className="text-sm font-semibold text-gray-900 dark:text-white sm:text-base">
+          Active Users @ {currentRoom.name}:
         </h3>
-        <div className="mt-2 flex flex-wrap gap-2 sm:gap-3">
+        <div className="mt-1 flex flex-wrap gap-1 sm:gap-2">
           {activeUsers.length === 0 ? (
-            <p className="text-sm text-gray-500 dark:text-gray-400">
+            <p className="text-xs text-gray-500 dark:text-gray-400">
               No active users.
             </p>
           ) : (
             activeUsers.map((user, index) => (
               <div
                 key={index}
-                className="rounded-full bg-blue-100 px-3 py-1 text-xs font-medium text-blue-800 shadow-sm dark:bg-blue-900 dark:text-blue-300 sm:text-sm"
+                className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-semibold text-blue-800 shadow-sm dark:bg-blue-900 dark:text-blue-300 sm:text-xs"
               >
                 {user.name}
               </div>
@@ -273,13 +273,6 @@ export default function ChatRoom() {
       }
     })
   }, [])
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    })
-  }
 
   // Dark Mode
   useEffect(() => {
@@ -315,7 +308,7 @@ export default function ChatRoom() {
       </Head>
       <main className="flex min-h-screen flex-col bg-indigo-50 dark:bg-gray-900">
         <CompactHeader />
-        <section className="flex h-screen flex-col py-7 sm:py-10">
+        <section className="flex h-screen flex-col py-3 sm:py-10">
           <div className="container mx-auto flex flex-1 flex-col p-4">
             <h1 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
               NoteRep Live Chat
@@ -337,7 +330,10 @@ export default function ChatRoom() {
                         </h2>
                         <div className="flex items-center gap-4">
                           <p className="text-xs text-gray-600 dark:text-gray-300">
-                            Active: <span className="font-semibold">{activePageUsers}</span>
+                            Active:{' '}
+                            <span className="font-semibold">
+                              {activePageUsers}
+                            </span>
                           </p>
                           <button
                             onClick={() => router.push('/chat')}

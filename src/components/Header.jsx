@@ -78,6 +78,7 @@ function MobileNavigation(props) {
                 <MobileNavItem href="/">Home</MobileNavItem>
                 <MobileNavItem href="minisis">Mini SIS</MobileNavItem>
                 <MobileNavItem href="noterepbot">AI Chat Bot</MobileNavItem>
+                <MobileNavItem href="chat">Live Chat</MobileNavItem>
                 <MobileNavItem href="communilink">CommuniLink</MobileNavItem>
                 <MobileNavItem href="links">Other Links</MobileNavItem>
                 <MobileNavItem href="https://myselfshravan.github.io/">
@@ -143,6 +144,7 @@ function DesktopNavigation(props) {
       >
         <NavItem href="minisis">Mini SIS</NavItem>
         <NavItem href="noterepbot">AI Chat Bot</NavItem>
+        <NavItem href="chat">Live Chat</NavItem>
         <NavItem href="communilink">CommuniLink</NavItem>
         <NavItem href="links">Other Links</NavItem>
         <NavItem_External href="https://myselfshravan.github.io">

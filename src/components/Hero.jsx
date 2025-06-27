@@ -92,6 +92,12 @@ export function Hero() {
                   >
                     Noterep Bot 🤖
                   </ButtonLink>
+                  <ButtonLink
+                    href="/chat"
+                    className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"
+                  >
+                    Live Chat 💬
+                  </ButtonLink>
                   {/* <ButtonLink
                     href="/exam"
                     className="button-85 rounded-lg py-2 after:bg-blue-700 dark:after:bg-gray-900"

@@ -14,7 +14,7 @@ const db = getDatabase()
 // Predefined chat rooms
 const chatRooms = [
   { id: 'general-auth', name: 'General (Authenticated)', type: 'authenticated', description: 'General chat for authenticated users' },
-  { id: 'general-anon', name: 'General (Anonymous)', type: 'anonymous', description: 'General chat for everyone' },
+  { id: 'general-anon', name: 'General', type: 'anonymous', description: 'General chat for everyone' },
 ]
 
 // Function to initialize chat rooms in the database
