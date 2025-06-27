@@ -26,49 +26,65 @@ const ChatContext = createContext({
 
 function ChatProvider({ children }) {
   const [rooms, setRooms] = useState([
-    { id: 'general-anon', name: 'General', type: 'anonymous' },
-    { id: 'off-topic', name: 'Off-Topic', type: 'anonymous' },
-    { id: 'study-group', name: 'Study Group', type: 'anonymous' },
+    {
+      id: 'general-anon',
+      name: 'General',
+      type: 'anonymous',
+    },
+    {
+      id: 'off-topic',
+      name: 'Off-Topic',
+      type: 'anonymous',
+    },
+    {
+      id: 'study-group',
+      name: 'Study Group',
+      type: 'anonymous',
+    },
   ])
   const [initialized, setInitialized] = useState(false)
   const [activePageUsers, setActivePageUsers] = useState(0)
   const [user, setUser] = useState(null)
 
   useEffect(() => {
-    // Initialize chat rooms in the database if not already done
     const initChatRooms = async () => {
-      if (initialized) return
-      setInitialized(true)
-      const chatRoomsRef = ref(db, 'chatRooms')
+      if (initialized) return;
+      setInitialized(true);
+      const chatRoomsRef = ref(db, 'chatRooms');
       onValue(
         chatRoomsRef,
         async (snapshot) => {
-          const existingRooms = snapshot.val() || {}
+          const existingRooms = snapshot.val() || {};
           try {
+            const roomDescriptions = {
+              'general-anon': 'Discuss anything related to studies and campus life',
+              'off-topic': 'Chat about anything outside academics',
+              'study-group': 'Collaborate on assignments and projects',
+            };
             for (const room of rooms) {
               if (!existingRooms[room.id]) {
-                const roomRef = ref(db, `chatRooms/${room.id}`)
+                const roomRef = ref(db, `chatRooms/${room.id}`);
+                const description = room.type === 'authenticated' 
+                  ? 'General chat for authenticated users' 
+                  : roomDescriptions[room.id] || 'General chat for everyone';
                 await set(roomRef, {
                   name: room.name,
                   type: room.type,
-                  description:
-                    room.type === 'authenticated'
-                      ? 'General chat for authenticated users'
-                      : 'General chat for everyone',
+                  description,
                   createdAt: Date.now(),
-                })
-                console.log(`Initialized room: ${room.name}`)
+                });
+                console.log(`Initialized room: ${room.name}`);
               }
             }
-            console.log('All missing chat rooms initialized successfully.')
+            console.log('Chat room initialization complete.');
           } catch (error) {
-            console.error('Error initializing chat rooms:', error)
+            console.error('Error initializing chat rooms:', error);
           }
         },
         { onlyOnce: true }
-      )
-    }
-    initChatRooms()
+      );
+    };
+    initChatRooms();
   }, [initialized, rooms])
 
   useEffect(() => {
@@ -107,60 +123,111 @@ function ChatProvider({ children }) {
 }
 
 function ChatRoomList({ rooms, activePageUsers }) {
-  const router = useRouter()
+  const router = useRouter();
+  const [roomDetails, setRoomDetails] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    setIsLoading(true);
+    // Fetch room details from Firebase to display active users per room
+    const roomDetailsListener = {};
+    rooms.forEach((room) => {
+      const roomRef = ref(db, `chatRooms/${room.id}`);
+      roomDetailsListener[room.id] = onValue(roomRef, (snapshot) => {
+        const data = snapshot.val();
+        if (data) {
+          setRoomDetails((prev) => ({ ...prev, [room.id]: data }));
+        }
+        setIsLoading(false);
+      });
+    });
+    return () => {
+      Object.values(roomDetailsListener).forEach((unsubscribe) => unsubscribe());
+      setIsLoading(false);
+    };
+  }, [rooms]);
+
   return (
-    <div className="w-full border-b border-gray-300 bg-gradient-to-r from-blue-50 to-indigo-50 p-5 dark:border-gray-700 dark:from-blue-900 dark:to-indigo-900">
-      <div className="mb-2 flex items-center justify-between">
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white">
+    <div className="w-full border-b border-gray-300 bg-gradient-to-r from-blue-100 to-indigo-100 p-6 dark:border-gray-700 dark:from-blue-900 dark:to-indigo-900">
+      <div className="mb-4 flex items-center justify-between">
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">
           NoteRep Chat Rooms
         </h2>
-        <p className="text-xs text-gray-600 dark:text-gray-300">
-          Active: <span className="font-semibold">{activePageUsers}</span>
+        <p className="text-sm text-gray-600 dark:text-gray-300">
+          Active Users: <span className="font-semibold">{activePageUsers}</span>
         </p>
       </div>
-      <div className="flex flex-wrap gap-3">
-        {rooms.map((room) => (
-          <button
-            key={room.id}
-            className="flex min-w-[120px] items-center justify-center rounded-lg border border-gray-200 bg-white px-4 py-2 text-gray-900 shadow transition-all duration-200 hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"
-            onClick={() => router.push(`/chat/${room.id}`)}
-          >
-            <span className="text-sm font-medium">{room.name}</span>
-          </button>
-        ))}
-      </div>
-    </div>
-  )
-}
-
-function ChatWindow({ user }) {
-  const router = useRouter()
-  const isAuthenticated = !!user
-
-  const handleLoginRedirect = () => {
-    router.push('/login')
-  }
-
-  return (
-    <div className="flex w-full flex-1 flex-col items-center justify-center p-6">
-      <p className="text-lg text-gray-500 dark:text-gray-400">
-        Select a room to start chatting
-      </p>
-      {!isAuthenticated && (
-        <div className="mt-4 flex flex-col items-center">
-          <p className="text-md mb-2 text-gray-500 dark:text-gray-400">
-            Login to send messages and participate in chats
-          </p>
-          <Button
-            onClick={handleLoginRedirect}
-            className="rounded-xl bg-blue-500 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600"
-          >
-            Login
-          </Button>
+      {isLoading ? (
+        <div className="text-center text-gray-500 dark:text-gray-400 py-4">
+          Loading chat rooms...
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {rooms.map((room) => (
+            <button
+              key={room.id}
+              className="group relative flex flex-col rounded-xl border border-gray-200 bg-white p-4 shadow-sm transition-all duration-300 hover:shadow-md dark:border-gray-800 dark:bg-gray-700 dark:text-white dark:hover:shadow-lg"
+              onClick={() => router.push(`/chat/${room.id}`)}
+            >
+              <span className="text-lg font-semibold text-gray-900 group-hover:text-blue-600 dark:text-white dark:group-hover:text-blue-400">
+                {room.name}
+              </span>
+              <span className="mt-1 text-sm text-gray-500 dark:text-gray-400">
+                {roomDetails[room.id]?.description || "Join this chat room!"}
+              </span>
+              <div className="mt-2 flex justify-center text-xs text-gray-500 dark:text-gray-400">
+                <span className="rounded-full bg-green-100 px-2 py-0.5 text-green-800 dark:bg-green-900 dark:text-green-300">
+                  {roomDetails[room.id]?.activeUsers
+                    ? Object.keys(roomDetails[room.id].activeUsers).length
+                    : 0}{' '}
+                  Online
+                </span>
+              </div>
+            </button>
+          ))}
         </div>
       )}
     </div>
-  )
+  );
+}
+
+function ChatWindow({ user }) {
+  const router = useRouter();
+  const isAuthenticated = !!user;
+
+  const handleLoginRedirect = () => {
+    router.push('/login');
+  };
+
+  return (
+    <div className="flex w-full flex-1 flex-col items-center justify-center bg-gray-50 p-8 dark:bg-gray-800">
+      <div className="max-w-md text-center">
+        <h3 className="mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
+          Welcome to NoteRep Chat
+        </h3>
+        <p className="mb-6 text-lg text-gray-600 dark:text-gray-300">
+          Connect with fellow students, discuss topics, and collaborate in real-time. Select a chat room above to get started.
+        </p>
+        {!isAuthenticated ? (
+          <div className="mt-6 animate-fade-in">
+            <p className="mb-4 text-base text-gray-500 dark:text-gray-400">
+              Sign in to unlock full chat features and join the conversation.
+            </p>
+            <Button
+              onClick={handleLoginRedirect}
+              className="rounded-xl bg-blue-600 px-8 py-3 font-medium text-white transition-colors hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600"
+            >
+              Login Now
+            </Button>
+          </div>
+        ) : (
+          <p className="mt-6 text-base text-gray-500 dark:text-gray-400">
+            You are logged in. Start chatting now!
+          </p>
+        )}
+      </div>
+    </div>
+  );
 }
 
 export default function Chat() {

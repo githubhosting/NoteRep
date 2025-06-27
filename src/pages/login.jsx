@@ -38,6 +38,18 @@ export default function LoginPage() {
       }
       setLoading(false)
     })
+    console.log('Auth state changed:', user)
+
+    // Check for theme preference
+    if (
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches)
+    ) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
 
     return () => unsubscribe()
   }, [])
@@ -134,6 +146,11 @@ export default function LoginPage() {
                   {user.email && (
                     <p className="text-lg font-medium text-gray-900 dark:text-white">
                       Email: <span className="font-normal">{user.email}</span>
+                    </p>
+                  )}
+                  {user.name && (
+                    <p className="text-lg font-medium text-gray-900 dark:text-white">
+                      Name: <span className="font-normal">{user.name}</span>
                     </p>
                   )}
                   {user.phoneNumber && (
