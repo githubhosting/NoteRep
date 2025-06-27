@@ -40,11 +40,6 @@ const ChatContext = createContext({
 
 function ChatProvider({ children }) {
   const [rooms, setRooms] = useState([
-    {
-      id: 'general-auth',
-      name: 'General (Authenticated)',
-      type: 'authenticated',
-    },
     { id: 'general-anon', name: 'General (Anonymous)', type: 'anonymous' },
   ])
   const [initialized, setInitialized] = useState(false)
@@ -199,47 +194,15 @@ function ChatProvider({ children }) {
 }
 
 function ChatRoomList({ rooms, currentRoom, setCurrentRoom, activePageUsers }) {
-  const [user, setUser] = useState(null)
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (authUser) => {
-      setUser(authUser)
-    })
-    return () => unsubscribe()
-  }, [])
-
   return (
     <div className="w-full border-b border-gray-300 bg-gradient-to-r from-blue-50 to-indigo-50 p-3 dark:border-gray-700 dark:from-blue-900 dark:to-indigo-900">
       <div className="mb-2 flex items-center justify-between">
         <h2 className="text-lg font-bold text-gray-900 dark:text-white">
-          Chat Rooms
+          NoteRep Chat
         </h2>
         <p className="text-xs text-gray-600 dark:text-gray-300">
           Active: <span className="font-semibold">{activePageUsers}</span>
         </p>
-      </div>
-      <div className="flex gap-3">
-        {rooms.map((room) => (
-          <button
-            key={room.id}
-            className={`flex min-w-[120px] items-center justify-center rounded-lg px-4 py-2 shadow transition-all duration-200 ${
-              currentRoom?.id === room.id
-                ? 'border border-blue-400 bg-blue-500 text-white dark:border-blue-600 dark:bg-blue-700'
-                : 'border border-gray-200 bg-white text-gray-900 hover:bg-gray-100 dark:border-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600'
-            }`}
-            onClick={() => {
-              if (room.type === 'authenticated' && !user) {
-                alert('Please log in with Google to access this room.')
-                return
-              }
-              setCurrentRoom(room)
-            }}
-          >
-            <span className="text-sm font-medium">
-              {room.name.split(' ')[1].replace('(', '').replace(')', '')}
-            </span>
-          </button>
-        ))}
       </div>
     </div>
   )
@@ -411,9 +374,6 @@ export default function Chat() {
                 }) => (
                   <div className="flex h-[85vh] flex-col overflow-hidden rounded-2xl bg-white shadow-2xl dark:bg-gray-800">
                     <ChatRoomList
-                      rooms={rooms}
-                      currentRoom={currentRoom}
-                      setCurrentRoom={setCurrentRoom}
                       activePageUsers={activePageUsers}
                     />
                     <ChatWindow
