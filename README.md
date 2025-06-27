@@ -41,6 +41,7 @@ What started in 2020 as a humble attempt to organize study materials has evolved
 
 ### 🤖 Smart Assistance
 - **NoteRepBot**: AI-powered study assistant for instant academic help
+- **Chat Feature**: Connect with peers for real-time discussions and collaboration
 - **ExamRoastBot**: Fun and motivational bot for exam preparation
 - **ComplimentBot**: Boosts student morale with timely encouragement
 - **RoastBot**: Adds humor to study sessions with witty interactions
