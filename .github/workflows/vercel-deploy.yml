@@ -3,21 +3,26 @@ name: Trigger Vercel Deployment on #deploy Commit
 on:
   push:
     branches:
-      - main  # or whichever branch you want to watch
+      - main
 
 jobs:
   trigger-deploy:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
       - name: Check commit messages for #deploy
         id: check_deploy
         run: |
           echo "Checking commits for #deploy keyword..."
-          # Get the commit messages for this push
-          commits=$(git log --format=%B ${{ github.sha }} -1)
-          echo "Commit message: $commits"
-          
+          # Get commit messages for all commits in this push
+          # (for push events, ${{ github.event.before }} is previous commit, ${{ github.sha }} is latest)
+          commits=$(git log --format=%B ${{ github.event.before }}..${{ github.sha }})
+          echo "Commit messages in push:"
+          echo "$commits"
+
           if echo "$commits" | grep -q "#deploy"; then
             echo "deploy=true" >> $GITHUB_OUTPUT
           else
