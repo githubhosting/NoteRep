@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # fetch full history to avoid invalid revision range error
+          fetch-depth: 0 # fetch full history to get all commits
 
       - name: Check commit messages for #deploy
         id: check_deploy
@@ -32,4 +32,20 @@ jobs:
       - name: Trigger Vercel Deployment
         if: steps.check_deploy.outputs.deploy == 'true'
         run: |
-          curl -X POST ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+          echo "Triggering Vercel deployment..."
+          response=$(curl -s -w "%{http_code}" -X POST "${{ secrets.VERCEL_DEPLOY_HOOK_URL }}" -o response.txt)
+          body=$(cat response.txt)
+          echo "Response body:"
+          echo "$body"
+          echo "HTTP status code: $response"
+
+          if [[ "$response" -lt 200 || "$response" -ge 300 ]]; then
+            echo "Deployment trigger failed with HTTP status $response"
+            exit 1
+          fi
+
+          # Optionally check if response contains expected keys
+          if ! echo "$body" | grep -q '"job"'; then
+            echo "Unexpected response body, deployment might not have triggered."
+            exit 1
+          fi
