@@ -82,10 +82,10 @@ function MobileNavigation(props) {
             <nav className="mt-6">
               <ul className="-my-2 divide-y divide-zinc-100 text-base leading-7 text-zinc-800 dark:divide-zinc-100/5 dark:text-zinc-300">
                 <MobileNavItem href="/">Home</MobileNavItem>
-                <MobileNavItem href="minisis">Mini SIS</MobileNavItem>
-                <MobileNavItem href="noterepbot">AI Chat Bot</MobileNavItem>
-                <MobileNavItem href="communilink">CommuniLink</MobileNavItem>
-                <MobileNavItem href="links">Other Links</MobileNavItem>
+                <MobileNavItem href="/minisis">Mini SIS</MobileNavItem>
+                <MobileNavItem href="/noterepbot">AI Chat Bot</MobileNavItem>
+                <MobileNavItem href="/communilink">CommuniLink</MobileNavItem>
+                <MobileNavItem href="/links">Other Links</MobileNavItem>
                 <MobileNavItem href="https://myselfshravan.github.io/">
                   Developer
                 </MobileNavItem>
@@ -130,10 +130,11 @@ function DesktopNavigation(props) {
       shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur-md transition-all duration-300 hover:bg-zinc-100/40 
       dark:border-white/10 dark:bg-zinc-900/30 dark:shadow-white/5 dark:ring-white/10 dark:hover:bg-zinc-900/40"
       >
-        <NavItem href="minisis">Mini SIS</NavItem>
-        <NavItem href="noterepbot">AI Chat Bot</NavItem>
-        <NavItem href="communilink">CommuniLink</NavItem>
-        <NavItem href="links">Other Links</NavItem>
+        <NavItem href="/minisis">Mini SIS</NavItem>
+        <NavItem href="/chat">Chat</NavItem>
+        <NavItem href="/noterepbot">AI Chat Bot</NavItem>
+        <NavItem href="/communilink">CommuniLink</NavItem>
+        <NavItem href="/links">Other Links</NavItem>
       </ul>
     </nav>
   )
