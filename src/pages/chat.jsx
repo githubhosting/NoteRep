@@ -187,16 +187,16 @@ function ChatRoomList({ rooms, currentRoom, setCurrentRoom, activePageUsers }) {
   }, [])
 
   return (
-    <div className="w-full p-6 border-b border-gray-300 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-indigo-900">
-      <h2 className="mb-3 text-2xl font-bold text-gray-900 dark:text-white">Chat Rooms</h2>
-      <p className="mb-3 text-sm text-gray-600 dark:text-gray-300">
+    <div className="w-full p-3 border-b border-gray-300 dark:border-gray-700 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-indigo-900">
+      <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">Chat Rooms</h2>
+      <p className="mb-2 text-xs text-gray-600 dark:text-gray-300">
         Active users on page: <span className="font-semibold">{activePageUsers}</span>
       </p>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-2">
         {rooms.map((room) => (
           <button
             key={room.id}
-            className={`flex items-center justify-between px-5 py-3 rounded-xl min-w-[160px] shadow-md transition-all duration-200 ${
+            className={`flex items-center justify-between px-4 py-2 rounded-xl min-w-[140px] shadow-md transition-all duration-200 ${
               currentRoom?.id === room.id 
                 ? 'bg-blue-500 dark:bg-blue-700 text-white border-2 border-blue-400 dark:border-blue-600 transform scale-105' 
                 : 'bg-white dark:bg-gray-700 text-gray-900 dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600 border border-gray-200 dark:border-gray-800'
